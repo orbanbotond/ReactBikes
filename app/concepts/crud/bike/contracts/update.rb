@@ -11,12 +11,14 @@ module Crud
       property :weight
       property :latitude
       property :longitude
+      property :bike_model_id
 
       validation :default do
         optional(:color).maybe(:str?, included_in?: ::Bike::COLORS)
         optional(:weight).maybe(:decimal?)
         optional(:latitude).maybe(:decimal?)
         optional(:longitude).maybe(:decimal?)
+        optional(:bike_model_id).maybe(:int?)
       end
 
       class << self

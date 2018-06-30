@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :bike do
-    color "MyString"
-    weight "MyString"
+    color ::Bike::COLORS.last
+    weight 3.4
     latitude "9.99"
     longitude "9.99"
     bike_model

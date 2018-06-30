@@ -9,12 +9,10 @@ module Crud
 
       property :email
       property :password
-      property :admin
 
       validation :default do
         required( :email).filled(:str?)
         required( :password).filled(:str?)
-        required( :admin).filled(:bool?)
       end
 
       class << self

@@ -13,7 +13,7 @@ module Crud
     property :bike_model_id
 
     validation :default do
-      required( :color).filled(:str?)
+      required( :color).filled(:str?, included_in?: Bike::COLORS)
       required( :weight).filled(:decimal?)
       required( :latitude).filled(:decimal?)
       required( :longitude).filled(:decimal?)

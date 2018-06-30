@@ -12,7 +12,8 @@ gem "rails", "~> 5.1.4"
 # Use sqlite3 as the database for Active Record
 gem "gon", "~> 6.2"
 gem "pg", "~> 0.21.0"
-gem "sqlite3"
+# gem "sqlite3"
+gem "geo_coord"
 
 # Use Puma as the app server
 gem "puma", "~> 3.7"
@@ -63,6 +64,7 @@ group :development, :test do
   gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"
+  gem "dotenv-rails", "~> 2.2"
   gem "guard", "~> 2.14"
   gem "guard-bundler", "~> 2.1", require: false
   gem "guard-rspec", "~> 4.7", require: false

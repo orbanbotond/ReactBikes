@@ -4,5 +4,6 @@ FactoryBot.define do
     weight "MyString"
     latitude "9.99"
     longitude "9.99"
+    bike_model
   end
 end

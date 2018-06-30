@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :reservation do
-    start_date "2018-06-30 17:33:26"
-    end_date "2018-06-30 17:33:26"
+    start_date 2.days.from_now.to_datetime
+    end_date 3.days.from_now.to_datetime
     rating 1
     cancelled false
-    user nil
-    bike nil
+    user
+    bike
   end
 end

@@ -1,0 +1,15 @@
+# Style/FrozenStringLiteralComment:
+#   Enabled: false
+
+# Style/Documentation:
+#   Enabled: false
+
+# Metrics/LineLength:
+#   Enabled: false
+
+
+#  - 'path/to/excluded/file.rb'
+
+ inherit_gem:
+  rubocop-rails:
+    - config/rails.yml

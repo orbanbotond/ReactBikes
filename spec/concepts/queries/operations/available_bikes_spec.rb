@@ -32,7 +32,7 @@ describe Queries::Operations::AvailableBikes do
     create :reservation,
       start_date: 2.days.ago.to_datetime,
       end_date: 1.days.ago.to_datetime,
-      bike: create( :bike, color: Bike::COLORS.first),
+      bike: create(:bike, color: Bike::COLORS.first),
       rating: 1
   end
   let(:bike_p_02) { reservation_p_02.bike }
@@ -50,7 +50,7 @@ describe Queries::Operations::AvailableBikes do
     end
   end
 
-  context 'refined search color' do
+  context "refined search color" do
     let(:params) { super().merge(color: ::Bike::COLORS.first) }
 
     it "returns just the available bikes" do
@@ -63,7 +63,7 @@ describe Queries::Operations::AvailableBikes do
       expect(result["model"]).to include(bike_p_02)
     end
   end
-  context 'refined search weight' do
+  context "refined search weight" do
     let(:params) { super().merge(weight: 1.2) }
 
     it "returns just the available bikes" do
@@ -91,7 +91,7 @@ describe Queries::Operations::AvailableBikes do
   #   end
   # end
 
-  context 'refined search model' do
+  context "refined search model" do
     let(:params) { super().merge(bike_model_id: bike_p_01.bike_model.id) }
 
     it "returns just the available bikes" do
@@ -105,4 +105,3 @@ describe Queries::Operations::AvailableBikes do
     end
   end
 end
-

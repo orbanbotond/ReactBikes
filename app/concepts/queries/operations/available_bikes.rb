@@ -12,7 +12,7 @@ module Queries
         options["contract.default"] = ::Queries::Contracts::AvailableBikes.new({})
       end
 
-      def search(options, params:,**)
+      def search(options, params:, **)
         start_date = params[:start_date]
         end_date = params[:end_date]
 

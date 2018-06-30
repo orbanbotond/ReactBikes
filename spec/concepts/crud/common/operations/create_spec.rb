@@ -30,5 +30,27 @@ describe Crud::Common::Operations::Create do
         end.to change { Bike.count }.by(1)
       end
     end
+
+    context "users" do
+      let(:params) { { email: "akarmi", password: "new_password" } }
+      let(:additional_params) do
+        super().merge(
+          "model.class" => ::User,
+          "contract.default.class" => ::Crud::User::Contracts::Create
+        )
+      end
+
+      it "create a new user" do
+        params
+        additional_params
+        expect do
+          expect(result.success?).to eq(true)
+          expect(result["model"]).to be_a(User)
+          expect(result["model"].email).to eq(params[:email])
+          expect(result["model"].password).to eq(params[:password])
+        end.to change { User.count }.by(1)
+      end
+    end
+
   end
 end

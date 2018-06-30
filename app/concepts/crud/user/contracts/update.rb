@@ -10,7 +10,7 @@ module Crud
       property :admin
 
       validation :default do
-        required( :admin).filled(:bool?)
+        required(:admin).filled(:bool?)
       end
 
       class << self

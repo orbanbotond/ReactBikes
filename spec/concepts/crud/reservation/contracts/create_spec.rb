@@ -5,10 +5,10 @@ require "rails_helper"
 describe Crud::Reservation::Contracts::Create do
   let(:contract) { described_class.new Reservation.new }
   let!(:bike) { create :bike }
-  let(:params) { attributes_for(:reservation).merge( bike_id: bike.id) }
+  let(:params) { attributes_for(:reservation).merge(bike_id: bike.id) }
 
   context "negative cases" do
-    context 'start_date is in the past' do
+    context "start_date is in the past" do
       let(:params) { super().merge(start_date: 1.day.ago.to_datetime) }
 
       it "fails validation" do
@@ -16,7 +16,7 @@ describe Crud::Reservation::Contracts::Create do
       end
     end
 
-    context 'end_date is in the past' do
+    context "end_date is in the past" do
       let(:params) { super().merge(end_date: 1.day.ago.to_datetime) }
 
       it "fails validation" do
@@ -24,7 +24,7 @@ describe Crud::Reservation::Contracts::Create do
       end
     end
 
-    context 'end_date is before the start_date' do
+    context "end_date is before the start_date" do
       let(:params) { super().merge(end_date: 1.day.from_now.to_datetime) }
 
       it "fails validation" do

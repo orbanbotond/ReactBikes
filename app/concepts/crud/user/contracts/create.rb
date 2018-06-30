@@ -11,8 +11,8 @@ module Crud
       property :password
 
       validation :default do
-        required( :email).filled(:str?)
-        required( :password).filled(:str?)
+        required(:email).filled(:str?)
+        required(:password).filled(:str?)
       end
 
       class << self

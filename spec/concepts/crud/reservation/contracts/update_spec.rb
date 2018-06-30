@@ -5,11 +5,11 @@ require "rails_helper"
 describe Crud::Reservation::Contracts::Update do
   let(:reservation) { create :reservation }
   let(:contract) { described_class.new reservation  }
-  let(:params) { {cancelled: true} }
+  let(:params) { { cancelled: true } }
 
   context "negative cases" do
     context "params are empty" do
-      let(:params) {{}}
+      let(:params) { {} }
 
       it "fails validation" do
         expect(contract.validate params).to be_falsey
@@ -17,7 +17,7 @@ describe Crud::Reservation::Contracts::Update do
     end
 
     context "both rating and cancelled are there" do
-      let(:params) {{rating: 4, cancelled: true}}
+      let(:params) { { rating: 4, cancelled: true } }
 
       it "fails validation" do
         expect(contract.validate params).to be_falsey
@@ -26,7 +26,7 @@ describe Crud::Reservation::Contracts::Update do
 
     context "rating is out of range" do
       context "too low" do
-        let(:params) {{rating: 0}}
+        let(:params) { { rating: 0 } }
 
         it "fails validation" do
           expect(contract.validate params).to be_falsey
@@ -34,11 +34,11 @@ describe Crud::Reservation::Contracts::Update do
       end
 
       context "too high" do
-        let(:params) {{rating: 6}}
+        let(:params) { { rating: 6 } }
 
         it "fails validation" do
           expect(contract.validate params).to be_falsey
-        end      
+        end
       end
     end
   end
@@ -51,7 +51,7 @@ describe Crud::Reservation::Contracts::Update do
     end
 
     context "rating is specified" do
-      let(:params) { {rating: 3} }
+      let(:params) { { rating: 3 } }
 
       it "fails validation" do
         expect(contract.validate params).to be_truthy

@@ -12,9 +12,9 @@ module Crud
       property :bike_id
 
       validation :default do
-        required( :start_date).filled(:date_time?, gteq?: Time.zone.now)
-        required( :end_date).filled(:date_time?, gteq?: Time.zone.now)
-        required( :bike_id).filled(:int?)
+        required(:start_date).filled(:date_time?, gteq?: Time.zone.now)
+        required(:end_date).filled(:date_time?, gteq?: Time.zone.now)
+        required(:bike_id).filled(:int?)
       end
 
       validation :start_before_end, if: :default, with: { form: true } do
@@ -23,7 +23,7 @@ module Crud
 
           def start_before_end?(value)
             return false if options[:form].end_date <= value
-            
+
             true
           end
         end

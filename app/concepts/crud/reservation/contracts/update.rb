@@ -11,8 +11,8 @@ module Crud
       property :rating
 
       validation :default do
-        optional( :cancelled).maybe(:bool?)
-        optional( :rating).maybe(:int?, included_in?: 1..5)
+        optional(:cancelled).maybe(:bool?)
+        optional(:rating).maybe(:int?, included_in?: 1..5)
       end
 
       validation :only_one, if: :default, with: { form: true } do
@@ -21,7 +21,7 @@ module Crud
 
           def only_one?(value)
             return false if options[:form].changed.keys.count != 1
-            
+
             true
           end
         end

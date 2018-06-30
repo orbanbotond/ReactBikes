@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Bike < ApplicationRecord
   has_many :reservations
   belongs_to :bike_model

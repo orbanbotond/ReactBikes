@@ -6,10 +6,10 @@ module Crud
       class Create < Trailblazer::Operation
         step Model(ApplicationRecord, :new)
 
-        step Nested( 
+        step Nested(
           Persist,
           input: -> (options, mutable_data:, runtime_data:, **) do
-            runtime_data.merge("model"=> mutable_data["model"])
+            runtime_data.merge("model" => mutable_data["model"])
           end
         )
       end

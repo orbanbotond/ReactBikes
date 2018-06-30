@@ -8,10 +8,10 @@ module Crud
 
         step :set_user
 
-        step Nested( 
+        step Nested(
           ::Crud::Common::Operations::Persist,
           input: -> (options, mutable_data:, runtime_data:, **) do
-            runtime_data.merge("model"=> mutable_data["model"])
+            runtime_data.merge("model" => mutable_data["model"])
           end
         )
 

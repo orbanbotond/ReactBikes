@@ -10,7 +10,7 @@ describe Crud::Common::Operations::Update do
   context "positive cases" do
     context "bikes" do
       let(:model) { create :bike }
-      let(:bike_model) {create :bike_model}
+      let(:bike_model) { create :bike_model }
       let(:params) { { id: model.id, weight: 12, latitude: 54, longitude: 30, color: ::Bike::COLORS.first, bike_model_id: bike_model.id } }
       let(:additional_params) do
         super().merge(
@@ -76,7 +76,7 @@ describe Crud::Common::Operations::Update do
         end.to_not change { Reservation.count }
       end
 
-      context 'cancells' do
+      context "cancells" do
         let(:params) { { id: model.id, cancelled: true } }
 
         it "cancells" do

@@ -9,7 +9,7 @@ module Crud
         step :destroy
 
         def destroy(options, model:, **)
-        	model.destroy
+          model.destroy
         end
       end
     end

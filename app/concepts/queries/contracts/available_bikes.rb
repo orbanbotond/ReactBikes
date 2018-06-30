@@ -2,8 +2,8 @@
 
 require "reform/form/dry"
 
-module AvailableBikes
-  class Contracts::Query < Reform::Form
+module Queries
+  class Contracts::AvailableBikes < Reform::Form
     feature Reform::Form::Dry
 
     def initialize(_params)

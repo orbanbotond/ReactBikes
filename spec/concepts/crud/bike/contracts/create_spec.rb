@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-describe Crud::Contracts::CreateBike do
+describe Crud::Bike::Contracts::Create do
   let(:contract) { described_class.new Bike.new }
   let!(:bike_model) { build_stubbed :bike_model }
   let(:params) { { weight: 12, latitude: 54, longitude: 30, color: Bike::COLORS.first, bike_model_id: bike_model.id } }

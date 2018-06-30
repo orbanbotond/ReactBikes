@@ -2,9 +2,9 @@
 
 require "rails_helper"
 
-describe Crud::Contracts::UpdateBike do
+describe Crud::Bike::Contracts::Update do
   let(:contract) { described_class.new Bike.new }
-  let(:params) { { weight: 12, latitude: 54, longitude: 30, color: Bike::COLORS.first} }
+  let(:params) { { weight: 12, latitude: 54, longitude: 30, color: ::Bike::COLORS.first} }
 
   context "positive case" do
     it "passes validation" do

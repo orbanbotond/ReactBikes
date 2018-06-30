@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180630143326) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "rating"
-    t.boolean "cancelled"
+    t.boolean "cancelled", default: false
     t.bigint "user_id"
     t.bigint "bike_id"
     t.datetime "created_at", null: false

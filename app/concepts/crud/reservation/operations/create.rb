@@ -1,17 +1,23 @@
 # frozen_string_literal: true
 
 module Crud
-  module Common
+  module Reservation
     module Operations
       class Create < Trailblazer::Operation
-        step Model(ApplicationRecord, :new)
+        step Model(::Reservation, :new)
+
+        step :set_user
 
         step Nested( 
-          Persist,
+          ::Crud::Common::Operations::Persist,
           input: -> (options, mutable_data:, runtime_data:, **) do
             runtime_data.merge("model"=> mutable_data["model"])
           end
         )
+
+        def set_user(options, current_user:, model:, **)
+          model.user = current_user
+        end
       end
     end
   end

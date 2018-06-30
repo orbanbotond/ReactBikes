@@ -51,6 +51,5 @@ describe Crud::Common::Operations::Create do
         end.to change { User.count }.by(1)
       end
     end
-
   end
 end

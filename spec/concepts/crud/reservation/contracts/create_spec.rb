@@ -24,6 +24,14 @@ describe Crud::Reservation::Contracts::Create do
       end
     end
 
+    context 'end_date is before the start_date' do
+      let(:params) { super().merge(end_date: 1.day.from_now.to_datetime) }
+
+      it "fails validation" do
+        expect(contract.validate params).to be_falsey
+      end
+    end
+
     [:start_date, :end_date, :bike_id].each do |field|
       context "#{field} is missing" do
         let(:params) { super().except(field) }

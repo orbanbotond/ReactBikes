@@ -17,6 +17,20 @@ module Crud
         required( :bike_id).filled(:int?)
       end
 
+      validation :start_before_end, if: :default, with: { form: true } do
+        configure do
+          config.messages_file = File.join(Rails.root.to_s, "config", "locales", "en.yml")
+
+          def start_before_end?(value)
+            return false if options[:form].end_date <= value
+            
+            true
+          end
+        end
+
+        required(:start_date, &:start_before_end?)
+      end
+
       class << self
         def documentation
           {

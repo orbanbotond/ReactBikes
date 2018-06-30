@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    start_before_end?: "Start should be before the end"
+    only_one?: "Only one should be specified"

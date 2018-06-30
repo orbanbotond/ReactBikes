@@ -55,5 +55,40 @@ describe Crud::Common::Operations::Update do
         end.to_not change { User.count }
       end
     end
+
+    context "reservation" do
+      let(:model) { create :reservation }
+      let(:params) { { id: model.id, rating: 5 } }
+      let(:additional_params) do
+        super().merge(
+          "model.class" => ::Reservation,
+          "contract.default.class" => ::Crud::Reservation::Contracts::Update
+        )
+      end
+
+      it "updates the old model" do
+        params
+        additional_params
+        expect do
+          expect(result.success?).to eq(true)
+          expect(result["model"]).to be_a(Reservation)
+          expect(result["model"].rating).to eq(params[:rating])
+        end.to_not change { Reservation.count }
+      end
+
+      context 'cancells' do
+        let(:params) { { id: model.id, cancelled: true } }
+
+        it "cancells" do
+          params
+          additional_params
+          expect do
+            expect(result.success?).to eq(true)
+            expect(result["model"]).to be_a(Reservation)
+            expect(result["model"].cancelled).to eq(params[:cancelled])
+          end.to_not change { Reservation.count }
+        end
+      end
+    end
   end
 end

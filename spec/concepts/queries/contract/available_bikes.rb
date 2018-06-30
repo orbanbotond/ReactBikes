@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe AvailableBikes::Contracts::Query do
-  let(:contract) { described_class.new({})}
+  let(:contract) { described_class.new({}) }
   let(:params) { attributes_for(:reservation).slice(:start_date, :end_date) }
 
   context "negative cases" do

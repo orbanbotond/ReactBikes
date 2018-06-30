@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :model do
+  factory :bike_model do
     text "MyString"
   end
 end

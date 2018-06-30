@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180630143326) do
 
   create_table "bikes", force: :cascade do |t|
     t.string "color"
-    t.string "weight"
+    t.decimal "weight"
     t.decimal "latitude"
     t.decimal "longitude"
     t.bigint "bike_model_id"

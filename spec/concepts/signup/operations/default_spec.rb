@@ -9,7 +9,6 @@ describe Signup::Operations::Default do
 
   context "positive cases" do
     it "returns just the available bikes" do
-      binding.pry
       expect(result.success?).to eq(true)
       expect(result["model"]).to be_a(User)
       expect(result["model"].email).to eq(params[:email])

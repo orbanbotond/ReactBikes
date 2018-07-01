@@ -6,7 +6,7 @@ module Queries
   class Contracts::AvailableBikes < Reform::Form
     feature Reform::Form::Dry
 
-    def initialize(_params)
+    def initialize(_options)
       super(OpenStruct.new)
     end
 

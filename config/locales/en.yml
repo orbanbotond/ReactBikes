@@ -36,3 +36,4 @@ en:
     only_one?: "Only one should be specified"
     email?: "It should be an email format"
     unique?: "It should be unique"
+    matches_pwd?: "No email/pwd. Sorry"

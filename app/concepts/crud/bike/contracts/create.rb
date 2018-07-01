@@ -25,10 +25,10 @@ module Crud
         def documentation
           {
             color: { required: true, type: "String", desc: "Color for the bike" },
-            weight: { required: true, type: "String", desc: "The weight of the bike" },
-            latitude: { required: true, type: "Decimal", desc: "The latitude of the bike" },
-            longitude: { required: true, type: "Decimal", desc: "The longitude of the bike" },
-            bike_model_id: { required: true, type: "Integer", desc: "The FK reference to the BikeMode.id" }
+            weight: { required: true, type: "float", desc: "The weight of the bike" },
+            latitude: { required: true, type: "float", desc: "The latitude of the bike" },
+            longitude: { required: true, type: "float", desc: "The longitude of the bike" },
+            bike_model_id: { required: true, type: "Integer", desc: "The FK reference to the BikeMode.id" },
           }
         end
       end

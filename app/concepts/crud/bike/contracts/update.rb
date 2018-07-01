@@ -25,9 +25,9 @@ module Crud
         def documentation
           {
             color: { required: false, type: "String", desc: "Color for the bike" },
-            weight: { required: false, type: "Decimal", desc: "The weight of the bike" },
-            latitude: { required: false, type: "Decimal", desc: "The latitude of the bike" },
-            longitude: { required: false, type: "Decimal", desc: "The longitude of the bike" },
+            weight: { required: false, type: "float", desc: "The weight of the bike" },
+            latitude: { required: false, type: "float", desc: "The latitude of the bike" },
+            longitude: { required: false, type: "float", desc: "The longitude of the bike" },
             bike_model_id: { required: false, type: "Integer", desc: "The FK reference to the BikeMode.id" }
           }
         end

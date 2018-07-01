@@ -9,10 +9,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.1.4"
-# Use sqlite3 as the database for Active Record
-gem "gon", "~> 6.2"
 gem "pg", "~> 0.21.0"
-# gem "sqlite3"
 gem "geo_coord"
 
 # Use Puma as the app server
@@ -34,8 +31,8 @@ gem "dry-validation", "~> 0.11.1"
 gem "gon", "~> 6.2"
 gem "grape", "~> 1.0.2"
 gem "grape-entity", "~> 0.7.0"
-gem "grape-swagger", "~> 0.27"
-gem "grape-swagger-entity", "~> 0.2"
+gem "grape-swagger", "~> 0.27.3"
+gem "grape-swagger-entity", "0.2.3"
 gem "grape-swagger-ui", "~> 2.2"
 gem "grape_on_rails_routes", git: "https://github.com/orbanbotond/grape_on_rails_routes", branch: "fix_latest_grape_1_0_2"
 gem "jbuilder", "~> 2.5"
@@ -64,7 +61,6 @@ group :development, :test do
   gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"
-  gem "dotenv-rails", "~> 2.2"
   gem "guard", "~> 2.14"
   gem "guard-bundler", "~> 2.1", require: false
   gem "guard-rspec", "~> 4.7", require: false

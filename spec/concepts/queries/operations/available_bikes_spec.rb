@@ -25,15 +25,14 @@ describe Queries::Operations::AvailableBikes do
     create :reservation,
       start_date: 5.days.from_now.to_datetime,
       end_date: 6.days.from_now.to_datetime,
-      rating: 5
+      bike: create(:bike, average_rating: 5)
   end
   let(:bike_p_01) { reservation_p_01.bike }
   let!(:reservation_p_02) do
     create :reservation,
       start_date: 2.days.ago.to_datetime,
       end_date: 1.days.ago.to_datetime,
-      bike: create(:bike, color: Bike::COLORS.first),
-      rating: 1
+      bike: create(:bike, color: Bike::COLORS.first)
   end
   let(:bike_p_02) { reservation_p_02.bike }
   let!(:bike_p_03) { create :bike, weight: 1.0 }
@@ -77,19 +76,19 @@ describe Queries::Operations::AvailableBikes do
     end
   end
 
-  # context 'refined search rating' do
-  #   let(:params) { super().merge(rating: 5) }
+  context 'refined search rating' do
+    let(:params) { super().merge(rating: 5) }
 
-  #   it "returns just the available bikes" do
-  #     expect(result.success?).to eq(true)
-  #     expect(result["model"]).to_not include(bike_n_01)
-  #     expect(result["model"]).to_not include(bike_n_02)
-  #     expect(result["model"]).to_not include(bike_p_02)
-  #     expect(result["model"]).to_not include(bike_p_03)
+    it "returns just the available bikes" do
+      expect(result.success?).to eq(true)
+      expect(result["model"]).to_not include(bike_n_01)
+      expect(result["model"]).to_not include(bike_n_02)
+      expect(result["model"]).to_not include(bike_p_02)
+      expect(result["model"]).to_not include(bike_p_03)
 
-  #     expect(result["model"]).to include(bike_p_01)
-  #   end
-  # end
+      expect(result["model"]).to include(bike_p_01)
+    end
+  end
 
   context "refined search model" do
     let(:params) { super().merge(bike_model_id: bike_p_01.bike_model.id) }

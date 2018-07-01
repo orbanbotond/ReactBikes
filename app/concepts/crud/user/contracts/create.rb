@@ -8,7 +8,7 @@ module Crud
       feature Reform::Form::Dry
 
       property :email
-      property :password
+      property :password, readable: false
 
       validation :default do
         required(:email).filled(:str?)

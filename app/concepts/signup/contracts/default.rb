@@ -7,7 +7,7 @@ module Signup
     feature Reform::Form::Dry
 
     property :email
-    property :password
+    property :password, readable: false
 
     validation :default do
       configure do

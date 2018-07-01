@@ -3,9 +3,6 @@
 module Entities
   class UserEntity < Grape::Entity
     expose :email
-    expose :password
-    expose :session_token do |model|
-      Digest::MD5.hexdigest model.password
-    end
+    expose :session_token
   end
 end

@@ -15,6 +15,7 @@ module Bikes
     mount Bikes::Ping
     mount Bikes::Login
     mount Bikes::Signup
+    mount Bikes::Models
 
     add_swagger_documentation
   end

@@ -47,7 +47,7 @@ describe Crud::Common::Operations::Create do
           expect(result.success?).to eq(true)
           expect(result["model"]).to be_a(User)
           expect(result["model"].email).to eq(params[:email])
-          expect(result["model"].password).to eq(params[:password])
+          expect(result["model"].valid_password?(params[:password])).to be_truthy
         end.to change { User.count }.by(1)
       end
     end

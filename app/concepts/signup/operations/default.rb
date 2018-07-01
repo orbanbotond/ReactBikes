@@ -7,6 +7,12 @@ module Signup
       step Contract::Build(constant: ::Signup::Contracts::Default)
       step Contract::Validate()
       step Contract::Persist()
+      step :store_hashed_pwd
+
+      def store_hashed_pwd(options, model:, params:, **)
+        model.hashed_password = User.pwd_hash params[:password]
+        model.save
+      end
     end
   end
 end

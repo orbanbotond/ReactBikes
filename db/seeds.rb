@@ -21,5 +21,3 @@ Bike.create weight: 2.2, color: Bike::COLORS.last, bike_model: model2, latitude:
 Bike.create weight: 5.2, color: Bike::COLORS.last, bike_model: model3, latitude: 47.497913, longitude: 19.040236
 Bike.create weight: 3.4, color: Bike::COLORS[1], bike_model: model4, latitude: 47.497913, longitude: 19.040236
 Bike.create weight: 4.6, color: Bike::COLORS[2], bike_model: model5, latitude: 51.503399, longitude: -0.119519
-
-

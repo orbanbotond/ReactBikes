@@ -21,10 +21,10 @@ module Bikes
                 }
       end
       post do
-        result = ::Crud::Common::Operations::Create.call(params, {
+        result = ::Crud::Common::Operations::Create.call(params,
           "model.class" => ::Bike,
           "contract.default.class" => ::Crud::Bike::Contracts::Create
-        })
+        )
         if result.failure?
           format_errors(result)
         else
@@ -57,7 +57,7 @@ module Bikes
                   }
         end
         get do
-          result = ::Crud::Common::Operations::Read.call(params, {"model.class" => ::Bike})
+          result = ::Crud::Common::Operations::Read.call(params, "model.class" => ::Bike)
           if result.failure?
             format_errors(result)
           else
@@ -76,7 +76,7 @@ module Bikes
                   }
         end
         delete do
-          result = ::Crud::Common::Operations::Delete.call(params, {"model.class" => ::Bike})
+          result = ::Crud::Common::Operations::Delete.call(params, "model.class" => ::Bike)
           if result.failure?
             format_errors(result)
           else
@@ -97,10 +97,10 @@ module Bikes
                   }
         end
         put do
-          result = ::Crud::Common::Operations::Create.call(params, {
+          result = ::Crud::Common::Operations::Create.call(params,
             "model.class" => ::Bike,
             "contract.default.class" => ::Crud::Bike::Contracts::Update
-          })
+          )
           if result.failure?
             format_errors(result)
           else

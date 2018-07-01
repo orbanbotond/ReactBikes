@@ -8,7 +8,7 @@ module Login
       step :populate_model
 
       def populate_model(options, params:, **)
-      	options["model"] = User.find_by(email: params[:email])
+        options["model"] = User.find_by(email: params[:email])
       end
     end
   end

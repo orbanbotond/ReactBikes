@@ -9,3 +9,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create email: "orban@toptal.com", password: "bikepassword123"
+
+BikeModel.create text: 'Mountain'
+BikeModel.create text: 'Road'
+BikeModel.create text: 'City'
+BikeModel.create text: 'Family'
+BikeModel.create text: 'Extravaganza'

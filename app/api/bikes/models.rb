@@ -12,6 +12,11 @@ module Bikes
       detail "Returnd the models"
       success ::Entities::BikeModelEntity
       failure [[401, "Unauthenticated"]]
+      headers 'X-Auth-Token': {
+                description: "The authentication token",
+                required: true
+              }
+
     end
     get :bike_models do
       present BikeModel.all, with: ::Entities::BikeModelEntity

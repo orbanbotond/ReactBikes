@@ -10,7 +10,7 @@ module Bikes
     desc "Login." do
       detail "The session token is returned"
       params  ::Login::Contracts::Default.documentation
-      success ::Entities::UserEntity
+      success ::Entities::Login::UserEntity
       failure [[400, "Bad Parameters"],
                [401, "Unauthenticated"]]
     end
@@ -27,7 +27,7 @@ module Bikes
           format_errors(result)
         end
       else
-        present result["model"], with: ::Entities::UserEntity
+        present result["model"], with: ::Entities::Login::UserEntity
       end
     end
   end

@@ -2,15 +2,24 @@
 
 module Bikes
   class Signup < Grape::API
-    # format :json
-    # prefix :api
+    helpers ::Helpers::ReturnFormatters
 
-    # desc "Returns pong."
-    # params do
-    #   optional :pong, type: String, description: "A simple string which will be returned as it is."
-    # end
-    # get :ping do
-    #   { ping: params[:pong] || "pong" }
-    # end
+    format :json
+    prefix :api
+
+    desc "Signup." do
+      detail "The user signs up"
+      params  ::Signup::Contracts::Default.documentation
+      success ::Entities::UserEntity
+      failure [[400, "Bad Parameters"]]
+    end
+    post :signup do
+      result = ::Signup::Operations::Default.call(params, {})
+      if result.failure?
+        format_errors(result)
+      else
+        present result["model"], with: ::Entities::UserEntity
+      end
+    end
   end
 end

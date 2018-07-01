@@ -27,7 +27,6 @@ module Bikes
           format_errors(result)
         end
       else
-        binding.pry
         present result["model"], with: ::Entities::UserEntity
       end
     end

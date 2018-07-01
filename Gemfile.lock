@@ -457,8 +457,8 @@ DEPENDENCIES
   ffaker (~> 2.8)
   geo_coord
   gon (~> 6.2)
-  grape (~> 1.0)
-  grape-entity (~> 0.7)
+  grape (~> 1.0.2)
+  grape-entity (~> 0.7.0)
   grape-swagger (~> 0.27)
   grape-swagger-entity (~> 0.2)
   grape-swagger-ui (~> 2.2)

@@ -11,6 +11,7 @@ describe Login::Operations::Default do
   context "positive cases" do
     it "returns just the available bikes" do
       expect(result.success?).to eq(true)
+      expect(result["model"]).to eq(user)
     end
   end
 end

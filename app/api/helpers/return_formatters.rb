@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ApiHelpers
+module Helpers
   module ReturnFormatters
     def format_errors(result)
       if (key = result["result.policy.default"]) && key.failure?

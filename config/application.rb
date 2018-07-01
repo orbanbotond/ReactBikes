@@ -16,5 +16,8 @@ module ToptalReactBikes
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+	# config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+	# config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

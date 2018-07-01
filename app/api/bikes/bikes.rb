@@ -46,6 +46,25 @@ module Bikes
       end
 
       route_param :id do
+        desc "Reservation for a Bike." do
+          detail "Returns the reservations for the bikes."
+          success ::Entities::ReservationEntity
+          failure [[401, "Unauthenticated"],
+                   [404, "Not found"]]
+          headers 'X-Auth-Token': {
+                    description: "The authentication token",
+                    required: true
+                  }
+        end
+        get :reservations do
+          result = ::Crud::Common::Operations::Read.call(params, "model.class" => ::Bike)
+          if result.failure?
+            format_errors(result)
+          else
+            present result["model"].reservations, with: ::Entities::ReservationEntity
+          end
+        end
+
         desc "Bike." do
           detail "Returns a bikes"
           success ::Entities::BikeEntity

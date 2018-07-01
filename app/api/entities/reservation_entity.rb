@@ -3,8 +3,8 @@
 module Entities
   class ReservationEntity < Grape::Entity
     expose :id
-    expose :start_at
-    expose :end_at
+    expose :start_date
+    expose :end_date
     expose :cancelled
     expose :rating
   end

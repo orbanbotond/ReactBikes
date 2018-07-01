@@ -22,6 +22,10 @@ module Helpers
       current_user
     end
 
+    def default_additional_params
+      { "current_user" => current_user }
+    end
+
     def current_user
       return nil unless can_authenticate?
 

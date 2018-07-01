@@ -21,10 +21,11 @@ module Bikes
                 }
       end
       post do
-        result = ::Crud::Common::Operations::Create.call(params,
+        additional_params = default_additional_params.merge(
           "model.class" => ::User,
           "contract.default.class" => ::Crud::User::Contracts::Create
         )
+        result = ::Crud::Common::Operations::Create.call(params, additional_params)
         if result.failure?
           format_errors(result)
         else
@@ -57,7 +58,11 @@ module Bikes
                   }
         end
         get :reservations do
-          result = ::Crud::Common::Operations::Read.call(params, "model.class" => ::User)
+          additional_params = default_additional_params.merge(
+            "model.class" => ::User,
+          )
+
+          result = ::Crud::Common::Operations::Read.call(params, additional_params)
           if result.failure?
             format_errors(result)
           else
@@ -76,7 +81,11 @@ module Bikes
                   }
         end
         get do
-          result = ::Crud::Common::Operations::Read.call(params, "model.class" => ::User)
+          additional_params = default_additional_params.merge(
+            "model.class" => ::User,
+          )
+
+          result = ::Crud::Common::Operations::Read.call(params)
           if result.failure?
             format_errors(result)
           else
@@ -95,7 +104,11 @@ module Bikes
                   }
         end
         delete do
-          result = ::Crud::Common::Operations::Delete.call(params, "model.class" => ::User)
+          additional_params = default_additional_params.merge(
+            "model.class" => ::User,
+          )
+
+          result = ::Crud::Common::Operations::Delete.call(params, additional_params)
           if result.failure?
             format_errors(result)
           else
@@ -116,10 +129,12 @@ module Bikes
                   }
         end
         put do
-          result = ::Crud::Common::Operations::Create.call(params,
+          additional_params = default_additional_params.merge(
             "model.class" => ::User,
             "contract.default.class" => ::Crud::User::Contracts::Update
           )
+
+          result = ::Crud::Common::Operations::Update.call(params, additional_params)
           if result.failure?
             format_errors(result)
           else

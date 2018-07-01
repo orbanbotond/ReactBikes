@@ -34,7 +34,7 @@ module Crud
       class << self
         def documentation
           {
-            start_data: { required: true, type: "Date", desc: "The start date" },
+            start_date: { required: true, type: "Date", desc: "The start date" },
             end_date: { required: true, type: "Date", desc: "The end date" },
             bike_id: { required: true, type: "Integer", desc: "The FK reference to the Bike.id" }
           }

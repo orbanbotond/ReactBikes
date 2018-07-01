@@ -18,7 +18,8 @@ module Crud
 
         def recalculate_average_of_bike(options, model:, params:, **)
           reservations = ::Reservation.where(bike_id: model.bike_id)
-          average_rating = reservations.pluck(:rating).sum / reservations.count
+          relevant_reservations = reservations.pluck(:rating).compact
+          average_rating = relevant_reservations.sum / relevant_reservations.count
           bike = model.bike
           bike.average_rating = average_rating
           bike.save

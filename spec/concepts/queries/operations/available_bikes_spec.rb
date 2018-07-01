@@ -76,7 +76,7 @@ describe Queries::Operations::AvailableBikes do
     end
   end
 
-  context 'refined search rating' do
+  context "refined search rating" do
     let(:params) { super().merge(rating: 5) }
 
     it "returns just the available bikes" do

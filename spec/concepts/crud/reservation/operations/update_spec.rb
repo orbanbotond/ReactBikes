@@ -16,12 +16,12 @@ describe Crud::Reservation::Operations::Update do
         params
         additional_params
         expect do
-        expect do
-          expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(Reservation)
-          expect(result["model"].rating).to eq(params[:rating])
-          expect(result["model"].bike.average_rating).to eq(params[:rating])
-        end.to_not change { Reservation.count }
+          expect do
+            expect(result.success?).to eq(true)
+            expect(result["model"]).to be_a(Reservation)
+            expect(result["model"].rating).to eq(params[:rating])
+            expect(result["model"].bike.average_rating).to eq(params[:rating])
+          end.to_not change { Reservation.count }
         end.to change { model.bike.reload.average_rating }
       end
 

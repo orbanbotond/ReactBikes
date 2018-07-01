@@ -37,7 +37,7 @@ module Signup
       def documentation
         {
           email: { required: true, type: "String", desc: "The email" },
-          password: { required: true, type: "String", desc: "The password"}
+          password: { required: true, type: "String", desc: "The password" }
         }
       end
     end

@@ -7,20 +7,20 @@ describe Signup::Contracts::Default do
   let(:params) { { email: "email@gmail.com", password: "pwd" } }
 
   context "negative cases" do
-    context 'email is not email format' do
+    context "email is not email format" do
       let(:params) { super().merge email: "email" }
 
       it "fails validation" do
         expect(contract.validate params).to be_falsey
-      end      
+      end
     end
 
-    context 'email is already taken' do
-      let!(:user) { create :user, email: params[:email]}
+    context "email is already taken" do
+      let!(:user) { create :user, email: params[:email] }
 
       it "fails validation" do
         expect(contract.validate params).to be_falsey
-      end      
+      end
     end
 
     [:email, :password].each do |field|

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
 
   def password=(pwd_candidate)
     self.hashed_password = self.class.pwd_hash(pwd_candidate)

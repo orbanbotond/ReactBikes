@@ -15,6 +15,20 @@ module Crud
         required(:password).filled(:str?)
       end
 
+      validation :unique, if: :default do
+        configure do
+          config.messages_file = File.join(Rails.root.to_s, "config", "locales", "en.yml")
+
+          def unique?(value)
+            return false if ::User.exists?(email: value)
+
+            true
+          end
+        end
+
+        required(:email, &:unique?)
+      end
+
       class << self
         def documentation
           {

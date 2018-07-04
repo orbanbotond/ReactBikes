@@ -16,7 +16,7 @@ module Crud
       class << self
         def documentation
           {
-            admin: { required: true, type: "String", desc: "Specifiying that the user is admin or not." }
+            admin: { required: true, type: "Boolean", desc: "Specifiying that the user is admin or not." }
           }
         end
       end

@@ -24,7 +24,7 @@ module Signup
         config.messages_file = File.join(Rails.root.to_s, "config", "locales", "en.yml")
 
         def unique?(value)
-          return false if User.exists?(email: value)
+          return false if ::User.exists?(email: value)
 
           true
         end

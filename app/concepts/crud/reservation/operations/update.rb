@@ -14,11 +14,13 @@ module Crud
             )
           end
         )
-        step :recalculate_average_of_bike
+        success :recalculate_average_of_bike
 
         def recalculate_average_of_bike(options, model:, params:, **)
           reservations = ::Reservation.where(bike_id: model.bike_id)
           relevant_reservations = reservations.pluck(:rating).compact
+          return unless relevant_reservations.present?
+
           average_rating = relevant_reservations.sum / relevant_reservations.count
           bike = model.bike
           bike.average_rating = average_rating

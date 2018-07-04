@@ -2,7 +2,18 @@
   "name": "toptal-react-bikes",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5"
+    "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "reactstrap": "^6.2.0",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-react-session": "^2.4.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

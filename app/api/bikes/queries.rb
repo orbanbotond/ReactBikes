@@ -3,6 +3,7 @@
 module Bikes
   class Queries < Grape::API
     helpers ::Helpers::AuthenticationHelper
+    helpers ::Helpers::OperationAdapter
     before { authenticate! }
 
     format :json
@@ -22,10 +23,7 @@ module Bikes
                 }
       end
       get :available_bikes do
-        result = ::Queries::Operations::AvailableBikes.call(params, default_additional_params)
-        if result.failure?
-          format_errors(result)
-        else
+        call_operation(::Queries::Operations::AvailableBikes, params, default_additional_params) do |result|
           present result["model"], with: ::Entities::BikeEntity
         end
       end

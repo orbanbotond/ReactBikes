@@ -5,7 +5,7 @@ module Crud
     module Operations
       class Update < Trailblazer::Operation
         step Model(::Reservation, :find_by)
-        step Policy::Guard( ->(options, model:, **) { model.live? }, name: :live )
+        step Policy::Guard(->(options, model:, **) { model.live? }, name: :live)
 
         step Nested(
           ::Crud::Common::Operations::Persist,

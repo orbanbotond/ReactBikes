@@ -16,10 +16,10 @@ describe Crud::Reservation::Operations::Update do
         params
         additional_params
         expect do
-        expect do
-          expect(result.failure?).to eq(true)
-          expect(result["result.policy.live"]).to be_failure
-        end.to_not change { Reservation.count }
+          expect do
+            expect(result.failure?).to eq(true)
+            expect(result["result.policy.live"]).to be_failure
+          end.to_not change { Reservation.count }
         end.to_not change { model.bike.reload.average_rating }
       end
     end

@@ -5,6 +5,6 @@ class Reservation < ApplicationRecord
   belongs_to :bike
 
   def live?
-  	!cancelled?
+    !cancelled?
   end
 end

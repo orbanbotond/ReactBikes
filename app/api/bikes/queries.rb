@@ -23,10 +23,10 @@ module Bikes
                 }
       end
       get :available_bikes do
-        params2 = params.merge({
+        params2 = params.merge(
           "start_date" => ::Chronic.parse(params[:start_date]).to_datetime,
           "end_date" => ::Chronic.parse(params[:end_date]).to_datetime,
-        })
+        )
 
         call_operation(::Queries::Operations::AvailableBikes, params2, default_additional_params) do |result|
           present result["model"], with: ::Entities::BikeEntity

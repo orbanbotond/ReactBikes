@@ -3,6 +3,7 @@
 module Bikes
   class Bikes < Grape::API
     helpers ::Helpers::AuthenticationHelper
+    helpers ::Helpers::OperationAdapter
     before { authenticate! }
 
     format :json
@@ -26,10 +27,7 @@ module Bikes
           "contract.default.class" => ::Crud::Bike::Contracts::Create
         )
 
-        result = ::Crud::Common::Operations::Create.call(params, additional_params)
-        if result.failure?
-          format_errors(result)
-        else
+        call_operation(::Crud::Common::Operations::Create, params, additional_params) do |result|
           present result["model"], with: ::Entities::BikeEntity
         end
       end
@@ -63,10 +61,7 @@ module Bikes
             "model.class" => ::Bike
           )
 
-          result = ::Crud::Common::Operations::Read.call(params, additional_params)
-          if result.failure?
-            format_errors(result)
-          else
+          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
             present result["model"].reservations, with: ::Entities::ReservationEntity
           end
         end
@@ -86,10 +81,7 @@ module Bikes
             "model.class" => ::Bike
           )
 
-          result = ::Crud::Common::Operations::Read.call(params, additional_params)
-          if result.failure?
-            format_errors(result)
-          else
+          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
             present result["model"], with: ::Entities::BikeEntity
           end
         end
@@ -109,10 +101,7 @@ module Bikes
             "model.class" => ::Bike
           )
 
-          result = ::Crud::Common::Operations::Delete.call(params, additional_params)
-          if result.failure?
-            format_errors(result)
-          else
+          call_operation(::Crud::Common::Operations::Delete, params, additional_params) do |result|
             present result["model"], with: ::Entities::BikeEntity
           end
         end
@@ -135,10 +124,7 @@ module Bikes
             "contract.default.class" => ::Crud::Bike::Contracts::Update
           )
 
-          result = ::Crud::Common::Operations::Update.call(params, additional_params)
-          if result.failure?
-            format_errors(result)
-          else
+          call_operation(::Crud::Common::Operations::Update, params, additional_params) do |result|
             present result["model"], with: ::Entities::BikeEntity
           end
         end

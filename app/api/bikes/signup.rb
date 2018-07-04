@@ -3,6 +3,7 @@
 module Bikes
   class Signup < Grape::API
     helpers ::Helpers::ReturnFormatters
+    helpers ::Helpers::OperationAdapter
 
     format :json
     prefix :api
@@ -14,10 +15,7 @@ module Bikes
       failure [[400, "Bad Parameters"]]
     end
     post :signup do
-      result = ::Signup::Operations::Default.call(params, {})
-      if result.failure?
-        format_errors(result)
-      else
+      call_operation(::Signup::Operations::Default, params, {}) do |result|
         present result["model"], with: ::Entities::UserEntity
       end
     end

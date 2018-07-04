@@ -3,8 +3,11 @@
 module Helpers
   module ReturnFormatters
     def format_errors(result)
-      if (key = result["result.policy.default"]) && key.failure?
-        code, message = ErrorCodes::ACCESS_DENIED, "Access Denied"
+      if (key = result["result.policy.live"]) && key.failure?
+        code, message = ErrorCodes::ACCESS_DENIED, "Entity should be live."
+        http_return_code = 403
+      elsif (key = result["result.policy.default"]) && key.failure?
+        code, message = ErrorCodes::ACCESS_DENIED, "Access Denied."
         http_return_code = 403
       elsif (key = result["result.model"]) && key.failure?
         code, message = ErrorCodes::RECORD_NOT_FOUND, "Record Not Found."

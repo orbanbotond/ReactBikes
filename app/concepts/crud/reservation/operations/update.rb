@@ -4,8 +4,11 @@ module Crud
   module Reservation
     module Operations
       class Update < Trailblazer::Operation
+        step Model(::Reservation, :find_by)
+        step Policy::Guard( ->(options, model:, **) { model.live? }, name: :live )
+
         step Nested(
-          ::Crud::Common::Operations::Update,
+          ::Crud::Common::Operations::Persist,
           input: -> (options, mutable_data:, runtime_data:, **) do
             runtime_data.merge(
               "model" => mutable_data["model"],

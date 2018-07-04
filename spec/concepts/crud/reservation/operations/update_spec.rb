@@ -7,6 +7,24 @@ describe Crud::Reservation::Operations::Update do
   let(:additional_params) { { "current_user" => current_user } }
   let(:result) { described_class.call(params, additional_params) }
 
+  context "negative cases" do
+    context "rating a cancelled one" do
+      let(:model) { create :reservation, cancelled: true }
+      let(:params) { { id: model.id, rating: 4 } }
+
+      it "fails validation" do
+        params
+        additional_params
+        expect do
+        expect do
+          expect(result.failure?).to eq(true)
+          expect(result["result.policy.live"]).to be_failure
+        end.to_not change { Reservation.count }
+        end.to_not change { model.bike.reload.average_rating }
+      end
+    end
+  end
+
   context "positive cases" do
     context "reservation" do
       let(:model) { create :reservation }

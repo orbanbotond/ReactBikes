@@ -7,5 +7,6 @@ module Entities
     expose :end_date
     expose :cancelled
     expose :rating
+    expose :bike_id
   end
 end

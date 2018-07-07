@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   mount Bikes::API => "/"
+
+  get "*path", to: "home#index", constraints: lambda { |req| req.env["REQUEST_PATH"] != "/api/swagger" }
 end

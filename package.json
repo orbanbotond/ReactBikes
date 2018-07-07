@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
+    "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.1.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -17,5 +18,10 @@
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@bitbucket.org:orbanbotond/toptalreactbikes.git",
+  "author": "Orban Botond <orbanbotond@gmail.com>",
+  "license": "MIT"
 }

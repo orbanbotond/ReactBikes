@@ -14,18 +14,9 @@ default: &default
   cache_manifest: false
 
   extensions:
+    - .jsx
     - .js
-    - .sass
-    - .scss
-    - .css
-    - .module.sass
-    - .module.scss
-    - .module.css
-    - .png
-    - .svg
-    - .gif
-    - .jpeg
-    - .jpg
+    - .json
 
 development:
   <<: *default

@@ -6,7 +6,7 @@ import { Routes } from '@routes/routes';
 
 export default class List extends Component {
   render(){
-    const rows = this.props.reservations.map((model) =>
+    const rows = this.props.collection.map((model) =>
       <tr key={model.id}>
         <th scope="row">{model.id}</th>
         <td>{model.start_date}</td>
@@ -48,5 +48,5 @@ export default class List extends Component {
 // };
 
 List.propTypes = {
-  reservations: PropTypes.array.isRequired,
+  collection: PropTypes.array.isRequired,
 }

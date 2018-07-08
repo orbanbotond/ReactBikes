@@ -11,17 +11,17 @@ class ListContainer extends Component {
     super(props);
 
     this.state = {
-      reservations: null,
+      collection: null,
     };
   }
 
   componentWillMount() {
     const id = this.props.match.params.id;
 
-    if(!this.state.reservations){
+    if(!this.state.collection){
       Axios(this.props.user).get(Routes.Restfull.member_route('bike', id) + '/reservations').then((_responseObj) => {
         this.setState({
-          reservations: _responseObj.data,
+          collection: _responseObj.data,
         });
       }).catch((_error) => {
       });
@@ -29,12 +29,12 @@ class ListContainer extends Component {
   }
 
   render(){
-    const propsToWaitFor = ['reservations'];
+    const propsToWaitFor = ['collection'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, List);
 
     return(
       <div className="container">
-        <LoadWrappedList {...this.props} reservations={this.state.reservations}/>
+        <LoadWrappedList {...this.props} collection={this.state.collection}/>
       </div>
     );
   }

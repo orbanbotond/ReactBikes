@@ -6,7 +6,7 @@ import { ControlledFormInput,
          ControlledFormSelect} from '@common/forms';
 
 const reservationProps = {
-  reservations: [{ 
+  collection: [{ 
             id: 1, 
             start_date: "Yesterday", 
             end_date: "Today", 

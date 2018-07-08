@@ -39,9 +39,8 @@ class EditContainer extends Component {
     return Routes.Restfull.member_route('bike', id);
   }
 
-  handleSubmit(data){
-    debugger
-    return Axios().put(this.apiUrl(), data).then((responseObj) => {
+  handleSubmit = data => {
+    return Axios(this.props.user).put(this.apiUrl(), data).then((responseObj) => {
       this.handleSuccess(responseObj);
     }).catch((error) => {
       this.handleError(error);
@@ -60,16 +59,21 @@ class EditContainer extends Component {
   }
 
   render(){
-    const ReduxBikeForm = reduxForm({
+    var ReduxBikeForm = reduxForm({
       form: 'bike',
     })(Edit);
+
+    ReduxBikeForm = connect( _state => ({
+        initialValues: this.state.bike
+      })
+    )(ReduxBikeForm)
 
     const propsToWaitFor = ['model'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, ReduxBikeForm);
 
     return(
       <div>
-        <LoadWrappedList inputSize="8" submitForm={this.handleSubmit} {...this.props} model={this.state.bike} />
+        <LoadWrappedList submitForm={this.handleSubmit} {...this.props} model={this.state.bike} />
         <NavLink to={Routes.Browser.Restfull.collection_route('bike')}>Back To List</NavLink>
       </div>
     );
@@ -78,6 +82,7 @@ class EditContainer extends Component {
 
 const mapStateToProps = state => ({
   models: selectModels(state),
+  user: selectUser(state),
 });
 
 const mapDispatchToProps = {

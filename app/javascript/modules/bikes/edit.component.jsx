@@ -7,7 +7,7 @@ const EditForm = ({
 }) => {
   const inputSetup = {
     labelSize: 4,
-    inputSize,
+    inputSize: 8,
     // validate: [validators.required],
     disabledForm: disableForm,
   };
@@ -19,20 +19,21 @@ const EditForm = ({
         autoComplete="off"
         className="col-lg-6 offset-lg-3">
         <Input
-          {...inputSetup}
-          input={{ value: model.weight, name: "Weight" }} />
+          name="weight"
+          label="Weight"
+          {...inputSetup} />
         <Input
           {...inputSetup}
-          input={{ value: model.color, name: "Color" }}
-        />
+          name="color"
+          label="Color" />
         <Input
           {...inputSetup}
-          input={{ value: model.latitude, name: "Latitude" }}
-        />
+          name="latitude"
+          label="Latitude" />
         <Input
           {...inputSetup}
-          input={{ value: model.longitude, name: "Longitude" }}
-        />
+          name="longitude"
+          label="Longitude" />
 {/*Model*/}
          <Button className="col-lg-12" outline size="sm" color="success" inactive={(dirty && invalid) || (pristine && invalid) || submitting}>Submit</Button>
       </Form>

@@ -30,7 +30,7 @@ const bikeProps = {
 };
 
 const AtomsAndMolecules = () =>
-  <div class="container regular-form">
+  <div className="container regular-form">
   	<h1>Bike</h1>
     <h2>List</h2>
     <BikeList {...bikeProps} />

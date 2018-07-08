@@ -1,6 +1,7 @@
 import React from 'react';
 import BikeList from './bikes/list.component';
-import { ControlledFormInput } from '@common/forms';
+import { ControlledFormInput, 
+         ControlledFormSelect} from '@common/forms';
 
 const bikeProps = {
   bikes: [{ 
@@ -41,7 +42,39 @@ const AtomsAndMolecules = () =>
     <ControlledFormInput input={{ name: 'Controlled Input3' }} iputSize="2" labelSize="2" meta={{ touched: true, invalid: true, error: 'Check the input' }} />
     <ControlledFormInput input={{ name: 'Controlled Input4' }} iputSize="2" labelSize="2" meta={{ touched: true, invalid: true, error: 'There are som Problems!' }} />
     <ControlledFormInput input={{ name: 'Controlled Input5' }} type="password" iputSize="3" labelSize="2" meta={{ touched: true, invalid: true }} />
-
+    <ControlledFormSelect input={{options: [{ id: 'one', text: 'One And One' },
+                                            { id: 'two', text: 'Two The Another' }],
+                                  name: 'Select Label'
+                                  }}
+                          label="Hm..."
+                          iputSize="2" 
+                          labelSize="2"
+                          placeHolder="Please Select..."
+                          meta={{ touched: true, invalid: false }}
+                           />
+    <ControlledFormSelect input={{options: [{ id: 'one', text: 'One And One' },
+                                            { id: 'two', text: 'Two The Another' }],
+                                  name: 'Select Label',
+                                  value: 'two',
+                                  }}
+                          label="Hm..."
+                          iputSize="2" 
+                          labelSize="2"
+                          placeHolder="Please Select..."
+                          meta={{ touched: true, invalid: false }}
+                           />
+    <ControlledFormSelect input={{options: [{ id: 'one', text: 'One And One' },
+                                            { id: 'two', text: 'Two The Another' }],
+                                  name: 'Select Label',
+                                  value: 'one',
+                                  }}
+                          label="Hm..."
+                          iputSize="2" 
+                          labelSize="2"
+                          disabled
+                          placeHolder="Please Select..."
+                          meta={{ touched: true, invalid: false }}
+                           />
   </div>
 
 export default AtomsAndMolecules;

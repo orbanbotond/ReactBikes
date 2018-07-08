@@ -20,10 +20,10 @@ class ControlledFormInput extends React.Component {
   render() {
     const {
       input: {
-        name,
         onChange,
-        value,
         onBlur,
+        name,
+        value,
       },
       inputSize,
       labelSize,
@@ -31,7 +31,11 @@ class ControlledFormInput extends React.Component {
       type = 'text',
       placeHolder = label,
       meta: {
-        touched, error, warning, invalid, valid,
+        touched,
+        error, 
+        warning, 
+        invalid, 
+        valid,
       },
       toLowerCase,
       valueToOverride,
@@ -57,8 +61,8 @@ class ControlledFormInput extends React.Component {
           />
           <span className="validation-icon" />
           {touched &&
-          ((error && this.renderError(error)) ||
-           (warning && <FormFeedback>{warning}</FormFeedback>))}
+            ((error && this.renderError(error)) ||
+             (warning && <FormFeedback>{warning}</FormFeedback>))}
         </Col>
       </FormGroup>
     );

@@ -14,6 +14,9 @@ export default class Header extends React.Component {
           <NavItem>
             <NavLink  activeClassName="active" className="nav-link" to={Routes.Browser.Restfull.collection_route("bike")}>Bikes</NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink  activeClassName="active" className="nav-link" to={Routes.Browser.atoms_and_molecules()}>Atoms & Molecules</NavLink>
+          </NavItem>
         </Nav>
       </div>
     )

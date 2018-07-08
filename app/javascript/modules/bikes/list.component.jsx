@@ -3,9 +3,6 @@ import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 export default class List extends Component {
-  componentWillMount() {
-  }
-
   modelName(model_id){
     const model = this.props.models.find(element=>{
       return element.id === model_id;
@@ -49,33 +46,6 @@ export default class List extends Component {
 // List.contextTypes = {
 //   router: React.PropTypes.object.isRequired
 // };
-
-List.defaultProps = {
-  bikes: [{ 
-            id: 1, 
-            weight: 1.2, 
-            color: 'red',
-            bike_model_id: 1,
-            latitude: 48.210033, 
-            longitude: 16.363449
-  },{
-            id: 2, 
-            weight: 2.2, 
-            color: 'red',
-            bike_model_id: 2,
-            latitude: 49.210033, 
-            longitude: 18.363449
-  }
-  ],
-  models: [{
-    id: 1,
-    text: "Mountain",
-  },{
-    id: 2,
-    text: "Road",
-  }
-  ]
-};
 
 List.propTypes = {
   bikes: PropTypes.array.isRequired,

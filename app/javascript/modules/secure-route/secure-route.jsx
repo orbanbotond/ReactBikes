@@ -9,7 +9,6 @@ const SecureRoute = ({ component: Component,
                        redirectToPathWhenFail,
                        ...rest }) => (
   <Route {...rest} render={(props) => {
-    debugger
     const guardResult = new guard().hasAccess();
     
     return (
@@ -21,19 +20,5 @@ const SecureRoute = ({ component: Component,
     )}}
   />
 )
-
-
-// const SecureRoute = ({ component: Component, 
-//                        guard, 
-//                        redirectToPathWhenFail,
-//                        ...rest }) => {
-//   <Route {...rest} render={(props) => {
-//         debugger
-//         result = guard() ? <Component {...props} />
-//                          : <Redirect to={redirectToPathWhenFail} />
-//         return result;
-//     }}
-//   />
-// }
 
 export default SecureRoute;

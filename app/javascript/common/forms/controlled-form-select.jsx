@@ -13,8 +13,8 @@ const ControlledFormSelect = ({
            onBlur,
            name, 
            value,
-           options,
   },
+  options,
   inputSize,
   labelSize,
   label = titleCase(name),
@@ -34,9 +34,8 @@ const ControlledFormSelect = ({
   const inputValue = valueToOverride || value;
 
   var optionsMarkup = options.map(x => {
-    return <option value={x.id}>{x.text}</option>
+    return <option key={x.id} value={x.id}>{x.text}</option>
   });
-  debugger
 
   return (
     <FormGroup row className={className}>

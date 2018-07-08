@@ -42,32 +42,36 @@ const AtomsAndMolecules = () =>
     <ControlledFormInput input={{ name: 'Controlled Input3' }} iputSize="2" labelSize="2" meta={{ touched: true, invalid: true, error: 'Check the input' }} />
     <ControlledFormInput input={{ name: 'Controlled Input4' }} iputSize="2" labelSize="2" meta={{ touched: true, invalid: true, error: 'There are som Problems!' }} />
     <ControlledFormInput input={{ name: 'Controlled Input5' }} type="password" iputSize="3" labelSize="2" meta={{ touched: true, invalid: true }} />
-    <ControlledFormSelect input={{options: [{ id: 'one', text: 'One And One' },
-                                            { id: 'two', text: 'Two The Another' }],
-                                  name: 'Select Label'
+    <ControlledFormSelect input={{
+                                  name: 'select_input_name',
                                   }}
+                          options={[{ id: 'one', text: 'One And One' },
+                                    { id: 'two', text: 'Two The Another' }]}
+
                           label="Hm..."
                           iputSize="2" 
                           labelSize="2"
                           placeHolder="Please Select..."
                           meta={{ touched: true, invalid: false }}
                            />
-    <ControlledFormSelect input={{options: [{ id: 'one', text: 'One And One' },
-                                            { id: 'two', text: 'Two The Another' }],
-                                  name: 'Select Label',
+    <ControlledFormSelect input={{
+                                  name: 'select_input_name',
                                   value: 'two',
                                   }}
                           label="Hm..."
+                          options={[{ id: 'one', text: 'One And One' },
+                                    { id: 'two', text: 'Two The Another' }]}
                           iputSize="2" 
                           labelSize="2"
                           placeHolder="Please Select..."
                           meta={{ touched: true, invalid: false }}
                            />
-    <ControlledFormSelect input={{options: [{ id: 'one', text: 'One And One' },
-                                            { id: 'two', text: 'Two The Another' }],
-                                  name: 'Select Label',
+    <ControlledFormSelect input={{
+                                  name: 'select_input_name',
                                   value: 'one',
                                   }}
+                          options={[{ id: 'one', text: 'One And One' },
+                                    { id: 'two', text: 'Two The Another' }]}
                           label="Hm..."
                           iputSize="2" 
                           labelSize="2"

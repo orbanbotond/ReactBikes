@@ -21,7 +21,7 @@ class EditContainer extends Component {
     if(!this.state.bike){
       const currentUser = this.props.user
 
-      return Axios(currentUser).get(this.apiUrl()).then((_responseObj) => {
+      Axios(currentUser).get(this.apiUrl()).then((_responseObj) => {
         this.setState({
           bike: _responseObj.data,
         });
@@ -68,12 +68,14 @@ class EditContainer extends Component {
       })
     )(ReduxBikeForm)
 
-    const propsToWaitFor = ['model'];
+    const propsToWaitFor = [ 'models', 'model', 'user'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, ReduxBikeForm);
 
     return(
       <div>
-        <LoadWrappedList submitForm={this.handleSubmit} {...this.props} model={this.state.bike} />
+        <LoadWrappedList submitForm={this.handleSubmit}
+                         model={this.state.bike}
+                         {...this.props} />
         <NavLink to={Routes.Browser.Restfull.collection_route('bike')}>Back To List</NavLink>
       </div>
     );

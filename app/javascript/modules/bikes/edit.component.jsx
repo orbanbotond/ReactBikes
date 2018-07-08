@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'reactstrap';
-import { Input, validators } from '@common/forms';
+import { Select, Input, validators } from '@common/forms';
 
 const EditForm = ({
-  model, handleSubmit, submitForm, pristine, submitting, disableForm, invalid, dirty, inputSize,
+  model, 
+  handleSubmit, 
+  submitForm, 
+  pristine, 
+  submitting, 
+  disableForm, 
+  invalid, 
+  dirty, 
+  inputSize,
+  models,
 }) => {
   const inputSetup = {
     labelSize: 4,
@@ -11,6 +20,14 @@ const EditForm = ({
     // validate: [validators.required],
     disabledForm: disableForm,
   };
+
+  const availableColors = gon.available_colors.map(x =>{
+    return {id: x, text: x}
+  })
+
+  const availableModels = models.map(x =>{
+    return x;
+  })
 
   return(
     <div className="container-fluid">
@@ -22,10 +39,18 @@ const EditForm = ({
           name="weight"
           label="Weight"
           {...inputSetup} />
-        <Input
+        <Select
           {...inputSetup}
           name="color"
-          label="Color" />
+          label="Color"
+          placeHolder="Select a color..."
+          options={availableColors} />
+        <Select
+          {...inputSetup}
+          name="bike_model_id"
+          label="Bike Model"
+          placeHolder="Select a model..."
+          options={availableModels} />
         <Input
           {...inputSetup}
           name="latitude"

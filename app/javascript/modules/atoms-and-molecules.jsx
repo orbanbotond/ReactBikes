@@ -1,7 +1,20 @@
 import React from 'react';
 import BikeList from './bikes/list.component';
+import UserList from './users/list.component';
 import { ControlledFormInput, 
          ControlledFormSelect} from '@common/forms';
+
+const userProps = {
+  users: [{ 
+            id: 1, 
+            email: "abracadabra@email.com", 
+            admin: true,
+  },{
+            id: 2, 
+            email: "abracadabra@email.com",
+            admin: false,
+  }
+]};
 
 const bikeProps = {
   bikes: [{ 
@@ -32,10 +45,14 @@ const bikeProps = {
 
 const AtomsAndMolecules = () =>
   <div className="container regular-form">
-  	<h1>Bike</h1>
+    <h1>User</h1>
+    <h2>List</h2>
+    <UserList {...userProps} />
+    <h1>Bike</h1>
     <h2>List</h2>
     <BikeList {...bikeProps} />
   	<h2>Edit</h2>
+    <h1>Form components</h1>
     <ControlledFormInput label="Hm..." input={{ value: 'defaultValue', name: 'sex' }} iputSize="2" labelSize="2" meta={{ valid: true }} />
     <ControlledFormInput placeHolder="Place whatever Just test" input={{ name: 'Controlled Input 1' }} iputSize="2" labelSize="2" meta={{ touched: true, valid: true }} />
     <ControlledFormInput input={{ name: 'Controlled Input2' }} iputSize="2" labelSize="2" meta={{ touched: true, invalid: true, warning: 'This is addictive' }} disabled />

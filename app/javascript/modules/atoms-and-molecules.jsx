@@ -32,7 +32,7 @@ const AtomsAndMolecules = () =>
   <div>
   	<h1>Bike</h1>
   	<h2>List</h2>
-  	<BikeList {...bikeProps} />
+  	<BikeList {...bikeProps} deleteHandler={()=>{}}/>
   </div>
 
 export default AtomsAndMolecules;

@@ -68,3 +68,15 @@ export function fetchTheModels() {
     });
   };
 }
+
+export function deleteTheBike(id) {
+  return function (dispatch, getState) {
+    const currentUser = getState().session.user;
+    const url = Routes.Restfull.member_route('bike', id);
+
+    return Axios(currentUser).delete(url).then((_responseObj) => {
+      dispatch(fetchTheBikes());
+    }).catch((_error) => {
+    });
+  };
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 export default class List extends Component {
@@ -11,6 +11,10 @@ export default class List extends Component {
     return model.text;
   }
 
+  handleDelete = id => {
+    this.props.deleteHandler(id);
+  }
+
   render(){
     const rows = this.props.bikes.map((model) =>
       <tr key={model.id}>
@@ -20,7 +24,10 @@ export default class List extends Component {
         <td>{model.latitude}</td>
         <td>{model.longitude}</td>
         <td>{this.modelName(model.bike_model_id)}</td>
-        <td>Edit | Destroy</td>
+        <td>
+          <Button outline color="success" size="sm">Edit</Button>
+          <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Delete</Button>
+        </td>
       </tr>
     );
 

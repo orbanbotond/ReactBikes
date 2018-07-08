@@ -26,7 +26,7 @@ export const BikesAxios = (currentUser = null) => {
 
 Routes.Restfull = {};
 Routes.Restfull.collection_route = (entity_name) => `/api/${entity_name}s.json`;
-Routes.Restfull.member_route = (entity_name, id) => `/api/${entity_name}/${id}`;
+Routes.Restfull.member_route = (entity_name, id) => `/api/${entity_name}s/${id}`;
 Routes.Restfull.member_subroute = (entity_name, id, subroute) => Routes.Restfull.member_route(entity_name, id) + "/" + subroute;
 
 Routes.Queries = {};

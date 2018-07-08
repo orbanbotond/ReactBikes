@@ -7,9 +7,7 @@ import { fetchTheBikes, fetchTheModels, deleteTheBike } from './action-creators'
 
 class ListContainer extends Component {
   componentWillMount() {
-    if(!this.props.bikes){
-      this.props.fetchTheBikes();
-    }
+    this.props.fetchTheBikes();
     if(!this.props.models){
       this.props.fetchTheModels();
     }

@@ -20,6 +20,10 @@ const EditForm = ({
     disabledForm: disableForm,
   };
 
+
+  const availableValues = [{id: true, text: "True"}, 
+                           {id: false, text: "False"}];
+
   return(
     <div className="container-fluid">
       <Form
@@ -30,10 +34,17 @@ const EditForm = ({
           name="email"
           label="Email"
           {...inputSetup} />
-        <Input
+        <Select
           {...inputSetup}
           name="admin"
-          label="Admin" />
+          label="Admin"
+          placeHolder="Select a value..."
+          options={availableValues} />
+        <Input
+          {...inputSetup}
+          name="password"
+          type="password"
+          label="Password" />
 {/*Model*/}
          <Button className="col-lg-12" outline size="sm" color="success" inactive={(dirty && invalid) || (pristine && invalid) || submitting}>Submit</Button>
       </Form>

@@ -6,8 +6,6 @@ import {
   FormFeedback,
 } from 'reactstrap';
 
-import './forms.sass';
-
 const titleCase = require('title-case');
 
 class ControlledFormInput extends React.Component {

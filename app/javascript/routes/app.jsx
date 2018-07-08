@@ -8,7 +8,7 @@ import {
   Link,
 } from 'react-router-dom';
 
-import {AdminGuard} from '@modules/route-guards'
+import { AdminGuard, LoginGuard} from '@modules/route-guards'
 
 import SecureRoute from '@modules/secure-route';
 
@@ -26,11 +26,11 @@ const App = (props) => {
       <div>
         <Header />
         <Route path={Routes.Browser.login()}
-               component={Login} />
+               component={LoginGuard(Login)} />
+
         <Route path={Routes.Browser.Restfull.collection_route("bike")}
                component={AdminGuard(BikeList)}
                exact />
-
         <Switch>
           <Route path={Routes.Browser.Restfull.new_route('bike')}
                  component={AdminGuard(BikeNew)} 

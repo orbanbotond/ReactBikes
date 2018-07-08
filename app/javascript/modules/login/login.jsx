@@ -2,23 +2,40 @@ import React, { Component } from 'react';
 import { selectUser } from '@modules/selectors'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { reduxForm, SubmissionError } from 'redux-form';
 import { Routes } from '@routes/routes';
 import { BikesAxios as Axios } from '@routes/routes';
 import { login as dispatchLogin } from './action-creators';
+import LoginForm from './login.component';
 
 class Login extends Component {
-  render(){
-     Axios()
-        .post(Routes.login(),
-              {email: "orban@toptal.com", password: "bikepassword123"})
-        .then((_responseObj) => {
-          this.props.dispatchLogin(_responseObj.data);
-        })
-        .catch(() => {});
+  handleSubmit = data => {
+    return Axios()
+      .post(Routes.login(), data)
+      .then((_responseObj) => {
+        this.props.dispatchLogin(_responseObj.data);
+      })
+      .catch((error) => {
+        this.handleError(error);
+      });
+  }
 
-    return (
+  handleError(error) {
+    throw new SubmissionError({
+      ...error.response.data.details,
+      _error: 'Failed!',
+    });
+  }
+
+  render(){
+    var ReduxLoginForm = reduxForm({
+      form: 'login',
+    })(LoginForm);
+
+    return(
       <div>
-        Login
+        <ReduxLoginForm {...this.props}
+                        submitForm={this.handleSubmit} />
       </div>
     );
   }

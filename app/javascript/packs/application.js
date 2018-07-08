@@ -8,5 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import '@styles/application.sass';
+import '@styles/forms.sass';
+
 import '@routes/main';
 

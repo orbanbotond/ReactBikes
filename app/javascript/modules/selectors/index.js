@@ -3,11 +3,15 @@ function selectUser(state) {
 }
 
 function selectBikes(state) {
-  return state.session.bikes;
+  if(!state.bikes){ return null; }
+
+  return state.bikes.bikes;
 }
 
 function selectModels(state) {
-  return state.session.models;
+  if(!state.models){ return null; }
+
+  return state.models.models;
 }
 
 export {selectUser, selectModels, selectBikes};

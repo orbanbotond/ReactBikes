@@ -7,12 +7,12 @@ import { Routes } from '@routes/routes';
 const GuardHOC = (WrappedComponent) => {
   class Guard extends Component {
     componentWillUnmount() {
-      console.debug("componentWillUnMount");
+      // console.debug("componentWillUnMount");
     }
 
     componentWillMount() {
-      console.debug("componentWillMount");
-      console.debug(this.props);
+      // console.debug("componentWillMount");
+      // console.debug(this.props);
       if(!this.isAdmin(this.props)){
         this.routeToFailed();
       }

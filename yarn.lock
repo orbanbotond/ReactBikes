@@ -5143,7 +5143,7 @@ redux-react-session@^2.4.0:
     js-cookie "2.1.4"
     localforage "1.5.5"
 
-redux-thunk@^2.3.0:
+redux-thunk@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 

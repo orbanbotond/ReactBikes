@@ -4,6 +4,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
   Link,
 } from 'react-router-dom';
 
@@ -12,7 +13,7 @@ import {AdminGuard} from '@modules/route-guards'
 import SecureRoute from '@modules/secure-route';
 
 import AtomsAndMolecules from '@modules/atoms-and-molecules';
-import {BikeEdit, BikeList} from '@modules/bikes';
+import {BikeEdit, BikeList, BikeNew} from '@modules/bikes';
 import Users from '@modules/users';
 import Login from '@modules/login';
 import Header from '@common/header';
@@ -29,9 +30,16 @@ const App = (props) => {
         <Route path={Routes.Browser.Restfull.collection_route("bike")}
                component={AdminGuard(BikeList)}
                exact />
-        <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id`}
-               component={AdminGuard(BikeEdit)} 
-               exact />
+
+        <Switch>
+          <Route path={Routes.Browser.Restfull.new_route('bike')}
+                 component={AdminGuard(BikeNew)} 
+                 exact />
+          <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id`}
+                 component={AdminGuard(BikeEdit)} 
+                 exact />
+        </Switch>
+
         <Route path={Routes.Browser.Restfull.collection_route("user")}
                component={AdminGuard(Users)} />
 

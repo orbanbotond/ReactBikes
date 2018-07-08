@@ -23,6 +23,7 @@ export default class List extends Component {
         <th scope="row">{model.id}</th>
         <td>{model.color}</td>
         <td>{model.weight}</td>
+        <td>{model.average_rating}</td>
         <td>{model.latitude}</td>
         <td>{model.longitude}</td>
         <td>{this.modelName(model.bike_model_id)}</td>
@@ -40,6 +41,7 @@ export default class List extends Component {
             <th>#</th>
             <th>Color</th>
             <th>Weight</th>
+            <th>Average Rating</th>
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Model</th>

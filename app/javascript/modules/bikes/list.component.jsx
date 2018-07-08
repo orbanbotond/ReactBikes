@@ -18,7 +18,7 @@ export default class List extends Component {
   }
 
   render(){
-    const rows = this.props.bikes.map((model) =>
+    const rows = this.props.collection.map((model) =>
       <tr key={model.id}>
         <th scope="row">{model.id}</th>
         <td>{model.color}</td>
@@ -62,6 +62,6 @@ export default class List extends Component {
 // };
 
 List.propTypes = {
-  bikes: PropTypes.array.isRequired,
+  collection: PropTypes.array.isRequired,
   models: PropTypes.array.isRequired,
 }

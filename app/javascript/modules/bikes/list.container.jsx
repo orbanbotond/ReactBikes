@@ -20,7 +20,7 @@ class ListContainer extends Component {
   }
 
   render(){
-    const propsToWaitFor = ['bikes', 'models'];
+    const propsToWaitFor = ['collection', 'models'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, List);
 
     return(
@@ -34,7 +34,7 @@ class ListContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  bikes: selectBikes(state),
+  collection: selectBikes(state),
   models: selectModels(state),
 });
 

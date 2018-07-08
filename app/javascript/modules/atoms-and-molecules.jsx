@@ -28,7 +28,7 @@ const userProps = {
 ]};
 
 const bikeProps = {
-  bikes: [{ 
+  collection: [{ 
             id: 1, 
             weight: 1.2, 
             color: 'red',

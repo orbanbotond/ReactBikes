@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+import { Routes } from '@routes/routes';
 
 export default class List extends Component {
   modelName(model_id){
@@ -25,7 +27,7 @@ export default class List extends Component {
         <td>{model.longitude}</td>
         <td>{this.modelName(model.bike_model_id)}</td>
         <td>
-          <Button outline color="success" size="sm">Edit</Button>
+          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.edit_route('bike', model.id)}>Edit</NavLink>
           <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Delete</Button>
         </td>
       </tr>

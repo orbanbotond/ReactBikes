@@ -1,6 +1,6 @@
 import BikeList from './list.container';
+import BikeEdit from './edit.container';
 import * as reducers from './reducers';
 import * as actionCreators from './action-creators';
 
-export default BikeList;
-export {reducers, actionCreators};
+export {reducers, actionCreators, BikeList, BikeEdit};

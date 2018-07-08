@@ -16,7 +16,7 @@ const reservationProps = {
 ]};
 
 const userProps = {
-  users: [{ 
+  collection: [{ 
             id: 1, 
             email: "abracadabra@email.com", 
             admin: true,

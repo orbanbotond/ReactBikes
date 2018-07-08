@@ -10,7 +10,7 @@ export default class List extends Component {
   }
 
   render(){
-    const rows = this.props.users.map((model) =>
+    const rows = this.props.collection.map((model) =>
       <tr key={model.id}>
         <th scope="row">{model.id}</th>
         <td>{model.email}</td>

@@ -16,6 +16,7 @@ export default class List extends Component {
         <td>{model.email}</td>
         <td>{model.admin}</td>
         <td>
+          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.edit_route('user', model.id)+ "/reservations"}>Reservations</NavLink>
           <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.edit_route('user', model.id)}>Edit</NavLink>
           <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Delete</Button>
         </td>

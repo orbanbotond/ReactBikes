@@ -28,6 +28,7 @@ export default class List extends Component {
         <td>{model.longitude}</td>
         <td>{this.modelName(model.bike_model_id)}</td>
         <td>
+          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.edit_route('bike', model.id)+ "/reservations"}>Reservations</NavLink>
           <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.edit_route('bike', model.id)}>Edit</NavLink>
           <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Delete</Button>
         </td>

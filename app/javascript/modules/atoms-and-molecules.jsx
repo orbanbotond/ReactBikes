@@ -1,8 +1,19 @@
 import React from 'react';
 import BikeList from './bikes/list.component';
 import UserList from './users/list.component';
+import ReservationList from './reservations/list.component';
 import { ControlledFormInput, 
          ControlledFormSelect} from '@common/forms';
+
+const reservationProps = {
+  reservations: [{ 
+            id: 1, 
+            start_date: "Yesterday", 
+            end_date: "Today", 
+            cancelled: true,
+            rating: 5,
+  }
+]};
 
 const userProps = {
   users: [{ 
@@ -45,6 +56,9 @@ const bikeProps = {
 
 const AtomsAndMolecules = () =>
   <div className="container regular-form">
+    <h1>Reservation</h1>
+    <h2>List</h2>
+    <ReservationList {...reservationProps} />
     <h1>User</h1>
     <h2>List</h2>
     <UserList {...userProps} />

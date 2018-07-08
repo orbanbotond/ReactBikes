@@ -13,8 +13,8 @@ import {AdminGuard} from '@modules/route-guards'
 import SecureRoute from '@modules/secure-route';
 
 import AtomsAndMolecules from '@modules/atoms-and-molecules';
-import {BikeEdit, BikeList, BikeNew} from '@modules/bikes';
-import {UserEdit, UserList, UserNew} from '@modules/users';
+import {BikeReservations, BikeEdit, BikeList, BikeNew} from '@modules/bikes';
+import {UserReservations, UserEdit, UserList, UserNew} from '@modules/users';
 import Login from '@modules/login';
 import Header from '@common/header';
 
@@ -38,6 +38,9 @@ const App = (props) => {
           <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id`}
                  component={AdminGuard(BikeEdit)} 
                  exact />
+          <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id/reservations`}
+                 component={AdminGuard(BikeReservations)}
+                 exact />
         </Switch>
 
         <Route path={Routes.Browser.Restfull.collection_route("user")}
@@ -49,6 +52,9 @@ const App = (props) => {
                  exact />
           <Route path={`${Routes.Browser.Restfull.collection_route("user")}/:id`}
                  component={AdminGuard(UserEdit)}
+                 exact />
+          <Route path={`${Routes.Browser.Restfull.collection_route("user")}/:id/reservations`}
+                 component={AdminGuard(UserReservations)}
                  exact />
         </Switch>
 

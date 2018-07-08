@@ -20,6 +20,7 @@ export default class List extends Component {
         <td>{model.latitude}</td>
         <td>{model.longitude}</td>
         <td>{this.modelName(model.bike_model_id)}</td>
+        <td>Edit | Destroy</td>
       </tr>
     );
 
@@ -33,6 +34,7 @@ export default class List extends Component {
             <th>Latitude</th>
             <th>Longitude</th>
             <th>Model</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>

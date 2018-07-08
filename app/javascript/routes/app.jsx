@@ -27,7 +27,7 @@ const App = (props) => {
         <Route path={Routes.Browser.login()}
                component={Login} />
         <Route path={Routes.Browser.Restfull.collection_route("bike")}
-               component={AdminGuard(BikeList)} 
+               component={AdminGuard(BikeList)}
                exact />
         <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id`}
                component={AdminGuard(BikeEdit)} 

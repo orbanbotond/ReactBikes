@@ -6,6 +6,7 @@ import { fetchTheModels } from './action-creators';
 import { BikesAxios as Axios, Routes } from '@routes/routes';
 import Edit from './edit.component';
 import { NavLink } from 'react-router-dom';
+import { reduxForm, SubmissionError } from 'redux-form';
 
 class EditContainer extends Component {
   constructor(props) {
@@ -17,13 +18,10 @@ class EditContainer extends Component {
   }
 
   componentWillMount() {
-    const id = this.props.match.params.id;
-
     if(!this.state.bike){
       const currentUser = this.props.user
-      const url = Routes.Restfull.member_route('bike', id);
 
-      return Axios(currentUser).get(url).then((_responseObj) => {
+      return Axios(currentUser).get(this.apiUrl()).then((_responseObj) => {
         this.setState({
           bike: _responseObj.data,
         });
@@ -36,13 +34,42 @@ class EditContainer extends Component {
     }
   }
 
+  apiUrl(){
+    const id = this.props.match.params.id;
+    return Routes.Restfull.member_route('bike', id);
+  }
+
+  handleSubmit(data){
+    debugger
+    return Axios().put(this.apiUrl(), data).then((responseObj) => {
+      this.handleSuccess(responseObj);
+    }).catch((error) => {
+      this.handleError(error);
+    });
+  }
+
+  handleError(error) {
+    throw new SubmissionError({
+      ...error.response.data.details,
+      _error: 'Failed!',
+    });
+  }
+
+  handleSuccess(response) {
+    console.debug('Saved Successfull');
+  }
+
   render(){
+    const ReduxBikeForm = reduxForm({
+      form: 'bike',
+    })(Edit);
+
     const propsToWaitFor = ['model'];
-    const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, Edit);
+    const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, ReduxBikeForm);
 
     return(
       <div>
-        <LoadWrappedList {...this.props} model={this.state.bike} />
+        <LoadWrappedList inputSize="8" submitForm={this.handleSubmit} {...this.props} model={this.state.bike} />
         <NavLink to={Routes.Browser.Restfull.collection_route('bike')}>Back To List</NavLink>
       </div>
     );

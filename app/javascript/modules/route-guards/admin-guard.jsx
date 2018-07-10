@@ -7,27 +7,23 @@ import { Routes } from '@routes/routes';
 const GuardHOC = (WrappedComponent) => {
   class Guard extends Component {
     componentWillMount() {
-      if(!this.isAdmin(this.props)){
-        this.routeToFailed();
+      if(!this.isAdmin()){
+        this.props.history.push(Routes.Browser.login());
       }
     }
 
-    isAdmin(prop){
-      if(this.unAuthenticated(prop)) return false;
+    isAdmin(){
+      if(this.unAuthenticated()) return false;
 
-      return prop.user.admin;
+      return this.props.user.admin;
     }
 
-    unAuthenticated(prop){
-      !prop.user
-    }
-
-    routeToFailed(){
-      this.props.history.push(Routes.Browser.login());
+    unAuthenticated(){
+      !this.props.user.email
     }
 
     render(){
-      if(!this.isAdmin(this.props)){
+      if(!this.isAdmin()){
         return null;
       }else{
         return <WrappedComponent {...this.props} />

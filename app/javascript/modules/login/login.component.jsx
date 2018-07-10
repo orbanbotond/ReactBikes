@@ -16,7 +16,7 @@ const LoginForm = ({
   const inputSetup = {
     labelSize: 4,
     inputSize: 8,
-    // validate: [validators.required],
+    validate: [validators.required],
     disabledForm: disableForm,
   };
 
@@ -27,15 +27,17 @@ const LoginForm = ({
         autoComplete="off"
         className="col-lg-6 offset-lg-3">
         <Input
+          {...inputSetup}
           name="email"
           label="Email"
-          {...inputSetup} />
+          validate={[validators.required, validators.email]}
+        />
         <Input
           {...inputSetup}
           name="password"
           type="password"
           label="Password" />
-         <Button className="col-lg-12" outline size="sm" color="success" inactive={(dirty && invalid) || (pristine && invalid) || submitting}>Submit</Button>
+         <Button className="col-lg-12" outline size="sm" color="success" disabled={(dirty && invalid) || (pristine && invalid) || submitting}>Submit</Button>
       </Form>
     </div>
   );

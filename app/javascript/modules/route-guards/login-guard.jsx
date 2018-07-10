@@ -6,17 +6,8 @@ import { Routes } from '@routes/routes';
 
 const GuardHOC = (WrappedComponent) => {
   class Guard extends Component {
-    componentWillUnmount() {
-    }
-
     componentWillMount() {
       if(this.isAuthenticated(this.props)){
-        this.routeToFailed();
-      }
-    }
-
-    componentWillReceiveProps(newProps) {
-      if(this.isAuthenticated(newProps)){
         this.routeToFailed();
       }
     }
@@ -29,9 +20,13 @@ const GuardHOC = (WrappedComponent) => {
       this.props.history.push(Routes.Browser.Restfull.collection_route("user"));
     }
 
-   render(){
-     return <WrappedComponent {...this.props} />
-   }
+    render(){
+      if(this.isAuthenticated(this.props)){
+        return <div>Not allowed Sorry!</div>
+      }else{
+        return <WrappedComponent {...this.props} />
+      }
+    }
   }
 
   const mapStateToProps = state => ({

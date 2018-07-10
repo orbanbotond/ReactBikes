@@ -6,34 +6,33 @@ import { Routes } from '@routes/routes';
 
 const GuardHOC = (WrappedComponent) => {
   class Guard extends Component {
-    componentWillUnmount() {
-    }
-
     componentWillMount() {
       if(!this.isAdmin(this.props)){
         this.routeToFailed();
       }
     }
 
-    componentWillReceiveProps(newProps) {
-      if(!this.isAdmin(newProps)){
-        this.routeToFailed();
-      }
-    }
-
     isAdmin(prop){
-      if(!prop.user) return false;
+      if(this.unAuthenticated(prop)) return false;
 
       return prop.user.admin;
+    }
+
+    unAuthenticated(prop){
+      !prop.user
     }
 
     routeToFailed(){
       this.props.history.push(Routes.Browser.login());
     }
 
-   render(){
-     return <WrappedComponent {...this.props} />
-   }
+    render(){
+      if(!this.isAdmin(this.props)){
+        return <div>Not allowed Sorry!</div>
+      }else{
+        return <WrappedComponent {...this.props} />
+      }
+    }
   }
 
   const mapStateToProps = state => ({

@@ -42,6 +42,9 @@ Routes.Browser.Restfull = {};
 Routes.Browser.Restfull.collection_route =(entity_name) => `/${entity_name}s`
 Routes.Browser.Restfull.edit_route =(entity_name, id) => `/${entity_name}s/${id}`
 Routes.Browser.Restfull.new_route =(entity_name) => `/${entity_name}s/new`
+Routes.Browser.search = () => `/search`
+Routes.Browser.reservations = () => `/reservations`
+Routes.Browser.root =() => `/`
 Routes.Browser.login =() => `/login`
 Routes.Browser.signup =() => `/signup`
 Routes.Browser.atoms_and_molecules =() => `/atoms-and-molecules`

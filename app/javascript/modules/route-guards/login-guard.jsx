@@ -17,7 +17,7 @@ const GuardHOC = (WrappedComponent) => {
     }
 
     routeToFailed(){
-      this.props.history.push(Routes.Browser.Restfull.collection_route("user"));
+      this.props.history.push(Routes.Browser.root());
     }
 
     render(){

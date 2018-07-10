@@ -8,13 +8,14 @@ import {
   Link,
 } from 'react-router-dom';
 
-import { AdminGuard, LoginGuard} from '@modules/route-guards'
+import { StandardUserGuard, AdminGuard, LoginGuard } from '@modules/route-guards'
 
 import SecureRoute from '@modules/secure-route';
 
 import AtomsAndMolecules from '@modules/atoms-and-molecules';
 import {BikeReservations, BikeEdit, BikeList, BikeNew} from '@modules/bikes';
 import {UserReservations, UserEdit, UserList, UserNew} from '@modules/users';
+import {Reservations, Search} from '@modules/bike_rental';
 import Login from '@modules/login';
 import Header from '@common/header';
 
@@ -57,6 +58,13 @@ const App = (props) => {
                  component={AdminGuard(UserReservations)}
                  exact />
         </Switch>
+
+        <Route path={Routes.Browser.search()}
+               component={StandardUserGuard(Search)} 
+               exact />
+        <Route path={Routes.Browser.reservations()}
+               component={StandardUserGuard(Reservations)}
+               exact />
 
         <Route path={Routes.Browser.atoms_and_molecules()} component={AtomsAndMolecules} />
       </div>

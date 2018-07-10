@@ -28,7 +28,7 @@ const GuardHOC = (WrappedComponent) => {
 
     render(){
       if(!this.isAdmin(this.props)){
-        return <div>Not allowed Sorry!</div>
+        return null;
       }else{
         return <WrappedComponent {...this.props} />
       }

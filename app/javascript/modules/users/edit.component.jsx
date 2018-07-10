@@ -41,6 +41,7 @@ const EditForm = ({
           name="admin"
           label="Admin"
           placeHolder="Select a value..."
+          value={false}
           options={availableValues} />
         <Input
           {...inputSetup}

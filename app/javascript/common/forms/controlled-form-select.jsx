@@ -50,7 +50,7 @@ const ControlledFormSelect = ({
                 className="form-control"
                 onChange={onChange}>
           { placeHolder &&
-            <option value="" disabled selected>{placeHolder}</option>
+            <option value="" disabled>{placeHolder}</option>
           }
           {optionsMarkup}
         </select>

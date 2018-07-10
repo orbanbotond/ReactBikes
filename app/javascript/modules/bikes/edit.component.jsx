@@ -17,7 +17,7 @@ const EditForm = ({
   const inputSetup = {
     labelSize: 4,
     inputSize: 8,
-    // validate: [validators.required],
+    validate: [validators.required],
     disabledForm: disableForm,
   };
 
@@ -60,7 +60,7 @@ const EditForm = ({
           name="longitude"
           label="Longitude" />
 {/*Model*/}
-         <Button className="col-lg-12" outline size="sm" color="success" inactive={(dirty && invalid) || (pristine && invalid) || submitting}>Submit</Button>
+         <Button className="col-lg-12" outline size="sm" color="success" disabled={(dirty && invalid) || (pristine && invalid) || submitting}>Submit</Button>
       </Form>
     </div>
   );

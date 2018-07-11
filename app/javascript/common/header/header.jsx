@@ -1,10 +1,9 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'reactstrap';
 import { Routes } from '@routes/routes';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { NavLink, withRouter } from 'react-router-dom';
 import { selectUser } from '@modules/selectors'
-import { withRouter } from 'react-router-dom';
 import { logout as dispatchLogout } from '@modules/login/action-creators';
 
 class Header extends React.Component {
@@ -16,7 +15,7 @@ class Header extends React.Component {
   }
 
   render() {
-    if(this.props.user.email){
+    if(this.props.user){
       if(this.props.user.admin){
         return (
           <Navbar color="faded" light>
@@ -76,4 +75,4 @@ const mapStateToProps = state => ({
   user: selectUser(state)
 });
 
-export default connect(mapStateToProps, {dispatchLogout})(withRouter(Header))
+export default connect(mapStateToProps, {dispatchLogout}, null, { pure: false })(withRouter(Header))

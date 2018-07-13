@@ -3,6 +3,7 @@
 module Entities
   module Login
     class UserEntity < Grape::Entity
+	  expose :id
       expose :email
       expose :admin
       expose :session_token

@@ -5,20 +5,21 @@ import { NavLink } from 'react-router-dom';
 import { Routes } from '@routes/routes';
 
 export default class List extends Component {
-  handleDelete = id => {
-    this.props.deleteHandler(id);
-  }
-
   render(){
     const rows = this.props.collection.map((model) =>
       <tr key={model.id}>
-        <th scope="row">{model.id}</th>
-        <td>{model.email}</td>
-        <td>{model.admin}</td>
+        <td>{model.id}</td>
+        <td>{model.start_date}</td>
+        <td>{model.end_date}</td>
         <td>
-          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_route('user', model.id)+ "/reservations"}>Reservations</NavLink>
-          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_route('user', model.id)}>Edit</NavLink>
-          <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Delete</Button>
+          { model.rating ? (
+            <span>{model.rating}</span>
+          ) : (
+            <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_subroute('reservation', model.id, "rate")}>Rate</NavLink>
+          )}
+        </td>
+        <td>
+          { model.cancelled && <span>Cancelled</span> }
         </td>
       </tr>
     );
@@ -28,9 +29,10 @@ export default class List extends Component {
         <thead>
           <tr>
             <th>#</th>
-            <th>Email</th>
-            <th>Admin</th>
-            <th>Actions</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Rating</th>
+            <th>Cancelled</th>
           </tr>
         </thead>
         <tbody>

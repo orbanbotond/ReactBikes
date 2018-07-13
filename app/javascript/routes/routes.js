@@ -27,7 +27,7 @@ export const BikesAxios = (currentUser = null) => {
 Routes.Restfull = {};
 Routes.Restfull.collection_route = (entity_name) => `/api/${entity_name}s.json`;
 Routes.Restfull.member_route = (entity_name, id) => `/api/${entity_name}s/${id}`;
-Routes.Restfull.member_subroute = (entity_name, id, subroute) => Routes.Restfull.member_route(entity_name, id) + "/" + subroute;
+Routes.Restfull.member_subroute = (entity_name, id, subroute) => `${Routes.Restfull.member_route(entity_name, id)}/${subroute}`;
 
 Routes.Queries = {};
 Routes.Queries.available_bikes = () => '/api/queries/available_bikes';
@@ -40,8 +40,9 @@ Routes.signup = () => '/api/signup';
 Routes.Browser = {};
 Routes.Browser.Restfull = {};
 Routes.Browser.Restfull.collection_route =(entity_name) => `/${entity_name}s`
-Routes.Browser.Restfull.edit_route =(entity_name, id) => `/${entity_name}s/${id}`
 Routes.Browser.Restfull.new_route =(entity_name) => `/${entity_name}s/new`
+Routes.Browser.Restfull.member_route =(entity_name, id) => `/${entity_name}s/${id}`
+Routes.Browser.Restfull.member_subroute =(entity_name, id, subroute) => `${Routes.Browser.Restfull.member_route(entity_name, id)}/${subroute}`
 Routes.Browser.search = () => `/search`
 Routes.Browser.reservations = () => `/reservations`
 Routes.Browser.root =() => `/`

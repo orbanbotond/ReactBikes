@@ -14,10 +14,10 @@ export default class List extends Component {
         <td>{model.cancelled}</td>
         <td>{model.rating}</td>
         <td>
-          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.edit_route('user', model.user_id)+"/reservations"}>{model.user_id}</NavLink>
+          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_route('user', model.user_id)+"/reservations"}>{model.user_id}</NavLink>
         </td>
         <td>
-          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.edit_route('bike', model.bike_id)+"/reservations"}>{model.bike_id}</NavLink>
+          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_route('bike', model.bike_id)+"/reservations"}>{model.bike_id}</NavLink>
         </td>
       </tr>
     );

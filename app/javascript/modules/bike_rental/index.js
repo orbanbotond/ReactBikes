@@ -1,5 +1,7 @@
 import Reservations from './reservations.container';
+import FutureReservations from './future-reservations.component';
 import Search from './search.container';
 
-export { Reservations, 
+export { FutureReservations,
+		 Reservations, 
          Search };

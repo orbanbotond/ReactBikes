@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
+import Toggle from 'react-bootstrap-toggle';
+import FutureReservation from './future-reservation.component';
 
 export default class List extends Component {
-  handleDelete = id => {
-    this.props.deleteHandler(id);
+  handleDelete = (state, node, evt) => {
+    debugger
+    const id = node.getAttribute('data');
+    console.debug(id);
+    console.debug(state);
+    console.debug(node);
+    console.debug(evt);
   }
 
   render(){
     const rows = this.props.collection.map((model) =>
-      <tr key={model.id}>
-        <td>{model.id}</td>
-        <td>{model.start_date}</td>
-        <td>{model.end_date}</td>
-        <td>{model.rating}</td>
-        <td>
-          { model.cancelled ? (
-            <span>Cancelled</span>
-          ) : (
-            <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Cancel</Button>
-          )}
-        </td>
-      </tr>
+      <FutureReservation model={model} />
     );
 
     return (

@@ -27,3 +27,5 @@ Reservation.create start_date: 3.day.ago, end_date: 2.day.ago, rating: 4, user_i
 Reservation.create start_date: 3.day.ago, end_date: 2.day.ago, user_id: 2, bike_id: 1
 Reservation.create start_date: 4.days.from_now, end_date: 5.days.from_now, rating: 4, user_id: 2, bike_id: 1
 Reservation.create start_date: 3.days.from_now, end_date: 4.days.from_now, user_id: 2, bike_id: 1, cancelled: true
+
+Reservation.create start_date: 3.days.from_now, end_date: 4.days.from_now, user_id: 1, bike_id: 5, cancelled: true

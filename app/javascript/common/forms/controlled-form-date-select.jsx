@@ -1,4 +1,6 @@
 import React from 'react';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 import {
   FormGroup,
   Label,
@@ -6,13 +8,15 @@ import {
   FormFeedback,
 } from 'reactstrap';
 
-const titleCase = require('title-case');
-
-class ControlledFormSelect extends React.Component {
+class ControlledFormDateSelect extends React.Component {
   renderError(error) {
     if (typeof error === 'string') return <FormFeedback>{error}</FormFeedback>;
 
     return error.map(theError => <FormFeedback key={theError}>{theError}</FormFeedback>);
+  }
+
+  handleDayChange = (day) => {
+    this.props.input.onChange(day);
   }
 
   render() {
@@ -42,26 +46,16 @@ class ControlledFormSelect extends React.Component {
     } = this.props;
     const inputValue = valueToOverride || value;
 
-    var optionsMarkup = options.map(x => {
-      return <option key={x.id} value={x.id}>{x.text}</option>
-    });
-
     return (
       <FormGroup row className={className}>
         {label ? <Label for={name} sm={labelSize} >{label}</Label> : ''}
         <Col sm={inputSize} className={[touched && invalid ? 'is-invalid' : '', touched && valid ? 'is-valid' : ''].join(' ')}>
-          <select name={name}
-                  id={name}
-                  value={toLowerCase ? inputValue.toLowerCase() : inputValue}
-                  disabled={disabled}
-                  onBlur={onBlur}
-                  className="form-control"
-                  onChange={onChange}>
-            { placeHolder &&
-              <option value="" disabled>{placeHolder}</option>
-            }
-            {optionsMarkup}
-          </select>
+          <DayPickerInput onDayChange={(day) => this.handleDayChange(day)}
+                          inputProps={{onBlur: onBlur,
+                                      onChange: onChange,
+                                      value: inputValue, 
+                                      className: "form-control", 
+                                      disabled: disabled}}/>
           <span className="validation-icon" />
           {touched &&
             ((error && this.renderError(error)) ||
@@ -72,4 +66,4 @@ class ControlledFormSelect extends React.Component {
   }
 }
 
-export default ControlledFormSelect;
+export default ControlledFormDateSelect;

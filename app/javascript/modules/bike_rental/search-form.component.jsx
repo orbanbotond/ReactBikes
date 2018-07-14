@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'reactstrap';
-import { Select, Input, validators } from '@common/forms';
+import { Select, 
+          DateSelect, 
+          Input, 
+          validators } from '@common/forms';
 
 const SearchForm = ({
   models, 
@@ -33,13 +36,13 @@ const SearchForm = ({
         onSubmit={handleSubmit(submitForm)}
         autoComplete="off"
         className="col-lg-6 offset-lg-3">
-        <Input
+        <DateSelect
           {...inputSetup}
           validate={[validators.required]}
           name="start_date"
           label="Start Date"
         />
-        <Input
+        <DateSelect
           {...inputSetup}
           validate={[validators.required]}
           name="end_date"

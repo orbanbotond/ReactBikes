@@ -8,7 +8,8 @@ import { PastReservations,
          FutureReservations,
          SearchResults } from '@modules/bike_rental';
 import { ControlledFormInput, 
-         ControlledFormSelect} from '@common/forms';
+         ControlledFormSelect,
+         ControlledFormDateSelect} from '@common/forms';
 
 const reservationProps = {
   collection: [{ 
@@ -140,6 +141,15 @@ const AtomsAndMolecules = () =>
                           labelSize="2"
                           disabled
                           placeHolder="Please Select..."
+                          meta={{ touched: true, invalid: false }}
+                           />
+    <ControlledFormDateSelect input={{
+                                  name: 'select_input_date_name',
+                                  value: 'one',
+                                  }}
+                          label="Hm..."
+                          iputSize="2" 
+                          labelSize="2"
                           meta={{ touched: true, invalid: false }}
                            />
   </div>

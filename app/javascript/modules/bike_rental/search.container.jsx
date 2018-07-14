@@ -42,6 +42,11 @@ class SearchContainer extends Component {
       form: 'searchForm',
     })(SearchForm);
 
+    ReduxSearchForm = connect( _state => ({
+        initialValues: {start_date: "2018-07-24", end_date: Date.now()}
+      })
+    )(ReduxSearchForm)
+
     const propsToWaitFor = [ 'models' ];
     const LoadWrappedForm = LoadSpinnerHOC(propsToWaitFor, ReduxSearchForm);
 

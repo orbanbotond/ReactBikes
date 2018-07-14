@@ -2,6 +2,10 @@ function selectUser(state) {
   return state.session.user;
 }
 
+function selectAuthenticated(state) {
+  return state.session.authenticated;
+}
+
 function selectUsers(state) {
   if(!state.users){ return null; }
 
@@ -20,4 +24,4 @@ function selectModels(state) {
   return state.models.collection;
 }
 
-export {selectUser, selectModels, selectBikes, selectUsers};
+export {selectUser, selectAuthenticated, selectModels, selectBikes, selectUsers};

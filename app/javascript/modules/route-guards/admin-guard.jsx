@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { selectUser } from '@modules/selectors'
+import { selectUser, selectAuthenticated } from '@modules/selectors'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Routes } from '@routes/routes';
@@ -19,7 +19,7 @@ const GuardHOC = (WrappedComponent) => {
     }
 
     unAuthenticated(){
-      !this.props.user.email
+      !this.props.authenticated
     }
 
     render(){
@@ -32,7 +32,8 @@ const GuardHOC = (WrappedComponent) => {
   }
 
   const mapStateToProps = state => ({
-    user: selectUser(state)
+    user: selectUser(state),
+    authenticated: selectAuthenticated(state)
   });
 
   return connect(mapStateToProps, {})(withRouter(Guard))

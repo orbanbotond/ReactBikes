@@ -5,21 +5,12 @@ import { NavLink } from 'react-router-dom';
 import { Routes } from '@routes/routes';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css';
+import PastReservation from './past-reservation.component'
 
 export default class List extends Component {
   render(){
     const rows = this.props.collection.map((model) =>
-      <tr key={model.id}>
-        <td>{model.id}</td>
-        <td>{model.start_date}</td>
-        <td>{model.end_date}</td>
-        <td>
-          <Rater total={5} rating={model.rating} interactive={!model.rating} />
-        </td>
-        <td>
-          { model.cancelled && <span>Cancelled</span> }
-        </td>
-      </tr>
+      <PastReservation {...props} key={model.id} model={model} />
     );
 
     return (

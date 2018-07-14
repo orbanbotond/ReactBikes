@@ -16,6 +16,10 @@ class ReservationsContainer extends Component {
     };
   }
 
+	rateHandler = (id, rating) => {
+		console.debug(`Rating Received:${id} ${rating}`);
+	}
+
   componentWillMount() {
     if(!this.state.collection){
       const currentUser = this.props.user

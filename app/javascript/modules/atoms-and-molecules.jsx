@@ -14,13 +14,13 @@ const reservationProps = {
             cancelled: true,
             rating: 3,
   },{ 
-            id: 1, 
+            id: 2, 
             start_date: "Yesterday", 
             end_date: "Today", 
             cancelled: false,
             rating: 5,
   },{ 
-            id: 1, 
+            id: 3, 
             start_date: "Yesterday", 
             end_date: "Today", 
             cancelled: false,

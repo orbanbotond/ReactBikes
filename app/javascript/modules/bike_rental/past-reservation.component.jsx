@@ -8,42 +8,26 @@ import 'react-rater/lib/react-rater.css';
 export default class Reservation extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      cancelled: props.model.cancelled,
-    };
+    this.handleRate = this.handleRate.bind(this);
   }
 
-  handleDelete = (state, node, evt) => {
-    this.setState({
-      cancelled: !this.state.cancelled,
-    });
-
-    this.props.deleteHandler(this.props.model.id);
+  handleRate = (event) => {
+    this.props.rateHandler(this.props.model.id, event.rating);
   }
 
   render(){
     const { model } = this.props;
 
     return (
-      <tr>
+      <tr key={model.id}>
         <td>{model.id}</td>
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
         <td>
-          <Rater total={5} rating={model.rating} interactive={false} />
+          <Rater total={5} rating={model.rating} interactive={!model.rating} onRate={this.handleRate}/>
         </td>
         <td>
-          <Toggle
-            onClick={this.handleDelete}
-            on="Cancelled"
-            off="Active"
-            size="xs"
-            offstyle="danger"
-            active={this.state.cancelled}
-            disabled={model.cancelled}
-            onClassName="disabled"
-          />
+          { model.cancelled && <span>Cancelled</span> }
         </td>
       </tr>
     );

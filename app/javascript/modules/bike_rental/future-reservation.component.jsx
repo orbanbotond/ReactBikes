@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Toggle from 'react-bootstrap-toggle';
+import Toggle from 'react-toggle';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css';
+import "react-toggle/style.css" 
 
 export default class Reservation extends Component {
   constructor(props) {
@@ -14,12 +15,12 @@ export default class Reservation extends Component {
     };
   }
 
-  handleDelete = (state, node, evt) => {
+  handleCancel = (state, node, evt) => {
     this.setState({
       cancelled: !this.state.cancelled,
     });
 
-    this.props.deleteHandler(this.props.model.id);
+    this.props.cancelHandler(this.props.model.id);
   }
 
   render(){
@@ -35,14 +36,9 @@ export default class Reservation extends Component {
         </td>
         <td>
           <Toggle
-            onClick={this.handleDelete}
-            on="Cancelled"
-            off="Active"
-            size="xs"
-            offstyle="danger"
-            active={this.state.cancelled}
-            disabled={model.cancelled}
-            onClassName="disabled"
+            checked={this.state.cancelled}
+            onChange={this.handleCancel}
+            disabled={this.state.cancelled}
           />
         </td>
       </tr>

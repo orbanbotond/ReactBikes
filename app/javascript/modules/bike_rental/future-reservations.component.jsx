@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Toggle from 'react-bootstrap-toggle';
 import FutureReservation from './future-reservation.component';
 
 export default class List extends Component {
-  handleDelete = (state, node, evt) => {
-    debugger
-    const id = node.getAttribute('data');
-    console.debug(id);
-    console.debug(state);
-    console.debug(node);
-    console.debug(evt);
-  }
-
   render(){
     const rows = this.props.collection.map((model) =>
-      <FutureReservation key={model.id} model={model} />
+      <FutureReservation {...this.props} key={model.id} model={model} />
     );
 
     return (

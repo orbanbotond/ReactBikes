@@ -20,7 +20,13 @@ class ReservationsContainer extends Component {
     Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { rating: rating }).then((_responseObj) => {
     }).catch((_error) => {
     });
-	}
+  }
+
+  cancelHandler = (id) => {
+    Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { cancelled: true }).then((_responseObj) => {
+    }).catch((_error) => {
+    });    
+  }
 
   componentWillMount() {
     if(!this.state.collection){
@@ -41,7 +47,10 @@ class ReservationsContainer extends Component {
 
     return(
       <div className="container">
-        <LoadWrappedList {...this.props} collection={this.state.collection} rateHandler={this.rateHandler} />
+        <LoadWrappedList {...this.props} 
+            collection={this.state.collection} 
+            rateHandler={this.rateHandler} 
+            cancelHandler={this.cancelHandler} />
       </div>
     );
   }

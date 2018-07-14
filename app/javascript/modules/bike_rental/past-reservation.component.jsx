@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Toggle from 'react-bootstrap-toggle';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css';
 
@@ -24,7 +23,10 @@ export default class Reservation extends Component {
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
         <td>
-          <Rater total={5} rating={model.rating} interactive={!model.rating} onRate={this.handleRate}/>
+          <Rater total={5} 
+                rating={model.rating} 
+                interactive={!model.rating} 
+                onRate={this.handleRate}/>
         </td>
         <td>
           { model.cancelled && <span>Cancelled</span> }

@@ -16,7 +16,7 @@ export default class List extends Component {
 
   render(){
     const rows = this.props.collection.map((model) =>
-      <FutureReservation model={model} />
+      <FutureReservation key={model.id} model={model} />
     );
 
     return (

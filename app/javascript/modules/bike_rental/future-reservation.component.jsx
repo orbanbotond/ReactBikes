@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Toggle from 'react-bootstrap-toggle';
+import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css';
 
 export default class Reservation extends Component {
   constructor(props) {
@@ -19,17 +21,21 @@ export default class Reservation extends Component {
     this.setState({
       cancelled: !this.state.cancelled,
     });
+
+    this.props.deleteHandler(id);
   }
 
   render(){
     const { model } = this.props;
 
     return (
-      <tr key={model.id}>
+      <tr>
         <td>{model.id}</td>
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
-        <td>{model.rating}</td>
+        <td>
+          <Rater total={5} rating={model.rating} interactive={false} />
+        </td>
         <td>
           <Toggle
             data={model.id}
@@ -39,7 +45,8 @@ export default class Reservation extends Component {
             size="xs"
             offstyle="danger"
             active={this.state.cancelled}
-            disabled={!!model.cancelled}
+            disabled={model.cancelled}
+            onClassName="disabled"
           />
         </td>
       </tr>

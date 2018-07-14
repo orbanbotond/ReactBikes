@@ -2,7 +2,7 @@ import React from 'react';
 import BikeList from './bikes/list.component';
 import UserList from './users/list.component';
 import ReservationList from './reservations/list.component';
-import FutureReservations from '@modules/bike_rental/future-reservations.component';
+import { PastReservations, FutureReservations } from '@modules/bike_rental';
 import { ControlledFormInput, 
          ControlledFormSelect} from '@common/forms';
 
@@ -12,7 +12,7 @@ const reservationProps = {
             start_date: "Yesterday", 
             end_date: "Today", 
             cancelled: true,
-            rating: 5,
+            rating: 3,
   },{ 
             id: 1, 
             start_date: "Yesterday", 
@@ -66,6 +66,8 @@ const AtomsAndMolecules = () =>
     <h1>Reservation</h1>
     <h2>List</h2>
     <ReservationList {...reservationProps} />
+    <h2>Past Reservation</h2>
+    <PastReservations {...reservationProps} />
     <h2>Future Reservation</h2>
     <FutureReservations {...reservationProps} />
     <h1>User</h1>

@@ -3,6 +3,8 @@ import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Routes } from '@routes/routes';
+import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css';
 
 export default class List extends Component {
   render(){
@@ -12,7 +14,9 @@ export default class List extends Component {
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
         <td>{model.cancelled}</td>
-        <td>{model.rating}</td>
+        <td>
+          <Rater total={5} rating={model.rating} interactive={false} />
+        </td>
         <td>
           <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_route('user', model.user_id)+"/reservations"}>{model.user_id}</NavLink>
         </td>

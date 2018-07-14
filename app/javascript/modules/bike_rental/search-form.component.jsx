@@ -66,7 +66,7 @@ const SearchForm = ({
         <Input
           {...inputSetup}
           validate={[validators.number, validators.minValue1, validators.maxValue5]}
-          name="number"
+          name="rating"
           label="Minimum Rating"
         />
          <Button className="col-lg-12" outline size="sm" color="success" disabled={(dirty && invalid) || (pristine && invalid) || submitting}>Search</Button>

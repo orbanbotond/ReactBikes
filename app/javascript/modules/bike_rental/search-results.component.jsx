@@ -47,12 +47,9 @@ export default class SearchResult extends Component {
                     <td>{model.color}</td>
                     <td>{model.weight}</td>
                     <td>
-                      {
-                        model.average_rating &&
-                          <Rater total={5}
-                                 rating={model.average_rating}
-                                 interactive={false} />
-                      }
+                      <Rater total={5}
+                             rating={model.average_rating}
+                             interactive={false} />
                     </td>
                     <td>{model.latitude}</td>
                     <td>{model.longitude}</td>

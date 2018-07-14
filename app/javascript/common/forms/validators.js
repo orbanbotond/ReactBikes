@@ -16,7 +16,10 @@ export const number = value =>
   (value && isNaN(Number(value)) ? 'Must be a number' : undefined);
 export const minValue = min => value =>
   (value && value < min ? `Must be at least ${min}` : undefined);
-export const minValue18 = minValue(18);
+export const minValue1 = minValue(1);
+export const maxValue = max => value =>
+  (value && value > max ? `Must be at most ${max}` : undefined);
+export const maxValue5 = maxValue(5);
 export const email = value =>
   (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email address'

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { reduxForm, SubmissionError } from 'redux-form';
 import { selectUser, selectModels } from '@modules/selectors'
 import { LoadSpinnerHOC } from '@modules/hocs'
 import { fetchTheModels } from './action-creators';
 import { BikesAxios as Axios, Routes } from '@routes/routes';
 import Edit from './edit.component';
-import { NavLink } from 'react-router-dom';
-import { reduxForm, SubmissionError } from 'redux-form';
 
 class EditContainer extends Component {
   constructor(props) {

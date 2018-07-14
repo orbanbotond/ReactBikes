@@ -24,4 +24,16 @@ function selectModels(state) {
   return state.models.collection;
 }
 
-export {selectUser, selectAuthenticated, selectModels, selectBikes, selectUsers};
+function selectForm(state, formKey) {
+  if(!state.form[formKey]){ return null; }
+
+  return state.form[formKey].values;
+}
+
+function selectSearchResults(state) {
+  if(!state.searchResults){ return null; }
+
+  return state.searchResults.collection;
+}
+
+export {selectSearchResults, selectForm, selectUser, selectAuthenticated, selectModels, selectBikes, selectUsers};

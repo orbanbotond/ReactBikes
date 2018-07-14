@@ -10,7 +10,7 @@ import PastReservation from './past-reservation.component'
 export default class List extends Component {
   render(){
     const rows = this.props.collection.map((model) =>
-      <PastReservation {...props} key={model.id} model={model} />
+      <PastReservation {...this.props} key={model.id} model={model} />
     );
 
     return (

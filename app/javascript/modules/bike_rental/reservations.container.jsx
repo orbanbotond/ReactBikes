@@ -17,7 +17,9 @@ class ReservationsContainer extends Component {
   }
 
 	rateHandler = (id, rating) => {
-		console.debug(`Rating Received:${id} ${rating}`);
+    Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { rating: rating }).then((_responseObj) => {
+    }).catch((_error) => {
+    });
 	}
 
   componentWillMount() {
@@ -39,7 +41,7 @@ class ReservationsContainer extends Component {
 
     return(
       <div className="container">
-        <LoadWrappedList {...this.props} collection={this.state.collection} />
+        <LoadWrappedList {...this.props} collection={this.state.collection} rateHandler={this.rateHandler} />
       </div>
     );
   }

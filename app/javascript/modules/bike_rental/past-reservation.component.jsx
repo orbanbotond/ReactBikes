@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Rater from 'react-rater'
+import Toggle from 'react-toggle';
+
 import 'react-rater/lib/react-rater.css';
+import "react-toggle/style.css" 
 
 export default class Reservation extends Component {
   constructor(props) {
@@ -29,7 +32,10 @@ export default class Reservation extends Component {
                 onRate={this.handleRate}/>
         </td>
         <td>
-          { model.cancelled && <span>Cancelled</span> }
+          <Toggle
+            checked={model.cancelled}
+            disabled={true}
+          />
         </td>
       </tr>
     );

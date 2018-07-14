@@ -32,7 +32,9 @@ export default class Reservation extends Component {
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
         <td>
-          <Rater total={5} rating={model.rating} interactive={false} />
+          <Rater total={5} 
+                 rating={model.rating} 
+                 interactive={false} />
         </td>
         <td>
           <Toggle

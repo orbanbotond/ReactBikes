@@ -23,7 +23,7 @@ const SearchForm = ({
     return { id: x, text: x }
   });
 
-  const availableModels = models.map(x =>{
+  const availableModels = [...models, {id: null, text: ""}].map(x =>{
     return x;
   });
 

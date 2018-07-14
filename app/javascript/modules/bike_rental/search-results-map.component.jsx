@@ -12,7 +12,7 @@ const SearchResultsMap = withScriptjs(withGoogleMap((props) =>
   >
     <BicyclingLayer autoUpdate />
     {props.collection.map(coordinate =>{
-      <Marker position={{ lat: coordinate.latitude, lng: coordinate.longitude }} />
+      return <Marker position={{ lat: coordinate.latitude, lng: coordinate.longitude }} />
     })}
   </GoogleMap>
 ))

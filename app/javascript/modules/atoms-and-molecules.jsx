@@ -46,6 +46,7 @@ const bikeProps = {
             weight: 1.2, 
             color: 'red',
             bike_model_id: 1,
+            average_rating: 2.3,
             latitude: 48.210033, 
             longitude: 16.363449
   },{
@@ -53,6 +54,7 @@ const bikeProps = {
             weight: 2.2, 
             color: 'red',
             bike_model_id: 2,
+            average_rating: null,
             latitude: 49.210033, 
             longitude: 18.363449
   }

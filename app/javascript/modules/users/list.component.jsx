@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
+import Toggle from 'react-toggle';
 import { NavLink } from 'react-router-dom';
 import { Routes } from '@routes/routes';
+
+import "react-toggle/style.css" 
 
 export default class List extends Component {
   handleDelete = id => {
@@ -14,7 +17,12 @@ export default class List extends Component {
       <tr key={model.id}>
         <th scope="row">{model.id}</th>
         <td>{model.email}</td>
-        <td>{model.admin}</td>
+        <td>
+          <Toggle
+            checked={model.admin}
+            disabled={true}
+          />
+        </td>
         <td>
           <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_route('user', model.id)+ "/reservations"}>Reservations</NavLink>
           <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_route('user', model.id)}>Edit</NavLink>

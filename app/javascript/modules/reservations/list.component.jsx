@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import { Routes } from '@routes/routes';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css';
+import Toggle from 'react-toggle';
+
+import "react-toggle/style.css" 
 
 export default class List extends Component {
   render(){
@@ -13,7 +16,12 @@ export default class List extends Component {
         <th scope="row">{model.id}</th>
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
-        <td>{model.cancelled}</td>
+        <td>
+          <Toggle
+            checked={model.cancelled}
+            disabled={true}
+          />
+        </td>
         <td>
           <Rater total={5} rating={model.rating} interactive={false} />
         </td>

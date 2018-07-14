@@ -19,6 +19,12 @@ const reservationProps = {
             end_date: "Today", 
             cancelled: false,
             rating: 5,
+  },{ 
+            id: 1, 
+            start_date: "Yesterday", 
+            end_date: "Today", 
+            cancelled: false,
+            rating: null,
   }
 ]};
 

@@ -14,11 +14,7 @@ export default class List extends Component {
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
         <td>
-          { model.rating ? (
-            <Rater total={5} rating={model.rating} interactive={false} />
-          ) : (
-            <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_subroute('reservation', model.id, "rate")}>Rate</NavLink>
-          )}
+          <Rater total={5} rating={model.rating} interactive={!model.rating} />
         </td>
         <td>
           { model.cancelled && <span>Cancelled</span> }

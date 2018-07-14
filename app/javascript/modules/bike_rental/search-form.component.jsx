@@ -19,8 +19,8 @@ const SearchForm = ({
     disabledForm: disableForm,
   };
 
-  const availableColors = gon.available_colors.map(x =>{
-    return {id: x, text: x}
+  const availableColors = [...gon.available_colors, ""].map(x =>{
+    return { id: x, text: x }
   });
 
   const availableModels = models.map(x =>{

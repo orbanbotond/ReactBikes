@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BarLoader } from 'react-spinners';
 
 const LoadSpinnerHOC = (propsToBePresent, WrappedComponent) => {
   return class LoadSpinner extends Component {
@@ -15,7 +16,7 @@ const LoadSpinnerHOC = (propsToBePresent, WrappedComponent) => {
     render(){
       return (
         this.areAllNeededPropsPresent() ? <WrappedComponent {...this.props} />
-                                        : <div>Loading...</div>
+                                        : <BarLoader color="#8AE0D8" />
       )
     }
   }

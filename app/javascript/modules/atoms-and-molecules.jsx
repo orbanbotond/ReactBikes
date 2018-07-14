@@ -10,6 +10,7 @@ import { PastReservations,
 import { ControlledFormInput, 
          ControlledFormSelect,
          ControlledFormDateSelect} from '@common/forms';
+import SearchResultsMap from './bike_rental/search-results-map.component.jsx'
 
 const reservationProps = {
   collection: [{ 
@@ -152,6 +153,13 @@ const AtomsAndMolecules = () =>
                           labelSize="2"
                           meta={{ touched: true, invalid: false }}
                            />
+    <h1>User</h1>
+    <SearchResultsMap collection={bikeProps.collection}
+      googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR2i3ZaehK6msz5Ton9i28DKk3YIlIIpY&v=3.exp&libraries=geometry,drawing,places"
+      loadingElement={<div style={{ height: `100%` }} />}
+      containerElement={<div style={{ height: `400px` }} />}
+      mapElement={<div style={{ height: `100%` }} />}
+    />
   </div>
 
 export default AtomsAndMolecules;

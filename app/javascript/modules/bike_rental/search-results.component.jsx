@@ -80,6 +80,6 @@ export default class SearchResult extends Component {
 // };
 
 SearchResult.propTypes = {
-  collection: PropTypes.array.isRequired,
+  collection: PropTypes.array,
   models: PropTypes.array.isRequired,
 }

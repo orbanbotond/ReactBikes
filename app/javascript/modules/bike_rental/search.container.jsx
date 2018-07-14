@@ -10,6 +10,7 @@ import { LoadSpinnerHOC } from '@modules/hocs'
 import { selectModels, selectUser } from '@modules/selectors'
 import { BikesAxios as Axios, Routes } from '@routes/routes';
 import BikeResults from './search-results.container';
+import MapDisplay from './search-results-map.container';
 
 class SearchContainer extends Component {
   componentWillMount() {
@@ -49,13 +50,15 @@ class SearchContainer extends Component {
 
     const propsToWaitFor = [ 'models' ];
     const LoadWrappedForm = LoadSpinnerHOC(propsToWaitFor, ReduxSearchForm);
+    const LoadWrappedResults = LoadSpinnerHOC(propsToWaitFor, BikeResults);
 
     return(
       <div>
         <LoadWrappedForm submitForm={this.handleSubmit}
                          models={this.props.models}
                          {...this.props} />
-        <BikeResults />
+        <LoadWrappedResults models={this.props.models} {...this.props} />
+        <MapDisplay />
       </div>
     );
   }

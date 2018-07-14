@@ -15,6 +15,10 @@ export default class SearchResult extends Component {
     return model.text;
   }
 
+  handleReserve = id => {
+    this.props.reserveHandler(id);
+  }
+
   render(){
     const { collection } = this.props;
 

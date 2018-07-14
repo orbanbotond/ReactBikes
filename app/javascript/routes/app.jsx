@@ -62,7 +62,7 @@ const App = (props) => {
         <Route path={Routes.Browser.search()}
                component={StandardUserGuard(Search)} 
                exact />
-        <Route path={Routes.Browser.reservations()}
+        <Route path={Routes.Browser.Restfull.collection_route("reservation")}
                component={StandardUserGuard(Reservations)}
                exact />
 

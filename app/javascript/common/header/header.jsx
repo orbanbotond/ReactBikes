@@ -46,7 +46,7 @@ class Header extends React.Component {
                 <NavLink activeClassName="active" className="nav-link" to={Routes.Browser.search()}>Search</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink  activeClassName="active" className="nav-link" to={Routes.Browser.reservations()}>Reservations</NavLink>
+                <NavLink  activeClassName="active" className="nav-link" to={Routes.Browser.Restfull.collection_route("reservation")}>Reservations</NavLink>
               </NavItem>
             </Nav>
             <Nav tabs>

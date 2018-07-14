@@ -44,7 +44,6 @@ Routes.Browser.Restfull.new_route =(entity_name) => `/${entity_name}s/new`
 Routes.Browser.Restfull.member_route =(entity_name, id) => `/${entity_name}s/${id}`
 Routes.Browser.Restfull.member_subroute =(entity_name, id, subroute) => `${Routes.Browser.Restfull.member_route(entity_name, id)}/${subroute}`
 Routes.Browser.search = () => `/search`
-Routes.Browser.reservations = () => `/reservations`
 Routes.Browser.root =() => `/`
 Routes.Browser.login =() => `/login`
 Routes.Browser.signup =() => `/signup`

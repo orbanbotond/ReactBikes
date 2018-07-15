@@ -20,8 +20,7 @@ module Entities
     expose :bike_model_id
     expose :image_url do |model|
       if model.picture.attachment.present?
-        # binding.pry
-        polymorphic_url model.picture
+        Rails.application.routes.url_helpers.rails_blob_path(model.picture, only_path: true)
       else
         nil
       end

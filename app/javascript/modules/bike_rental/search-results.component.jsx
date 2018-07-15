@@ -37,6 +37,7 @@ export default class SearchResult extends Component {
                 <th>Latitude</th>
                 <th>Longitude</th>
                 <th>Model</th>
+                <th>Picture</th>
                 <th>Reserve</th>
               </tr>
             </thead>
@@ -54,6 +55,11 @@ export default class SearchResult extends Component {
                     <td>{model.latitude}</td>
                     <td>{model.longitude}</td>
                     <td>{this.modelName(model.bike_model_id)}</td>
+                    <td>
+                      {model.image_url && (
+                        <img src={model.image_url} width="50"/>
+                      )}
+                    </td>
                     <td>
                       <Button outline color="success" size="sm" onClick={() => this.handleReserve(model.id)}>Reserve</Button>
                     </td>

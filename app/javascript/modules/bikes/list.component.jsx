@@ -26,6 +26,11 @@ export default class List extends Component {
         <td>{model.color}</td>
         <td>{model.weight}</td>
         <td>
+          {model.image_url && (
+            <img src={model.image_url} width="50"/>
+          )}
+        </td>
+        <td>
           <Rater total={5}
                  rating={model.average_rating}
                  interactive={false} />
@@ -48,6 +53,7 @@ export default class List extends Component {
             <th>#</th>
             <th>Color</th>
             <th>Weight</th>
+            <th>Picture</th>
             <th>Average Rating</th>
             <th>Latitude</th>
             <th>Longitude</th>

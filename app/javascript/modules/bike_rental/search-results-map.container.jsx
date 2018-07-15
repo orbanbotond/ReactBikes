@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { selectSearchResults } from '@modules/selectors'
 import SearchResultsMap from './search-results-map.component.jsx'
-import { LoadSpinnerHOC } from '@modules/hocs'
+import { LoadBlockerHOC } from '@modules/hocs'
 
 class SearchResultsMapContainer extends Component {
   render(){
     const propsToWaitFor = [ 'collection' ];
-    const LoadWrappedForm = LoadSpinnerHOC(propsToWaitFor, SearchResultsMap);
+    const LoadWrappedForm = LoadBlockerHOC(propsToWaitFor, SearchResultsMap);
 
     return(
       <LoadWrappedForm {...this.props} 

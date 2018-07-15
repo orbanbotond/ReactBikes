@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BarLoader } from 'react-spinners';
 
-const LoadSpinnerHOC = (propsToBePresent, WrappedComponent) => {
+const LoadBlockerHOC = (propsToBePresent, WrappedComponent) => {
   return class LoadSpinner extends Component {
     areAllNeededPropsPresent(){
       return propsToBePresent.every(x=>{return this.props[x]})
@@ -9,11 +9,10 @@ const LoadSpinnerHOC = (propsToBePresent, WrappedComponent) => {
 
     render(){
       return (
-        this.areAllNeededPropsPresent() ? <WrappedComponent {...this.props} />
-                                        : <BarLoader color="#8AE0D8" />
+        this.areAllNeededPropsPresent() && <WrappedComponent {...this.props} />
       )
     }
   }
 }
 
-export default LoadSpinnerHOC;
+export default LoadBlockerHOC;

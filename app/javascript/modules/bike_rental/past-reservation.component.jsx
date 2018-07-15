@@ -25,6 +25,7 @@ export default class Reservation extends Component {
         <td>{model.id}</td>
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
+        <td>{model.bike_id}</td>
         <td>
           <Rater total={5} 
                 rating={model.rating} 

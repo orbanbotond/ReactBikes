@@ -20,6 +20,7 @@ export default class List extends Component {
             <th>#</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th>Bike Id</th>
             <th>Rating</th>
             <th>Cancelled</th>
           </tr>

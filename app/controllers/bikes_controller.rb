@@ -11,7 +11,7 @@ class BikesController < ApplicationController
           bike.picture.attach(picture)
         end
         format.html { redirect_to bike, notice: 'Bike was successfully updated.' }
-        format.json { render :show, status: :ok, location: bike }
+        format.json { render json: Entities::BikeEntity.new(bike).as_json }
       else
         format.html { render :edit }
         format.json { render json: bike.errors, status: :unprocessable_entity }

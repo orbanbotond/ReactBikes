@@ -75,12 +75,14 @@ class EditContainer extends Component {
     const LoadWrappedPicupload = LoadSpinnerHOC(props2ToWaitFor, PictureUpload);
 
     return(
-      <div>
+      <div class="container-fluid">
         <LoadWrappedList submitForm={this.handleSubmit}
                          model={this.state.bike}
                          {...this.props} />
-        <NavLink to={Routes.Browser.Restfull.collection_route('bike')}>Back To List</NavLink>
         <LoadWrappedPicupload model={this.state.bike}/>
+        <div className="text-center">
+          <NavLink to={Routes.Browser.Restfull.collection_route('bike')}>Back To List</NavLink>
+        </div>
       </div>
     );
   }

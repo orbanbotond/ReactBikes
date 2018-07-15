@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.1.4"
+gem "rails", "~> 5.2"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
 
@@ -37,7 +37,7 @@ gem "grape-swagger-entity", "~> 0.2.3"
 gem "grape-swagger-ui", "~> 2.2"
 gem "grape_on_rails_routes", git: "https://github.com/orbanbotond/grape_on_rails_routes", branch: "fix_latest_grape_1_0_2"
 gem "jbuilder", "~> 2.5"
-gem "paperclip", "~> 6.0"
+# gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
 gem "slim", "~> 3.0"
 gem "trailblazer", "~> 2.0"

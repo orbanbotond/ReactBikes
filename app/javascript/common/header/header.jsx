@@ -64,6 +64,9 @@ class Header extends React.Component {
             <NavItem>
               <NavLink activeClassName="active" className="nav-link" to={Routes.Browser.login()}>Login</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink activeClassName="active" className="nav-link" to={Routes.Browser.signup()}>SignUp</NavLink>
+            </NavItem>
           </Nav>
         </Navbar>
       )

@@ -3,9 +3,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  resources :bikes, only: [:update, :show, :edit]
   root to: "home#index"
 
   mount Bikes::API => "/"
 
-  get "*path", to: "home#index", constraints: lambda { |req| req.env["REQUEST_PATH"] != "/api/swagger" }
+  BLACKLIST = ["/api/swagger", "/rails"]
+  get "*path", to: "home#index", constraints: lambda {|req| BLACKLIST.none?{|x| req.env["REQUEST_PATH"].starts_with? x } }
 end

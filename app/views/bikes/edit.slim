@@ -1,0 +1,6 @@
+= form_with(model: @bike, local: true) do |form|
+  div class="field"
+    = form.label :picture
+    = form.file_field :picture
+  div class="actions"
+    = form.submit

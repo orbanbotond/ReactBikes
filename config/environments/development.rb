@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  # Store files locally.
+  config.active_storage.service = :local
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
-config.webpacker.check_yarn_integrity = true
+  config.webpacker.check_yarn_integrity = true
 
   # Settings specified here will take precedence over those in config/application.rb.
 

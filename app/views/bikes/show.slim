@@ -1,0 +1,18 @@
+p
+  = @bike.color
+p
+  = @bike.weight
+p
+  = @bike.latitude
+p
+  = @bike.longitude
+
+p
+  -if @bike.picture.attachment.present?
+    = image_tag(url_for(@bike.picture))
+p
+  -if @bike.picture.attachment.present?
+    = image_tag(polymorphic_url(@bike.picture))
+p
+  -if @bike.picture.attachment.present?
+    = image_tag(rails_blob_url(@bike.picture, disposition: "attachment"))

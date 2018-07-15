@@ -7,6 +7,7 @@ import { LoadSpinnerHOC } from '@modules/hocs'
 import { fetchTheModels } from './action-creators';
 import { BikesAxios as Axios, Routes } from '@routes/routes';
 import Edit from './edit.component';
+import PictureUpload from './picture-upload.component';
 
 class EditContainer extends Component {
   constructor(props) {
@@ -70,6 +71,8 @@ class EditContainer extends Component {
 
     const propsToWaitFor = [ 'models', 'model', 'user'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, ReduxBikeForm);
+    const props2ToWaitFor = [ 'model'];
+    const LoadWrappedPicupload = LoadSpinnerHOC(props2ToWaitFor, PictureUpload);
 
     return(
       <div>
@@ -77,6 +80,7 @@ class EditContainer extends Component {
                          model={this.state.bike}
                          {...this.props} />
         <NavLink to={Routes.Browser.Restfull.collection_route('bike')}>Back To List</NavLink>
+        <LoadWrappedPicupload model={this.state.bike}/>
       </div>
     );
   }

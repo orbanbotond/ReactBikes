@@ -1,4 +1,6 @@
 class BikesController < ApplicationController
+  protect_from_forgery except: :update
+
   def update
     picture = params[:bike][:picture]
 

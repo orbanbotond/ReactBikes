@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :bikes, only: [:update, :show, :edit]
+  resources :bikes, path: "bycicles", only: [:update, :show, :edit]
   root to: "home#index"
 
   mount Bikes::API => "/"

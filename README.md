@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a study project which shows some CRUD react example, with HOC's.
+The background is architected using the Trailblazer architecture, where the operations encapsulate the business logic and the contracts validate the inputs.
 
-Things you may want to cover:
+It uses Rails 5.2
+And Trailblazer 2.0
 
-* Ruby version
+The authorization is done via pundit, and the gateway toward the HTTP API is GRAPE with Swagger.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Everything is covered with Rspecs.

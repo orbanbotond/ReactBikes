@@ -27,7 +27,7 @@
     "title-case": "^2.1.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": ">=3.1.11"
   },
   "version": "1.0.0",
   "main": "index.js",

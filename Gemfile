@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.2"
+gem "rails", "~> 5.2.2.1"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
 
@@ -27,10 +27,10 @@ gem "coffee-rails", "~> 4.2"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "devise"
+gem "devise", "~> 4.6.0"
 gem "dry-validation", "~> 0.11.1"
 gem "gon", "~> 6.2"
-gem "grape", "~> 1.0.2"
+gem "grape", "~> 1.1.0"
 gem "grape-entity", "~> 0.7.0"
 gem "grape-swagger", "~> 0.27.3"
 gem "grape-swagger-entity", "~> 0.2.3"

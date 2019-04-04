@@ -5,7 +5,7 @@ require "rails_helper"
 describe Queries::Operations::AvailableBikes do
   let(:current_user) { create :user, :admin }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call(params, additional_params) }
+  let(:result) { described_class.call({params: params}.merge additional_params) }
 
   let(:start_date) { 2.days.from_now.to_datetime }
   let(:end_date) { 4.days.from_now.to_datetime }
@@ -41,11 +41,11 @@ describe Queries::Operations::AvailableBikes do
   context "default search" do
     it "returns just the available bikes" do
       expect(result.success?).to eq(true)
-      expect(result["model"]).to_not include(bike_n_01)
-      expect(result["model"]).to_not include(bike_n_02)
-      expect(result["model"]).to include(bike_p_01)
-      expect(result["model"]).to include(bike_p_02)
-      expect(result["model"]).to include(bike_p_03)
+      expect(result[:model]).to_not include(bike_n_01)
+      expect(result[:model]).to_not include(bike_n_02)
+      expect(result[:model]).to include(bike_p_01)
+      expect(result[:model]).to include(bike_p_02)
+      expect(result[:model]).to include(bike_p_03)
     end
   end
 
@@ -54,12 +54,12 @@ describe Queries::Operations::AvailableBikes do
 
     it "returns just the available bikes" do
       expect(result.success?).to eq(true)
-      expect(result["model"]).to_not include(bike_n_01)
-      expect(result["model"]).to_not include(bike_n_02)
-      expect(result["model"]).to_not include(bike_p_01)
-      expect(result["model"]).to_not include(bike_p_03)
+      expect(result[:model]).to_not include(bike_n_01)
+      expect(result[:model]).to_not include(bike_n_02)
+      expect(result[:model]).to_not include(bike_p_01)
+      expect(result[:model]).to_not include(bike_p_03)
 
-      expect(result["model"]).to include(bike_p_02)
+      expect(result[:model]).to include(bike_p_02)
     end
   end
   context "refined search weight" do
@@ -67,12 +67,12 @@ describe Queries::Operations::AvailableBikes do
 
     it "returns just the available bikes" do
       expect(result.success?).to eq(true)
-      expect(result["model"]).to_not include(bike_n_01)
-      expect(result["model"]).to_not include(bike_n_02)
-      expect(result["model"]).to_not include(bike_p_01)
-      expect(result["model"]).to_not include(bike_p_02)
+      expect(result[:model]).to_not include(bike_n_01)
+      expect(result[:model]).to_not include(bike_n_02)
+      expect(result[:model]).to_not include(bike_p_01)
+      expect(result[:model]).to_not include(bike_p_02)
 
-      expect(result["model"]).to include(bike_p_03)
+      expect(result[:model]).to include(bike_p_03)
     end
   end
 
@@ -81,12 +81,12 @@ describe Queries::Operations::AvailableBikes do
 
     it "returns just the available bikes" do
       expect(result.success?).to eq(true)
-      expect(result["model"]).to_not include(bike_n_01)
-      expect(result["model"]).to_not include(bike_n_02)
-      expect(result["model"]).to_not include(bike_p_02)
-      expect(result["model"]).to_not include(bike_p_03)
+      expect(result[:model]).to_not include(bike_n_01)
+      expect(result[:model]).to_not include(bike_n_02)
+      expect(result[:model]).to_not include(bike_p_02)
+      expect(result[:model]).to_not include(bike_p_03)
 
-      expect(result["model"]).to include(bike_p_01)
+      expect(result[:model]).to include(bike_p_01)
     end
   end
 
@@ -95,12 +95,12 @@ describe Queries::Operations::AvailableBikes do
 
     it "returns just the available bikes" do
       expect(result.success?).to eq(true)
-      expect(result["model"]).to_not include(bike_n_01)
-      expect(result["model"]).to_not include(bike_n_02)
-      expect(result["model"]).to_not include(bike_p_02)
-      expect(result["model"]).to_not include(bike_p_03)
+      expect(result[:model]).to_not include(bike_n_01)
+      expect(result[:model]).to_not include(bike_n_02)
+      expect(result[:model]).to_not include(bike_p_02)
+      expect(result[:model]).to_not include(bike_p_03)
 
-      expect(result["model"]).to include(bike_p_01)
+      expect(result[:model]).to include(bike_p_01)
     end
   end
 end

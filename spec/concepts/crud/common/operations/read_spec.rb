@@ -5,7 +5,7 @@ require "rails_helper"
 describe Crud::Common::Operations::Read do
   let(:current_user) { create :user, :admin }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call(params, additional_params) }
+  let(:result) { described_class.call({params: params}.merge additional_params) }
 
   context "positive cases" do
     context "bikes" do
@@ -20,8 +20,8 @@ describe Crud::Common::Operations::Read do
       it "reads the bike" do
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(Bike)
-          expect(result["model"].id).to eq(params[:id])
+          expect(result[:model]).to be_a(Bike)
+          expect(result[:model].id).to eq(params[:id])
         end.to_not change { model }
       end
     end
@@ -40,8 +40,8 @@ describe Crud::Common::Operations::Read do
         additional_params
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(User)
-          expect(result["model"].id).to eq(params[:id])
+          expect(result[:model]).to be_a(User)
+          expect(result[:model].id).to eq(params[:id])
         end.to_not change { model }
       end
     end
@@ -60,8 +60,8 @@ describe Crud::Common::Operations::Read do
         additional_params
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(Reservation)
-          expect(result["model"].id).to eq(params[:id])
+          expect(result[:model]).to be_a(Reservation)
+          expect(result[:model].id).to eq(params[:id])
         end.to_not change { model }
       end
     end

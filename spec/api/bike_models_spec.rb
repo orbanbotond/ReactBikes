@@ -11,23 +11,7 @@ describe "GET /api/bike_models" do
   let(:developer_header) { {"X-Auth-Token" => session_token} }
 
   context "negative cases" do
-    context 'token is missing' do
-      let(:developer_header) { {} }
-
-      specify "Returns Unauthorized" do
-        expect_unauthorized
-        expect_json
-      end
-    end
-
-    context 'token is bad' do
-      let(:developer_header) { super().merge "X-Auth-Token"=> "wrong token" }
-
-      specify "Returns Unauthorized" do
-        expect_unauthorized
-        expect_json
-      end
-    end
+    it_behaves_like "unauthenticated"
   end
 
   context 'positive cases' do

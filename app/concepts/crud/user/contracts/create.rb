@@ -11,7 +11,12 @@ module Crud
       property :password, readable: false
 
       validation :default do
-        required(:email).filled(:str?)
+        configure do
+          predicates(::Common::Contracts::Predicates)
+          config.messages_file = File.join(Rails.root.to_s, "config", "locales", "en.yml")
+        end
+
+        required(:email).filled(:str?, :email?)
         required(:password).filled(:str?)
       end
 

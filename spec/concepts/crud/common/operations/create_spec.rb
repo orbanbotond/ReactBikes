@@ -32,7 +32,7 @@ describe Crud::Common::Operations::Create do
     end
 
     context "users" do
-      let(:params) { { email: "akarmi", password: "new_password" } }
+      let(:params) { { email: "akarmi@gmail.com", password: "new_password" } }
       let(:additional_params) do
         super().merge(
           "model.class" => ::User,

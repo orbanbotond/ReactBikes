@@ -4,7 +4,7 @@ require "rails_helper"
 
 describe Crud::User::Contracts::Create do
   let(:contract) { described_class.new User.new }
-  let(:params) { { email: "akarmi", password: "new_password" } }
+  let(:params) { { email: "akarmi@gmail.com", password: "new_password" } }
 
   context "negative cases" do
     [:email, :password].each do |field|

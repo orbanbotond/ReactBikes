@@ -31,7 +31,7 @@ module Bikes
         )
 
         call_operation(::Crud::Reservation::Operations::Create, params2, additional_params) do |result|
-          present result["model"], with: ::Entities::ReservationEntity
+          present result[:model], with: ::Entities::ReservationEntity
         end
       end
 
@@ -50,7 +50,7 @@ module Bikes
         end
         put do
           call_operation(::Crud::Reservation::Operations::Update, params, default_additional_params) do |result|
-            present result["model"], with: ::Entities::ReservationEntity
+            present result[:model], with: ::Entities::ReservationEntity
           end
         end
       end

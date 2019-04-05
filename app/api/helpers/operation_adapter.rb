@@ -3,7 +3,9 @@
 module Helpers
   module OperationAdapter
     def call_operation(operation, params, additional_params)
-      result = operation.call params, additional_params
+      new_params = {params: params}.merge(additional_params)
+
+      result = operation.call new_params
       if result.failure?
         format_errors(result)
       else

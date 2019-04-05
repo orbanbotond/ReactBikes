@@ -38,7 +38,7 @@ module Bikes
         )
 
         call_operation(::Queries::Operations::AvailableBikes, params2, default_additional_params) do |result|
-          present result["model"], with: ::Entities::BikeEntity
+          present result[:model], with: ::Entities::BikeEntity
         end
       end
     end

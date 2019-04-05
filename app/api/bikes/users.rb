@@ -28,7 +28,7 @@ module Bikes
           "contract.default.class" => ::Crud::User::Contracts::Create
         )
         call_operation(::Crud::Common::Operations::Create, params, additional_params) do |result|
-          present result["model"], with: ::Entities::UserEntity
+          present result[:model], with: ::Entities::UserEntity
         end
       end
 
@@ -61,7 +61,7 @@ module Bikes
             "model.class" => ::User,
           )
           call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result["model"].reservations, with: ::Entities::ReservationEntity
+            present result[:model].reservations, with: ::Entities::ReservationEntity
           end
         end
 
@@ -81,7 +81,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result["model"], with: ::Entities::UserEntity
+            present result[:model], with: ::Entities::UserEntity
           end
         end
 
@@ -101,7 +101,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Delete, params, additional_params) do |result|
-            present result["model"], with: ::Entities::UserEntity
+            present result[:model], with: ::Entities::UserEntity
           end
         end
 
@@ -124,7 +124,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Update, params, additional_params) do |result|
-            present result["model"], with: ::Entities::UserEntity
+            present result[:model], with: ::Entities::UserEntity
           end
         end
       end

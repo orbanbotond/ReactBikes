@@ -15,7 +15,7 @@ module Bikes
                [401, "Unauthenticated"]]
     end
     post :login do
-      result = ::Login::Operations::Default.call(params, {})
+      result = ::Login::Operations::Default.call(params: params)
       if result.failure?
         if result["contract.default"].errors[:password].present?
           code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
@@ -27,7 +27,7 @@ module Bikes
           format_errors(result)
         end
       else
-        present result["model"], with: ::Entities::Login::UserEntity
+        present result[:model], with: ::Entities::Login::UserEntity
       end
     end
   end

@@ -21,6 +21,24 @@ module Crud
         optional(:bike_model_id).maybe(:int?)
       end
 
+      validation :foreign_key_exists, if: :default, with: { form: true } do
+        configure do
+          config.messages_file = File.join(Rails.root.to_s, "config", "locales", "en.yml")
+
+          def foreign_key_exists?(value)
+            return true unless value.present?
+
+            model = BikeModel.exists? value
+
+            return false if model.blank?
+
+            true
+          end
+        end
+
+        required(:bike_model_id, &:foreign_key_exists?)
+      end
+
       class << self
         def documentation
           {

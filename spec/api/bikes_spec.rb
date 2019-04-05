@@ -69,6 +69,7 @@ describe "bikes API endpoints" do
   end
 
   context 'reservations of a bike' do
+    let!(:reservation) { create :reservation, bike: bike }
     let(:bike) { create :bike }
     let(:params) { { } }
     let(:path) { "/api/bikes/#{bike.id}/reservations" }
@@ -79,6 +80,12 @@ describe "bikes API endpoints" do
     end
 
     context 'positive cases' do
+      specify "Returns success" do
+        expect_success
+        expect_json
+        expect_first_in_the_array_includes("id")
+        expect_first_in_the_array_includes("rating")
+      end
     end
   end
 
@@ -93,6 +100,12 @@ describe "bikes API endpoints" do
     end
 
     context 'positive cases' do
+      specify "Returns success" do
+        expect_success
+        expect_json
+        expect_contains_field("id")
+        expect_contains_field("bike_model_id")
+      end
     end
   end
 
@@ -107,6 +120,12 @@ describe "bikes API endpoints" do
     end
 
     context 'positive cases' do
+      specify "Returns success" do
+        expect_success
+        expect_json
+        expect_contains_field("id")
+        expect_contains_field("bike_model_id")
+      end
     end
   end
 
@@ -118,9 +137,35 @@ describe "bikes API endpoints" do
 
     context 'negative cases' do
       it_behaves_like "unauthenticated"
+
+      context 'invalid params' do
+        context 'color' do
+          let(:params) { super().merge color: 'Invalid Color' }
+
+          specify "Returns unauthorized" do
+            expect_bad_request
+            expect_json
+          end
+        end
+
+        context 'bike_model_id' do
+          let(:params) { super().merge bike_model_id: -1 }
+
+          specify "Returns unauthorized" do
+            expect_bad_request
+            expect_json
+          end
+        end
+      end
     end
 
     context 'positive cases' do
+      specify "Returns success" do
+        expect_success
+        expect_json
+        expect_contains_field("id")
+        expect_contains_field("bike_model_id")
+      end
     end
   end
 end

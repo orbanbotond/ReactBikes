@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    email "MyString"
+    email "MyString@gmail.com"
     admin false
 
     trait :admin do

@@ -37,3 +37,4 @@ en:
     email?: "It should be an email format"
     unique?: "It should be unique"
     matches_pwd?: "No email/pwd. Sorry"
+    foreign_key_exists?: "No entity with the foreign key exists"

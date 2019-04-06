@@ -33,7 +33,7 @@ describe "POST /api/signup" do
 
   context 'positive cases' do
     specify "Returns authorized" do
-      expect_success
+      expect_created
       expect_json
     end
   end

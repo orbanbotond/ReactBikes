@@ -20,7 +20,8 @@ module APIHelpers
 
   def expect_success
     call_api_endpoint_just_once
-    expect(response).to be_success
+    # expect(response).to be_success
+    expect(response).to have_http_status(200)
   end
 
   def expect_not_found

@@ -23,7 +23,7 @@ module Queries
         available_bikes = available_bikes.where("weight < ?", params[:weight]) if params[:weight].present?
         available_bikes = available_bikes.where(bike_model_id: params[:bike_model_id]) if params[:bike_model_id].present?
         available_bikes = available_bikes.where("average_rating >= ?", params[:rating]) if params[:rating].present?
-        options["model"] = available_bikes
+        options[:model] = available_bikes
       end
 
       def date_wrap(date)

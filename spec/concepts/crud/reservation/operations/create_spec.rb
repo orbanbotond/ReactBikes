@@ -5,7 +5,7 @@ require "rails_helper"
 describe Crud::Reservation::Operations::Create do
   let(:current_user) { create :user, :admin }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call(params, additional_params) }
+  let(:result) { described_class.call({params: params}.merge additional_params) }
 
   context "positive cases" do
     context "reservation" do
@@ -27,12 +27,12 @@ describe Crud::Reservation::Operations::Create do
         additional_params
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(Reservation)
-          expect(result["model"].start_date).to eq(params[:start_date])
-          expect(result["model"].end_date).to eq(params[:end_date])
-          expect(result["model"].user).to eq(current_user)
-          expect(result["model"].rating).to be_nil
-          expect(result["model"].cancelled).to be_falsy
+          expect(result[:model]).to be_a(Reservation)
+          expect(result[:model].start_date).to eq(params[:start_date])
+          expect(result[:model].end_date).to eq(params[:end_date])
+          expect(result[:model].user).to eq(current_user)
+          expect(result[:model].rating).to be_nil
+          expect(result[:model].cancelled).to be_falsy
         end.to change { Reservation.count }.by(1)
       end
     end

@@ -43,7 +43,7 @@ describe "POST /api/login" do
 
   context 'positive cases' do
     specify "Returns authorized" do
-      expect_success
+      expect_created
       expect_json
       expect_contains_field('session_token')
     end

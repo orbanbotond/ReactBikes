@@ -16,7 +16,7 @@ module Bikes
     end
     post :signup do
       call_operation(::Signup::Operations::Default, params, {}) do |result|
-        present result["model"], with: ::Entities::UserEntity
+        present result[:model], with: ::Entities::UserEntity
       end
     end
   end

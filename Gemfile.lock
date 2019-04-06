@@ -13,6 +13,17 @@ GIT
     shoulda-matchers (3.1.2)
       activesupport (>= 4.2.0)
 
+GIT
+  remote: https://github.com/trailblazer/trailblazer.git
+  revision: 0a55c39836610cf0fe0f4ef5579988540682b4b0
+  tag: v2.1.0.rc1
+  specs:
+    trailblazer (2.1.0.rc1)
+      declarative
+      trailblazer-macro (>= 2.1.0.rc1, < 2.2.0)
+      trailblazer-macro-contract (= 2.1.0.rc1)
+      trailblazer-operation
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -204,6 +215,7 @@ GEM
       guard (~> 2.0)
       rubocop (~> 0.20)
     hashdiff (0.3.7)
+    hirb (0.7.3)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -246,7 +258,6 @@ GEM
     parser (2.5.1.0)
       ast (~> 2.4.0)
     pg (0.21.0)
-    pipetree (0.1.1)
     powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -399,15 +410,17 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    trailblazer (2.0.7)
-      declarative
-      reform (>= 2.2.0, < 3.0.0)
-      trailblazer-operation (>= 0.0.12, < 0.1.0)
+    trailblazer-activity (0.7.1)
+      hirb
+      trailblazer-context
+    trailblazer-context (0.1.2)
     trailblazer-loader (0.1.2)
-    trailblazer-operation (0.0.13)
-      declarative
-      pipetree (>= 0.1.1, < 0.2.0)
-      uber
+    trailblazer-macro (2.1.0.rc1)
+    trailblazer-macro-contract (2.1.0.rc1)
+      reform (>= 2.2.0, < 3.0.0)
+    trailblazer-operation (0.4.1)
+      trailblazer-activity (>= 0.7.1, < 0.8.0)
+      trailblazer-context (>= 0.1.1, < 0.3.0)
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
@@ -490,7 +503,7 @@ DEPENDENCIES
   slim (~> 3.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  trailblazer (~> 2.0)
+  trailblazer!
   trailblazer-loader (~> 0.1.2)
   turbolinks (~> 5)
   tzinfo-data

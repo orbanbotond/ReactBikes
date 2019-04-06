@@ -6,12 +6,7 @@ module Crud
       class Update < Trailblazer::Operation
         step Model(::ApplicationRecord, :find_by)
 
-        step Nested(
-          ::Crud::Common::Operations::Persist,
-          input: -> (options, mutable_data:, runtime_data:, **) do
-            runtime_data.merge("model" => mutable_data["model"])
-          end
-        )
+        step Nested( ::Crud::Common::Operations::Persist)
       end
     end
   end

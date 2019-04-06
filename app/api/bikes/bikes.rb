@@ -28,7 +28,7 @@ module Bikes
         )
 
         call_operation(::Crud::Common::Operations::Create, params, additional_params) do |result|
-          present result["model"], with: ::Entities::BikeEntity
+          present result[:model], with: ::Entities::BikeEntity
         end
       end
 
@@ -62,7 +62,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result["model"].reservations, with: ::Entities::ReservationEntity
+            present result[:model].reservations, with: ::Entities::ReservationEntity
           end
         end
 
@@ -82,7 +82,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result["model"], with: ::Entities::BikeEntity
+            present result[:model], with: ::Entities::BikeEntity
           end
         end
 
@@ -102,7 +102,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Delete, params, additional_params) do |result|
-            present result["model"], with: ::Entities::BikeEntity
+            present result[:model], with: ::Entities::BikeEntity
           end
         end
 
@@ -125,7 +125,7 @@ module Bikes
           )
 
           call_operation(::Crud::Common::Operations::Update, params, additional_params) do |result|
-            present result["model"], with: ::Entities::BikeEntity
+            present result[:model], with: ::Entities::BikeEntity
           end
         end
       end

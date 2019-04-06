@@ -4,8 +4,9 @@ require "rails_helper"
 
 describe Crud::Reservation::Operations::Update do
   let(:current_user) { create :user, :admin }
+  # let(:additional_params) { { "current_user" => current_user, "contract.default.class" => ::Crud::Reservation::Contracts::Update } }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call(params, additional_params) }
+  let(:result) { described_class.call({params: params}.merge additional_params) }
 
   context "negative cases" do
     context "rating a cancelled one" do
@@ -36,9 +37,9 @@ describe Crud::Reservation::Operations::Update do
         expect do
           expect do
             expect(result.success?).to eq(true)
-            expect(result["model"]).to be_a(Reservation)
-            expect(result["model"].rating).to eq(params[:rating])
-            expect(result["model"].bike.average_rating).to eq(params[:rating])
+            expect(result[:model]).to be_a(Reservation)
+            expect(result[:model].rating).to eq(params[:rating])
+            expect(result[:model].bike.average_rating).to eq(params[:rating])
           end.to_not change { Reservation.count }
         end.to change { model.bike.reload.average_rating }
       end
@@ -51,8 +52,8 @@ describe Crud::Reservation::Operations::Update do
           additional_params
           expect do
             expect(result.success?).to eq(true)
-            expect(result["model"]).to be_a(Reservation)
-            expect(result["model"].cancelled).to eq(params[:cancelled])
+            expect(result[:model]).to be_a(Reservation)
+            expect(result[:model].cancelled).to eq(params[:cancelled])
           end.to_not change { Reservation.count }
         end
       end

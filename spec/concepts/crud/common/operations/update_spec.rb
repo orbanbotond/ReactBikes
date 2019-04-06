@@ -5,7 +5,7 @@ require "rails_helper"
 describe Crud::Common::Operations::Update do
   let(:current_user) { create :user, :admin }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call(params, additional_params) }
+  let(:result) { described_class.call({params: params}.merge additional_params) }
 
   context "positive cases" do
     context "bikes" do
@@ -25,12 +25,12 @@ describe Crud::Common::Operations::Update do
 
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(Bike)
-          expect(result["model"].weight).to eq(params[:weight])
-          expect(result["model"].latitude).to eq(params[:latitude])
-          expect(result["model"].longitude).to eq(params[:longitude])
-          expect(result["model"].color).to eq(params[:color])
-          expect(result["model"].bike_model).to eq(bike_model)
+          expect(result[:model]).to be_a(Bike)
+          expect(result[:model].weight).to eq(params[:weight])
+          expect(result[:model].latitude).to eq(params[:latitude])
+          expect(result[:model].longitude).to eq(params[:longitude])
+          expect(result[:model].color).to eq(params[:color])
+          expect(result[:model].bike_model).to eq(bike_model)
         end.to_not change { Bike.count }
       end
     end
@@ -50,8 +50,8 @@ describe Crud::Common::Operations::Update do
         additional_params
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(User)
-          expect(result["model"].admin).to eq(params[:admin])
+          expect(result[:model]).to be_a(User)
+          expect(result[:model].admin).to eq(params[:admin])
         end.to_not change { User.count }
       end
     end
@@ -71,8 +71,8 @@ describe Crud::Common::Operations::Update do
         additional_params
         expect do
           expect(result.success?).to eq(true)
-          expect(result["model"]).to be_a(Reservation)
-          expect(result["model"].rating).to eq(params[:rating])
+          expect(result[:model]).to be_a(Reservation)
+          expect(result[:model].rating).to eq(params[:rating])
         end.to_not change { Reservation.count }
       end
 
@@ -84,8 +84,8 @@ describe Crud::Common::Operations::Update do
           additional_params
           expect do
             expect(result.success?).to eq(true)
-            expect(result["model"]).to be_a(Reservation)
-            expect(result["model"].cancelled).to eq(params[:cancelled])
+            expect(result[:model]).to be_a(Reservation)
+            expect(result[:model].cancelled).to eq(params[:cancelled])
           end.to_not change { Reservation.count }
         end
       end

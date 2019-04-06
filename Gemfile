@@ -40,7 +40,10 @@ gem "jbuilder", "~> 2.5"
 # gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
 gem "slim", "~> 3.0"
-gem "trailblazer", "~> 2.0"
+gem "trailblazer",
+  git: 'https://github.com/trailblazer/trailblazer.git',
+  tag: 'v2.1.0.rc1'
+# gem "trailblazer", 'v2.1.0.rc1'
 gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"
 gem "reform", "~> 2.2"

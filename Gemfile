@@ -73,7 +73,7 @@ group :development, :test do
   gem "pundit-matchers", "~> 1.4.1"
   gem "reek", "~> 1.3"
   gem "rspec-rails", "~> 3.6"
-  gem "rubocop-rails", "~> 1.2"
+  gem "rubocop-rails"
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "simplecov", require: false

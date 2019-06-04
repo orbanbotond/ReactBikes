@@ -7,6 +7,7 @@ describe Crud::Reservation::Operations::Update do
   # let(:additional_params) { { "current_user" => current_user, "contract.default.class" => ::Crud::Reservation::Contracts::Update } }
   let(:additional_params) { { "current_user" => current_user } }
   let(:result) { described_class.call({params: params}.merge additional_params) }
+  let(:trace) { described_class.trace({params: params}.merge additional_params) }
 
   context "negative cases" do
     context "rating a cancelled one" do
@@ -14,6 +15,8 @@ describe Crud::Reservation::Operations::Update do
       let(:params) { { id: model.id, rating: 4 } }
 
       it "fails validation" do
+        puts trace.wtf?
+
         params
         additional_params
         expect do
@@ -30,6 +33,13 @@ describe Crud::Reservation::Operations::Update do
     context "reservation" do
       let(:model) { create :reservation }
       let(:params) { { id: model.id, rating: 5 } }
+
+      context "the trace" do
+        it "is the same success as the result" do
+          puts trace.wtf?
+          expect(trace.success?).to eq(true)
+        end
+      end
 
       it "updates the old model" do
         params

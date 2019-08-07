@@ -6,14 +6,11 @@ Rails.application.routes.draw do
   resources :bikes, path: "bycicles", only: [:update, :show, :edit]
   root to: "home#index"
 
-  mount Bikes::API => "/"
-
   namespace :api, constraints: { format: 'json' }, defaults: {format: :json} do
-    namespace :v2 do
-      get 'ping', to: 'ping#ping'
-    end
+    get 'ping', to: 'ping#ping'
   end
 
+  mount Bikes::API => "/"
 
   BLACKLIST = ["/api/swagger", "/rails"]
   get "*path", to: "home#index", constraints: lambda {|req| BLACKLIST.none?{|x| req.env["REQUEST_PATH"].starts_with? x } }

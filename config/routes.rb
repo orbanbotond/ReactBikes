@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   namespace :api, constraints: { format: 'json' }, defaults: {format: :json} do
     get 'ping', to: 'ping#ping'
     post 'login', to: 'login#create'
+    get 'bike_models', to: 'bike_models#index'
   end
 
   mount Bikes::API => "/"
 
   BLACKLIST = ["/api/swagger", "/rails"]
-  get "*path", to: "home#index", constraints: lambda {|req| BLACKLIST.none?{|x| req.env["REQUEST_PATH"].starts_with? x } }
+  get "*path", to: "home#index", constraints: lambda {|req| BLACKLIST.none?{|route| req.env["REQUEST_PATH"].starts_with? route } }
 end

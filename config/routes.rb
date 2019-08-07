@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :bikes, path: "bycicles", only: [:update, :show, :edit]
   root to: "home#index"
 
+  namespace :api, constraints: { format: 'json' }, defaults: {format: :json} do
+    get 'ping', to: 'ping#ping'
+  end
+
   mount Bikes::API => "/"
 
   BLACKLIST = ["/api/swagger", "/rails"]

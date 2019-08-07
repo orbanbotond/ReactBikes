@@ -4,6 +4,17 @@ module Api
   class BaseController < ActionController::Base
     include Api::ReturnFormatters
 
+    def call_operation(operation, params, additional_params)
+      new_params = {params: params}.merge(additional_params)
+
+      result = operation.call new_params
+      if result.failure?
+        render format_errors(result)
+      else
+        yield result
+      end
+    end
+
     def guest_call?
       !can_authenticate?
     end

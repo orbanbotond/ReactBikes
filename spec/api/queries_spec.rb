@@ -10,7 +10,7 @@ describe "queries API endpoints" do
 
   context 'queries' do
     let(:params) { { start_date: 1.day.from_now.to_s, end_date: 2.days.from_now.to_s } }
-    let(:path) { "/api/queries/available_bikes" }
+    let(:path) { '/api/queries/available_bikes' }
     subject { get path, params: params, headers: developer_header }
 
     context 'negative cases' do

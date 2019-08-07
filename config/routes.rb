@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get 'ping', to: 'ping#ping'
     post 'login', to: 'login#create'
     get 'bike_models', to: 'bike_models#index'
+
+    namespace :queries do
+      get 'available_bikes', to: 'queries#available_bikes'
+    end
   end
 
   mount Bikes::API => "/"

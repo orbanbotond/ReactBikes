@@ -4,7 +4,7 @@ require "rails_helper"
 
 describe "GET /api/ping" do
   context "simple ping" do
-    let(:path) { "/api/ping" }
+    let(:path) { "/api/v2/ping" }
     subject { get path, params: params, headers: developer_header }
 
     let(:params) { {} }

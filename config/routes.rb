@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api, constraints: { format: 'json' }, defaults: {format: :json} do
     get 'ping', to: 'ping#ping'
+    post 'login', to: 'login#create'
   end
 
   mount Bikes::API => "/"

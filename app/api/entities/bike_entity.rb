@@ -9,9 +9,9 @@ module Entities
     end
 
     with_options(format_with: :rounded_decimal) do
-	    expose :average_rating
-	    expose :latitude
-	    expose :longitude
+      expose :average_rating
+      expose :latitude
+      expose :longitude
     end
 
     expose :id
@@ -24,6 +24,6 @@ module Entities
       else
         nil
       end
-    end 
+    end
   end
 end

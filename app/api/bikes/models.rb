@@ -16,7 +16,6 @@ module Bikes
                 description: "The authentication token",
                 required: true
               }
-
     end
     get :bike_models do
       present BikeModel.all, with: ::Entities::BikeModelEntity

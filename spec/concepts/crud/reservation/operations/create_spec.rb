@@ -5,7 +5,7 @@ require "rails_helper"
 describe Crud::Reservation::Operations::Create do
   let(:current_user) { create :user, :admin }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call({params: params}.merge additional_params) }
+  let(:result) { described_class.call({ params: params }.merge additional_params) }
 
   context "positive cases" do
     context "reservation" do

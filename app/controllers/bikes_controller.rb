@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BikesController < ApplicationController
   protect_from_forgery except: :update
 
@@ -10,7 +12,7 @@ class BikesController < ApplicationController
         if picture.present?
           bike.picture.attach(picture)
         end
-        format.html { redirect_to bike, notice: 'Bike was successfully updated.' }
+        format.html { redirect_to bike, notice: "Bike was successfully updated." }
         format.json { render json: Entities::BikeEntity.new(bike).as_json }
       else
         format.html { render :edit }
@@ -20,17 +22,17 @@ class BikesController < ApplicationController
   end
 
   def edit
-  	bike
+    bike
   end
 
   def show
-  	bike
+    bike
   end
 
   private
-  	def bike
-  	  @bike ||= Bike.find params[:id]
-  	end
+    def bike
+      @bike ||= Bike.find params[:id]
+    end
 
     def bike_params
       params.require(:bike).permit(:picture)

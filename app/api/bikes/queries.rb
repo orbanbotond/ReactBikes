@@ -33,8 +33,8 @@ module Bikes
       end
       get :available_bikes do
         params2 = params.merge(
-          "start_date" => parse_date( params[:start_date]),
-          "end_date" => parse_date( params[:end_date]),
+          "start_date" => parse_date(params[:start_date]),
+          "end_date" => parse_date(params[:end_date]),
         )
 
         call_operation(::Queries::Operations::AvailableBikes, params2, default_additional_params) do |result|

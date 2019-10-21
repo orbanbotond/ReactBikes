@@ -5,7 +5,7 @@ require "rails_helper"
 describe Signup::Operations::Default do
   let(:additional_params) { {} }
   let(:result) { described_class.call(params, additional_params) }
-  let(:params) { {params: { email: "n@email.com", password: "password" }} }
+  let(:params) { { params: { email: "n@email.com", password: "password" } } }
 
   context "positive cases" do
     it "returns just the available bikes" do

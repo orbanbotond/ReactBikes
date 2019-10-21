@@ -6,8 +6,8 @@ describe Crud::Reservation::Operations::Update do
   let(:current_user) { create :user, :admin }
   # let(:additional_params) { { "current_user" => current_user, "contract.default.class" => ::Crud::Reservation::Contracts::Update } }
   let(:additional_params) { { "current_user" => current_user } }
-  let(:result) { described_class.call({params: params}.merge additional_params) }
-  let(:trace) { described_class.trace({params: params}.merge additional_params) }
+  let(:result) { described_class.call({ params: params }.merge additional_params) }
+  let(:trace) { described_class.trace({ params: params }.merge additional_params) }
 
   context "negative cases" do
     context "rating a cancelled one" do

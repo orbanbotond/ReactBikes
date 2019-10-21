@@ -41,8 +41,8 @@ gem "jbuilder", "~> 2.5"
 gem "pundit", "~> 1.1"
 gem "slim", "~> 3.0"
 gem "trailblazer",
-  git: 'https://github.com/trailblazer/trailblazer.git',
-  tag: 'v2.1.0.rc1'
+  git: "https://github.com/trailblazer/trailblazer.git",
+  tag: "v2.1.0.rc1"
 # gem "trailblazer", 'v2.1.0.rc1'
 gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"
@@ -68,12 +68,13 @@ group :development, :test do
   gem "guard", "~> 2.14"
   gem "guard-bundler", "~> 2.1", require: false
   gem "guard-rspec", "~> 4.7", require: false
-  gem "guard-rubocop", "~> 1.3", require: false
+  # gem "guard-rubocop", "~> 1.3", require: false
   gem "pry-byebug", "~> 3.5"
   gem "pundit-matchers", "~> 1.4.1"
   gem "reek", "~> 1.3"
   gem "rspec-rails", "~> 3.6"
-  gem "rubocop-rails"
+  # gem "rubocop-rails", "~> 2.3"
+  gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "simplecov", require: false

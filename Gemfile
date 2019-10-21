@@ -59,6 +59,7 @@ gem "reform-rails", "~> 0.1"
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "bullet", "~> 5.7"
+  gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", "~> 2.17"
@@ -70,6 +71,7 @@ group :development, :test do
   gem "guard-rspec", "~> 4.7", require: false
   # gem "guard-rubocop", "~> 1.3", require: false
   gem "pry-byebug", "~> 3.5"
+  gem "pry-rails"
   gem "pundit-matchers", "~> 1.4.1"
   gem "reek", "~> 1.3"
   gem "rspec-rails", "~> 3.6"

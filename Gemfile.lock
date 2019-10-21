@@ -194,6 +194,10 @@ GEM
       grape-swagger (>= 0.20.4)
     grape-swagger-ui (2.2.8)
       railties (>= 3.1)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.14)
     guard (2.14.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -474,6 +478,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.6.0)
   dotenv-rails (~> 2.2)
+  dry-types
   dry-validation (~> 0.11.1)
   factory_bot_rails (~> 4.8)
   ffaker (~> 2.8)
@@ -485,6 +490,8 @@ DEPENDENCIES
   grape-swagger-entity (~> 0.2.3)
   grape-swagger-ui (~> 2.2)
   grape_on_rails_routes!
+  graphiql-rails
+  graphql
   guard (~> 2.14)
   guard-bundler (~> 2.1)
   guard-rspec (~> 4.7)

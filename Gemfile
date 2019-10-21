@@ -28,7 +28,6 @@ gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "devise", "~> 4.6.0"
-gem "dry-validation", "~> 0.11.1"
 gem "gon", "~> 6.2"
 gem "grape", "~> 1.1.0"
 gem "grape-entity", "~> 0.7.0"
@@ -40,6 +39,8 @@ gem "jbuilder", "~> 2.5"
 # gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
 gem "slim", "~> 3.0"
+gem "dry-types"
+gem "dry-validation", "~> 0.11.1"
 gem "trailblazer",
   git: "https://github.com/trailblazer/trailblazer.git",
   tag: "v2.1.0.rc1"
@@ -55,6 +56,9 @@ gem "reform-rails", "~> 0.1"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# GraphQL server
+gem "graphql"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
@@ -90,7 +94,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+
+  # GraphQL server
+  gem "graphiql-rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'graphiql-rails', group: :development

@@ -75,7 +75,6 @@ group :development, :test do
   gem "pundit-matchers", "~> 1.4.1"
   gem "reek", "~> 1.3"
   gem "rspec-rails", "~> 3.6"
-  # gem "rubocop-rails", "~> 2.3"
   gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"

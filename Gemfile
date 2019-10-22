@@ -28,7 +28,7 @@ gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "devise", "~> 4.7.1"
-gem "dry-validation", "~> 0.11.1"
+gem "dry-validation", "~> 1.3.1"
 gem "gon", "~> 6.2"
 gem "grape", "~> 1.2.4"
 gem "grape-entity", "~> 0.7.0"

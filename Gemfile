@@ -42,7 +42,7 @@ gem "pundit", "~> 1.1"
 gem "slim", "~> 4.0"
 gem "trailblazer",
   git: "https://github.com/trailblazer/trailblazer.git",
-  tag: "v2.1.0.rc1"
+  tag: "v2.1.0"
 # gem "trailblazer", 'v2.1.0.rc1'
 gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"

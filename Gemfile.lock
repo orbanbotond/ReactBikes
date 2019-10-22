@@ -493,6 +493,7 @@ DEPENDENCIES
   coveralls
   devise (~> 4.7.1)
   dotenv-rails (~> 2.2)
+  dry-types
   dry-validation (~> 1.3.1)
   factory_bot_rails (~> 4.8)
   ffaker (~> 2.8)

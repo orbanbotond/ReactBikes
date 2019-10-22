@@ -39,7 +39,7 @@ gem "grape_on_rails_routes", git: "https://github.com/orbanbotond/grape_on_rails
 gem "jbuilder", "~> 2.5"
 # gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
-gem "slim", "~> 3.0"
+gem "slim", "~> 4.0"
 gem "trailblazer",
   git: "https://github.com/trailblazer/trailblazer.git",
   tag: "v2.1.0.rc1"

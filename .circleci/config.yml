@@ -60,7 +60,7 @@ jobs:
 
             bundle exec rspec \
               --format progress \
-              --out /tmp/test-results/rspec.xml \
+              --out /tmp/test-results/rspec/results.xml \
               $TEST_FILES
 
       # collect reports

@@ -16,7 +16,7 @@ gem "geo_coord"
 gem "puma", "~> 3.7"
 gem "chronic"
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 6.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -30,7 +30,7 @@ gem "turbolinks", "~> 5"
 gem "devise", "~> 4.7.1"
 gem "dry-validation", "~> 0.11.1"
 gem "gon", "~> 6.2"
-gem "grape", "~> 1.1.0"
+gem "grape", "~> 1.2.4"
 gem "grape-entity", "~> 0.7.0"
 gem "grape-swagger", "~> 0.27.3"
 gem "grape-swagger-entity", "~> 0.2.3"
@@ -62,7 +62,7 @@ group :development, :test do
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 2.17"
+  gem "capybara", "~> 3.29"
   gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"

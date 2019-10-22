@@ -16,7 +16,7 @@ gem "geo_coord"
 gem "puma", "~> 3.7"
 gem "chronic"
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 6.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -27,9 +27,9 @@ gem "coffee-rails", "~> 4.2"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "devise", "~> 4.6.0"
+gem "devise", "~> 4.7.1"
 gem "gon", "~> 6.2"
-gem "grape", "~> 1.1.0"
+gem "grape", "~> 1.2.4"
 gem "grape-entity", "~> 0.7.0"
 gem "grape-swagger", "~> 0.27.3"
 gem "grape-swagger-entity", "~> 0.2.3"
@@ -38,13 +38,10 @@ gem "grape_on_rails_routes", git: "https://github.com/orbanbotond/grape_on_rails
 gem "jbuilder", "~> 2.5"
 # gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
-gem "slim", "~> 3.0"
 gem "dry-types"
+gem "slim", "~> 4.0"
 gem "dry-validation", "~> 0.11.1"
-gem "trailblazer",
-  git: "https://github.com/trailblazer/trailblazer.git",
-  tag: "v2.1.0.rc1"
-# gem "trailblazer", 'v2.1.0.rc1'
+gem "trailblazer"
 gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"
 gem "reform", "~> 2.2"
@@ -63,10 +60,11 @@ gem "graphql"
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "bullet", "~> 5.7"
+  gem 'coveralls', require: false
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 2.17"
+  gem "capybara", "~> 3.29"
   gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"
@@ -77,14 +75,17 @@ group :development, :test do
   gem "pry-byebug", "~> 3.5"
   gem "pry-rails"
   gem "pundit-matchers", "~> 1.4.1"
-  gem "reek", "~> 1.3"
+  gem "reek", "~> 5.4"
   gem "rspec-rails", "~> 3.6"
-  # gem "rubocop-rails", "~> 2.3"
   gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "simplecov", require: false
   gem "webmock"
+end
+
+group :test do
+  gem "rspec_junit_formatter"
 end
 
 group :development do

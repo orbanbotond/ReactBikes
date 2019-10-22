@@ -5,6 +5,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      CIRCLE_TEST_REPORTS: /tmp/test-results
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5.7-node-browsers
@@ -54,13 +56,15 @@ jobs:
       - run:
           name: run tests
           command: |
-            mkdir /test-results
+            mkdir $CIRCLE_TEST_REPORTS
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
               circleci tests split --split-by=timings)"
 
             bundle exec rspec \
-              --format progress \
-              --out /test-results/rspec/results.xml \
+              --color
+              --format documentation \
+              --format RspecJunitFormatter
+              --out $CIRCLE_TEST_REPORTS/rspec/results.xml
               $TEST_FILES
 
       # collect reports

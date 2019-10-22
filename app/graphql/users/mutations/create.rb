@@ -12,7 +12,6 @@ class Users::Mutations::Create < GraphQL::Schema::RelayClassicMutation
   field :errors, [Objects::Error], null: false
 
   def resolve(**args)
-    binding.pry
     crud_params = {
       "model.class" => ::User,
       "contract.default.class" => ::Crud::User::Contracts::Create

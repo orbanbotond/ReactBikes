@@ -8,7 +8,7 @@ module Graphql
       pass :model!
 
       def variables!(ctx, params:, **)
-        ctx[:variables] = Graphql::Lib::Service::EnsureHash.call(params[:variables])
+        ctx[:variables] = Lib::Service::EnsureHash.call(params[:variables])
       end
 
       def query!(ctx, params:, **)
@@ -24,11 +24,10 @@ module Graphql
       end
 
       def model!(ctx, variables:, query:, context:, **)
-        ctx[:model] = ToptalReactBikesSchema.execute
-          query,
+        ctx[:model] = ToptalReactBikesSchema.execute( query,
           variables: variables,
           context: context,
-          operation_name: ctx[:operation_name]
+          operation_name: ctx[:operation_name])
       end
     end
   end

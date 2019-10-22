@@ -1,4 +1,4 @@
-class GraphqlController < ApplicationController
+class GraphqlsController < ApplicationController
   def create
     run Graphql::Operations::Execute
     render json: @model

@@ -21,6 +21,6 @@ module Bikes
     mount Bikes::Reservations
     mount Bikes::Queries
 
-    add_swagger_documentation
+    # add_swagger_documentation
   end
 end

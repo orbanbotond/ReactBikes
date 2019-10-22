@@ -42,6 +42,7 @@ gem "dry-types"
 gem "slim", "~> 4.0"
 gem "dry-validation", "~> 0.11.1"
 gem "trailblazer"
+gem 'trailblazer-rails'
 gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"
 gem "reform", "~> 2.2"

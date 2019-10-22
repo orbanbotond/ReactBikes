@@ -1,5 +1,5 @@
 module CreateUserSchema
-  Error = Dry::Validation.Schema(Strict) do
+  Error = Dry::Validation.Schema(StrictSchema) do
     input :hash?, :strict_keys?
 
     required(:data).schema do
@@ -15,9 +15,7 @@ module CreateUserSchema
     end
   end
 
-  Success = Dry::Validation.Schema(Strict) do
-    input :hash?, :strict_keys?
-
+  Success = Dry::Validation.Schema do
     required(:data).schema do
       required(:userCreate).schema do
         required(:user).schema do

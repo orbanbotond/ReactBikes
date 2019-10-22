@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+require "rails_helper"
 require 'support/schemas/users/create'
 
 RSpec.describe GraphqlsController, type: :controller do

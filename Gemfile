@@ -73,7 +73,7 @@ group :development, :test do
   gem "pry-byebug", "~> 3.5"
   gem "pry-rails"
   gem "pundit-matchers", "~> 1.4.1"
-  gem "reek", "~> 1.3"
+  gem "reek", "~> 5.4"
   gem "rspec-rails", "~> 3.6"
   gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"

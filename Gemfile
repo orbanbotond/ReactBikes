@@ -62,7 +62,7 @@ group :development, :test do
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem "capybara", "~> 2.17"
+  gem "capybara", "~> 3.29"
   gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"

@@ -40,10 +40,7 @@ gem "jbuilder", "~> 2.5"
 # gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
 gem "slim", "~> 4.0"
-gem "trailblazer",
-  git: "https://github.com/trailblazer/trailblazer.git",
-  tag: "v2.1.0.rc1"
-# gem "trailblazer", 'v2.1.0.rc1'
+gem "trailblazer"
 gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"
 gem "reform", "~> 2.2"
@@ -81,6 +78,10 @@ group :development, :test do
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "simplecov", require: false
   gem "webmock"
+end
+
+group :test do
+  gem "rspec_junit_formatter"
 end
 
 group :development do

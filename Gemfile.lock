@@ -177,7 +177,7 @@ GEM
       actionpack (>= 3.0)
       multi_json
       request_store (>= 1.0)
-    grape (1.1.0)
+    grape (1.2.4)
       activesupport
       builder
       mustermann-grape (~> 1.0.0)
@@ -479,7 +479,7 @@ DEPENDENCIES
   ffaker (~> 2.8)
   geo_coord
   gon (~> 6.2)
-  grape (~> 1.1.0)
+  grape (~> 1.2.4)
   grape-entity (~> 0.7.0)
   grape-swagger (~> 0.27.3)
   grape-swagger-entity (~> 0.2.3)

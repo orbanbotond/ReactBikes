@@ -14,7 +14,7 @@ module Crud
         #     options.merge "contract.default.class" => ::Crud::Reservation::Contracts::Update
         #   end
         # )
-        success :recalculate_average_of_bike
+        pass :recalculate_average_of_bike
 
         def set_contract(options, **)
           options["contract.default.class"] = ::Crud::Reservation::Contracts::Update

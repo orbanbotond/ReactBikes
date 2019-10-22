@@ -19,7 +19,7 @@ module Bikes
     mount Bikes::Bikes
     mount Bikes::Users
     mount Bikes::Reservations
-    mount Bikes::Queries
+    mount Bikes::RestQueries
 
     # add_swagger_documentation
   end

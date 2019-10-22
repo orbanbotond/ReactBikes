@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Bikes
-  class Queries < Grape::API
+  class RestQueries < Grape::API
     helpers ::Helpers::AuthenticationHelper
     helpers ::Helpers::OperationAdapter
     before { authenticate! }

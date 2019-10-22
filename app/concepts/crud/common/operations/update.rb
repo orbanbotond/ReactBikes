@@ -6,7 +6,7 @@ module Crud
       class Update < Trailblazer::Operation
         step Model(::ApplicationRecord, :find_by)
 
-        step Nested( ::Crud::Common::Operations::Persist)
+        step Nested(::Crud::Common::Operations::Persist)
       end
     end
   end

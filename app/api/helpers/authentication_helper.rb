@@ -43,7 +43,6 @@ module Helpers
     end
 
   private
-
     def user_from_session_token
       User.find_by(hashed_session_token: User.pwd_hash(session_token))
     end

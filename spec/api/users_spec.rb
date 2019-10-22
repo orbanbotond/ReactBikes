@@ -3,21 +3,21 @@
 require "rails_helper"
 
 describe "users API endpoints" do
-  let(:session_token) { 'token-xxx123123' }
+  let(:session_token) { "token-xxx123123" }
   let!(:user) { create :user, hashed_session_token: User.pwd_hash(session_token) }
-  let(:developer_header) { {"X-Auth-Token" => session_token} }
+  let(:developer_header) { { "X-Auth-Token" => session_token } }
 
-  context 'creates a user' do
+  context "creates a user" do
     let(:params) { { email: "any@email.com", password: "pwd123123123123" } }
     let(:path) { "/api/users" }
     subject { post path, params: params, headers: developer_header }
 
-    context 'negative cases' do
+    context "negative cases" do
       it_behaves_like "unauthenticated"
 
-      context 'invalid params' do
-        context 'email' do
-          let(:params) { super().merge email: 'Invalid Email' }
+      context "invalid params" do
+        context "email" do
+          let(:params) { super().merge email: "Invalid Email" }
 
           specify "Returns unauthorized" do
             expect_bad_request
@@ -27,7 +27,7 @@ describe "users API endpoints" do
       end
     end
 
-    context 'positive cases' do
+    context "positive cases" do
       specify "Returns created" do
         expect_created
         expect_json
@@ -37,18 +37,18 @@ describe "users API endpoints" do
     end
   end
 
-  context 'returns all the users' do
+  context "returns all the users" do
     let!(:user_1) { create :user }
     let!(:user_2) { create :user }
-    let(:params) { { } }
+    let(:params) { {} }
     let(:path) { "/api/users" }
     subject { get path, params: params, headers: developer_header }
 
-    context 'negative cases' do
+    context "negative cases" do
       it_behaves_like "unauthenticated"
     end
 
-    context 'positive cases' do
+    context "positive cases" do
       specify "Returns success" do
         expect_success
         expect_json
@@ -58,18 +58,18 @@ describe "users API endpoints" do
     end
   end
 
-  context 'reservations of a user' do
+  context "reservations of a user" do
     let!(:reservation) { create :reservation, user: user_2 }
     let(:user_2) { create :user }
-    let(:params) { { } }
+    let(:params) { {} }
     let(:path) { "/api/users/#{user_2.id}/reservations" }
     subject { get path, params: params, headers: developer_header }
 
-    context 'negative cases' do
+    context "negative cases" do
       it_behaves_like "unauthenticated"
     end
 
-    context 'positive cases' do
+    context "positive cases" do
       specify "Returns success" do
         expect_success
         expect_json
@@ -79,17 +79,17 @@ describe "users API endpoints" do
     end
   end
 
-  context 'returns a user' do
+  context "returns a user" do
     let(:user_2) { create :user }
-    let(:params) { { } }
+    let(:params) { {} }
     let(:path) { "/api/users/#{user_2.id}" }
     subject { get path, params: params, headers: developer_header }
 
-    context 'negative cases' do
+    context "negative cases" do
       it_behaves_like "unauthenticated"
     end
 
-    context 'positive cases' do
+    context "positive cases" do
       specify "Returns success" do
         expect_success
         expect_json
@@ -99,17 +99,17 @@ describe "users API endpoints" do
     end
   end
 
-  context 'deletes a user' do
+  context "deletes a user" do
     let(:user_2) { create :user }
-    let(:params) { { } }
+    let(:params) { {} }
     let(:path) { "/api/users/#{user_2.id}" }
     subject { delete path, params: params, headers: developer_header }
 
-    context 'negative cases' do
+    context "negative cases" do
       it_behaves_like "unauthenticated"
     end
 
-    context 'positive cases' do
+    context "positive cases" do
       specify "Returns success" do
         expect_success
         expect_json
@@ -119,16 +119,16 @@ describe "users API endpoints" do
     end
   end
 
-  context 'updates a user' do
+  context "updates a user" do
     let(:user_2) { create :user }
     let(:params) { { admin: true } }
     let(:path) { "/api/users/#{user_2.id}" }
     subject { put path, params: params, headers: developer_header }
 
-    context 'negative cases' do
+    context "negative cases" do
       it_behaves_like "unauthenticated"
 
-      context 'invalid params' do
+      context "invalid params" do
         # context 'admin' do
         #   let(:params) { {} }
 
@@ -140,7 +140,7 @@ describe "users API endpoints" do
       end
     end
 
-    context 'positive cases' do
+    context "positive cases" do
       specify "Returns success" do
         expect_success
         expect_json

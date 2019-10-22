@@ -8,7 +8,7 @@ module Crud
 
         step :set_user
 
-        step Nested( ::Crud::Common::Operations::Persist)
+        step Nested(::Crud::Common::Operations::Persist)
 
         def set_user(options, current_user:, model:, **)
           model.user = current_user

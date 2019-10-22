@@ -17,3 +17,7 @@ The authorization is done via pundit, and the gateway toward the HTTP API is GRA
 
 Everything is covered with Rspecs.
 
+Operation Introspection:
+Trailblazer::Operation.introspect(Memo::Create::Admin)
+Trailblazer::Operation.introspect(Crud::Reservation::Operations::Create)
+Trailblazer::Operation.introspect(Crud::Reservation::Operations::Update)

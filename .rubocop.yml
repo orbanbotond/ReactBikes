@@ -10,6 +10,6 @@
 
 #  - 'path/to/excluded/file.rb'
 
- inherit_gem:
-  rubocop-rails:
+inherit_gem:
+  rubocop-rails_config:
     - config/rails.yml

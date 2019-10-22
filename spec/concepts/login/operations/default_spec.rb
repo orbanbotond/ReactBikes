@@ -6,7 +6,7 @@ describe Login::Operations::Default do
   let(:params) { { email: "n@email.com", password: "password" } }
   let!(:user) { create :user, email: params[:email], hashed_password: User.pwd_hash(params[:password]) }
   let(:additional_params) { {} }
-  let(:result) { described_class.call({params: params}.merge additional_params) }
+  let(:result) { described_class.call({ params: params }.merge additional_params) }
 
   context "positive cases" do
     it "returns the logged in user" do

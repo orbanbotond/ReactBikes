@@ -8,7 +8,7 @@ module Crud
         step Model(::Reservation, :find_by)
         step Policy::Guard(->(options, model:, **) { model.live? }, name: :live)
 
-        step Nested( ::Crud::Common::Operations::Persist)
+        step Nested(::Crud::Common::Operations::Persist)
         # step Nested( ::Crud::Common::Operations::Persist,
         #  input: -> (options, **) do
         #     options.merge "contract.default.class" => ::Crud::Reservation::Contracts::Update

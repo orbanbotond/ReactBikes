@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples "unauthenticated" do
   context "missing token" do
     let(:developer_header) { super().except("X-Auth-Token") }

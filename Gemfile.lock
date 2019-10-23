@@ -69,9 +69,9 @@ GEM
     bcrypt (3.1.13)
     bindex (0.5.0)
     builder (3.2.3)
-    bullet (5.7.5)
+    bullet (6.0.2)
       activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11.0)
+      uniform_notifier (~> 1.11)
     byebug (10.0.2)
     capybara (3.29.0)
       addressable
@@ -444,7 +444,7 @@ GEM
     uglifier (4.1.13)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
-    uniform_notifier (1.11.0)
+    uniform_notifier (1.13.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -476,7 +476,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bullet (~> 5.7)
+  bullet (~> 6.0)
   byebug
   capybara (~> 3.29)
   chronic

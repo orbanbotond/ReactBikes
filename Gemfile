@@ -13,7 +13,7 @@ gem "pg", "~> 0.21.0"
 gem "geo_coord"
 
 # Use Puma as the app server
-gem "puma", "~> 3.7"
+gem "puma", "~> 3.12"
 gem "chronic"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 6.0"

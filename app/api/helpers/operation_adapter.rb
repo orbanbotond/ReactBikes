@@ -2,6 +2,15 @@
 
 module Helpers
   module OperationAdapter
+    def call_action(action, params, additional_params = {})
+      instantiated = action.as(:system).new( params.merge(additional_params))
+      if instantiated.valid?
+        yield instantiated.perform
+      else
+        format_action_errors(instantiated.errors)
+      end
+    end
+
     def call_operation(operation, params, additional_params)
       new_params = { params: params }.merge(additional_params)
 

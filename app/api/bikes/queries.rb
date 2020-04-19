@@ -22,7 +22,6 @@ module Bikes
       desc "Returns the available bikes." do
         detail "Returns the available bikes"
         success ::Entities::BikeEntity
-        params  ::Queries::Contracts::AvailableBikes.documentation
         failure [[401, "Unauthenticated"],
                  [404, "Not found"],
                  [400, "Bad Request"]]

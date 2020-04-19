@@ -15,19 +15,15 @@ module Bikes
                [401, "Unauthenticated"]]
     end
     post :login do
-      result = ::Login::Operations::Default.call(params: params)
-      if result.failure?
-        if result["contract.default"].errors[:password].present?
-          code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
-          details = result["contract.default"].errors.as_json["errors"]
-          http_return_code = 401
-
-          return error!(error_custom(code, message, details).as_json, http_return_code)
-        else
-          format_errors(result)
-        end
+      action = ::Login::Action.as(:system).new(params)
+      if action.valid?
+        present action.perform, with: ::Entities::Login::UserEntity
       else
-        present result[:model], with: ::Entities::Login::UserEntity
+        code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
+        details = action.errors.as_json
+        http_return_code = 401
+
+        return error!(error_custom(code, message, details).as_json, http_return_code)
       end
     end
   end

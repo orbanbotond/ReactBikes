@@ -45,6 +45,8 @@ gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker", "~> 3.5"
 gem "reform", "~> 2.2"
 gem "reform-rails", "~> 0.1"
+
+gem "granite"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

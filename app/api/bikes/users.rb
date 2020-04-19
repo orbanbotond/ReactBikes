@@ -57,12 +57,8 @@ module Bikes
                   }
         end
         get :reservations do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::User,
-          )
-          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result[:model].reservations, with: ::Entities::ReservationEntity
-          end
+          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :user)).perform
+          present model.reservations, with: ::Entities::ReservationEntity
         end
 
         desc "User." do
@@ -76,13 +72,8 @@ module Bikes
                   }
         end
         get do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::User,
-          )
-
-          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result[:model], with: ::Entities::UserEntity
-          end
+          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :user)).perform
+          present model.reservations, with: ::Entities::UserEntity
         end
 
         desc "Deletes the user." do

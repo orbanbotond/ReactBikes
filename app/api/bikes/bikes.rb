@@ -57,13 +57,8 @@ module Bikes
                   }
         end
         get :reservations do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike
-          )
-
-          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result[:model].reservations, with: ::Entities::ReservationEntity
-          end
+          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
+          present model.reservations, with: ::Entities::ReservationEntity
         end
 
         desc "Bike." do
@@ -77,13 +72,8 @@ module Bikes
                   }
         end
         get do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike
-          )
-
-          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result[:model], with: ::Entities::BikeEntity
-          end
+          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
+          present model.reservations, with: ::Entities::BikeEntity
         end
 
         desc "Deletes a bike." do

@@ -65,7 +65,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"
   gem "guard", "~> 2.14"
-  gem "guard-bundler", "~> 2.1", require: false
+  gem "guard-bundler", "~> 2.2", require: false
   gem "guard-rspec", "~> 4.7", require: false
   # gem "guard-rubocop", "~> 1.3", require: false
   gem "pry-byebug", "~> 3.5"

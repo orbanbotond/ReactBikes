@@ -13,7 +13,8 @@ module Crud
       validates :color,
                 presence: true,
                 inclusion: { in: ::Bike::COLORS }
-
+      validates :id,
+                presence: true
       validate :foreign_key_exists
 
       private

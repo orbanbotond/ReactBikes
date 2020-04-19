@@ -13,7 +13,6 @@ module Bikes
       desc "Creates a bike." do
         detail "Returns a bikes"
         success ::Entities::BikeEntity
-        params  ::Crud::Bike::Contracts::Create.documentation
         failure [[401, "Unauthenticated"],
                  [400, "Bad Request"]]
         headers 'X-Auth-Token': {
@@ -88,7 +87,6 @@ module Bikes
         desc "Updates a bike." do
           detail "Returns a bikes"
           success ::Entities::BikeEntity
-          params  ::Crud::Bike::Contracts::Update.documentation
           failure [[401, "Unauthenticated"],
                    [404, "Not found"],
                    [400, "Bad Request"]]

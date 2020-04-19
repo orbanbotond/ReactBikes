@@ -14,7 +14,6 @@ module Bikes
       desc "Creates a user." do
         detail "Returns a user"
         success ::Entities::UserEntity
-        params  ::Crud::User::Contracts::Create.documentation
         failure [[401, "Unauthenticated"],
                  [400, "Bad Request"]]
         headers 'X-Auth-Token': {
@@ -68,7 +67,7 @@ module Bikes
         end
         get do
           model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :user)).perform
-          present model.reservations, with: ::Entities::UserEntity
+          present model, with: ::Entities::UserEntity
         end
 
         desc "Deletes the user." do
@@ -89,7 +88,6 @@ module Bikes
         desc "Updates the user." do
           detail "Returns the user"
           success ::Entities::UserEntity
-          params  ::Crud::User::Contracts::Update.documentation
           failure [[401, "Unauthenticated"],
                    [404, "Not found"],
                    [400, "Bad Request"]]
@@ -99,14 +97,8 @@ module Bikes
                   }
         end
         put do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::User,
-            "contract.default.class" => ::Crud::User::Contracts::Update
-          )
-
-          call_operation(::Crud::Common::Operations::Update, params, additional_params) do |result|
-            present result[:model], with: ::Entities::UserEntity
-          end
+          model = Crud::User::Update.as(:system).new(params).perform
+          present model, with: ::Entities::UserEntity
         end
       end
     end

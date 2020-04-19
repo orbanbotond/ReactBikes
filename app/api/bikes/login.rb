@@ -9,7 +9,6 @@ module Bikes
 
     desc "Login." do
       detail "The session token is returned"
-      params  ::Login::Contracts::Default.documentation
       success ::Entities::Login::UserEntity
       failure [[400, "Bad Parameters"],
                [401, "Unauthenticated"]]

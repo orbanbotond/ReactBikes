@@ -87,13 +87,8 @@ module Bikes
                   }
         end
         delete do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike
-          )
-
-          call_operation(::Crud::Common::Operations::Delete, params, additional_params) do |result|
-            present result[:model], with: ::Entities::BikeEntity
-          end
+          model = Crud::Common::Delete.as(:system).new(params.merge(ar_class: :bike)).perform
+          present model, with: ::Entities::BikeEntity
         end
 
         desc "Updates a bike." do

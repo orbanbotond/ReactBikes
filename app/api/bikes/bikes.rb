@@ -22,14 +22,8 @@ module Bikes
                 }
       end
       post do
-        additional_params = default_additional_params.merge(
-          "model.class" => ::Bike,
-          "contract.default.class" => ::Crud::Bike::Contracts::Create
-        )
-
-        call_operation(::Crud::Common::Operations::Create, params, additional_params) do |result|
-          present result[:model], with: ::Entities::BikeEntity
-        end
+        model = Crud::Bike::Create.as(:system).new(params).perform
+        present model, with: ::Entities::BikeEntity
       end
 
       desc "Bikes." do
@@ -73,7 +67,7 @@ module Bikes
         end
         get do
           model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
-          present model.reservations, with: ::Entities::BikeEntity
+          present model, with: ::Entities::BikeEntity
         end
 
         desc "Deletes a bike." do
@@ -104,14 +98,8 @@ module Bikes
                   }
         end
         put do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike,
-            "contract.default.class" => ::Crud::Bike::Contracts::Update
-          )
-
-          call_operation(::Crud::Common::Operations::Update, params, additional_params) do |result|
-            present result[:model], with: ::Entities::BikeEntity
-          end
+          model = Crud::Bike::Update.as(:system).new(params).perform
+          present model, with: ::Entities::BikeEntity
         end
       end
     end

@@ -23,13 +23,8 @@ module Bikes
                 }
       end
       post do
-        additional_params = default_additional_params.merge(
-          "model.class" => ::User,
-          "contract.default.class" => ::Crud::User::Contracts::Create
-        )
-        call_operation(::Crud::Common::Operations::Create, params, additional_params) do |result|
-          present result[:model], with: ::Entities::UserEntity
-        end
+        model = Crud::User::Create.as(:system).new(params).perform
+        present model, with: ::Entities::UserEntity
       end
 
       desc "Users." do

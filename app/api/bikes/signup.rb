@@ -10,13 +10,12 @@ module Bikes
 
     desc "Signup." do
       detail "The user signs up"
-      params  ::Signup::Contracts::Default.documentation
       success ::Entities::UserEntity
       failure [[400, "Bad Parameters"]]
     end
     post :signup do
-      call_operation(::Signup::Operations::Default, params, {}) do |result|
-        present result[:model], with: ::Entities::UserEntity
+      call_action(::Signup::Action, params) do |result|
+        present result, with: ::Entities::UserEntity
       end
     end
   end

@@ -25,7 +25,7 @@ module Crud
       def execute_perform!(*)
         actual_performer = performer
         model = Crud::Common::Read.as(actual_performer).new(attributes).perform
-        Crud::Common::Persist.as(actual_performer).new(model: model, model_attributes: model_attributes).perform
+        Crud::Common::Persist.as(actual_performer).new(model: model, model_attributes: model_attributes.reject{|k,v|v.nil?}).perform
       end
     end
   end

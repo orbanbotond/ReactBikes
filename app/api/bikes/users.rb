@@ -22,8 +22,9 @@ module Bikes
                 }
       end
       post do
-        model = Crud::User::Create.as(:system).new(params).perform
-        present model, with: ::Entities::UserEntity
+        call_action(::Crud::User::Create, params) do |result|
+          present result, with: ::Entities::UserEntity
+        end
       end
 
       desc "Users." do

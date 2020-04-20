@@ -22,7 +22,7 @@ describe "POST /api/login" do
 
     context "wrong email" do
       context "wrong format" do
-        let(:params) { super().merge email: "not_existent" }
+        let(:params) { super().merge email: "not_existent@gmail.com" }
 
         specify "Returns unauthorized" do
           expect_bad_request
@@ -31,7 +31,7 @@ describe "POST /api/login" do
       end
 
       context "not existent format" do
-        let(:params) { super().merge email: "not_existent@gmail.com" }
+        let(:params) { super().merge password: "bad_pwd" }
 
         specify "Returns unauthorized" do
           expect_unauthorized

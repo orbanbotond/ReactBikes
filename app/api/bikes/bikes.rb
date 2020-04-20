@@ -21,8 +21,9 @@ module Bikes
                 }
       end
       post do
-        model = Crud::Bike::Create.as(:system).new(params).perform
-        present model, with: ::Entities::BikeEntity
+        call_action(::Crud::Bike::Create, params) do |result|
+          present result, with: ::Entities::BikeEntity
+        end
       end
 
       desc "Bikes." do
@@ -96,8 +97,9 @@ module Bikes
                   }
         end
         put do
-          model = Crud::Bike::Update.as(:system).new(params).perform
-          present model, with: ::Entities::BikeEntity
+          call_action(::Crud::Bike::Update, params) do |result|
+            present result, with: ::Entities::BikeEntity
+          end
         end
       end
     end

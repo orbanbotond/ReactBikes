@@ -7,7 +7,8 @@ module Login
     attribute :email, String
     attribute :password, String
 
-    validates :email, presence: true,
+    validates :email,
+              presence: true,
               format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :password, presence: true
 

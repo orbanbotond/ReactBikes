@@ -7,7 +7,8 @@ module Crud
       attribute :password, String
 
       validates :email,
-                presence: true
+                presence: true,
+                format: { with: URI::MailTo::EMAIL_REGEXP }
 
       validates :password,
                 presence: true

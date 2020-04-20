@@ -18,11 +18,19 @@ module Bikes
       if action.valid?
         present action.perform, with: ::Entities::Login::UserEntity
       else
-        code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
-        details = action.errors.as_json
-        http_return_code = 401
+        if action.errors[:email].include? 'Email is nonexistent'
+          code, message = ErrorCodes::INVALID_USER_PWD, action.errors[:email]
+          details = action.errors.as_json
+          http_return_code = 400
 
-        return error!(error_custom(code, message, details).as_json, http_return_code)
+          return error!(error_custom(code, message, details).as_json, http_return_code)
+        else
+          code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
+          details = action.errors.as_json
+          http_return_code = 401
+
+          return error!(error_custom(code, message, details).as_json, http_return_code)
+        end
       end
     end
   end

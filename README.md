@@ -13,16 +13,8 @@ This project is a study project which shows a clear background architecture with
 The background is architected using the Trailblazer architecture, where the operations encapsulate the business logic and the contracts validate the inputs.
 
 
-It uses Rails 5.2
-Trailblazer 2.1
-
+It uses Rails 5.2 and Granite from Toptal
 
 The authorization is done via pundit, and the gateway toward the HTTP API is GRAPE with Swagger.
 
-
 Everything is covered with Rspecs.
-
-Operation Introspection:
-Trailblazer::Operation.introspect(Memo::Create::Admin)
-Trailblazer::Operation.introspect(Crud::Reservation::Operations::Create)
-Trailblazer::Operation.introspect(Crud::Reservation::Operations::Update)

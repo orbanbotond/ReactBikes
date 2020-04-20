@@ -12,7 +12,8 @@ module Crud
 
       validates :color,
                 presence: true,
-                inclusion: { in: ::Bike::COLORS }
+                inclusion: { in: ::Bike::COLORS },
+                if: -> { color.present? }
       validates :id,
                 presence: true
       validate :foreign_key_exists
@@ -24,6 +25,8 @@ module Crud
       end
 
       def foreign_key_exists
+        return unless bike_model_id.present?
+
         errors.add(:bike_model_id, "Model doesn't exists") unless BikeModel.exists?(bike_model_id)
       end
     end

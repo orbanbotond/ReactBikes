@@ -7,7 +7,7 @@ module Crud
         # step Trailblazer::Operation::Policy::Pundit(XY, :create?)
 
         step Contract::Build()
-        step Contract::Validate()  
+        step Contract::Validate()
         step Contract::Persist()
       end
     end

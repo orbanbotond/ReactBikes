@@ -29,3 +29,7 @@
 yarn-debug.log*
 .yarn-integrity
 storage
+
+.generators
+.idea/*
+.rakeTasks

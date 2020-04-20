@@ -9,25 +9,28 @@ module Bikes
 
     desc "Login." do
       detail "The session token is returned"
-      params  ::Login::Contracts::Default.documentation
       success ::Entities::Login::UserEntity
       failure [[400, "Bad Parameters"],
                [401, "Unauthenticated"]]
     end
     post :login do
-      result = ::Login::Operations::Default.call(params: params)
-      if result.failure?
-        if result["contract.default"].errors[:password].present?
-          code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
-          details = result["contract.default"].errors.as_json["errors"]
-          http_return_code = 401
+      action = ::Login::Action.as(:system).new(params)
+      if action.valid?
+        present action.perform, with: ::Entities::Login::UserEntity
+      else
+        if action.errors[:email].include? "Email is nonexistent"
+          code, message = ErrorCodes::INVALID_USER_PWD, action.errors[:email]
+          details = action.errors.as_json
+          http_return_code = 400
 
           return error!(error_custom(code, message, details).as_json, http_return_code)
         else
-          format_errors(result)
+          code, message = ErrorCodes::INVALID_USER_PWD, "Email / Password do not match"
+          details = action.errors.as_json
+          http_return_code = 401
+
+          return error!(error_custom(code, message, details).as_json, http_return_code)
         end
-      else
-        present result[:model], with: ::Entities::Login::UserEntity
       end
     end
   end

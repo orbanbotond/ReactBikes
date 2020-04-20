@@ -13,7 +13,6 @@ module Bikes
       desc "Creates a bike." do
         detail "Returns a bikes"
         success ::Entities::BikeEntity
-        params  ::Crud::Bike::Contracts::Create.documentation
         failure [[401, "Unauthenticated"],
                  [400, "Bad Request"]]
         headers 'X-Auth-Token': {
@@ -22,13 +21,8 @@ module Bikes
                 }
       end
       post do
-        additional_params = default_additional_params.merge(
-          "model.class" => ::Bike,
-          "contract.default.class" => ::Crud::Bike::Contracts::Create
-        )
-
-        call_operation(::Crud::Common::Operations::Create, params, additional_params) do |result|
-          present result[:model], with: ::Entities::BikeEntity
+        call_action(::Crud::Bike::Create, params) do |result|
+          present result, with: ::Entities::BikeEntity
         end
       end
 
@@ -57,13 +51,8 @@ module Bikes
                   }
         end
         get :reservations do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike
-          )
-
-          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result[:model].reservations, with: ::Entities::ReservationEntity
-          end
+          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
+          present model.reservations, with: ::Entities::ReservationEntity
         end
 
         desc "Bike." do
@@ -77,13 +66,8 @@ module Bikes
                   }
         end
         get do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike
-          )
-
-          call_operation(::Crud::Common::Operations::Read, params, additional_params) do |result|
-            present result[:model], with: ::Entities::BikeEntity
-          end
+          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
+          present model, with: ::Entities::BikeEntity
         end
 
         desc "Deletes a bike." do
@@ -97,19 +81,13 @@ module Bikes
                   }
         end
         delete do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike
-          )
-
-          call_operation(::Crud::Common::Operations::Delete, params, additional_params) do |result|
-            present result[:model], with: ::Entities::BikeEntity
-          end
+          model = Crud::Common::Delete.as(:system).new(params.merge(ar_class: :bike)).perform
+          present model, with: ::Entities::BikeEntity
         end
 
         desc "Updates a bike." do
           detail "Returns a bikes"
           success ::Entities::BikeEntity
-          params  ::Crud::Bike::Contracts::Update.documentation
           failure [[401, "Unauthenticated"],
                    [404, "Not found"],
                    [400, "Bad Request"]]
@@ -119,13 +97,8 @@ module Bikes
                   }
         end
         put do
-          additional_params = default_additional_params.merge(
-            "model.class" => ::Bike,
-            "contract.default.class" => ::Crud::Bike::Contracts::Update
-          )
-
-          call_operation(::Crud::Common::Operations::Update, params, additional_params) do |result|
-            present result[:model], with: ::Entities::BikeEntity
+          call_action(::Crud::Bike::Update, params) do |result|
+            present result, with: ::Entities::BikeEntity
           end
         end
       end

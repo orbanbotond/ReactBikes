@@ -20,7 +20,7 @@ describe "bikes API endpoints" do
         context "color" do
           let(:params) { super().merge color: "Invalid Color" }
 
-          specify "Returns unauthorized" do
+          specify "Returns Bad Request" do
             expect_bad_request
             expect_json
           end

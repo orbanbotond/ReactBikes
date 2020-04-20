@@ -13,7 +13,6 @@ module Bikes
       desc "Creates a reservation." do
         detail "Returns a reservation"
         success ::Entities::ReservationEntity
-        params  ::Crud::Reservation::Contracts::Create.documentation
         failure [[401, "Unauthenticated"],
                  [400, "Bad Request"]]
         headers 'X-Auth-Token': {
@@ -22,16 +21,12 @@ module Bikes
                 }
       end
       post do
-        additional_params = default_additional_params.merge(
-          "contract.default.class" => ::Crud::Reservation::Contracts::Create
-        )
         params2 = params.merge(
           "start_at" => ::Chronic.parse(params[:start_date]).to_datetime,
           "end_at" => ::Chronic.parse(params[:end_date]).to_datetime,
         )
-
-        call_operation(::Crud::Reservation::Operations::Create, params2, additional_params) do |result|
-          present result[:model], with: ::Entities::ReservationEntity
+        call_action(::Crud::Reservation::Create, params2, default_additional_params) do |result|
+          present result, with: ::Entities::ReservationEntity
         end
       end
 
@@ -39,7 +34,6 @@ module Bikes
         desc "Updates the reservation." do
           detail "Returns the reservation"
           success ::Entities::ReservationEntity
-          params  ::Crud::Reservation::Contracts::Update.documentation
           failure [[401, "Unauthenticated"],
                    [404, "Not found"],
                    [400, "Bad Request"]]
@@ -49,8 +43,8 @@ module Bikes
                   }
         end
         put do
-          call_operation(::Crud::Reservation::Operations::Update, params, default_additional_params) do |result|
-            present result[:model], with: ::Entities::ReservationEntity
+          call_action(::Crud::Reservation::Update, params) do |result|
+            present result, with: ::Entities::ReservationEntity
           end
         end
       end

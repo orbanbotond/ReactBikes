@@ -2,6 +2,14 @@
 
 module Helpers
   module ReturnFormatters
+    def format_action_errors(errors)
+      code, message = ErrorCodes::INVALID_INPUT, "Bad Parameters"
+      details = errors
+      http_return_code = 400
+
+      return_error(code, details, http_return_code, message)
+    end
+
     def format_errors(result)
       if (key = result["result.policy.live"]) && key.failure?
         code, message = ErrorCodes::ACCESS_DENIED, "Entity should be live."
@@ -18,11 +26,7 @@ module Helpers
         http_return_code = 400
       end
 
-      if details
-        error!(error_custom(code, message, details).as_json, http_return_code)
-      else
-        error!(error_from_system(code, message).as_json, http_return_code)
-      end
+      return_error(code, details, http_return_code, message)
     end
 
     def error_custom(code, message, details)
@@ -44,6 +48,14 @@ module Helpers
         error_code: code,
         error_message: msg
       }
+    end
+
+    def return_error(code, details, http_return_code, message)
+      if details
+        error!(error_custom(code, message, details).as_json, http_return_code)
+      else
+        error!(error_from_system(code, message).as_json, http_return_code)
+      end
     end
   end
 end

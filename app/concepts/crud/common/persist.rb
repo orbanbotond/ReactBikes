@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #-sets the input to the model
 #-saves the entity
 module Crud
@@ -15,11 +17,11 @@ module Crud
                 presence: true
 
       private
-      def execute_perform!(*)
-        model.attributes= model_attributes
-        model.save!
-        model
-      end
+        def execute_perform!(*)
+          model.attributes= model_attributes
+          model.save!
+          model
+        end
     end
   end
 end

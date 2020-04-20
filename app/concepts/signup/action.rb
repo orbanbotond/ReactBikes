@@ -15,15 +15,15 @@ module Signup
     validate :email_is_unique, if: -> { errors.empty? }
 
     private
-    def execute_perform!(*)
-      user = User.new(attributes)
-      user.hashed_password = User.pwd_hash(password)
-      user.save
-      user
-    end
+      def execute_perform!(*)
+        user = User.new(attributes)
+        user.hashed_password = User.pwd_hash(password)
+        user.save
+        user
+      end
 
-    def email_is_unique
-      errors.add(:email, "Email is already taked") unless User.find_by(email: email).blank?
-    end
+      def email_is_unique
+        errors.add(:email, "Email is already taked") unless User.find_by(email: email).blank?
+      end
   end
 end

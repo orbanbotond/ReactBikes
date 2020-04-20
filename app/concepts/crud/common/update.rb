@@ -1,4 +1,6 @@
-#abstract class
+# frozen_string_literal: true
+
+# abstract class
 #-delegates to read sets
 #-the model to the find entity
 #-the calls the persist
@@ -22,11 +24,11 @@ module Crud
                 inclusion: { in: %i(user bike bike_model reservation) }
 
       private
-      def execute_perform!(*)
-        actual_performer = performer
-        model = Crud::Common::Read.as(actual_performer).new(attributes).perform
-        Crud::Common::Persist.as(actual_performer).new(model: model, model_attributes: model_attributes.reject{|k,v|v.nil?}).perform
-      end
+        def execute_perform!(*)
+          actual_performer = performer
+          model = Crud::Common::Read.as(actual_performer).new(attributes).perform
+          Crud::Common::Persist.as(actual_performer).new(model: model, model_attributes: model_attributes.reject { |k, v|v.nil? }).perform
+        end
     end
   end
 end

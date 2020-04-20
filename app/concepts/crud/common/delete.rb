@@ -14,12 +14,12 @@ module Crud
                 inclusion: { in: %i(user bike bike_model reservation) }
 
       private
-      def execute_perform!(*)
-        actual_performer = performer
-        entity = Crud::Common::Read.as(actual_performer).new(attributes).perform
-        entity.destroy
-        entity
-      end
+        def execute_perform!(*)
+          actual_performer = performer
+          entity = Crud::Common::Read.as(actual_performer).new(attributes).perform
+          entity.destroy
+          entity
+        end
     end
   end
 end

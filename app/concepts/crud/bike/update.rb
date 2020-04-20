@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Crud
   module Bike
     class Update < Granite::Action
@@ -19,16 +21,16 @@ module Crud
       validate :foreign_key_exists
 
       private
-      def execute_perform!(*)
-        actual_performer = performer
-        Crud::Common::Update.as(actual_performer).new(id: id, ar_class: :bike, model_attributes: attributes).perform
-      end
+        def execute_perform!(*)
+          actual_performer = performer
+          Crud::Common::Update.as(actual_performer).new(id: id, ar_class: :bike, model_attributes: attributes).perform
+        end
 
-      def foreign_key_exists
-        return unless bike_model_id.present?
+        def foreign_key_exists
+          return unless bike_model_id.present?
 
-        errors.add(:bike_model_id, "Model doesn't exists") unless BikeModel.exists?(bike_model_id)
-      end
+          errors.add(:bike_model_id, "Model doesn't exists") unless BikeModel.exists?(bike_model_id)
+        end
     end
   end
 end

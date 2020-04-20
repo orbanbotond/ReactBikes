@@ -18,7 +18,7 @@ module Bikes
       if action.valid?
         present action.perform, with: ::Entities::Login::UserEntity
       else
-        if action.errors[:email].include? 'Email is nonexistent'
+        if action.errors[:email].include? "Email is nonexistent"
           code, message = ErrorCodes::INVALID_USER_PWD, action.errors[:email]
           details = action.errors.as_json
           http_return_code = 400

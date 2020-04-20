@@ -7,7 +7,7 @@ describe Crud::Common::Read, type: :model do
     subject(:action) { described_class.as(:system).new(params) }
     let(:params) { { id: entity.id, ar_class: ar_class } }
 
-    context 'user class' do
+    context "user class" do
       let(:ar_class) { :user }
       let!(:entity) { create :user, email: "test@email.com", hashed_password: User.pwd_hash("password") }
 
@@ -17,7 +17,7 @@ describe Crud::Common::Read, type: :model do
       end
     end
 
-    context 'bike class' do
+    context "bike class" do
       let(:ar_class) { :bike }
       let!(:entity) { create :bike }
 

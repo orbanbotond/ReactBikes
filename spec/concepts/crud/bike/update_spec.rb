@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe Crud::Bike::Update, type: :model do
-  let(:params) { { id: bike.id, color: ::Bike::COLORS.last, longitude:0, bike_model_id: bike_model.id } }
+  let(:params) { { id: bike.id, color: ::Bike::COLORS.last, longitude: 0, bike_model_id: bike_model.id } }
   subject(:action) { described_class.as(:system).new(params) }
   let!(:bike_model) { create :bike_model }
   let!(:bike) { create :bike }

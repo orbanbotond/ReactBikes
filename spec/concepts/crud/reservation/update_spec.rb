@@ -40,7 +40,7 @@ describe Crud::Reservation::Update, type: :model do
     end
   end
 
-  context 'functionality' do
+  context "functionality" do
     context "reservation" do
       subject(:action) { described_class.as(:system).new(params).perform }
 

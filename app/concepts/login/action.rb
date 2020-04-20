@@ -19,7 +19,7 @@ module Login
         @user.hashed_session_token = User.pwd_hash(@user.session_token)
         @user.save
 
-        return @user
+        @user
       end
 
       def validate_credentials

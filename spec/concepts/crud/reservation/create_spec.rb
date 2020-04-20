@@ -41,7 +41,7 @@ describe Crud::Reservation::Create, type: :model do
     end
   end
 
-  context 'functionality' do
+  context "functionality" do
     subject(:action) { described_class.as(:system).new(params).perform }
     let!(:bike) { create :bike }
     let(:current_user) { create :user, :admin }

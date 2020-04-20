@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Crud
   module Common
     class Create < Granite::Action
@@ -13,12 +15,12 @@ module Crud
                 inclusion: { in: %i(user bike bike_model reservation) }
 
       private
-      def execute_perform!(*)
-        classs = ar_class.to_s.classify.constantize
-        model = classs.new
-        actual_performer = performer
-        Crud::Common::Persist.as(actual_performer).new(model: model, model_attributes: model_attributes).perform
-      end
+        def execute_perform!(*)
+          classs = ar_class.to_s.classify.constantize
+          model = classs.new
+          actual_performer = performer
+          Crud::Common::Persist.as(actual_performer).new(model: model, model_attributes: model_attributes).perform
+        end
     end
   end
 end

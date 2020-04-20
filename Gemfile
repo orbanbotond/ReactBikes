@@ -58,7 +58,7 @@ gem "granite"
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "bullet", "~> 5.7"
-  gem 'coveralls', require: false
+  gem "coveralls", require: false
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver

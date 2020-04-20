@@ -44,8 +44,8 @@ describe Queries::AvailableBikes, type: :model do
     end
   end
 
-  context 'functionality' do
-    subject(:action){
+  context "functionality" do
+    subject(:action) {
       described_class.as(:system).new(params).perform
     }
 

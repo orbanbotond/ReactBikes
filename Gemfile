@@ -65,7 +65,7 @@ group :development, :test do
   gem "capybara", "~> 3.29"
   gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
-  gem "ffaker", "~> 2.8"
+  gem "ffaker", "~> 2.15"
   gem "guard", "~> 2.14"
   gem "guard-bundler", "~> 2.2", require: false
   gem "guard-rspec", "~> 4.7", require: false

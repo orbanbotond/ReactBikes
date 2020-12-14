@@ -73,9 +73,9 @@ GEM
     bcrypt (3.1.13)
     bindex (0.5.0)
     builder (3.2.3)
-    bullet (5.7.5)
+    bullet (6.1.2)
       activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11.0)
+      uniform_notifier (~> 1.11)
     byebug (10.0.2)
     capybara (3.29.0)
       addressable
@@ -100,7 +100,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.7)
     coveralls (0.8.23)
       json (>= 1.8, < 3)
       simplecov (~> 0.16.1)
@@ -220,7 +220,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashdiff (0.3.7)
-    i18n (1.7.0)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
@@ -247,7 +247,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.2)
+    minitest (5.14.2)
     multi_json (1.14.1)
     mustermann (1.0.3)
     mustermann-grape (1.0.0)
@@ -448,13 +448,13 @@ GEM
     turbolinks (5.1.1)
       turbolinks-source (~> 5.1)
     turbolinks-source (5.1.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.8)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (4.1.13)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
-    uniform_notifier (1.11.0)
+    uniform_notifier (1.13.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -486,7 +486,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bullet (~> 5.7)
+  bullet (~> 6.1)
   byebug
   capybara (~> 3.29)
   chronic

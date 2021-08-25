@@ -11,6 +11,7 @@ end
 gem "rails", "~> 5"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
+gem "graphql"
 
 # Use Puma as the app server
 gem "puma", "~> 3.7"
@@ -95,3 +96,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'graphiql-rails', group: :development

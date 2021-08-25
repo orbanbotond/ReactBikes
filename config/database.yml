@@ -1,20 +1,22 @@
 default: &default
   host: <%= ENV.fetch("PGHOST", "localhost") %>
   adapter: postgresql
-  username: <%= ENV.fetch("PGUSER", "postgres") %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "postgres") %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
+  port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
   timeout: 5000
 
 development:
   <<: *default
-  database: development-toptal-react-bikes
+  database: development-<%= ENV.fetch("POSTGRES_DB", "postgres") %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: "test-toptal-react-bikes"
+  database: test-<%= ENV.fetch("POSTGRES_DB", "postgres") %>
 
 production:
   <<: *default

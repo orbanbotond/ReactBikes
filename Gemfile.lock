@@ -199,6 +199,10 @@ GEM
       grape-swagger (>= 0.20.4)
     grape-swagger-ui (2.2.8)
       railties (>= 3.1)
+    graphiql-rails (1.8.0)
+      railties
+      sprockets-rails
+    graphql (1.12.15)
     guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -511,6 +515,8 @@ DEPENDENCIES
   grape-swagger-entity (~> 0.2.5)
   grape-swagger-ui (~> 2.2)
   grape_on_rails_routes!
+  graphiql-rails
+  graphql
   guard (~> 2.14)
   guard-bundler (~> 2.2)
   guard-rspec (~> 4.7)

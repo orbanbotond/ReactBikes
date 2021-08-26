@@ -1,5 +1,5 @@
 module Types
-  class BikeReservationType < Types::BaseObject
+  class BikeReservationType < Types::Base::Object
     description "A bike reservation"
 
     field :start_date, GraphQL::Types::ISO8601DateTime, null: false,

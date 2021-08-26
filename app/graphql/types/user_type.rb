@@ -1,5 +1,5 @@
 module Types
-  class UserType < Types::BaseObject
+  class UserType < Types::Base::Object
     description "A user reservation"
 
     field :email, String, null: false,

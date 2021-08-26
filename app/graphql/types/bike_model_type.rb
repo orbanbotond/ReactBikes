@@ -1,5 +1,5 @@
 module Types
-  class BikeModelType < Types::BaseObject
+  class BikeModelType < Types::Base::Object
     description "A bike model"
 
     field :id, ID, null: false

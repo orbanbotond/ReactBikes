@@ -2,7 +2,11 @@ name: QA & Release Checkpoints
 
 on:
   push:
+    branches:
+       - '*'
   pull:
+    branches:
+       - '*'
 
 jobs:
   setup:

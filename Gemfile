@@ -58,7 +58,6 @@ gem "granite"
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "bullet", "~> 5.7"
-  gem "coveralls", require: false
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -78,7 +77,6 @@ group :development, :test do
   gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
-  gem "simplecov", require: false
   gem "webmock"
 end
 

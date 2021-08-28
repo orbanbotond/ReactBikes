@@ -38,6 +38,8 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - name: install .node packages
+          ruby-version: 2.6
+      - name: Install node dependencies
         run: yarn install
       - name: Prepare Test Database
         run: bundle exec rails db:test:prepare

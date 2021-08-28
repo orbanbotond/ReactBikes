@@ -2,6 +2,7 @@ name: QA & Release Checkpoints
 
 on:
   push:
+  pull:
 
 jobs:
   setup:

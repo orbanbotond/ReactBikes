@@ -19,7 +19,9 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       - name: Install node dependencies
-        run: yarn install
+        uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
 
   test:
     needs: [setup]

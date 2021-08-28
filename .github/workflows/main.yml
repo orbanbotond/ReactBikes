@@ -7,10 +7,12 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+      - name: Check out the source code
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+          with:
+            bundler-cache: true
       - name: Read .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm
@@ -18,10 +20,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-      - name: Install node dependencies
-        uses: borales/actions-yarn@v2.3.0
-        with:
-          cmd: install
 
   test:
     needs: [setup]

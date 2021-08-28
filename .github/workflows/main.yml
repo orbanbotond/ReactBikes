@@ -2,9 +2,6 @@ name: QA & Release Checkpoints
 
 on:
   push:
-    # branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
 
 jobs:
   test:

@@ -7,7 +7,7 @@ on:
 #     branches: [ main ]
 
 jobs:
-  test:
+  unit-test:
     runs-on: ubuntu-latest
 
     # Service containers to run with `container-job`
@@ -48,3 +48,8 @@ jobs:
           RDS_PASSWORD: postgres
       - name: Run tests
         run: bundle exec rake
+      # https://github.com/actions/upload-artifact
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: unit-tests-results
+      #     path: path/to/artifact/world.txt

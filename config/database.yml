@@ -1,22 +1,22 @@
 default: &default
-  host: <%= ENV.fetch("PGHOST", "localhost") %>
+  host: <%= ENV.fetch("RDS_HOSTNAME", "localhost") %>
   adapter: postgresql
-  username: <%= ENV.fetch("POSTGRES_USER", "postgres") %>
-  password: <%= ENV.fetch("POSTGRES_PASSWORD", "postgres") %>
+  username: <%= ENV.fetch("RDS_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("RDS_PASSWORD", "postgres") %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
-  port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
+  port: <%= ENV.fetch("RDS_PORT", 5432) %>
   timeout: 5000
 
 development:
   <<: *default
-  database: development-<%= ENV.fetch("POSTGRES_DB", "postgres") %>
+  database: development-<%= ENV.fetch("RDS_DB_NAME", "postgres") %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: test-<%= ENV.fetch("POSTGRES_DB", "postgres") %>
+  database: test-<%= ENV.fetch("RDS_DB_NAME", "postgres") %>
 
 production:
   <<: *default

@@ -27,6 +27,7 @@ jobs:
         run: yarn install
 
   test:
+    runs-on: ubuntu-latest
     needs: [setup]
     # Service containers to run with `container-job`
     services:

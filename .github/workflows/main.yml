@@ -23,6 +23,8 @@ jobs:
         id: nvm
       - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
         uses: actions/setup-node@v2
+      - name: Install .node packages
+         run: yarn install
 
   test:
     needs: [setup]

@@ -34,3 +34,5 @@ storage
 .idea/*
 .rakeTasks
 .env
+schema.graphql
+schema.json

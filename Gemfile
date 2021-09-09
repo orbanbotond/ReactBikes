@@ -79,6 +79,9 @@ group :development, :test do
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "webmock"
+  gem "pact"
+  gem "httparty"
+  gem "rspec-json_expectations"
 end
 
 group :test do

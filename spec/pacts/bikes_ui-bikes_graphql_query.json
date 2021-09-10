@@ -40,6 +40,52 @@
           }
         }
       }
+    },
+    {
+      "description": "a request for bikes with reservations",
+      "providerState": "a bike with reservation exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "{\n  bikes{\n    id,\n    reservations {\n      cancelled,\n      user {\n        email\n      }\n    }\n  }\n}\n",
+          "variables": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "bikes": [
+              {
+                "id": "1",
+                "reservations": [
+                  {
+                    "cancelled": false,
+                    "user": {
+                      "email": "boti@toptal.com"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "matchingRules": {
+          "$.body.data.bikes[0].id": {
+            "match": "type"
+          },
+          "$.body.data.bikes[0].reservations[0].user.email": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {

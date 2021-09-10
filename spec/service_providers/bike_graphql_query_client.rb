@@ -13,13 +13,20 @@ class BikeGraphqlQueryClient
       }
     GQL
 
-    payload = {
-      query: gql,
-      variables: nil
-    }
-
-    self.class.post("/graphql", 
+    httpartyy.post("/graphql", 
       headers: { 'Content-Type' => 'application/json' },
-      body: payload.to_json)
+      body: payload(gql).to_json)
+  end
+
+private
+  def httpartyy
+    self.class
+  end
+
+  def payload(gql, variables=nil)
+    {
+      query: gql,
+      variables: variables
+    }
   end
 end

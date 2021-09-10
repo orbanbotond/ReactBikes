@@ -3,7 +3,6 @@ require_relative './bike_graphql_query_client'
 require "rspec/json_expectations"
 
 describe BikeGraphqlQueryClient, :pact => true do
-
   before do
     # Configure your client to point to the stub service on localhost using the port you have specified
     BikeGraphqlQueryClient.base_uri 'localhost:1234'
@@ -11,21 +10,25 @@ describe BikeGraphqlQueryClient, :pact => true do
 
   subject { BikeGraphqlQueryClient.new }
 
+  let(:payload){
+    {
+      "query" => gql,
+      "variables" => nil
+    }
+  }
+
   describe "get_bikes" do
-    before do
-      gql = <<~GQL
+    let(:gql) do
+      <<~GQL
         {
           bikes{
             id
           }
         }
       GQL
+    end
 
-      payload = {
-        "query" => gql,
-        "variables" => nil
-      }
-
+    let!(:initialization) do
       bikes_graphql_query.given("a bike exists").
         upon_receiving("a request for bikes").
         with(method: :post, 

@@ -10,12 +10,26 @@ describe BikeGraphqlQueryClient, :pact => true do
 
   subject { BikeGraphqlQueryClient.new }
 
-  let(:payload){
+  let!(:initialization) do
+    bikes_graphql_query.given(provider_state).
+      upon_receiving(message_description).
+      with(method: :post, 
+           path: '/graphql', 
+           body: payload,
+           headers: { 'Content-Type' => 'application/json' }).
+      will_respond_with(
+        status: 200,
+        headers: {'Content-Type' => 'application/json; charset=utf-8'},
+        body: mocked_body_content
+      )
+  end
+
+  let(:payload) do
     {
       "query" => gql,
       "variables" => nil
-    }
-  }
+    }    
+  end
 
   describe "get_bikes" do
     context "when querying just the bikes" do
@@ -28,23 +42,14 @@ describe BikeGraphqlQueryClient, :pact => true do
           }
         GQL
       end
-
-      let!(:initialization) do
-        bikes_graphql_query.given("a bike exists").
-          upon_receiving("a request for bikes").
-          with(method: :post, 
-               path: '/graphql', 
-               body: payload,
-               headers: { 'Content-Type' => 'application/json' }).
-          will_respond_with(
-            status: 200,
-            headers: {'Content-Type' => 'application/json; charset=utf-8'},
-            body: {
-                    "data": {
-                      bikes: [ {id: Pact.like("1")} ]
-                    }
-                  }
-          )
+      let(:provider_state){"a bike exists"}
+      let(:message_description){"a request for bikes"}
+      let(:mocked_body_content) do
+        {
+          "data": {
+            bikes: [ {id: Pact.like("1")} ]
+          }
+        }
       end
 
       it "returns bikes" do
@@ -72,31 +77,22 @@ describe BikeGraphqlQueryClient, :pact => true do
           }
         GQL
       end
-
-      let!(:initialization) do
-        bikes_graphql_query.given("a bike with reservation exists").
-          upon_receiving("a request for bikes with reservations").
-          with(method: :post, 
-               path: '/graphql', 
-               body: payload,
-               headers: { 'Content-Type' => 'application/json' }).
-          will_respond_with(
-            status: 200,
-            headers: {'Content-Type' => 'application/json; charset=utf-8'},
-            body: {
-                    "data": {
-                      bikes: [{
-                        id: Pact.like("1"),
-                        reservations: [{
-                          cancelled: false,
-                          user: {
-                            "email": Pact.like("boti@toptal.com")
-                          }
-                        }]
-                      }]
-                    }
-                  }
-          )
+      let(:provider_state){"a bike with reservation exists"}
+      let(:message_description){"a request for bikes with reservations"}
+      let(:mocked_body_content) do
+        {
+          "data": {
+            bikes: [{
+              id: Pact.like("1"),
+              reservations: [{
+                cancelled: false,
+                user: {
+                  "email": Pact.like("boti@toptal.com")
+                }
+              }]
+            }]
+          }
+        }
       end
 
       it "returns bikes" do
@@ -127,28 +123,19 @@ describe BikeGraphqlQueryClient, :pact => true do
           }
         GQL
       end
-
-      let!(:initialization) do
-        bikes_graphql_query.given("a bike exists").
-          upon_receiving("a request for bikes with models").
-          with(method: :post, 
-               path: '/graphql', 
-               body: payload,
-               headers: { 'Content-Type' => 'application/json' }).
-          will_respond_with(
-            status: 200,
-            headers: {'Content-Type' => 'application/json; charset=utf-8'},
-            body: {
-                    "data": {
-                      bikes: [{
-                          id: Pact.like("1"),
-                          model: {
-                            text: Pact.like("Mountain"),
-                          }
-                      }]
-                    }
-                  }
-          )
+      let(:provider_state){"a bike exists"}
+      let(:message_description){"a request for bikes with models"}
+      let(:mocked_body_content) do
+        {
+          "data": {
+            bikes: [{
+                id: Pact.like("1"),
+                model: {
+                  text: Pact.like("Mountain"),
+                }
+            }]
+          }
+        }
       end
 
       it "returns bikes" do

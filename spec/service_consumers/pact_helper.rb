@@ -1,8 +1,9 @@
+ENV["RAILS_ENV"] = "test"
+
 require 'pact/provider/rspec'
 require File.expand_path("./provider_states_for_bike_graphql_query_consumer", __dir__)
 
 Pact.service_provider "Bike Service" do
-
   honours_pact_with 'Bikes GraphQL Query' do
 
     # This example points to a local file, however, on a real project with a continuous

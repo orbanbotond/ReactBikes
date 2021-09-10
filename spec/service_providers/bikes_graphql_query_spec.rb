@@ -85,17 +85,15 @@ describe BikeGraphqlQueryClient, :pact => true do
             headers: {'Content-Type' => 'application/json; charset=utf-8'},
             body: {
                     "data": {
-                      bikes: [ 
-                        {
-                          id: Pact.like("1"),
-                          reservations: [
-                            {
-                              cancelled: false,
-                              user: {
-                                "email": Pact.like("boti@toptal.com")
-                              }
-                            }]
+                      bikes: [{
+                        id: Pact.like("1"),
+                        reservations: [{
+                          cancelled: false,
+                          user: {
+                            "email": Pact.like("boti@toptal.com")
+                          }
                         }]
+                      }]
                     }
                   }
           )
@@ -104,14 +102,63 @@ describe BikeGraphqlQueryClient, :pact => true do
       it "returns bikes" do
         expect(JSON.parse(subject.get_bikes_with_reservations.body, {:symbolize_names => true})[:data]).to include_json(
           bikes: UnorderedArray({ 
-              id: /\d/,
-              reservations: UnorderedArray({
-                cancelled: false,
-                user: {
-                  email: /\.*/
-                }
-              })
+            id: /\d/,
+            reservations: UnorderedArray({
+              cancelled: false,
+              user: {
+                email: /\.*/
+              }
             })
+          })
+        )
+      end
+    end
+
+    context "when querying the bikes with their models" do
+      let(:gql) do
+        <<~GQL
+          {
+            bikes{
+              id,
+              model{
+                text
+              }
+            }
+          }
+        GQL
+      end
+
+      let!(:initialization) do
+        bikes_graphql_query.given("a bike exists").
+          upon_receiving("a request for bikes with models").
+          with(method: :post, 
+               path: '/graphql', 
+               body: payload,
+               headers: { 'Content-Type' => 'application/json' }).
+          will_respond_with(
+            status: 200,
+            headers: {'Content-Type' => 'application/json; charset=utf-8'},
+            body: {
+                    "data": {
+                      bikes: [{
+                          id: Pact.like("1"),
+                          model: {
+                            text: Pact.like("Mountain"),
+                          }
+                      }]
+                    }
+                  }
+          )
+      end
+
+      it "returns bikes" do
+        expect(JSON.parse(subject.get_bikes_with_models.body, {:symbolize_names => true})[:data]).to include_json(
+          bikes: UnorderedArray({
+            id: /\d/,
+            model: {
+              text: /\.*/
+            }
+          })
         )
       end
     end

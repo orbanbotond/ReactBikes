@@ -22,6 +22,21 @@ class BikeGraphqlQueryClient
     call_graphql(gql)
   end
 
+  def get_bikes_with_models
+    gql = <<~GQL
+      {
+        bikes{
+          id,
+          model{
+            text
+          }
+        }
+      }
+    GQL
+
+    call_graphql(gql)
+  end
+
   def get_bikes
     gql = <<~GQL
       {

@@ -17,6 +17,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "rspec/json_expectations"
+require 'support/stub_class'
 
 RSpec.configure do |config|
   config.include RSpec::JsonExpectations::Matchers

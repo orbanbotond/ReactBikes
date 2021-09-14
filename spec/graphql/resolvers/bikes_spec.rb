@@ -34,7 +34,7 @@ RSpec.describe Resolvers::Bikes, type: :query do
       let(:bike_1) { create(:bike, average_rating: 5) }
       let(:bike_2) { create(:bike, average_rating: 4)}
 
-      it { is_expected.to include(bike_1, bike_2) }
+      it { is_expected.to include(bike_1).and include(bike_2) }
     end
   end
 end

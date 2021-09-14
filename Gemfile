@@ -11,6 +11,7 @@ end
 gem "rails", "~> 5"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
+gem "graphql"
 
 # Use Puma as the app server
 gem "puma", "~> 3.7"
@@ -78,6 +79,9 @@ group :development, :test do
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "webmock"
+  gem "pact"
+  gem "httparty"
+  gem "rspec-json_expectations"
 end
 
 group :test do
@@ -95,3 +99,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'graphiql-rails', group: :development

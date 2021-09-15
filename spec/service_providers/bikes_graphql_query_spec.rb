@@ -149,5 +149,30 @@ describe BikeGraphqlQueryClient, :pact => true do
         )
       end
     end
+
+    context "pagination" do
+# {
+#   bikes(first:10, before: "MTA") {
+#   # bikes(first:10, after: "MTA") {
+#   # bikes(first:10) {
+#     edges{
+#       node {
+#         id,
+#         reservations{
+#           cancelled,
+#           endDate,
+#           startDate
+#         }
+#       },
+#       cursor,
+#       __typename
+#     },
+#     pageInfo {
+#       endCursor,
+#       hasNextPage
+#     }
+#   }
+# }
+    end
   end
 end

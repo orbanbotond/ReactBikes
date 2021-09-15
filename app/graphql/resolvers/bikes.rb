@@ -1,9 +1,12 @@
 module Resolvers
   module Bikes
     def bikes(id: nil)
-      return Bike.where(id: id) if id.present?
-
-      Bike.all
+      relation = if id.present?
+        Bike.where(id: id)
+      else
+        Bike.all
+      end
+      relation
     end
   end
 end

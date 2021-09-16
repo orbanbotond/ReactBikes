@@ -32,45 +32,23 @@ describe BikeGraphqlQueryClient, :pact => true do
   end
 
   describe "get_bikes" do
-    context "when querying just the bikes" do
+    context "when querying the bikes with their reservations and models" do
       let(:gql) do
         <<~GQL
           {
             bikes{
-              id
-            }
-          }
-        GQL
-      end
-      let(:provider_state){"a bike exists"}
-      let(:message_description){"a request for bikes"}
-      let(:mocked_body_content) do
-        {
-          "data": {
-            bikes: [ {id: Pact.like("1")} ]
-          }
-        }
-      end
-
-      it "returns bikes" do
-        expect(JSON.parse(subject.get_bikes.body, {:symbolize_names => true})[:data]).to include_json(
-          bikes: UnorderedArray(
-            { id: /\d/}
-          )
-        )
-      end
-    end
-
-    context "when querying the bikes with their reservations" do
-      let(:gql) do
-        <<~GQL
-          {
-            bikes{
-              id,
-              reservations {
-                cancelled,
-                user {
-                  email
+              edges{
+                node {
+                  id,
+                  model{
+                    text
+                  },
+                  reservations {
+                    cancelled,
+                    user {
+                      email
+                    }
+                  }
                 }
               }
             }
@@ -81,98 +59,108 @@ describe BikeGraphqlQueryClient, :pact => true do
       let(:message_description){"a request for bikes with reservations"}
       let(:mocked_body_content) do
         {
-          "data": {
-            bikes: [{
-              id: Pact.like("1"),
-              reservations: [{
-                cancelled: false,
-                user: {
-                  "email": Pact.like("boti@toptal.com")
+          data: {
+            bikes: {
+              edges: [{
+                node: {
+                  id: Pact.like("1"),
+                  model: {
+                    text: Pact.like("Mountain")
+                  },
+                  reservations: [{
+                    cancelled: false,
+                    user: {
+                      "email": Pact.like("boti@toptal.com")
+                    }
+                  }]
                 }
               }]
-            }]
+            }
           }
         }
       end
 
       it "returns bikes" do
-        expect(JSON.parse(subject.get_bikes_with_reservations.body, {:symbolize_names => true})[:data]).to include_json(
-          bikes: UnorderedArray({ 
-            id: /\d/,
-            reservations: UnorderedArray({
-              cancelled: false,
-              user: {
-                email: /\.*/
+        expect(JSON.parse(subject.get_bikes_with_reservations_and_models.body, {:symbolize_names => true})[:data]).to include_json(
+          bikes: {
+            edges: UnorderedArray({
+              node: {
+                id: /\d/,
+                model: {
+                  text: /\.*/
+                },
+                reservations: UnorderedArray({
+                  cancelled: false,
+                  user: {
+                    email: /\.*/
+                  }
+                })
               }
             })
-          })
-        )
-      end
-    end
-
-    context "when querying the bikes with their models" do
-      let(:gql) do
-        <<~GQL
-          {
-            bikes{
-              id,
-              model{
-                text
-              }
-            }
           }
-        GQL
-      end
-      let(:provider_state){"a bike exists"}
-      let(:message_description){"a request for bikes with models"}
-      let(:mocked_body_content) do
-        {
-          "data": {
-            bikes: [{
-                id: Pact.like("1"),
-                model: {
-                  text: Pact.like("Mountain"),
-                }
-            }]
-          }
-        }
-      end
-
-      it "returns bikes" do
-        expect(JSON.parse(subject.get_bikes_with_models.body, {:symbolize_names => true})[:data]).to include_json(
-          bikes: UnorderedArray({
-            id: /\d/,
-            model: {
-              text: /\.*/
-            }
-          })
         )
       end
     end
 
     context "pagination" do
-# {
-#   bikes(first:10, before: "MTA") {
-#   # bikes(first:10, after: "MTA") {
-#   # bikes(first:10) {
-#     edges{
-#       node {
-#         id,
-#         reservations{
-#           cancelled,
-#           endDate,
-#           startDate
-#         }
-#       },
-#       cursor,
-#       __typename
-#     },
-#     pageInfo {
-#       endCursor,
-#       hasNextPage
-#     }
-#   }
-# }
+      let(:gql) do
+        <<~GQL
+          {
+            bikes{
+              edges{
+                node {
+                  id,
+                }
+                cursor
+              },
+              pageInfo {
+                endCursor,
+                hasNextPage,
+                hasPreviousPage,
+                startCursor
+              },
+              totalCount
+            }
+          }
+        GQL
+      end
+      let(:provider_state){"a bike exists"}
+      let(:message_description){"a request for bikes with reservations"}
+      let(:mocked_body_content) do
+        {
+          data: {
+            bikes: {
+              edges: [{
+                cursor: Pact.like("cursor"),
+              }],
+              pageInfo: {
+                endCursor: Pact.like("cursor"),
+                startCursor: Pact.like("cursor"),
+                hasNextPage: Pact.like(true),
+                hasPreviousPage: Pact.like(true),
+              },
+              totalCount: Pact.like(1)
+            }
+          }
+        }
+      end
+
+      it "returns bikes" do
+        expect(JSON.parse(subject.get_bikes_with_pagination_info.body, {:symbolize_names => true})[:data]).to include_json(
+          bikes: {
+            edges: UnorderedArray({
+              cursor: /\.*/,
+            }),
+            pageInfo: {
+              endCursor: /\.*/,
+              startCursor: /\.*/,
+              hasNextPage: /\.*/,
+              hasPreviousPage: /\.*/,
+            },
+            totalCount: /\d/,
+          }
+        )
+      end
     end
   end
 end

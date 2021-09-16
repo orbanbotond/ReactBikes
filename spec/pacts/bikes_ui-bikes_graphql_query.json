@@ -7,41 +7,6 @@
   },
   "interactions": [
     {
-      "description": "a request for bikes",
-      "providerState": "a bike exists",
-      "request": {
-        "method": "post",
-        "path": "/graphql",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": {
-          "query": "{\n  bikes{\n    id\n  }\n}\n",
-          "variables": null
-        }
-      },
-      "response": {
-        "status": 200,
-        "headers": {
-          "Content-Type": "application/json; charset=utf-8"
-        },
-        "body": {
-          "data": {
-            "bikes": [
-              {
-                "id": "1"
-              }
-            ]
-          }
-        },
-        "matchingRules": {
-          "$.body.data.bikes[0].id": {
-            "match": "type"
-          }
-        }
-      }
-    },
-    {
       "description": "a request for bikes with reservations",
       "providerState": "a bike with reservation exists",
       "request": {
@@ -51,7 +16,7 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "query": "{\n  bikes{\n    id,\n    reservations {\n      cancelled,\n      user {\n        email\n      }\n    }\n  }\n}\n",
+          "query": "{\n  bikes{\n    edges{\n      node {\n        id,\n        model{\n          text\n        },\n        reservations {\n          cancelled,\n          user {\n            email\n          }\n        }\n      }\n    }\n  }\n}\n",
           "variables": null
         }
       },
@@ -62,33 +27,43 @@
         },
         "body": {
           "data": {
-            "bikes": [
-              {
-                "id": "1",
-                "reservations": [
-                  {
-                    "cancelled": false,
-                    "user": {
-                      "email": "boti@toptal.com"
-                    }
+            "bikes": {
+              "edges": [
+                {
+                  "node": {
+                    "id": "1",
+                    "model": {
+                      "text": "Mountain"
+                    },
+                    "reservations": [
+                      {
+                        "cancelled": false,
+                        "user": {
+                          "email": "boti@toptal.com"
+                        }
+                      }
+                    ]
                   }
-                ]
-              }
-            ]
+                }
+              ]
+            }
           }
         },
         "matchingRules": {
-          "$.body.data.bikes[0].id": {
+          "$.body.data.bikes.edges[0].node.id": {
             "match": "type"
           },
-          "$.body.data.bikes[0].reservations[0].user.email": {
+          "$.body.data.bikes.edges[0].node.model.text": {
+            "match": "type"
+          },
+          "$.body.data.bikes.edges[0].node.reservations[0].user.email": {
             "match": "type"
           }
         }
       }
     },
     {
-      "description": "a request for bikes with models",
+      "description": "a request for bikes with reservations",
       "providerState": "a bike exists",
       "request": {
         "method": "post",
@@ -97,7 +72,7 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "query": "{\n  bikes{\n    id,\n    model{\n      text\n    }\n  }\n}\n",
+          "query": "{\n  bikes{\n    edges{\n      node {\n        id,\n      }\n      cursor\n    },\n    pageInfo {\n      endCursor,\n      hasNextPage,\n      hasPreviousPage,\n      startCursor\n    },\n    totalCount\n  }\n}\n",
           "variables": null
         }
       },
@@ -108,21 +83,39 @@
         },
         "body": {
           "data": {
-            "bikes": [
-              {
-                "id": "1",
-                "model": {
-                  "text": "Mountain"
+            "bikes": {
+              "edges": [
+                {
+                  "cursor": "cursor"
                 }
-              }
-            ]
+              ],
+              "pageInfo": {
+                "endCursor": "cursor",
+                "startCursor": "cursor",
+                "hasNextPage": true,
+                "hasPreviousPage": true
+              },
+              "totalCount": 1
+            }
           }
         },
         "matchingRules": {
-          "$.body.data.bikes[0].id": {
+          "$.body.data.bikes.edges[0].cursor": {
             "match": "type"
           },
-          "$.body.data.bikes[0].model.text": {
+          "$.body.data.bikes.pageInfo.endCursor": {
+            "match": "type"
+          },
+          "$.body.data.bikes.pageInfo.startCursor": {
+            "match": "type"
+          },
+          "$.body.data.bikes.pageInfo.hasNextPage": {
+            "match": "type"
+          },
+          "$.body.data.bikes.pageInfo.hasPreviousPage": {
+            "match": "type"
+          },
+          "$.body.data.bikes.totalCount": {
             "match": "type"
           }
         }

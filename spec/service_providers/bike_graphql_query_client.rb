@@ -4,15 +4,22 @@ class BikeGraphqlQueryClient
   include HTTParty
   base_uri 'http://localhost:3000/graphql'
 
-  def get_bikes_with_reservations
+  def get_bikes_with_reservations_and_models
     gql = <<~GQL
       {
         bikes{
-          id,
-          reservations {
-            cancelled,
-            user {
-              email
+          edges{
+            node {
+              id,
+              model{
+                text
+              },
+              reservations {
+                cancelled,
+                user {
+                  email
+                }
+              }
             }
           }
         }
@@ -22,14 +29,23 @@ class BikeGraphqlQueryClient
     call_graphql(gql)
   end
 
-  def get_bikes_with_models
+  def get_bikes_with_pagination_info
     gql = <<~GQL
       {
         bikes{
-          id,
-          model{
-            text
-          }
+          edges{
+            node {
+              id,
+            }
+            cursor
+          },
+          pageInfo {
+            endCursor,
+            hasNextPage,
+            hasPreviousPage,
+            startCursor
+          },
+          totalCount
         }
       }
     GQL
@@ -37,17 +53,6 @@ class BikeGraphqlQueryClient
     call_graphql(gql)
   end
 
-  def get_bikes
-    gql = <<~GQL
-      {
-        bikes{
-          id
-        }
-      }
-    GQL
-
-    call_graphql(gql)
-  end
 
 private
   def call_graphql(gql)

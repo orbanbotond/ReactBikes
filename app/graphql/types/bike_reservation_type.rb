@@ -10,5 +10,11 @@ module Types
           description: "The status of the reservation"
     field :user, UserType, null: false,
           description: "The user who reserved the bike"
+    field :bike, BikeType, null: false,
+          description: "The bike which is reserved"
+
+    def user
+      ::BatchLoaders::AssociationLoader.for(Reservation, :user).load(object)
+    end
   end
 end

@@ -12,6 +12,8 @@ gem "rails", "~> 5"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
 gem "graphql"
+gem "graphql"
+gem "graphql-batch"
 
 # Use Puma as the app server
 gem "puma", "~> 3.7"
@@ -86,6 +88,7 @@ end
 
 group :test do
   gem "rspec_junit_formatter"
+  gem "n_plus_one_control"
 end
 
 group :development do

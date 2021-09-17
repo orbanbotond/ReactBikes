@@ -23,9 +23,6 @@ module Types
 
     def reservations
       ::BatchLoaders::AssociationLoader.for(Bike, :reservations).load(object)
-      # RecordLoader.for(Reservation).load().then do |product|
-      #   product.title
-      # end
     end
   end
 end

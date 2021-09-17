@@ -88,6 +88,7 @@ end
 
 group :test do
   gem "rspec_junit_formatter"
+  gem "n_plus_one_control"
 end
 
 group :development do

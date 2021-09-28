@@ -1,3 +1,5 @@
+require_relative 'pagination/active_record_relation_connection'
+
 class ToptalReactBikesSchema < GraphQL::Schema
   # mutation(Types::MutationType)
   query(Types::QueryType)

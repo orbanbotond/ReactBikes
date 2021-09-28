@@ -12,7 +12,6 @@ gem "rails", "~> 5"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
 gem "graphql"
-gem "graphql"
 gem "graphql-batch"
 
 # Use Puma as the app server

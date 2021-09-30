@@ -3,7 +3,7 @@ module Types
     description "A rentable bike"
 
     field :id, ID, null: false
-    field :color, String, null: true,
+    field :color, BikeColorsEnum, null: true,
           description: "The color of the bike"
     field :weight, Float, null: true,
           description: "The weight of a bike in kg"
@@ -20,6 +20,10 @@ module Types
           description: "The model of the bike"
     field :reservations, [BikeReservationType], null: true,
           description: "The reservations of the bike"
+
+    def model
+      ::BatchLoaders::AssociationLoader.for(Bike, :bike_model).load(object)
+    end
 
     def reservations
       ::BatchLoaders::AssociationLoader.for(Bike, :reservations).load(object)

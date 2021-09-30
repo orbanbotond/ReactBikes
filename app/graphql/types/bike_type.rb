@@ -21,6 +21,10 @@ module Types
     field :reservations, [BikeReservationType], null: true,
           description: "The reservations of the bike"
 
+    def model
+      ::BatchLoaders::AssociationLoader.for(Bike, :bike_model).load(object)
+    end
+
     def reservations
       ::BatchLoaders::AssociationLoader.for(Bike, :reservations).load(object)
     end

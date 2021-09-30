@@ -3,7 +3,7 @@ module Types
     description "A rentable bike"
 
     field :id, ID, null: false
-    field :color, String, null: true,
+    field :color, BikeColorsEnum, null: true,
           description: "The color of the bike"
     field :weight, Float, null: true,
           description: "The weight of a bike in kg"

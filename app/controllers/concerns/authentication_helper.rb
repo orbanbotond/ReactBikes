@@ -9,10 +9,10 @@ module AuthenticationHelper
     session_token
   end
 
-  TOKEN_PARAM_NAME = "X-Auth-Token"
+  TOKEN_PARAM_NAME = "HTTP_X_AUTH_TOKEN"
 
   def session_token(token_param = TOKEN_PARAM_NAME)
-    @session_token ||= headers[token_param]
+    @session_token ||= request.headers[token_param]
   end
 
   def pundit_user

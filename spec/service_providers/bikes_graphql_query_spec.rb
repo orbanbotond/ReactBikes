@@ -4,11 +4,12 @@ require "rspec/json_expectations"
 
 describe BikeGraphqlQueryClient, :pact => true do
   before do
-    # Configure your client to point to the stub service on localhost using the port you have specified
     BikeGraphqlQueryClient.base_uri 'localhost:1234'
   end
 
-  subject { BikeGraphqlQueryClient.new }
+  let(:session_token) { "token-xxx123123" }
+
+  subject { BikeGraphqlQueryClient.new(session_token) }
 
   let!(:initialization) do
     bikes_graphql_query.given(provider_state).
@@ -16,7 +17,7 @@ describe BikeGraphqlQueryClient, :pact => true do
       with(method: :post, 
            path: '/graphql', 
            body: payload,
-           headers: { 'Content-Type' => 'application/json' }).
+           headers: { "X-Auth-Token" => session_token, 'Content-Type' => 'application/json' }).
       will_respond_with(
         status: 200,
         headers: {'Content-Type' => 'application/json; charset=utf-8'},

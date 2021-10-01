@@ -9,8 +9,6 @@ module Bikes
 
     desc "Login." do
       detail "The session token is returned"
-      params email: { required: true, type: "String", desc: "The email" },
-             password: { required: true, type: "String", desc: "The password" }
       success ::Entities::Login::UserEntity
       failure [[400, "Bad Parameters"],
                [401, "Unauthenticated"]]

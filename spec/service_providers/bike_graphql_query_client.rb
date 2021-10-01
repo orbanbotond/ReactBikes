@@ -4,6 +4,10 @@ class BikeGraphqlQueryClient
   include HTTParty
   base_uri 'http://localhost:3000/graphql'
 
+  def initialize(session_token)
+    @session_token = session_token
+  end
+
   def get_bikes_with_reservations_and_models
     gql = <<~GQL
       {
@@ -56,8 +60,8 @@ class BikeGraphqlQueryClient
 
 private
   def call_graphql(gql)
-    httpartyy.post("/graphql", 
-      headers: { 'Content-Type' => 'application/json' },
+    httpartyy.post("/graphql",
+      headers: { "X-Auth-Token" => @session_token, 'Content-Type' => 'application/json' },
       body: payload(gql).to_json)
   end
 

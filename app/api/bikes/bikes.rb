@@ -2,7 +2,7 @@
 
 module Bikes
   class Bikes < Grape::API
-    helpers ::Helpers::AuthenticationHelper
+    helpers ::Helpers::ApiAuthenticationHelper
     helpers ::Helpers::OperationAdapter
     before { authenticate! }
 

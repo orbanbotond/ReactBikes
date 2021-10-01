@@ -2,7 +2,7 @@
 
 module Bikes
   class Models < Grape::API
-    helpers ::Helpers::AuthenticationHelper
+    helpers ::Helpers::ApiAuthenticationHelper
     before { authenticate! }
 
     format :json

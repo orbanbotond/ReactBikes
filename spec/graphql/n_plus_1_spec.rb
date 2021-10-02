@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe "N+1 query test", :n_plus_one do
   let!(:model) { BikeModel.create text: "Mountain" }
   let!(:bike) { Bike.create weight: 1.2, color: Bike::COLORS.first, bike_model: model, latitude: 48.210033, longitude: 16.363449, average_rating: 1 }
+  let(:current_user) { create :user, admin: true }
 
   populate do |n|
     puts "Population: #{n}"
@@ -37,8 +38,8 @@ RSpec.describe "N+1 query test", :n_plus_one do
       GQL
 
     expect do
-      result = ToptalReactBikesSchema.execute(query_string, variables: {})
-    # end.to perform_constant_number_of_queries.with_scale_factors(10, 100)
+      context = { current_user: current_user }
+      result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
     end.to perform_constant_number_of_queries
   end
 end

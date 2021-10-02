@@ -51,7 +51,7 @@ const SearchForm = ({
         <Select
           {...inputSetup}
           name="color"
-          label="Predered Color"
+          label="Prefered Color"
           placeHolder="Select a color..."
           options={availableColors} />
         <Select

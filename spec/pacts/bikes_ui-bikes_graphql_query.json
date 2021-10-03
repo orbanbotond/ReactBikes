@@ -7,7 +7,113 @@
   },
   "interactions": [
     {
-      "description": "a request for bikes with reservations",
+      "description": "a request for users with reservations",
+      "providerState": "a user with reservation exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "{\n  users{\n    nodes{\n      id,\n      reservations{\n        id,\n      }\n    }\n  }\n}\n",
+          "variables": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "users": {
+              "nodes": [
+                {
+                  "id": "1",
+                  "reservations": [
+                    {
+                      "id": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.users.nodes[0].id": {
+            "match": "type"
+          },
+          "$.body.data.users.nodes[0].reservations[0].id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a paginated request for users",
+      "providerState": "a user exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "{\n  users{\n    edges{\n      cursor,\n    },\n    pageInfo {\n      endCursor,\n      hasNextPage,\n      hasPreviousPage,\n      startCursor,\n    },\n    totalCount,\n  },\n}\n",
+          "variables": null
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "users": {
+              "edges": [
+                {
+                  "cursor": "cursor"
+                }
+              ],
+              "pageInfo": {
+                "endCursor": "cursor",
+                "startCursor": "cursor",
+                "hasNextPage": true,
+                "hasPreviousPage": true
+              },
+              "totalCount": 1
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.users.edges[0].cursor": {
+            "match": "type"
+          },
+          "$.body.data.users.pageInfo.endCursor": {
+            "match": "type"
+          },
+          "$.body.data.users.pageInfo.startCursor": {
+            "match": "type"
+          },
+          "$.body.data.users.pageInfo.hasNextPage": {
+            "match": "type"
+          },
+          "$.body.data.users.pageInfo.hasPreviousPage": {
+            "match": "type"
+          },
+          "$.body.data.users.totalCount": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request for bikes with reservations and models",
       "providerState": "a bike with reservation exists",
       "request": {
         "method": "post",
@@ -17,7 +123,7 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "query": "{\n  bikes{\n    edges{\n      node {\n        id,\n        model{\n          text\n        },\n        reservations {\n          cancelled,\n          user {\n            email\n          }\n        }\n      }\n    }\n  }\n}\n",
+          "query": "{\n  bikes{\n    edges{\n      node {\n        id,\n        model{\n          text,\n        },\n        reservations {\n          cancelled,\n          user {\n            email,\n          }\n        }\n      }\n    }\n  }\n}\n",
           "variables": null
         }
       },
@@ -64,7 +170,7 @@
       }
     },
     {
-      "description": "a request for bikes with reservations",
+      "description": "a paginated request for bikes",
       "providerState": "a bike exists",
       "request": {
         "method": "post",
@@ -74,7 +180,7 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "query": "{\n  bikes{\n    edges{\n      node {\n        id,\n      }\n      cursor\n    },\n    pageInfo {\n      endCursor,\n      hasNextPage,\n      hasPreviousPage,\n      startCursor\n    },\n    totalCount\n  }\n}\n",
+          "query": "{\n  bikes{\n    edges{\n      cursor,\n    },\n    pageInfo {\n      endCursor,\n      hasNextPage,\n      hasPreviousPage,\n      startCursor,\n    },\n    totalCount,\n  }\n}\n",
           "variables": null
         }
       },

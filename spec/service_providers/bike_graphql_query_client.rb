@@ -8,6 +8,44 @@ class BikeGraphqlQueryClient
     @session_token = session_token
   end
 
+  def get_users_with_reservations
+    gql = <<~GQL
+      {
+        users{
+          nodes{
+            id,
+            reservations{
+              id,
+            }
+          }
+        }
+      }
+    GQL
+
+    call_graphql(gql)
+  end
+
+  def get_users_with_pagination_info
+    gql = <<~GQL
+      {
+        users{
+          edges{
+            cursor,
+          },
+          pageInfo {
+            endCursor,
+            hasNextPage,
+            hasPreviousPage,
+            startCursor,
+          },
+          totalCount,
+        },
+      }
+    GQL
+
+    call_graphql(gql)
+  end
+
   def get_bikes_with_reservations_and_models
     gql = <<~GQL
       {
@@ -16,12 +54,12 @@ class BikeGraphqlQueryClient
             node {
               id,
               model{
-                text
+                text,
               },
               reservations {
                 cancelled,
                 user {
-                  email
+                  email,
                 }
               }
             }
@@ -38,18 +76,15 @@ class BikeGraphqlQueryClient
       {
         bikes{
           edges{
-            node {
-              id,
-            }
-            cursor
+            cursor,
           },
           pageInfo {
             endCursor,
             hasNextPage,
             hasPreviousPage,
-            startCursor
+            startCursor,
           },
-          totalCount
+          totalCount,
         }
       }
     GQL

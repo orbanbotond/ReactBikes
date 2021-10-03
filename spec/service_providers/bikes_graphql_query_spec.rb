@@ -32,7 +32,113 @@ describe BikeGraphqlQueryClient, :pact => true do
     }    
   end
 
-  describe "get_bikes" do
+  describe "get users" do
+    context "when querying the users with their reservations" do
+      let(:gql) do
+        <<~GQL
+          {
+            users{
+              nodes{
+                id,
+                reservations{
+                  id,
+                }
+              }
+            }
+          }
+        GQL
+      end
+      let(:provider_state){"a user with reservation exists"}
+      let(:message_description){"a request for users with reservations"}
+      let(:mocked_body_content) do
+        {
+          data: {
+            users: {
+              nodes: [{
+                id: Pact.like("1"),
+                reservations: [{
+                  id: Pact.like("1"),
+                }]
+              }]
+            }
+          }
+        }
+      end
+
+      it "returns users" do
+        expect(JSON.parse(subject.get_users_with_reservations.body, {:symbolize_names => true})[:data]).to include_json(
+          users: {
+            nodes: UnorderedArray({
+              id: /\d/,
+              reservations: UnorderedArray({
+                id: /\d/,
+              })
+            })
+          }
+        )
+      end
+    end
+
+    context "pagination" do
+      let(:gql) do
+        <<~GQL
+          {
+            users{
+              edges{
+                cursor,
+              },
+              pageInfo {
+                endCursor,
+                hasNextPage,
+                hasPreviousPage,
+                startCursor,
+              },
+              totalCount,
+            },
+          }
+        GQL
+      end
+      let(:provider_state){"a user exists"}
+      let(:message_description){"a paginated request for users"}
+      let(:mocked_body_content) do
+        {
+          data: {
+            users: {
+              edges: [{
+                cursor: Pact.like("cursor"),
+              }],
+              pageInfo: {
+                endCursor: Pact.like("cursor"),
+                startCursor: Pact.like("cursor"),
+                hasNextPage: Pact.like(true),
+                hasPreviousPage: Pact.like(true),
+              },
+              totalCount: Pact.like(1),
+            }
+          }
+        }
+      end
+
+      it "returns users" do
+        expect(JSON.parse(subject.get_users_with_pagination_info.body, {:symbolize_names => true})[:data]).to include_json(
+          users: {
+            edges: UnorderedArray({
+              cursor: /\.*/,
+            }),
+            pageInfo: {
+              endCursor: /\.*/,
+              startCursor: /\.*/,
+              hasNextPage: /\.*/,
+              hasPreviousPage: /\.*/,
+            },
+            totalCount: /\d/
+          }
+        )
+      end
+    end
+  end
+
+  describe "get bikes" do
     context "when querying the bikes with their reservations and models" do
       let(:gql) do
         <<~GQL
@@ -42,12 +148,12 @@ describe BikeGraphqlQueryClient, :pact => true do
                 node {
                   id,
                   model{
-                    text
+                    text,
                   },
                   reservations {
                     cancelled,
                     user {
-                      email
+                      email,
                     }
                   }
                 }
@@ -57,7 +163,7 @@ describe BikeGraphqlQueryClient, :pact => true do
         GQL
       end
       let(:provider_state){"a bike with reservation exists"}
-      let(:message_description){"a request for bikes with reservations"}
+      let(:message_description){"a request for bikes with reservations and models"}
       let(:mocked_body_content) do
         {
           data: {
@@ -109,24 +215,21 @@ describe BikeGraphqlQueryClient, :pact => true do
           {
             bikes{
               edges{
-                node {
-                  id,
-                }
-                cursor
+                cursor,
               },
               pageInfo {
                 endCursor,
                 hasNextPage,
                 hasPreviousPage,
-                startCursor
+                startCursor,
               },
-              totalCount
+              totalCount,
             }
           }
         GQL
       end
       let(:provider_state){"a bike exists"}
-      let(:message_description){"a request for bikes with reservations"}
+      let(:message_description){"a paginated request for bikes"}
       let(:mocked_body_content) do
         {
           data: {
@@ -140,7 +243,7 @@ describe BikeGraphqlQueryClient, :pact => true do
                 hasNextPage: Pact.like(true),
                 hasPreviousPage: Pact.like(true),
               },
-              totalCount: Pact.like(1)
+              totalCount: Pact.like(1),
             }
           }
         }

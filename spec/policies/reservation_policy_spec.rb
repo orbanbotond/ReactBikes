@@ -19,6 +19,7 @@ RSpec.describe ReservationPolicy, type: :model do
         it "returns all the reservations belonging to that bike" do
           expect(actual_scope).to include(reservation_for_bike)
         end
+
         it "does not return the reservations belonging to other bike" do
           expect(actual_scope).to_not include(reservation_for_bike_2)
         end
@@ -38,7 +39,6 @@ RSpec.describe ReservationPolicy, type: :model do
       let!(:reservation_for_target_user) { create :reservation, user: target_user }
       let!(:other_target_user) { create :user }
       let!(:reservation_for_other_target_user) { create :reservation, user: other_target_user }
-
 
       context "when the user is admin" do
         let(:parent_scope) { target_user.reservations }
@@ -62,6 +62,7 @@ RSpec.describe ReservationPolicy, type: :model do
           it "returns its own reservations" do
             expect(actual_scope).to include(reservation_for_current_user)
           end
+
           it "does not returns the reservations belonging to other target user" do
             expect(actual_scope).to_not include(reservation_for_other_target_user)
           end
@@ -76,10 +77,6 @@ RSpec.describe ReservationPolicy, type: :model do
         end
       end
     end
-    # admin:
-    #   - http://localhost:3000/api/bikes/31/reservations
-    #   - http://localhost:3000/api/users/4/reservations
-    # http://localhost:3000/api/users/2/reservations My own
   end
 
   context "policies" do

@@ -23,11 +23,6 @@
 /yarn-error.log
 
 .byebug_history
-/public/packs
-/public/packs-test
-/node_modules
-yarn-debug.log*
-.yarn-integrity
 storage
 
 .generators
@@ -36,3 +31,8 @@ storage
 .env
 schema.graphql
 schema.json
+
+/public/packs
+/public/packs-test
+yarn-debug.log*
+.yarn-integrity

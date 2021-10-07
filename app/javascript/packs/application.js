@@ -11,4 +11,3 @@ import '@styles/application.sass';
 import '@styles/forms.sass';
 
 import '@routes/main';
-

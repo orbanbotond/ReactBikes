@@ -44,7 +44,7 @@ gem "pundit", "~> 1.1"
 gem "slim", "~> 4.0"
 gem "trailblazer"
 gem "trailblazer-loader", "~> 0.1.2"
-gem "webpacker", "~> 3.5"
+gem "webpacker"
 gem "reform", "~> 2.2"
 gem "reform-rails", "~> 0.1"
 

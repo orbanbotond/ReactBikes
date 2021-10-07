@@ -32,9 +32,29 @@ class ReservationsContainer extends Component {
     if(!this.state.collection){
       const currentUser = this.props.user
 
-      Axios(currentUser).get(Routes.Restfull.member_subroute('user', currentUser.id, 'reservations')).then((_responseObj) => {
+      const query = `
+      {
+        users(id: "${currentUser.id}"){
+          nodes{
+            id,
+            reservations{
+              id,
+              end_date: endDate,
+              start_date: startDate,
+              rating,
+              cancelled,
+              bike_id: bike{ id }
+            }
+          }
+        }
+      }
+      `
+
+      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
         this.setState({
-          collection: _responseObj.data,
+          collection: _responseObj.data.data.users.nodes[0].reservations.map(reservation => ({
+             ...reservation,
+             bike_id: reservation.bike_id.id}))
         });
       }).catch((_error) => {
       });

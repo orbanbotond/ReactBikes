@@ -5993,7 +5993,7 @@ react-day-picker@^7.4.10:
   dependencies:
     prop-types "^15.6.2"
 
-react-dom@^16.8.0:
+react-dom@^16.0.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -6066,14 +6066,14 @@ react-popper@^1.3.6:
     typed-styles "^0.0.7"
     warning "^4.0.2"
 
-react-rater@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/react-rater/-/react-rater-6.0.0.tgz#2e666b6e5e5c33b622541df6a7124f6c99606927"
-  integrity sha512-NP1+rEeL3LyJqA5xF7U2fSHpISMcVeMgbQ0u/P1WmayiHccI7Ixx5GohygmJY82g7SxdJnIun2OOB6z8WTExmg==
+react-rater@5:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-rater/-/react-rater-5.1.1.tgz#0d066cf816c182277bee8ca48748ca9b9f32feea"
+  integrity sha512-eQYZySMU/jA9y8PVE91u3GTYBs4extBnd0MpRyJ/6IAT8iPSA9liKFMkD54/Y2CKh/Pj0mhMHa0pXQxoSub9xw==
   dependencies:
     prop-types "^15.7.2"
-    react "^16.8.0"
-    react-dom "^16.8.0"
+    react "^16.0.0"
+    react-dom "^16.0.0"
 
 react-redux@^7.2.5:
   version "7.2.5"
@@ -6172,7 +6172,7 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.8.0:
+react@^16.0.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==

@@ -26,6 +26,7 @@ export const BikesAxios = (currentUser = null) => {
 
 Routes.Rails= {};
 Routes.Restfull = {};
+Routes.Rails.graphql = "/graphql"
 Routes.Rails.member_route = (entity_name, id) => `/${entity_name}s/${id}.json`;
 Routes.Restfull.collection_route = (entity_name) => `/api/${entity_name}s.json`;
 Routes.Restfull.member_route = (entity_name, id) => `/api/${entity_name}s/${id}`;

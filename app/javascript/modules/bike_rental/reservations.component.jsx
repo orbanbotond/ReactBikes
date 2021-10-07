@@ -5,7 +5,6 @@ import PastList from './past-reservations.component'
 export default class ReservationsComponent extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       past:   props.collection.filter(model => Date.parse(model.end_date) < Date.now() ),
       future: props.collection.filter(model => Date.parse(model.start_date) >= Date.now() ),

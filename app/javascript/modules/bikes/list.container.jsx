@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import List from './list.component';
-import { selectBikes, selectModels } from '@modules/selectors'
+import { selectBikes } from '@modules/selectors'
 import { LoadSpinnerHOC } from '@modules/hocs'
-import { fetchTheBikes, fetchTheModels, deleteTheBike } from './action-creators';
+import { fetchTheBikes, deleteTheBike } from './action-creators';
 import { Routes } from '@routes/routes';
 
 class ListContainer extends Component {
   componentWillMount() {
     this.props.fetchTheBikes();
-    if(!this.props.models){
-      this.props.fetchTheModels();
-    }
   }
 
   handleDelete = id => {
@@ -20,7 +17,7 @@ class ListContainer extends Component {
   }
 
   render(){
-    const propsToWaitFor = ['collection', 'models'];
+    const propsToWaitFor = ['collection'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, List);
 
     return(
@@ -35,12 +32,10 @@ class ListContainer extends Component {
 
 const mapStateToProps = state => ({
   collection: selectBikes(state),
-  models: selectModels(state),
 });
 
 const mapDispatchToProps = {
   fetchTheBikes,
-  fetchTheModels,
   deleteTheBike,
 };
 

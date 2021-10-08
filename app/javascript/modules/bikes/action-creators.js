@@ -26,10 +26,32 @@ export function fetchTheBikes() {
     dispatch(fetchBikes());
 
     const currentUser = getState().session.user;
-    const url = Routes.Restfull.collection_route('bike');
+    const query = `
+    {
+      bikes{
+        nodes{
+          id,
+          color,
+          weight,
+          imageUrl,
+          averageRating,
+          latitude,
+          longitude,
+          model{
+            id,
+            text
+          },
+        }
+      }
+    }
+    `
 
-    return Axios(currentUser).get(url).then((_responseObj) => {
-      dispatch(fetchBikesSuccess(_responseObj.data));
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      const bikes = _responseObj.data.data.bikes.nodes.map(bike=> ({
+        ...bike,
+        bike_model_id: bike.model.id
+      }));
+      dispatch(fetchBikesSuccess(bikes));
     }).catch((_error) => {
       dispatch(fetchBikesError(_error));
     });

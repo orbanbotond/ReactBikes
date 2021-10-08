@@ -4,7 +4,9 @@ module Types
 
     field :id, ID, null: false
     field :email, String, null: false,
-          description: "The user who reserved the bike"
+          description: "The email of the user"
+    field :admin, Boolean, null: false,
+          description: "Tells us if the user is an admin or not"
 
     field :reservations, [BikeReservationType], null: true,
           description: "The reservations of the user"

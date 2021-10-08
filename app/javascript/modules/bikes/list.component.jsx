@@ -7,41 +7,33 @@ import { Routes } from '@routes/routes';
 import 'react-rater/lib/react-rater.css';
 
 export default class List extends Component {
-  modelName(model_id){
-    const model = this.props.models.find(element=>{
-      return element.id === model_id;
-    });
-
-    return model.text;
-  }
-
   handleDelete = id => {
     this.props.deleteHandler(id);
   }
 
   render(){
-    const rows = this.props.collection.map((model) =>
-      <tr key={model.id}>
-        <th scope="row">{model.id}</th>
-        <td>{model.color}</td>
-        <td>{model.weight}</td>
+    const rows = this.props.collection.map((bike) =>
+      <tr key={bike.id}>
+        <th scope="row">{bike.id}</th>
+        <td>{bike.color}</td>
+        <td>{bike.weight}</td>
         <td>
-          {model.image_url && (
-            <img src={model.image_url} width="50"/>
+          {bike.image_url && (
+            <img src={bike.image_url} width="50"/>
           )}
         </td>
         <td>
           <Rater total={5}
-                 rating={model.average_rating}
+                 rating={bike.average_rating}
                  interactive={false} />
         </td>
-        <td>{model.latitude}</td>
-        <td>{model.longitude}</td>
-        <td>{this.modelName(model.bike_model_id)}</td>
+        <td>{bike.latitude}</td>
+        <td>{bike.longitude}</td>
+        <td>{bike.model.text}</td>
         <td>
-          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_subroute('bike', model.id, 'reservations')}>Reservations</NavLink>
-          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_route('bike', model.id)}>Edit</NavLink>
-          <Button outline color="danger" size="sm" onClick={() => this.handleDelete(model.id)}>Delete</Button>
+          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_subroute('bike', bike.id, 'reservations')}>Reservations</NavLink>
+          <NavLink className="btn btn-outline-success btn-sm" to={Routes.Browser.Restfull.member_route('bike', bike.id)}>Edit</NavLink>
+          <Button outline color="danger" size="sm" onClick={() => this.handleDelete(bike.id)}>Delete</Button>
         </td>
       </tr>
     );
@@ -75,5 +67,4 @@ export default class List extends Component {
 
 List.propTypes = {
   collection: PropTypes.array.isRequired,
-  models: PropTypes.array.isRequired,
 }

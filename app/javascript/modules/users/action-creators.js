@@ -26,10 +26,22 @@ export function fetchTheUsers() {
     dispatch(fetchUsers());
 
     const currentUser = getState().session.user;
-    const url = Routes.Restfull.collection_route('user');
 
-    return Axios(currentUser).get(url).then((_responseObj) => {
-      dispatch(fetchUsersSuccess(_responseObj.data));
+    const query = `
+    {
+      users{
+        nodes{
+          id,
+          email,
+          admin
+        }
+      }
+    }
+    `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      const users = _responseObj.data.data.users.nodes;
+      dispatch(fetchUsersSuccess(users));
     }).catch((_error) => {
       dispatch(fetchUsersError(_error));
     });

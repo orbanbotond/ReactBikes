@@ -20,6 +20,16 @@ module Types
           description: "The model of the bike"
     field :reservations, [BikeReservationType], null: true,
           description: "The reservations of the bike"
+    field :image_url, String, null: true,
+          description: "The url of the image presenting the bike"
+
+    def image_url
+      if object.picture.attachment.present?
+        Rails.application.routes.url_helpers.rails_blob_path(object.picture, only_path: true)
+      else
+        nil
+      end
+    end
 
     def model
       ::BatchLoaders::AssociationLoader.for(Bike, :bike_model).load(object)

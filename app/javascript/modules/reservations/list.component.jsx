@@ -26,10 +26,10 @@ export default class List extends Component {
           <Rater total={5} rating={model.rating} interactive={false} />
         </td>
         <td>
-          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_route('user', model.user_id)+"/reservations"}>{model.user_id}</NavLink>
+          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_subroute('user', model.user_id, 'reservations')}>{model.user_id}</NavLink>
         </td>
         <td>
-          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_route('bike', model.bike_id)+"/reservations"}>{model.bike_id}</NavLink>
+          <NavLink className="btn btn-outline-success btn-sm col-lg-12" to={Routes.Browser.Restfull.member_subroute('bike', model.bike_id, 'reservations')}>{model.bike_id}</NavLink>
         </td>
       </tr>
     );

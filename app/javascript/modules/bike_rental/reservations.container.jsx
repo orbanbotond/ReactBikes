@@ -43,7 +43,7 @@ class ReservationsContainer extends Component {
               start_date: startDate,
               rating,
               cancelled,
-              bike_id: bike{ id }
+              bike{ id }
             }
           }
         }
@@ -54,7 +54,7 @@ class ReservationsContainer extends Component {
         this.setState({
           collection: _responseObj.data.data.users.nodes[0].reservations.map(reservation => ({
              ...reservation,
-             bike_id: reservation.bike_id.id}))
+             bike_id: reservation.bike.id}))
         });
       }).catch((_error) => {
       });

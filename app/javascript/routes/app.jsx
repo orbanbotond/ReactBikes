@@ -39,10 +39,10 @@ const App = (props) => {
           <Route path={Routes.Browser.Restfull.new_route('bike')}
                  component={AdminGuard(BikeNew)} 
                  exact />
-          <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id`}
+          <Route path={`${Routes.Browser.Restfull.member_route('bike', ':id')}`}
                  component={AdminGuard(BikeEdit)} 
                  exact />
-          <Route path={`${Routes.Browser.Restfull.collection_route("bike")}/:id/reservations`}
+          <Route path={`${Routes.Browser.Restfull.member_subroute('bike', ':id', 'reservations')}`}
                  component={AdminGuard(BikeReservations)}
                  exact />
         </Switch>
@@ -54,10 +54,10 @@ const App = (props) => {
           <Route path={Routes.Browser.Restfull.new_route('user')}
                  component={AdminGuard(UserNew)} 
                  exact />
-          <Route path={`${Routes.Browser.Restfull.collection_route("user")}/:id`}
+          <Route path={`${Routes.Browser.Restfull.member_route('user', ':id')}`}
                  component={AdminGuard(UserEdit)}
                  exact />
-          <Route path={`${Routes.Browser.Restfull.collection_route("user")}/:id/reservations`}
+          <Route path={`${Routes.Browser.Restfull.member_subroute('user', ':id', 'reservations')}`}
                  component={AdminGuard(UserReservations)}
                  exact />
         </Switch>

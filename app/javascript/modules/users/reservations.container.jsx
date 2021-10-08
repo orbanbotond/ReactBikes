@@ -19,9 +19,32 @@ class ListContainer extends Component {
     const id = this.props.match.params.id;
 
     if(!this.state.collection){
-      Axios(this.props.user).get(Routes.Restfull.member_route('user', id) + '/reservations').then((_responseObj) => {
+
+      const query = `
+      {
+        users(id: "${id}"){
+          nodes{
+            id,
+            reservations{
+              id,
+              end_date: endDate,
+              start_date: startDate,
+              rating,
+              cancelled,
+              bike{ id },
+              user{ id }
+            }
+          }
+        }
+      }
+      `
+
+      Axios(this.props.user).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
         this.setState({
-          collection: _responseObj.data,
+          collection: _responseObj.data.data.users.nodes[0].reservations.map(reservation => ({
+             ...reservation,
+             bike_id: reservation.bike.id,
+             user_id: reservation.user.id}))
         });
       }).catch((_error) => {
       });

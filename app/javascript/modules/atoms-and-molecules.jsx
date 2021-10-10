@@ -55,7 +55,11 @@ const bikeProps = {
             average_rating: 2.3,
             latitude: 48.210033, 
             longitude: 16.363449,
-            image_url: "//sc02.alicdn.com/kf/HTB1Xjn2MVXXXXXhXXXXq6xXFXXXx/Rainbow-fixied-gear-bike-single-gear-bikes.jpg_350x350.jpg"
+            image_url: "//sc02.alicdn.com/kf/HTB1Xjn2MVXXXXXhXXXXq6xXFXXXx/Rainbow-fixied-gear-bike-single-gear-bikes.jpg_350x350.jpg",
+            model: {
+              id: 1,
+              text: "Mountain",
+            }
   },{
             id: 2, 
             weight: 2.2, 
@@ -63,12 +67,16 @@ const bikeProps = {
             bike_model_id: 2,
             average_rating: null,
             latitude: 49.210033, 
-            longitude: 18.363449
+            longitude: 18.363449,
+            model: {
+              id: 1,
+              text: "Mountain",
+            }
   }
   ],
   models: [{
     id: 1,
-    text: "Mountain",
+    text: "Road",
   },{
     id: 2,
     text: "Road",

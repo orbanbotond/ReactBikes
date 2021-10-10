@@ -32,11 +32,10 @@ export default class Reservation extends Component {
         <td>{model.start_date}</td>
         <td>{model.end_date}</td>
         <td>
-        {model.rating}
-{/*          <Rater total={5} 
+          <Rater total={5} 
                  rating={model.rating} 
                  interactive={false} />
-*/}        </td>
+        </td>
         <td>
           <Toggle
             checked={this.state.cancelled}

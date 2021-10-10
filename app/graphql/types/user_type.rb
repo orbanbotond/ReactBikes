@@ -9,7 +9,7 @@ module Types
           description: "The email of the user"
     field :admin, Boolean,  
           null: false,
-          require_admin: true,
+          required_role: :admin,
           description: "Tells us if the user is an admin or not"
 
     field :reservations, [BikeReservationType], null: true,

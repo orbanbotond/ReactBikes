@@ -17,8 +17,7 @@ module Types
 
       def check_role_requirement(context)
         return false unless context[:current_user].present?
-
-        policy(context).visible?(@required_role)
+        policy(context).field_visible_by?(@required_role, name)
       end
 
       def policy(context)

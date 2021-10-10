@@ -10,7 +10,7 @@ module Types
       description: "A list of all bikes" do
       argument :id, String, required: false
     end
-    field :users, UserType.connection_type, null: false, connection: true,
+    field :users, ::Types::User.connection_type, null: false, connection: true,
       description: "A list of all users" do
       argument :id, String, required: false
     end

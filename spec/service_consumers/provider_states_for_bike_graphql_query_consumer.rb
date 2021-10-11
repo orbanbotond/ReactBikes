@@ -13,6 +13,7 @@ Pact.provider_states_for 'Bikes UI' do
       model1 = BikeModel.create text: "Mountain", id: 1
     end
     tear_down do
+      User.destroy_all
       Bike.destroy_all
       BikeModel.destroy_all
     end

@@ -1,6 +1,6 @@
 require 'httparty'
 
-class BikeGraphqlQueryClient
+class BikeGraphqlClient
   include HTTParty
   base_uri 'http://localhost:3000/graphql'
 
@@ -92,12 +92,40 @@ class BikeGraphqlQueryClient
     call_graphql(gql)
   end
 
+  def create_bike
+    gql = <<~GQL
+      mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
+        createBike(input: {color: $color, 
+                           weight: $weight,
+                           latitude: $latitude,
+                           longitude: $longitude,
+                           bikeModelId: $bikeModelId}){
+          bike {
+            id
+          },
+          errors,
+        } 
+      }
+    GQL
+
+    variables = {
+      "color": "red",
+      "weight": 3.5,
+      "bikeModelId": 1,
+      "latitude": 23.15,
+      "longitude": 35.38
+    }
+
+
+    call_graphql(gql, variables)
+  end
+
 
 private
-  def call_graphql(gql)
+  def call_graphql(gql, variables={})
     httpartyy.post("/graphql",
       headers: { "X-Auth-Token" => @session_token, 'Content-Type' => 'application/json' },
-      body: payload(gql).to_json)
+      body: payload(gql, variables).to_json)
   end
 
   def httpartyy

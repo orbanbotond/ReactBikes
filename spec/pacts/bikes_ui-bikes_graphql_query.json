@@ -7,6 +7,51 @@
   },
   "interactions": [
     {
+      "description": "a request for bike creation",
+      "providerState": "a bike model exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){\n  createBike(input: {color: $color, \n                     weight: $weight,\n                     latitude: $latitude,\n                     longitude: $longitude,\n                     bikeModelId: $bikeModelId}){\n    bike {\n      id\n    },\n    errors,\n  } \n}\n",
+          "variables": {
+            "color": "red",
+            "weight": 3.5,
+            "bikeModelId": 1,
+            "latitude": 23.15,
+            "longitude": 35.38
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "createBike": {
+              "bike": {
+                "id": "1"
+              },
+              "errors": [
+
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.createBike.bike.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
       "description": "a request for users with reservations",
       "providerState": "a user with reservation exists",
       "request": {
@@ -18,7 +63,8 @@
         },
         "body": {
           "query": "{\n  users{\n    nodes{\n      id,\n      reservations{\n        id,\n      }\n    }\n  }\n}\n",
-          "variables": null
+          "variables": {
+          }
         }
       },
       "response": {
@@ -64,7 +110,8 @@
         },
         "body": {
           "query": "{\n  users{\n    edges{\n      cursor,\n    },\n    pageInfo {\n      endCursor,\n      hasNextPage,\n      hasPreviousPage,\n      startCursor,\n    },\n    totalCount,\n  },\n}\n",
-          "variables": null
+          "variables": {
+          }
         }
       },
       "response": {
@@ -124,7 +171,8 @@
         },
         "body": {
           "query": "{\n  bikes{\n    edges{\n      node {\n        id,\n        model{\n          text,\n        },\n        reservations {\n          cancelled,\n          user {\n            email,\n          }\n        }\n      }\n    }\n  }\n}\n",
-          "variables": null
+          "variables": {
+          }
         }
       },
       "response": {
@@ -181,7 +229,8 @@
         },
         "body": {
           "query": "{\n  bikes{\n    edges{\n      cursor,\n    },\n    pageInfo {\n      endCursor,\n      hasNextPage,\n      hasPreviousPage,\n      startCursor,\n    },\n    totalCount,\n  }\n}\n",
-          "variables": null
+          "variables": {
+          }
         }
       },
       "response": {

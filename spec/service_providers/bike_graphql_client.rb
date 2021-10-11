@@ -116,6 +116,30 @@ class BikeGraphqlClient
       "longitude": 35.38
     }
 
+    call_graphql(gql, variables)
+  end
+
+  def update_bike
+    gql = <<~GQL
+      mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){
+        updateBike(input: {color: $color, 
+                           weight: $weight,
+                           bikeId: $bikeId}){
+          bike {
+            id,
+            color,
+            weight
+          },
+          errors,
+        } 
+      }
+    GQL
+
+    variables = {
+      "color": "blue",
+      "weight": 4.5,
+      "bikeId": 1,
+    }
 
     call_graphql(gql, variables)
   end

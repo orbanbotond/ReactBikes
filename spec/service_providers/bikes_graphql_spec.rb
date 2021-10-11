@@ -88,6 +88,62 @@ describe BikeGraphqlClient, :pact => true do
           )
         end
       end
+
+      context "when updating them" do
+        let(:variables) do
+          {
+            "color": "blue",
+            "weight": 4.5,
+            "bikeId": 1
+          }
+        end
+
+        let(:gql) do
+          <<~GQL
+            mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){
+              updateBike(input: {color: $color, 
+                                 weight: $weight,
+                                 bikeId: $bikeId}){
+                bike {
+                  id,
+                  color,
+                  weight
+                },
+                errors,
+              } 
+            }
+          GQL
+        end
+        let(:provider_state){"a red bike model exists"}
+        let(:message_description){"a request for bike update"}
+        let(:mocked_body_content) do
+          {
+            data: {
+              updateBike: {
+                bike: {
+                  id: Pact.like("1"),
+                  color: "blue",
+                  weight: 4.5
+                },
+                errors: []
+              }
+            }
+          }
+        end
+
+        it "returns the updated bike" do
+          expect(JSON.parse(subject.update_bike.body, {:symbolize_names => true})[:data]).to include_json(
+            updateBike: {
+              bike: {
+                id: /\d/,
+                color: "blue",
+                weight: 4.5,
+              },
+              errors: []
+            }
+          )
+        end
+      end
     end
   end
 

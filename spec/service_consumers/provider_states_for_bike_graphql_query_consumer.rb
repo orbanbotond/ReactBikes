@@ -7,6 +7,19 @@ end
 
 Pact.provider_states_for 'Bikes UI' do
 
+  provider_state "a red bike model exists" do
+    set_up do
+      admin = create_admin_user
+      model1 = BikeModel.create text: "Mountain"
+      bike = Bike.create id: 1, weight: 1.2, color: 'red', bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
+    end
+    tear_down do
+      User.destroy_all
+      Bike.destroy_all
+      BikeModel.destroy_all
+    end
+  end
+
   provider_state "a bike model exists" do
     set_up do
       admin = create_admin_user

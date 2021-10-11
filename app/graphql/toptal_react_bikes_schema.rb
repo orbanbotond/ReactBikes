@@ -1,7 +1,7 @@
 require_relative 'pagination/active_record_relation_connection'
 
 class ToptalReactBikesSchema < GraphQL::Schema
-  # mutation(Types::MutationType)
+  mutation(Types::MutationType)
   query(Types::QueryType)
 
   use GraphQL::Batch
@@ -20,7 +20,7 @@ class ToptalReactBikesSchema < GraphQL::Schema
     # Here's a simple implementation which:
     # - joins the type name & object.id
     # - encodes it with base64:
-    # GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.id)
+    GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.id)
   end
 
   # Given a string UUID, find the object

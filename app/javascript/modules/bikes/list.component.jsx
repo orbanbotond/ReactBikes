@@ -24,8 +24,7 @@ export default class List extends Component {
         </td>
         <td>
           <Rater total={5}
-                 rating={1}
-                 // rating={bike.average_rating}
+                 rating={bike.average_rating}
                  interactive={false} />
         </td>
         <td>{bike.latitude}</td>

@@ -137,7 +137,7 @@ describe BikeGraphqlClient, :pact => true do
               bike: {
                 id: /\d/,
                 color: "blue",
-                weight: "4.5",
+                weight: 4.5,
               },
               errors: []
             }

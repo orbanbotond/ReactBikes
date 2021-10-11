@@ -52,6 +52,51 @@
       }
     },
     {
+      "description": "a request for bike update",
+      "providerState": "a red bike model exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){\n  updateBike(input: {color: $color, \n                     weight: $weight,\n                     bikeId: $bikeId}){\n    bike {\n      id,\n      color,\n      weight\n    },\n    errors,\n  } \n}\n",
+          "variables": {
+            "color": "blue",
+            "weight": 4.5,
+            "bikeId": 1
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "updateBike": {
+              "bike": {
+                "id": "1",
+                "color": "blue",
+                "weight": 4.5
+              },
+              "errors": [
+
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.updateBike.bike.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
       "description": "a request for users with reservations",
       "providerState": "a user with reservation exists",
       "request": {

@@ -22,8 +22,8 @@ module Bikes
                 }
       end
       post do
-        call_action(::Crud::User::Create, params, default_additional_params) do |result|
-          present result, with: ::Entities::UserEntity
+        call_action(::Crud::User::Create, params, default_additional_params) do |model|
+          present model, with: ::Entities::UserEntity
         end
       end
 
@@ -52,8 +52,9 @@ module Bikes
                   }
         end
         get :reservations do
-          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :user)).perform
-          present model.reservations, with: ::Entities::ReservationEntity
+          call_action(::Crud::Common::Read, params.merge(ar_class: :user), default_additional_params) do |model|
+            present model.reservations, with: ::Entities::ReservationEntity
+          end
         end
 
         desc "User." do
@@ -67,8 +68,9 @@ module Bikes
                   }
         end
         get do
-          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :user)).perform
-          present model, with: ::Entities::UserEntity
+          call_action(::Crud::Common::Read, params.merge(ar_class: :user), default_additional_params) do |model|
+            present model, with: ::Entities::UserEntity
+          end
         end
 
         desc "Deletes the user." do
@@ -82,8 +84,9 @@ module Bikes
                   }
         end
         delete do
-          model = Crud::Common::Delete.as(:system).new(params.merge(ar_class: :user)).perform
-          present model, with: ::Entities::UserEntity
+          call_action(::Crud::Common::Delete, params.merge(ar_class: :user), default_additional_params) do |model|
+            present model, with: ::Entities::UserEntity
+          end
         end
 
         desc "Updates the user." do
@@ -98,8 +101,9 @@ module Bikes
                   }
         end
         put do
-          model = Crud::User::Update.as(:system).new(params).perform
-          present model, with: ::Entities::UserEntity
+          call_action(::Crud::User::Update, params, default_additional_params) do |model|
+            present model, with: ::Entities::UserEntity
+          end
         end
       end
     end

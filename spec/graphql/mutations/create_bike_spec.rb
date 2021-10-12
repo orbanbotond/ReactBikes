@@ -8,7 +8,7 @@ RSpec.describe "CreateBike" do
   subject(:scoped_reservations) do
     context = { current_user: current_user }
     result = ToptalReactBikesSchema.execute(query_string, context: context, variables: variables)
-    result.to_h["data"]
+    result.to_h["data"]["createBike"]
   end
 
   let(:variables) do
@@ -33,7 +33,9 @@ RSpec.describe "CreateBike" do
             id,
             color,
             weight,
-            bikeModelId,
+            model{
+              id
+            }
             latitude,
             longitude
           },
@@ -44,16 +46,20 @@ RSpec.describe "CreateBike" do
   end
 
   context "negative cases" do
-    let(current_user) { create :user }
+    let(:current_user) { create :user }
 
-    it{ is_expected.to_not include("createBike") }
-    it{ is_expected.to include("errors") }
+    it "returns an error" do
+      expect(subject["errors"]).to be_present
+      expect(subject["bike"]).not_to be_present
+    end
   end
 
   context "positive cases" do
-    let(current_user) { create :user, :admin }
+    let(:current_user) { create :user, :admin }
 
-    it{ is_expected.to include("createBike") }
-    it{ is_expected.to_not include("errors") }
+    it "returns bike" do
+      expect(subject["errors"]).not_to be_present
+      expect(subject["bike"]).to be_present
+    end
   end
 end

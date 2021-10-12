@@ -7,6 +7,9 @@ module Entities
       expose :email
       expose :admin
       expose :session_token
+      expose :gql_id do |model|
+        ToptalReactBikesSchema.id_from_object(model, model.class, {})
+      end
     end
   end
 end

@@ -34,7 +34,7 @@ class ReservationsContainer extends Component {
 
       const query = `
       {
-        users(id: "${currentUser.id}"){
+        users(id: "${currentUser.gql_id}"){
           nodes{
             id,
             reservations{

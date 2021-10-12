@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class BikeModelType < Types::Base::Object
     description "A bike model"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BikePolicy < ApplicationPolicy
   attr_reader :current_user, :model
 

@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 module Pagination
   module ActiveRecordRelationConnection
-
     def set_after_offset(relation, offset_value)
       if offset_value
         # TODO make these fields injectable from the outside customizable
         # relation.where('id > ?', offset_value)
-        relation.where('created_at > ?', offset_value)
+        relation.where("created_at > ?", offset_value)
       else
         # relation.unscope(where: :id)
         relation.unscope(where: :created_at)
@@ -15,19 +16,19 @@ module Pagination
     def set_before_offset(relation, offset_value)
       if offset_value
         # relation.where('id > ?', offset_value)
-        relation.where('created_at < ?', offset_value)
+        relation.where("created_at < ?", offset_value)
       else
         # relation.unscope(where: :id)
         relation.unscope(where: :created_at)
       end
     end
- 
+
     # This provides limit to the relation
     # By applying the `first` and `last` to `sliced_nodes`
     def limited_nodes
       @limited_nodes ||= begin
         paginated_nodes = sliced_nodes
-        
+
         if first
           paginated_nodes = paginated_nodes.first(first)
         end

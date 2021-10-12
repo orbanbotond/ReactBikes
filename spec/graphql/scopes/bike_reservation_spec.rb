@@ -7,7 +7,7 @@ RSpec.describe "BikeReservationType" do
     subject(:scoped_reservations) do
       context = { current_user: current_user }
       result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
-      result.to_h["data"]["bikes"]["nodes"].first["reservations"].map{|r|r["id"].to_i}
+      result.to_h["data"]["bikes"]["nodes"].first["reservations"].map { |r|r["id"].to_i }
     end
     let(:query_string) do
       <<~GQL
@@ -23,7 +23,7 @@ RSpec.describe "BikeReservationType" do
         }
       GQL
     end
-    let!(:bike) { create :bike}
+    let!(:bike) { create :bike }
     let!(:reservation_for_bike) { create :reservation, bike: bike }
     let!(:bike_2) { create :bike }
     let!(:reservation_for_bike_2) { create :reservation, bike: bike_2 }
@@ -53,7 +53,7 @@ RSpec.describe "BikeReservationType" do
     subject(:scoped_reservations) do
       context = { current_user: current_user }
       result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
-      result.to_h["data"]["users"]["nodes"].first["reservations"].map{|r|r["id"].to_i}
+      result.to_h["data"]["users"]["nodes"].first["reservations"].map { |r|r["id"].to_i }
     end
     let(:query_string) do
       <<~GQL

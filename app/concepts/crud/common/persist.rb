@@ -18,7 +18,7 @@ module Crud
 
       private
         def execute_perform!(*)
-          model.attributes= model_attributes
+          model.attributes = model_attributes
           model.save!
           model
         end

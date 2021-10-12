@@ -8,5 +8,5 @@ class Bike < ApplicationRecord
   scope :by_color, ->(color) { where(color: color) }
   scope :red, -> { by_color("red") }
 
-  COLORS =  %w(red blue magenta white black).freeze
+  COLORS = %w(red blue magenta white black).freeze
 end

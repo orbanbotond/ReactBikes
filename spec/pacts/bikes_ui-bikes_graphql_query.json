@@ -17,11 +17,11 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "query": "mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){\n  createBike(input: {color: $color, \n                     weight: $weight,\n                     latitude: $latitude,\n                     longitude: $longitude,\n                     bikeModelId: $bikeModelId}){\n    bike {\n      id\n    },\n    errors,\n  } \n}\n",
+          "query": "mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){\n  createBike(input: {color: $color,\n                     weight: $weight,\n                     latitude: $latitude,\n                     longitude: $longitude,\n                     bikeModelId: $bikeModelId}){\n    bike {\n      id\n    },\n    errors,\n  }\n}\n",
           "variables": {
             "color": "red",
             "weight": 3.5,
-            "bikeModelId": 1,
+            "bikeModelId": "QmlrZU1vZGVsLTE=",
             "latitude": 23.15,
             "longitude": 35.38
           }
@@ -62,11 +62,11 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "query": "mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){\n  updateBike(input: {color: $color, \n                     weight: $weight,\n                     bikeId: $bikeId}){\n    bike {\n      id,\n      color,\n      weight\n    },\n    errors,\n  } \n}\n",
+          "query": "mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: ID!){\n  updateBike(input: {color: $color,\n                     weight: $weight,\n                     bikeId: $bikeId}){\n    bike {\n      id,\n      color,\n      weight\n    },\n    errors,\n  }\n}\n",
           "variables": {
             "color": "blue",
             "weight": 4.5,
-            "bikeId": 1
+            "bikeId": "QmlrZS0x"
           }
         }
       },

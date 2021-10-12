@@ -96,8 +96,8 @@ class BikeGraphqlClient
 
   def create_bike
     gql = <<~GQL
-      mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
-        createBike(input: {color: $color,#{' '}
+      mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){
+        createBike(input: {color: $color,
                            weight: $weight,
                            latitude: $latitude,
                            longitude: $longitude,
@@ -106,14 +106,14 @@ class BikeGraphqlClient
             id
           },
           errors,
-        }#{' '}
+        }
       }
     GQL
 
     variables = {
       "color": "red",
       "weight": 3.5,
-      "bikeModelId": 1,
+      "bikeModelId": GraphQL::Schema::UniqueWithinType.encode("BikeModel", 1),
       "latitude": 23.15,
       "longitude": 35.38
     }
@@ -123,8 +123,8 @@ class BikeGraphqlClient
 
   def update_bike
     gql = <<~GQL
-      mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){
-        updateBike(input: {color: $color,#{' '}
+      mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: ID!){
+        updateBike(input: {color: $color,
                            weight: $weight,
                            bikeId: $bikeId}){
           bike {
@@ -133,14 +133,14 @@ class BikeGraphqlClient
             weight
           },
           errors,
-        }#{' '}
+        }
       }
     GQL
 
     variables = {
       "color": "blue",
       "weight": 4.5,
-      "bikeId": 1,
+      "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1),
     }
 
     call_graphql(gql, variables)

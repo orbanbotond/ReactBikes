@@ -3,6 +3,7 @@
 require_relative "./pact_helper"
 require_relative "./bike_graphql_client"
 require "rspec/json_expectations"
+require "graphql/schema/unique_within_type"
 
 describe BikeGraphqlClient, pact: true do
   before do
@@ -38,11 +39,12 @@ describe BikeGraphqlClient, pact: true do
   describe "mutations" do
     describe "bikes" do
       context "when creating them" do
+        let(:bike_model) { build_stubbed :bike_model }
         let(:variables) do
           {
             "color": "red",
             "weight": 3.5,
-            "bikeModelId": 1,
+            "bikeModelId": GraphQL::Schema::UniqueWithinType.encode("BikeModel", 1),
             "latitude": 23.15,
             "longitude": 35.38
           }
@@ -50,8 +52,8 @@ describe BikeGraphqlClient, pact: true do
 
         let(:gql) do
           <<~GQL
-            mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
-              createBike(input: {color: $color,#{' '}
+            mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){
+              createBike(input: {color: $color,
                                  weight: $weight,
                                  latitude: $latitude,
                                  longitude: $longitude,
@@ -60,7 +62,7 @@ describe BikeGraphqlClient, pact: true do
                   id
                 },
                 errors,
-              }#{' '}
+              }
             }
           GQL
         end
@@ -92,18 +94,19 @@ describe BikeGraphqlClient, pact: true do
       end
 
       context "when updating them" do
+        let(:bike) { build_stubbed :bike }
         let(:variables) do
           {
             "color": "blue",
             "weight": 4.5,
-            "bikeId": 1
+            "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1)
           }
         end
 
         let(:gql) do
           <<~GQL
-            mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){
-              updateBike(input: {color: $color,#{' '}
+            mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: ID!){
+              updateBike(input: {color: $color,
                                  weight: $weight,
                                  bikeId: $bikeId}){
                 bike {
@@ -112,7 +115,7 @@ describe BikeGraphqlClient, pact: true do
                   weight
                 },
                 errors,
-              }#{' '}
+              }
             }
           GQL
         end

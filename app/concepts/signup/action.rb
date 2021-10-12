@@ -2,7 +2,7 @@
 
 module Signup
   class Action < Granite::Action
-    allow_if { performer.present? }
+    self._policies_strategy = AlwaysAllowStrategy
 
     attribute :email, String
     attribute :password, String

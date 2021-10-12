@@ -43,7 +43,7 @@ module Bikes
                   }
         end
         put do
-          call_action(::Crud::Reservation::Update, params) do |result|
+          call_action(::Crud::Reservation::Update, params, default_additional_params) do |result|
             present result, with: ::Entities::ReservationEntity
           end
         end

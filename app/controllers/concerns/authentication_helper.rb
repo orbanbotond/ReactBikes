@@ -20,7 +20,7 @@ module AuthenticationHelper
   end
 
   def default_additional_params
-    { "current_user" => current_user }
+    { "current_user" => current_user }.with_indifferent_access
   end
 
   def current_user

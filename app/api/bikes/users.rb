@@ -22,7 +22,7 @@ module Bikes
                 }
       end
       post do
-        call_action(::Crud::User::Create, params) do |result|
+        call_action(::Crud::User::Create, params, default_additional_params) do |result|
           present result, with: ::Entities::UserEntity
         end
       end

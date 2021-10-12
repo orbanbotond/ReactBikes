@@ -3,7 +3,7 @@
 module Helpers
   module OperationAdapter
     def call_action(action, params, additional_params = {})
-      instantiated = action.as(:system).new(params.merge(additional_params))
+      instantiated = action.as(additional_params[:current_user]).new(params.merge(additional_params))
       if instantiated.valid?
         yield instantiated.perform
       else

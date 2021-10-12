@@ -21,7 +21,7 @@ module Bikes
                 }
       end
       post do
-        call_action(::Crud::Bike::Create, params) do |result|
+        call_action(::Crud::Bike::Create, params, default_additional_params) do |result|
           present result, with: ::Entities::BikeEntity
         end
       end
@@ -97,7 +97,7 @@ module Bikes
                   }
         end
         put do
-          call_action(::Crud::Bike::Update, params) do |result|
+          call_action(::Crud::Bike::Update, params, default_additional_params) do |result|
             present result, with: ::Entities::BikeEntity
           end
         end

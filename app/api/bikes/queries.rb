@@ -36,7 +36,7 @@ module Bikes
           "end_date" => parse_date(params[:end_date]),
         )
 
-        call_action(::Queries::AvailableBikes, params2) do |result|
+        call_action(::Queries::AvailableBikes, params2, default_additional_params) do |result|
           present result, with: ::Entities::BikeEntity
         end
       end

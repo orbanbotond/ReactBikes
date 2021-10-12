@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "CreateBike" do
   let(:bike_model) { create :bike_model }
-
+  let(:bike_model_id) { ToptalReactBikesSchema.id_from_object(bike_model, bike_model.class, {}) }
   subject(:scoped_reservations) do
     context = { current_user: current_user }
     result = ToptalReactBikesSchema.execute(query_string, context: context, variables: variables)
@@ -15,7 +15,7 @@ RSpec.describe "CreateBike" do
     {
       "color": "red",
       "weight": 3.5,
-      "bikeModelId": bike_model.id,
+      "bikeModelId": bike_model_id,
       "latitude": 23.15,
       "longitude": 35.38
     }
@@ -23,8 +23,8 @@ RSpec.describe "CreateBike" do
 
   let(:query_string) do
     <<~GQL
-      mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
-        createBike(input: {color: $color,#{' '}
+      mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){
+        createBike(input: {color: $color,
                            weight: $weight,
                            latitude: $latitude,
                            longitude: $longitude,
@@ -40,7 +40,7 @@ RSpec.describe "CreateBike" do
             longitude
           },
           errors,
-        }#{' '}
+        }
       }
     GQL
   end

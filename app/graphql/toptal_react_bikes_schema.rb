@@ -10,9 +10,7 @@ class ToptalReactBikesSchema < GraphQL::Schema
 
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)
-    # TODO: Implement this function
-    # to return the correct object type for `obj`
-    raise(GraphQL::RequiredImplementationMissingError)
+    return abstract_type
   end
 
   # Relay-style Object Identification:
@@ -27,11 +25,7 @@ class ToptalReactBikesSchema < GraphQL::Schema
 
   # Given a string UUID, find the object
   def self.object_from_id(id, query_ctx)
-    # For example, to decode the UUIDs generated above:
-    # type_name, item_id = GraphQL::Schema::UniqueWithinType.decode(id)
-    #
-    # Then, based on `type_name` and `id`
-    # find an object in your application
-    # ...
+    type_name, item_id = GraphQL::Schema::UniqueWithinType.decode(id)
+    type_name.constantize.where(id: item_id)
   end
 end

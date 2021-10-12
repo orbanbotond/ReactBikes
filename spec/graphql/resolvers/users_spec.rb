@@ -6,6 +6,10 @@ RSpec.describe Resolvers::Users, type: :query do
   before do
     @user_resolver = create_temporary_class "UsersResolver" do
       include Resolvers::Users
+
+      def context
+        {}
+      end
     end
   end
 
@@ -14,7 +18,7 @@ RSpec.describe Resolvers::Users, type: :query do
 
     context "when id is specified" do
       context "when user is found" do
-        let(:params) { { id: user_1.id.to_s } }
+        let(:params) { { id: ToptalReactBikesSchema.id_from_object(user_1, user_1.class, {}) } }
         let(:user_1) { create(:user) }
         let(:user_2) { create(:user) }
 
@@ -23,7 +27,8 @@ RSpec.describe Resolvers::Users, type: :query do
       end
 
       context "when user is not found" do
-        let(:params) { { id: "Nonexisting user id" } }
+        let(:params) { { id: ToptalReactBikesSchema.id_from_object(user_1, user_1.class, {}) } }
+        let(:user_1) { build_stubbed(:user) }
 
         it { is_expected.to be_empty }
       end

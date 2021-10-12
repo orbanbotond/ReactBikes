@@ -51,8 +51,9 @@ module Bikes
                   }
         end
         get :reservations do
-          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
-          present model.reservations, with: ::Entities::ReservationEntity
+          call_action(::Crud::Common::Read, params.merge(ar_class: :bike), default_additional_params) do |model|
+            present model.reservations, with: ::Entities::ReservationEntity
+          end
         end
 
         desc "Bike." do
@@ -66,8 +67,9 @@ module Bikes
                   }
         end
         get do
-          model = Crud::Common::Read.as(:system).new(params.merge(ar_class: :bike)).perform
-          present model, with: ::Entities::BikeEntity
+          call_action(::Crud::Common::Read, params.merge(ar_class: :bike), default_additional_params) do |model|
+            present model, with: ::Entities::BikeEntity
+          end
         end
 
         desc "Deletes a bike." do
@@ -81,8 +83,9 @@ module Bikes
                   }
         end
         delete do
-          model = Crud::Common::Delete.as(:system).new(params.merge(ar_class: :bike)).perform
-          present model, with: ::Entities::BikeEntity
+          call_action(::Crud::Common::Delete, params.merge(ar_class: :bike), default_additional_params) do |model|
+            present model, with: ::Entities::BikeEntity
+          end
         end
 
         desc "Updates a bike." do

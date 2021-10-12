@@ -12,9 +12,10 @@ module Bikes
       rack_response(error_from_system(code, message).to_json, http_return_code)
     end
 
-    mount Bikes::Ping
-    mount Bikes::Login
     mount Bikes::Signup
+
+    mount Bikes::Login
+    mount Bikes::Ping
     mount Bikes::Models
     mount Bikes::Bikes
     mount Bikes::Users

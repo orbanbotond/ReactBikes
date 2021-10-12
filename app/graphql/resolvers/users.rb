@@ -3,12 +3,11 @@
 module Resolvers
   module Users
     def users(id: nil)
-      relation = if id.present?
-        User.where(id: id)
+      if id.present?
+        ToptalReactBikesSchema.object_from_id(id, context)
       else
         User.all
       end
-      relation
     end
   end
 end

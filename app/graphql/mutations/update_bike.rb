@@ -6,14 +6,16 @@ module Mutations
     argument :weight, Float, required: false
     argument :latitude, Float, required: false
     argument :longitude, Float, required: false
-    argument :bike_model_id, Integer, required: false
-    argument :bikeId, Integer, required: true
+    argument :bike_model_id, ID, required: false
+    argument :bike_id, ID, required: true, loads: ::Types::BikeType
 
     field :bike, ::Types::BikeType, null: true
     field :errors, [String], null: false
 
-    def resolve(bikeId:, **rest)
-      operation = Crud::Bike::Update.as(context[:current_user]).new(arguments.merge(id: bikeId))
+    def resolve(bike:, **rest)
+      params = arguments.merge(id: bike.first.id)
+
+      operation = Crud::Bike::Update.as(context[:current_user]).new(params)
       if operation.valid? && (bike = operation.perform)
         {
           bike: bike,

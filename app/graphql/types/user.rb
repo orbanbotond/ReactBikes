@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class User < Types::Base::Object
     description "A user reservation"

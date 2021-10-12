@@ -7,7 +7,7 @@ RSpec.describe ReservationPolicy, type: :model do
 
   describe "scopes" do
     context "when the users asks for the reservation of the bikes" do
-      let!(:bike) { create :bike}
+      let!(:bike) { create :bike }
       let!(:reservation_for_bike) { create :reservation, bike: bike }
       let!(:bike_2) { create :bike }
       let!(:reservation_for_bike_2) { create :reservation, bike: bike_2 }

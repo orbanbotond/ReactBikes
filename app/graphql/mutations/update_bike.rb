@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mutations
   class UpdateBike < Mutations::BaseMutation
     argument :color, ::Types::BikeColorsEnum, required: false

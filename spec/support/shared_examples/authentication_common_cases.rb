@@ -11,7 +11,7 @@ RSpec.shared_examples "unauthenticated" do
   end
 
   context "bad token" do
-    let(:developer_header) { super().merge "X-Auth-Token"=> "wrong token" }
+    let(:developer_header) { super().merge "X-Auth-Token" => "wrong token" }
 
     specify "returns unauthorized" do
       expect_unauthorized

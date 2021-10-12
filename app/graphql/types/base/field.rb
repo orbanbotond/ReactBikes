@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   module Base
     class Field < GraphQL::Schema::Field
@@ -13,19 +15,18 @@ module Types
         super && (@required_role ? check_role_requirement(context) : true)
       end
 
-      private 
+      private
+        def check_role_requirement(context)
+          return false unless context[:current_user].present?
+          policy(context).field_visible_by?(@required_role, name)
+        end
 
-      def check_role_requirement(context)
-        return false unless context[:current_user].present?
-        policy(context).field_visible_by?(@required_role, name)
-      end
+        def policy(context)
+          parent_type = owner
 
-      def policy(context)
-        parent_type = owner
-
-        policy_class = "#{parent_type.name.demodulize}Policy".constantize
-        policy_class.new(context[:current_user], nil)
-      end
+          policy_class = "#{parent_type.name.demodulize}Policy".constantize
+          policy_class.new(context[:current_user], nil)
+        end
     end
   end
 end

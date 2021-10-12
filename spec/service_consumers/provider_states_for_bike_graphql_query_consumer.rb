@@ -1,17 +1,18 @@
-require 'pact'
+# frozen_string_literal: true
+
+require "pact"
 
 def create_admin_user
   session_token = "token-xxx123123"
   admin = User.create admin: true, hashed_session_token: User.pwd_hash(session_token)
 end
 
-Pact.provider_states_for 'Bikes UI' do
-
+Pact.provider_states_for "Bikes UI" do
   provider_state "a red bike model exists" do
     set_up do
       admin = create_admin_user
       model1 = BikeModel.create text: "Mountain"
-      bike = Bike.create id: 1, weight: 1.2, color: 'red', bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
+      bike = Bike.create id: 1, weight: 1.2, color: "red", bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
     end
     tear_down do
       User.destroy_all
@@ -77,7 +78,7 @@ Pact.provider_states_for 'Bikes UI' do
       create_admin_user
       model1 = BikeModel.create text: "Mountain"
       bike = Bike.create weight: 1.2, color: Bike::COLORS.first, bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
-      user = User.create email: 'boti@gmail.com'
+      user = User.create email: "boti@gmail.com"
       Reservation.create user: user, bike: bike
     end
 
@@ -91,6 +92,6 @@ Pact.provider_states_for 'Bikes UI' do
 
   provider_state "a thing does not exist" do
     no_op # If there's nothing to do because the state name is more for documentation purposes,
-          # you can use no_op to imply this.
+    # you can use no_op to imply this.
   end
 end

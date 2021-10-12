@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def create_temporary_class(klass, subklass = Object, &block)
   temporary_class = Class.new(subklass)
 

@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "N+1 query test", :n_plus_one do
   let(:current_user) { create :user, admin: true }
 
-  describe 'for bikes/reservations' do
+  describe "for bikes/reservations" do
     populate do |n|
       n.times do
         user = create :user, email: "boti#{n}@gmail.com"
@@ -31,16 +31,16 @@ RSpec.describe "N+1 query test", :n_plus_one do
               }
             }
           }
-        GQL
+      GQL
 
       expect do
         context = { current_user: current_user }
         result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
       end.to perform_constant_number_of_queries
-    end    
+    end
   end
 
-  describe 'for users/reservations' do
+  describe "for users/reservations" do
     populate do |n|
       user = create :user, email: "boti#{n}@gmail.com"
       n.times do
@@ -69,7 +69,6 @@ RSpec.describe "N+1 query test", :n_plus_one do
         context = { current_user: current_user }
         result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
       end.to perform_constant_number_of_queries
-    end    
+    end
   end
-
 end

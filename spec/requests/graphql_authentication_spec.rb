@@ -25,7 +25,7 @@ RSpec.describe "GraphqlController authentication", type: :request do
   end
 
   context "when unauthenticated" do
-    let(:session_token) { 'non_existent_sesstion_token' }
+    let(:session_token) { "non_existent_sesstion_token" }
 
     it "returns 401" do
       call_request

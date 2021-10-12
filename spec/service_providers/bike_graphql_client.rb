@@ -1,8 +1,10 @@
-require 'httparty'
+# frozen_string_literal: true
+
+require "httparty"
 
 class BikeGraphqlClient
   include HTTParty
-  base_uri 'http://localhost:3000/graphql'
+  base_uri "http://localhost:3000/graphql"
 
   def initialize(session_token)
     @session_token = session_token
@@ -95,7 +97,7 @@ class BikeGraphqlClient
   def create_bike
     gql = <<~GQL
       mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
-        createBike(input: {color: $color, 
+        createBike(input: {color: $color,#{' '}
                            weight: $weight,
                            latitude: $latitude,
                            longitude: $longitude,
@@ -104,7 +106,7 @@ class BikeGraphqlClient
             id
           },
           errors,
-        } 
+        }#{' '}
       }
     GQL
 
@@ -122,7 +124,7 @@ class BikeGraphqlClient
   def update_bike
     gql = <<~GQL
       mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){
-        updateBike(input: {color: $color, 
+        updateBike(input: {color: $color,#{' '}
                            weight: $weight,
                            bikeId: $bikeId}){
           bike {
@@ -131,7 +133,7 @@ class BikeGraphqlClient
             weight
           },
           errors,
-        } 
+        }#{' '}
       }
     GQL
 
@@ -146,9 +148,9 @@ class BikeGraphqlClient
 
 
 private
-  def call_graphql(gql, variables={})
+  def call_graphql(gql, variables = {})
     httpartyy.post("/graphql",
-      headers: { "X-Auth-Token" => @session_token, 'Content-Type' => 'application/json' },
+      headers: { "X-Auth-Token" => @session_token, "Content-Type" => "application/json" },
       body: payload(gql, variables).to_json)
   end
 
@@ -156,7 +158,7 @@ private
     self.class
   end
 
-  def payload(gql, variables=nil)
+  def payload(gql, variables = nil)
     {
       query: gql,
       variables: variables

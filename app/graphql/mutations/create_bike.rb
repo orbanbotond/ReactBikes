@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mutations
   class CreateBike < Mutations::BaseMutation
     argument :color, ::Types::BikeColorsEnum, required: true
@@ -12,7 +14,7 @@ module Mutations
     def authorized?(**args)
       return false, { errors: ["Can't create a bike with the current role"] } unless back_end_operation(args).allowed?
 
-      return true
+      true
     end
 
     def resolve(**rest)

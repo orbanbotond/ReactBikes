@@ -24,7 +24,7 @@ RSpec.describe "CreateBike" do
   let(:query_string) do
     <<~GQL
       mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
-        createBike(input: {color: $color, 
+        createBike(input: {color: $color,#{' '}
                            weight: $weight,
                            latitude: $latitude,
                            longitude: $longitude,
@@ -40,7 +40,7 @@ RSpec.describe "CreateBike" do
             longitude
           },
           errors,
-        } 
+        }#{' '}
       }
     GQL
   end

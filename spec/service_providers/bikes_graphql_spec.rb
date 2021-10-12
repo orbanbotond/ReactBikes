@@ -1,10 +1,12 @@
-require_relative './pact_helper'
-require_relative './bike_graphql_client'
+# frozen_string_literal: true
+
+require_relative "./pact_helper"
+require_relative "./bike_graphql_client"
 require "rspec/json_expectations"
 
-describe BikeGraphqlClient, :pact => true do
+describe BikeGraphqlClient, pact: true do
   before do
-    BikeGraphqlClient.base_uri 'localhost:1234'
+    BikeGraphqlClient.base_uri "localhost:1234"
   end
 
   let(:session_token) { "token-xxx123123" }
@@ -15,13 +17,13 @@ describe BikeGraphqlClient, :pact => true do
   let!(:initialization) do
     bikes_graphql_query.given(provider_state).
       upon_receiving(message_description).
-      with(method: :post, 
-           path: '/graphql', 
+      with(method: :post,
+           path: "/graphql",
            body: payload,
-           headers: { "X-Auth-Token" => session_token, 'Content-Type' => 'application/json' }).
+           headers: { "X-Auth-Token" => session_token, "Content-Type" => "application/json" }).
       will_respond_with(
         status: 200,
-        headers: {'Content-Type' => 'application/json; charset=utf-8'},
+        headers: { "Content-Type" => "application/json; charset=utf-8" },
         body: mocked_body_content
       )
   end
@@ -49,7 +51,7 @@ describe BikeGraphqlClient, :pact => true do
         let(:gql) do
           <<~GQL
             mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: Int!){
-              createBike(input: {color: $color, 
+              createBike(input: {color: $color,#{' '}
                                  weight: $weight,
                                  latitude: $latitude,
                                  longitude: $longitude,
@@ -58,12 +60,12 @@ describe BikeGraphqlClient, :pact => true do
                   id
                 },
                 errors,
-              } 
+              }#{' '}
             }
           GQL
         end
-        let(:provider_state){"a bike model exists"}
-        let(:message_description){"a request for bike creation"}
+        let(:provider_state) { "a bike model exists" }
+        let(:message_description) { "a request for bike creation" }
         let(:mocked_body_content) do
           {
             data: {
@@ -78,7 +80,7 @@ describe BikeGraphqlClient, :pact => true do
         end
 
         it "returns a bike" do
-          expect(JSON.parse(subject.create_bike.body, {:symbolize_names => true})[:data]).to include_json(
+          expect(JSON.parse(subject.create_bike.body, { symbolize_names: true })[:data]).to include_json(
             createBike: {
               bike: {
                 id: /\d/,
@@ -101,7 +103,7 @@ describe BikeGraphqlClient, :pact => true do
         let(:gql) do
           <<~GQL
             mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: Int!){
-              updateBike(input: {color: $color, 
+              updateBike(input: {color: $color,#{' '}
                                  weight: $weight,
                                  bikeId: $bikeId}){
                 bike {
@@ -110,12 +112,12 @@ describe BikeGraphqlClient, :pact => true do
                   weight
                 },
                 errors,
-              } 
+              }#{' '}
             }
           GQL
         end
-        let(:provider_state){"a red bike model exists"}
-        let(:message_description){"a request for bike update"}
+        let(:provider_state) { "a red bike model exists" }
+        let(:message_description) { "a request for bike update" }
         let(:mocked_body_content) do
           {
             data: {
@@ -132,7 +134,7 @@ describe BikeGraphqlClient, :pact => true do
         end
 
         it "returns the updated bike" do
-          expect(JSON.parse(subject.update_bike.body, {:symbolize_names => true})[:data]).to include_json(
+          expect(JSON.parse(subject.update_bike.body, { symbolize_names: true })[:data]).to include_json(
             updateBike: {
               bike: {
                 id: /\d/,
@@ -164,8 +166,8 @@ describe BikeGraphqlClient, :pact => true do
             }
           GQL
         end
-        let(:provider_state){"a user with reservation exists"}
-        let(:message_description){"a request for users with reservations"}
+        let(:provider_state) { "a user with reservation exists" }
+        let(:message_description) { "a request for users with reservations" }
         let(:mocked_body_content) do
           {
             data: {
@@ -182,7 +184,7 @@ describe BikeGraphqlClient, :pact => true do
         end
 
         it "returns users" do
-          expect(JSON.parse(subject.get_users_with_reservations.body, {:symbolize_names => true})[:data]).to include_json(
+          expect(JSON.parse(subject.get_users_with_reservations.body, { symbolize_names: true })[:data]).to include_json(
             users: {
               nodes: UnorderedArray({
                 id: /\d*/,
@@ -214,8 +216,8 @@ describe BikeGraphqlClient, :pact => true do
             }
           GQL
         end
-        let(:provider_state){"a user exists"}
-        let(:message_description){"a paginated request for users"}
+        let(:provider_state) { "a user exists" }
+        let(:message_description) { "a paginated request for users" }
         let(:mocked_body_content) do
           {
             data: {
@@ -236,7 +238,7 @@ describe BikeGraphqlClient, :pact => true do
         end
 
         it "returns users" do
-          expect(JSON.parse(subject.get_users_with_pagination_info.body, {:symbolize_names => true})[:data]).to include_json(
+          expect(JSON.parse(subject.get_users_with_pagination_info.body, { symbolize_names: true })[:data]).to include_json(
             users: {
               edges: UnorderedArray({
                 cursor: /\.*/,
@@ -278,8 +280,8 @@ describe BikeGraphqlClient, :pact => true do
             }
           GQL
         end
-        let(:provider_state){"a bike with reservation exists"}
-        let(:message_description){"a request for bikes with reservations and models"}
+        let(:provider_state) { "a bike with reservation exists" }
+        let(:message_description) { "a request for bikes with reservations and models" }
         let(:mocked_body_content) do
           {
             data: {
@@ -304,7 +306,7 @@ describe BikeGraphqlClient, :pact => true do
         end
 
         it "returns bikes" do
-          expect(JSON.parse(subject.get_bikes_with_reservations_and_models.body, {:symbolize_names => true})[:data]).to include_json(
+          expect(JSON.parse(subject.get_bikes_with_reservations_and_models.body, { symbolize_names: true })[:data]).to include_json(
             bikes: {
               edges: UnorderedArray({
                 node: {
@@ -344,8 +346,8 @@ describe BikeGraphqlClient, :pact => true do
             }
           GQL
         end
-        let(:provider_state){"a bike exists"}
-        let(:message_description){"a paginated request for bikes"}
+        let(:provider_state) { "a bike exists" }
+        let(:message_description) { "a paginated request for bikes" }
         let(:mocked_body_content) do
           {
             data: {
@@ -366,7 +368,7 @@ describe BikeGraphqlClient, :pact => true do
         end
 
         it "returns bikes" do
-          expect(JSON.parse(subject.get_bikes_with_pagination_info.body, {:symbolize_names => true})[:data]).to include_json(
+          expect(JSON.parse(subject.get_bikes_with_pagination_info.body, { symbolize_names: true })[:data]).to include_json(
             bikes: {
               edges: UnorderedArray({
                 cursor: /\.*/,

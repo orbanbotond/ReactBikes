@@ -9,8 +9,15 @@ module Mutations
     field :bike, ::Types::BikeType, null: true
     field :errors, [String], null: false
 
+    def authorized?(**args)
+      return false, { errors: ["Can't create a bike with the current role"] } unless back_end_operation(args).allowed?
+
+      return true
+    end
+
     def resolve(**rest)
-      operation = Crud::Bike::Create.as(context[:current_user]).new(arguments)
+      operation = back_end_operation(rest)
+
       if operation.valid? && (bike = operation.perform)
         {
           bike: bike,
@@ -22,6 +29,10 @@ module Mutations
           errors: operation.errors.full_messages
         }
       end
+    end
+
+    def back_end_operation(**args)
+      @back_end_operation ||= Crud::Bike::Create.as(context[:current_user]).new(args)
     end
   end
 end

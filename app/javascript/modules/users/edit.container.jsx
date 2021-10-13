@@ -19,11 +19,24 @@ class EditContainer extends Component {
 
   componentWillMount() {
     if(!this.state.user){
-      const currentUser = this.props.user
+      const currentUser = this.props.user;
+      const id = this.props.match.params.id;
 
-      Axios(currentUser).get(this.apiUrl()).then((_responseObj) => {
+      const query = `
+      {
+        users(id: "${id}"){
+          nodes{
+            id,
+            email,
+            admin
+          }
+        }
+      }
+      `
+
+      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
         this.setState({
-          user: _responseObj.data,
+          user: _responseObj.data.data.users.nodes[0],
         });
       }).catch((_error) => {
       });

@@ -4,15 +4,15 @@ require "pact"
 
 def create_admin_user
   session_token = "token-xxx123123"
-  admin = User.create admin: true, hashed_session_token: User.pwd_hash(session_token)
+  User.create admin: true, hashed_session_token: User.pwd_hash(session_token)
 end
 
 Pact.provider_states_for "Bikes UI" do
   provider_state "a red bike model exists" do
     set_up do
-      admin = create_admin_user
+      create_admin_user
       model1 = BikeModel.create text: "Mountain"
-      bike = Bike.create id: 1, weight: 1.2, color: "red", bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
+      Bike.create id: 1, weight: 1.2, color: "red", bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
     end
     tear_down do
       User.destroy_all
@@ -23,8 +23,8 @@ Pact.provider_states_for "Bikes UI" do
 
   provider_state "a bike model exists" do
     set_up do
-      admin = create_admin_user
-      model1 = BikeModel.create text: "Mountain", id: 1
+      create_admin_user
+      BikeModel.create text: "Mountain", id: 1
     end
     tear_down do
       User.destroy_all
@@ -35,7 +35,7 @@ Pact.provider_states_for "Bikes UI" do
 
   provider_state "a user exists" do
     set_up do
-      admin = create_admin_user
+      create_admin_user
     end
 
     tear_down do

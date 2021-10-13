@@ -35,7 +35,7 @@ RSpec.describe "N+1 query test", :n_plus_one do
 
       expect do
         context = { current_user: current_user }
-        result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
+        ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
       end.to perform_constant_number_of_queries
     end
   end
@@ -67,7 +67,7 @@ RSpec.describe "N+1 query test", :n_plus_one do
 
       expect do
         context = { current_user: current_user }
-        result = ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
+        ToptalReactBikesSchema.execute(query_string, context: context, variables: {})
       end.to perform_constant_number_of_queries
     end
   end

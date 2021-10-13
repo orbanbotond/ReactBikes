@@ -10,7 +10,7 @@ class ToptalReactBikesSchema < GraphQL::Schema
 
   # Union and Interface Resolution
   def self.resolve_type(abstract_type, obj, ctx)
-    return abstract_type
+    abstract_type
   end
 
   # Relay-style Object Identification:

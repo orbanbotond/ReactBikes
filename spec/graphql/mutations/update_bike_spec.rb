@@ -22,7 +22,7 @@ RSpec.describe "UpdateBike" do
   let(:query_string) do
     <<~GQL
       mutation UpdateBikes($color: BikeColorsEnum, $weight: Float, $latitude: Float, $longitude: Float, $bikeModelId: ID, $bikeId: ID!){
-        updateBike(input: {color: $color, 
+        updateBike(input: {color: $color,#{' '}
                            weight: $weight,
                            bikeModelId: $bikeModelId
                            latitude: $latitude,

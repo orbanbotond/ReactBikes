@@ -17,7 +17,7 @@ module Types
       argument :id, ID, required: false
     end
     field :bike_models, [::Types::BikeModelType],
-      null: false, 
+      null: false,
       description: "A list of all bike models"
 
     def bike_models

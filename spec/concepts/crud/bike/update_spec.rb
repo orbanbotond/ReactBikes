@@ -23,7 +23,7 @@ describe Crud::Bike::Update, type: :model do
 
   describe "authorization" do
     context "when unauthorized" do
-      let(:current_user) { create :user}
+      let(:current_user) { create :user }
 
       it { is_expected.to_not be_allowed }
     end

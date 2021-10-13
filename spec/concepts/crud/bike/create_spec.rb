@@ -4,12 +4,12 @@ require "rails_helper"
 
 describe Crud::Bike::Create, type: :model do
   let(:params) { { color: ::Bike::COLORS.first, weight: 1.2, latitude: 0, longitude: 0, bike_model_id: bike_model.id } }
-  let(:admin) { create :user, :admin }
-  subject(:action) { described_class.as(admin).new(params) }
+  let(:current_user) { create :user, :admin }
+  subject(:action) { described_class.as(current_user).new(params) }
   let!(:bike_model) { create :bike_model }
 
-  context "positive case" do
-    it "return the logged in user" do
+  describe "positive case" do
+    it "returns the created bike" do
       expect do
         bike = action.perform!
         expect(bike.color).to eq(params[:color])
@@ -20,7 +20,15 @@ describe Crud::Bike::Create, type: :model do
     end
   end
 
-  context "validations" do
+  describe "authorization" do
+    context "when unauthorized" do
+      let(:current_user) { create :user}
+
+      it { is_expected.to_not be_allowed }
+    end
+  end
+
+  describe "validations" do
     context "attributes" do
       context "color" do
         it { is_expected.to validate_presence_of(:color) }

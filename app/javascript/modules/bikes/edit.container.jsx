@@ -62,7 +62,36 @@ class EditContainer extends Component {
   }
 
   handleSubmit = data => {
-    return Axios(this.props.user).put(this.apiUrl(), data).then((responseObj) => {
+    const currentUser = this.props.user;
+
+    const variables = `
+      {
+        "bikeId": "${data.id}",
+        "color": "${data.color}",
+        "weight": ${data.weight},
+        "bikeModelId": "${data.bike_model_id}",
+        "latitude": ${data.latitude},
+        "longitude": ${data.longitude}
+      }
+    `
+
+    const query = `
+      mutation UpdateBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!, $bikeId: ID!){
+        updateBike(input: {color: $color, 
+                           weight: $weight,
+                           bikeModelId: $bikeModelId
+                           latitude: $latitude,
+                           longitude: $longitude,
+                           bikeId: $bikeId}){
+          bike {
+            id,
+          },
+          errors,
+        }
+      }
+    `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((responseObj) => {
       this.handleSuccess(responseObj);
     }).catch((error) => {
       this.handleError(error);

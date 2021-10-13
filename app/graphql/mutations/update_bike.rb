@@ -12,13 +12,12 @@ module Mutations
     field :bike, ::Types::BikeType, null: true
     field :errors, [String], null: false
 
-    def resolve(bike:, **rest)
-      params = arguments.merge(id: bike.first.id)
+    def resolve(**args)
+      operation = back_end_operation(args)
 
-      operation = Crud::Bike::Update.as(context[:current_user]).new(params)
-      if operation.valid? && (bike = operation.perform)
+      if operation.valid? && (updated_bike = operation.perform)
         {
-          bike: bike,
+          bike: updated_bike,
           errors: [],
         }
       else
@@ -27,6 +26,18 @@ module Mutations
           errors: operation.errors.full_messages
         }
       end
+    end
+
+    def authorized?(**args)
+      return false, { errors: ["Can't update the bike with the current role"] } unless back_end_operation(args).allowed?
+
+      true
+    end
+
+    def back_end_operation(bike:, **args)
+      params = args.merge(id: bike.first.id)
+      params = args.merge(bike_model_id: GraphQL::Schema::UniqueWithinType.decode(args[:bike_model_id])[1]) if args[:bike_model_id].present?
+      @back_end_operation ||= Crud::Bike::Update.as(context[:current_user]).new(params)
     end
   end
 end

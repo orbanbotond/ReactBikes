@@ -12,7 +12,7 @@ class PictureUpload extends Component {
     };
   }
 
-  fileSelectedHandler = event => {
+  fileSelectedHandler(event) {
     this.setState({
       selectedFile: event.target.files[0]
     },() => {
@@ -20,7 +20,7 @@ class PictureUpload extends Component {
     })
   }
 
-  fileUploadHandler = () => {
+  fileUploadHandler() {
     const fd = new FormData();
     fd.append('bike[picture]', this.state.selectedFile, this.state.selectedFile.name);
 
@@ -29,16 +29,16 @@ class PictureUpload extends Component {
         console.log("Upload progress:" + Math.round(progressEvent.loaded / progressEvent.total * 100));
       }        
     })
-    .then(_responseObj => {
+    .then(responseObj => {
       this.setState({
-        url: _responseObj.data.image_url
+        url: responseObj.data.image_url
       })
     })
   }
 
   render(){
     return (
-      <div class="container-fluid">
+      <div className="container-fluid">
         { this.state.url &&
           <div className="text-center">
             <img className="mx-auto d-bloc" src={this.state.url} width="50"/>

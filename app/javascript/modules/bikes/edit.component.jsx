@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
+/*eslint no-undef: "warn"*/
+import React from 'react';
 import { Form, Button } from 'reactstrap';
 import { Select, Input, validators } from '@common/forms';
 
 const EditForm = ({
-  model, 
-  handleSubmit, 
-  submitForm, 
-  pristine, 
-  submitting, 
-  disableForm, 
-  invalid, 
-  dirty, 
-  inputSize,
+  _model,
+  handleSubmit,
+  submitForm,
+  pristine,
+  submitting,
+  disableForm,
+  invalid,
+  dirty,
+  _inputSize,
   models,
 }) => {
   const inputSetup = {

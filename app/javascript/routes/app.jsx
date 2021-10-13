@@ -5,12 +5,9 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
 } from 'react-router-dom';
 
 import { StandardUserGuard, AdminGuard, LoginGuard } from '@modules/route-guards'
-
-import SecureRoute from '@modules/secure-route';
 
 import AtomsAndMolecules from '@modules/atoms-and-molecules';
 import {BikeReservations, BikeEdit, BikeList, BikeNew} from '@modules/bikes';
@@ -22,7 +19,7 @@ import Header from '@common/header';
 
 import { Routes } from './routes';
 
-const App = (props) => {
+const App = (_props) => {
   return (
     <Router>
       <div>
@@ -31,28 +28,26 @@ const App = (props) => {
                component={LoginGuard(Login)} />
         <Route path={Routes.Browser.signup()}
                component={LoginGuard(SignUp)} />
-
         <Route path={Routes.Browser.Restfull.collection_route("bike")}
                component={AdminGuard(BikeList)}
                exact />
         <Switch>
           <Route path={Routes.Browser.Restfull.new_route('bike')}
-                 component={AdminGuard(BikeNew)} 
+                 component={AdminGuard(BikeNew)}
                  exact />
           <Route path={`${Routes.Browser.Restfull.member_route('bike', ':id')}`}
-                 component={AdminGuard(BikeEdit)} 
+                 component={AdminGuard(BikeEdit)}
                  exact />
           <Route path={`${Routes.Browser.Restfull.member_subroute('bike', ':id', 'reservations')}`}
                  component={AdminGuard(BikeReservations)}
                  exact />
         </Switch>
-
         <Route path={Routes.Browser.Restfull.collection_route("user")}
-               component={AdminGuard(UserList)} 
+               component={AdminGuard(UserList)}
                exact />
         <Switch>
           <Route path={Routes.Browser.Restfull.new_route('user')}
-                 component={AdminGuard(UserNew)} 
+                 component={AdminGuard(UserNew)}
                  exact />
           <Route path={`${Routes.Browser.Restfull.member_route('user', ':id')}`}
                  component={AdminGuard(UserEdit)}
@@ -61,14 +56,12 @@ const App = (props) => {
                  component={AdminGuard(UserReservations)}
                  exact />
         </Switch>
-
         <Route path={Routes.Browser.search()}
-               component={StandardUserGuard(Search)} 
+               component={StandardUserGuard(Search)}
                exact />
         <Route path={Routes.Browser.Restfull.collection_route("reservation")}
                component={StandardUserGuard(Reservations)}
                exact />
-
         <Route path={Routes.Browser.atoms_and_molecules()} component={AtomsAndMolecules} />
       </div>
     </Router>

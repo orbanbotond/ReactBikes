@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import List from '@modules/reservations/list.component';
 import { selectUser } from '@modules/selectors'
 import { LoadSpinnerHOC } from '@modules/hocs'
@@ -39,14 +38,14 @@ class ListContainer extends Component {
       }
       `
 
-      Axios(this.props.user).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      Axios(this.props.user).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
         this.setState({
-          collection: _responseObj.data.data.bikes.nodes[0].reservations.map(reservation => ({
+          collection: responseObj.data.data.bikes.nodes[0].reservations.map(reservation => ({
              ...reservation,
              bike_id: reservation.bike.id,
              user_id: reservation.user.id}))
         });
-      }).catch((_error) => {
+      }).catch(() => {
       });
     }
   }

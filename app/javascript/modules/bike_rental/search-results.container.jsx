@@ -6,12 +6,12 @@ import SearchResult from './search-results.component.jsx'
 import { BikesAxios as Axios, Routes } from '@routes/routes';
 
 class SearchResultsContainer extends Component {
-	reserveHandler = ( id ) => {
+	reserveHandler(id){
     console.debug("Reserve");
     var data = { bike_id: id, 
                 start_date: this.props.form.start_date, 
                 end_date: this.props.form.end_date };
-    Axios(this.props.user).post(Routes.Restfull.collection_route('reservation'), data).then((_responseObj) => {
+    Axios(this.props.user).post(Routes.Restfull.collection_route('reservation'), data).then(() => {
       this.props.history.push(Routes.Browser.Restfull.collection_route("reservation"));
     }).catch((_error) => {
     });

@@ -16,11 +16,11 @@ class NewContainer extends Component {
     }
   }
 
-  apiUrl = () => {
+  apiUrl() {
     return Routes.Restfull.collection_route('bike');
   }
 
-  handleSubmit = data => {
+  handleSubmit(data) {
       const currentUser = this.props.user;
 
       const variables = `
@@ -62,7 +62,7 @@ class NewContainer extends Component {
     });
   }
 
-  handleSuccess(response) {
+  handleSuccess(_response) {
     console.debug('Saved Successfull');
   }
 

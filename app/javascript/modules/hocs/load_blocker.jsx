@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BarLoader } from 'react-spinners';
 
 const LoadBlockerHOC = (propsToBePresent, WrappedComponent) => {
   return class LoadSpinner extends Component {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectUser, selectModels } from '@modules/selectors'
+import { selectUser } from '@modules/selectors'
 import { LoadSpinnerHOC } from '@modules/hocs'
-import { fetchTheModels } from './action-creators';
 import { BikesAxios as Axios, Routes } from '@routes/routes';
 import Edit from './edit.component';
 import { NavLink } from 'react-router-dom';
@@ -34,9 +33,9 @@ class EditContainer extends Component {
       }
       `
 
-      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
         this.setState({
-          user: _responseObj.data.data.users.nodes[0],
+          user: responseObj.data.data.users.nodes[0],
         });
       }).catch((_error) => {
       });
@@ -48,7 +47,7 @@ class EditContainer extends Component {
     return Routes.Restfull.member_route('user', id);
   }
 
-  handleSubmit = data => {
+  handleSubmit(data) {
     return Axios(this.props.user).put(this.apiUrl(), data).then((responseObj) => {
       this.handleSuccess(responseObj);
     }).catch((error) => {
@@ -63,7 +62,7 @@ class EditContainer extends Component {
     });
   }
 
-  handleSuccess(response) {
+  handleSuccess(_response) {
     console.debug('Saved Successfull');
   }
 

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { selectUser } from '@modules/selectors'
 import { BikesAxios as Axios, Routes } from '@routes/routes';
-import { Select, Input, validators } from '@common/forms';
 import { LoadSpinnerHOC } from '@modules/hocs'
 import List from './reservations.component.jsx'
 
@@ -16,13 +14,13 @@ class ReservationsContainer extends Component {
     };
   }
 
-	rateHandler = (id, rating) => {
+	rateHandler(id, rating){
     Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { rating: rating }).then((_responseObj) => {
     }).catch((_error) => {
     });
   }
 
-  cancelHandler = (id) => {
+  cancelHandler(id){
     Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { cancelled: true }).then((_responseObj) => {
     }).catch((_error) => {
     });    
@@ -50,13 +48,13 @@ class ReservationsContainer extends Component {
       }
       `
 
-      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
         this.setState({
-          collection: _responseObj.data.data.users.nodes[0].reservations.map(reservation => ({
+          collection: responseObj.data.data.users.nodes[0].reservations.map(reservation => ({
              ...reservation,
              bike_id: reservation.bike.id}))
         });
-      }).catch((_error) => {
+      }).catch(() => {
       });
     }
   }

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Form, Button } from 'reactstrap';
 import { Select, Input, validators } from '@common/forms';
 
 const EditForm = ({
-  model, 
+  _model, 
   handleSubmit, 
   submitForm, 
   pristine, 
@@ -11,11 +11,11 @@ const EditForm = ({
   disableForm, 
   invalid, 
   dirty, 
-  inputSize,
+  _inputSize,
 }) => {
   const inputSetup = {
     labelSize: 4,
-    inputSize: 8,
+    _inputSize: 8,
     validate: [validators.required],
     disabledForm: disableForm,
   };

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, SubmissionError } from 'redux-form';
-import { Form, Button } from 'reactstrap';
-import { Select, Input, validators } from '@common/forms';
 import SearchForm from './search-form.component';
 import { actionCreators } from '@modules/bikes';
 import { fetchSearchResultsSuccess } from './action-creators';
@@ -19,11 +17,11 @@ class SearchContainer extends Component {
     }
   }
 
-  handleSubmit = data => {
-    return Axios(this.props.user).get(Routes.Queries.available_bikes(), { params: data }).then((_responseObj) => {
-      this.handleSuccess(_responseObj);
-    }).catch((_error) => {
-      this.handleError(_error);
+  handleSubmit(data){
+    return Axios(this.props.user).get(Routes.Queries.available_bikes(), { params: data }).then((responseObj) => {
+      this.handleSuccess(responseObj);
+    }).catch((error) => {
+      this.handleError(error);
     });
   }
 

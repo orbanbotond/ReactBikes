@@ -7,10 +7,10 @@ import { BikesAxios as Axios } from '@routes/routes';
 import SignupForm from './sign-up.component';
 
 class Login extends Component {
-  handleSubmit = data => {
+  handleSubmit(data) {
     return Axios()
       .post(Routes.signup(), data)
-      .then((_responseObj) => {
+      .then(() => {
         this.props.history.push(Routes.Browser.login());
       })
       .catch((error) => {

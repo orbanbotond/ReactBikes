@@ -41,7 +41,7 @@ jobs:
       - name: install .node packages
         run: yarn install
       - name: jslint
-        run: yarn run eslint app/javascript
+        run: yarn run eslint --ext .jsx --ext .js ./app/javascript/
   pact-integration-test:
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`

@@ -39,11 +39,11 @@ export function fetchTheUsers() {
     }
     `
 
-    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
-      const users = _responseObj.data.data.users.nodes;
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
+      const users = responseObj.data.data.users.nodes;
       dispatch(fetchUsersSuccess(users));
-    }).catch((_error) => {
-      dispatch(fetchUsersError(_error));
+    }).catch((error) => {
+      dispatch(fetchUsersError(error));
     });
   };
 }

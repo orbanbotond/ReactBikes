@@ -121,6 +121,22 @@ class BikeGraphqlClient
     call_graphql(gql, variables)
   end
 
+  def delete_bike
+    gql = <<~GQL
+      mutation DeleteBike($bikeId: ID!){
+        deleteBike(input: {bikeId: $bikeId}){
+          errors
+        }
+      }
+    GQL
+
+    variables = {
+      "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1),
+    }
+
+    call_graphql(gql, variables)
+  end
+
   def update_bike
     gql = <<~GQL
       mutation updateBike($color: BikeColorsEnum!, $weight: Float!, $bikeId: ID!){

@@ -97,6 +97,39 @@
       }
     },
     {
+      "description": "a request for bike delete",
+      "providerState": "a bike exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation DeleteBike($bikeId: ID!){\n  deleteBike(input: {bikeId: $bikeId}){\n    errors\n  }\n}\n",
+          "variables": {
+            "bikeId": "QmlrZS0x"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "deleteBike": {
+              "errors": [
+
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
       "description": "a request for users with reservations",
       "providerState": "a user with reservation exists",
       "request": {

@@ -63,7 +63,7 @@ Pact.provider_states_for "Bikes UI" do
     set_up do
       create_admin_user
       model1 = BikeModel.create text: "Mountain"
-      Bike.create weight: 1.2, color: Bike::COLORS.first, bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
+      Bike.create id: 1, weight: 1.2, color: Bike::COLORS.first, bike_model: model1, latitude: 48.210033, longitude: 16.363449, average_rating: 1
     end
 
     tear_down do

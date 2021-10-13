@@ -94,7 +94,6 @@ describe BikeGraphqlClient, pact: true do
       end
 
       context "when updating them" do
-        let(:bike) { build_stubbed :bike }
         let(:variables) do
           {
             "color": "blue",
@@ -144,6 +143,43 @@ describe BikeGraphqlClient, pact: true do
                 color: "blue",
                 weight: 4.5,
               },
+              errors: []
+            }
+          )
+        end
+      end
+
+      context "when deleting it" do
+        let(:variables) do
+          {
+            "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1)
+          }
+        end
+
+        let(:gql) do
+          <<~GQL
+            mutation DeleteBike($bikeId: ID!){
+              deleteBike(input: {bikeId: $bikeId}){
+                errors
+              }
+            }
+          GQL
+        end
+        let(:provider_state) { "a bike exists" }
+        let(:message_description) { "a request for bike delete" }
+        let(:mocked_body_content) do
+          {
+            data: {
+              deleteBike: {
+                errors: []
+              }
+            }
+          }
+        end
+
+        it "returns the empty errors array" do
+          expect(JSON.parse(subject.delete_bike.body, { symbolize_names: true })[:data]).to include_json(
+            deleteBike: {
               errors: []
             }
           )

@@ -6,8 +6,8 @@ import SearchResults from './search-results.component';
 import * as reducers from './reducers';
 
 export { reducers,
-		 FutureReservations,
-		 PastReservations,
-		 Reservations, 
+         FutureReservations,
+         PastReservations,
+         Reservations,
          Search,
          SearchResults };

@@ -3,7 +3,7 @@
 import axios from 'axios';
 import createHistory from 'history/createBrowserHistory'; // eslint-disable-line
 
-const history = createHistory();
+createHistory();
 
 export const Routes = {};
 

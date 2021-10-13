@@ -6,10 +6,10 @@ import ControlledFormInput from './controlled-form-input';
 import ControlledFormSelect from './controlled-form-select';
 import ControlledFormDateSelect from './controlled-form-date-select';
 
-export { validators, 
-		 Input, 
-		 Select,
-		 DateSelect,
-		 ControlledFormInput, 
-		 ControlledFormSelect,
-		 ControlledFormDateSelect };
+export { validators,
+         Input,
+         Select,
+         DateSelect,
+         ControlledFormInput,
+         ControlledFormSelect,
+         ControlledFormDateSelect };

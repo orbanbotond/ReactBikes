@@ -118,9 +118,9 @@ export function deleteTheBike(id) {
       }
     `
 
-    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((_responseObj) => {
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then(() => {
       dispatch(fetchTheBikes());
-    }).catch((_error) => {
+    }).catch(() => {
     });
   };
 }

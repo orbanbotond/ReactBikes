@@ -5,9 +5,9 @@ import BikeNew from './new.container';
 import * as reducers from './reducers';
 import * as actionCreators from './action-creators';
 
-export { reducers, 
-         actionCreators, 
-         BikeList, 
-         BikeEdit, 
+export { reducers,
+         actionCreators,
+         BikeList,
+         BikeEdit,
          BikeNew,
-     	 BikeReservations };
+         BikeReservations };

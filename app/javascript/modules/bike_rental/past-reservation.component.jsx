@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Rater from 'react-rater'
 import Toggle from 'react-toggle';
@@ -13,7 +12,7 @@ export default class Reservation extends Component {
     this.handleRate = this.handleRate.bind(this);
   }
 
-  handleRate = (event) => {
+  handleRate(event) {
     this.props.rateHandler(this.props.model.id, event.rating);
   }
 

@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+/*eslint no-undef: "warn"*/
+import React from 'react';
 import { Form, Button } from 'reactstrap';
 import { Select, 
           DateSelect, 
@@ -14,7 +15,7 @@ const SearchForm = ({
   disableForm, 
   invalid, 
   dirty, 
-  inputSize,
+  _inputSize,
 }) => {
   const inputSetup = {
     labelSize: 4,

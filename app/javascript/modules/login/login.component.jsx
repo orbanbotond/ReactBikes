@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Form, Button } from 'reactstrap';
-import { Select, Input, validators } from '@common/forms';
+import { Input, validators } from '@common/forms';
 
 const LoginForm = ({
-  model, 
+  _model, 
   handleSubmit, 
   submitForm, 
   pristine, 
@@ -11,7 +11,7 @@ const LoginForm = ({
   disableForm, 
   invalid, 
   dirty, 
-  inputSize,
+  _inputSize,
 }) => {
   const inputSetup = {
     labelSize: 4,

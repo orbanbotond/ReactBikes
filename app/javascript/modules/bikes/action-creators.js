@@ -46,14 +46,14 @@ export function fetchTheBikes() {
     }
     `
 
-    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
-      const bikes = _responseObj.data.data.bikes.nodes.map(bike=> ({
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
+      const bikes = responseObj.data.data.bikes.nodes.map(bike=> ({
         ...bike,
         bike_model_id: bike.model.id
       }));
       dispatch(fetchBikesSuccess(bikes));
-    }).catch((_error) => {
-      dispatch(fetchBikesError(_error));
+    }).catch((error) => {
+      dispatch(fetchBikesError(error));
     });
   };
 }
@@ -91,12 +91,12 @@ export function fetchTheModels() {
       }
     `
 
-    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
-      const bikeModels = _responseObj.data.data.bikeModels;
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
+      const bikeModels = responseObj.data.data.bikeModels;
 
       dispatch(fetchModelsSuccess(bikeModels));
-    }).catch((_error) => {
-      dispatch(fetchModelsError(_error));
+    }).catch((error) => {
+      dispatch(fetchModelsError(error));
     });
   };
 }
@@ -118,9 +118,9 @@ export function deleteTheBike(id) {
       }
     `
 
-    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((_responseObj) => {
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then(() => {
       dispatch(fetchTheBikes());
-    }).catch((_error) => {
+    }).catch(() => {
     });
   };
 }

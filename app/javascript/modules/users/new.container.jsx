@@ -9,11 +9,11 @@ import { reduxForm, SubmissionError } from 'redux-form';
 
 class NewContainer extends Component {
 
-  apiUrl = () => {
+  apiUrl() {
     return Routes.Restfull.collection_route('user');
   }
 
-  handleSubmit = data => {
+  handleSubmit(data) {
     return Axios(this.props.user).post(this.apiUrl(), data).then((responseObj) => {
       this.handleSuccess(responseObj);
       this.props.history.push(Routes.Browser.Restfull.collection_route('user'));
@@ -29,16 +29,16 @@ class NewContainer extends Component {
     });
   }
 
-  handleSuccess(response) {
+  handleSuccess(_response) {
     console.debug('Saved Successfull');
   }
 
   render(){
-    var ReduxUserForm = reduxForm({
+    const ReduxUserForm = reduxForm({
       form: 'user',
     })(Edit);
 
-    const propsToWaitFor = [ 'user'];
+    const propsToWaitFor = ['user'];
     const LoadWrappedList = LoadSpinnerHOC(propsToWaitFor, ReduxUserForm);
 
     return(

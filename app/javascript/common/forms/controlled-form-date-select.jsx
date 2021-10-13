@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: "warn"*/
 import React from 'react';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
@@ -7,6 +8,7 @@ import {
   Col,
   FormFeedback,
 } from 'reactstrap';
+import { titleCase } from "title-case";
 
 class ControlledFormDateSelect extends React.Component {
   renderError(error) {
@@ -15,7 +17,7 @@ class ControlledFormDateSelect extends React.Component {
     return error.map(theError => <FormFeedback key={theError}>{theError}</FormFeedback>);
   }
 
-  handleDayChange = (day) => {
+  handleDayChange(day){
     this.props.input.onChange(day);
   }
 
@@ -27,11 +29,11 @@ class ControlledFormDateSelect extends React.Component {
         name,
         value,
       },
-      options,
+      _options,
       inputSize,
       labelSize,
       label = titleCase(name),
-      placeHolder = label,
+      _placeHolder = label,
       meta: {
         touched,
         error, 
@@ -39,7 +41,7 @@ class ControlledFormDateSelect extends React.Component {
         invalid, 
         valid,
       },
-      toLowerCase,
+      _toLowerCase,
       valueToOverride,
       disabled,
       className,

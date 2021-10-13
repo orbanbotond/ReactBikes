@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withScriptjs, 
          withGoogleMap, 
          GoogleMap, 
@@ -11,8 +11,8 @@ const SearchResultsMap = withScriptjs(withGoogleMap((props) =>
       defaultCenter={ { lat: props.collection[0].latitude, lng: props.collection[0].longitude }}
   >
     <BicyclingLayer autoUpdate />
-    {props.collection.map(coordinate =>{
-      return <Marker position={{ lat: coordinate.latitude, lng: coordinate.longitude }} />
+    {props.collection.map((coordinate) =>{
+      return <Marker key={coordinate.latitude * coordinate.longitude} position={{ lat: coordinate.latitude, lng: coordinate.longitude }} />
     })}
   </GoogleMap>
 ))

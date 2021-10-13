@@ -7,7 +7,7 @@ import { Routes } from '@routes/routes';
 import 'react-rater/lib/react-rater.css';
 
 export default class List extends Component {
-  handleDelete = id => {
+  handleDelete(id) {
     this.props.deleteHandler(id);
   }
 

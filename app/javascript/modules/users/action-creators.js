@@ -39,11 +39,11 @@ export function fetchTheUsers() {
     }
     `
 
-    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
-      const users = _responseObj.data.data.users.nodes;
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
+      const users = responseObj.data.data.users.nodes;
       dispatch(fetchUsersSuccess(users));
-    }).catch((_error) => {
-      dispatch(fetchUsersError(_error));
+    }).catch((error) => {
+      dispatch(fetchUsersError(error));
     });
   };
 }
@@ -53,9 +53,9 @@ export function deleteTheUser(id) {
     const currentUser = getState().session.user;
     const url = Routes.Restfull.member_route('user', id);
 
-    return Axios(currentUser).delete(url).then((_responseObj) => {
+    return Axios(currentUser).delete(url).then(() => {
       dispatch(fetchTheUsers());
-    }).catch((_error) => {
+    }).catch(() => {
     });
   };
 }

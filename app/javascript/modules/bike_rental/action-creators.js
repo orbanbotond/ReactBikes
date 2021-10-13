@@ -28,10 +28,10 @@ export function fetchTheSearchResults(data) {
     const currentUser = getState().session.user;
     const url = Routes.Queries.available_bikes();
 
-    return Axios(currentUser).get(url, { params: data }).then((_responseObj) => {
-      dispatch(fetchSearchResultsSuccess(_responseObj.data));
-    }).catch((_error) => {
-      dispatch(fetchSearchResultsError(_error));
+    return Axios(currentUser).get(url, { params: data }).then((responseObj) => {
+      dispatch(fetchSearchResultsSuccess(responseObj.data));
+    }).catch((error) => {
+      dispatch(fetchSearchResultsError(error));
     });
   };
 }

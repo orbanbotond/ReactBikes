@@ -43,11 +43,11 @@ class EditContainer extends Component {
       }
       `
 
-      Axios(this.props.user).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
         this.setState({
-          bike: _responseObj.data.data.bikes.nodes[0],
+          bike: responseObj.data.data.bikes.nodes[0],
         });
-      }).catch((_error) => {
+      }).catch(() => {
       });
     }
 
@@ -61,7 +61,7 @@ class EditContainer extends Component {
     return Routes.Restfull.member_route('bike', id);
   }
 
-  handleSubmit = data => {
+  handleSubmit(data) {
     const currentUser = this.props.user;
 
     const variables = `
@@ -105,7 +105,7 @@ class EditContainer extends Component {
     });
   }
 
-  handleSuccess(response) {
+  handleSuccess(_response) {
     console.debug('Saved Successfull');
   }
 
@@ -125,7 +125,7 @@ class EditContainer extends Component {
     const LoadWrappedPicupload = LoadSpinnerHOC(props2ToWaitFor, PictureUpload);
 
     return(
-      <div class="container-fluid">
+      <div className="container-fluid">
         <LoadWrappedList submitForm={this.handleSubmit}
                          model={this.state.bike}
                          {...this.props} />

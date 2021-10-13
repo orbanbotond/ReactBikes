@@ -8,7 +8,7 @@ import { Routes } from '@routes/routes';
 import "react-toggle/style.css" 
 
 export default class List extends Component {
-  handleDelete = id => {
+  handleDelete(id){
     this.props.deleteHandler(id);
   }
 

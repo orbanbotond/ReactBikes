@@ -7,7 +7,7 @@ import { selectUser, selectAuthenticated } from '@modules/selectors'
 import { logout as dispatchLogout } from '@modules/login/action-creators';
 
 class Header extends React.Component {
-  handleLogout = e => {
+  handleLogout(e) {
     e.preventDefault();
     this.props.dispatchLogout();
     this.props.history.push(Routes.Browser.root());

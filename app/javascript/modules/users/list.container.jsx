@@ -12,7 +12,7 @@ class ListContainer extends Component {
     this.props.fetchTheUsers();
   }
 
-  handleDelete = id => {
+  handleDelete(id) {
     this.props.deleteTheUser(id);
   }
 

@@ -5,9 +5,9 @@ import UserNew from './new.container';
 import * as reducers from './reducers';
 import * as actionCreators from './action-creators';
 
-export { reducers, 
-		 actionCreators, 
-		 UserList, 
-		 UserEdit, 
-		 UserNew, 
-		 UserReservations };
+export { reducers,
+         actionCreators,
+         UserList,
+         UserEdit,
+         UserNew,
+         UserReservations };

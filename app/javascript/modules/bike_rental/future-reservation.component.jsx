@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Toggle from 'react-toggle';
 import Rater from 'react-rater'
@@ -15,7 +14,7 @@ export default class Reservation extends Component {
     };
   }
 
-  handleCancel = (state, node, evt) => {
+  handleCancel(_state, _node, _evt){
     this.setState({
       cancelled: !this.state.cancelled,
     });

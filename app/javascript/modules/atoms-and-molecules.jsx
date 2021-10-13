@@ -105,7 +105,7 @@ const AtomsAndMolecules = () =>
     <BikeList {...bikeProps} />
     <h2>Search Result List</h2>
     <SearchResults {...bikeProps} />
-  	<h2>Edit</h2>
+    <h2>Edit</h2>
     <h1>Forms</h1>
     <h2>Search Form</h2>
     <ReduxSearchForm submitForm={() => {}} models={bikeProps.models} />

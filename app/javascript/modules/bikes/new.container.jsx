@@ -32,7 +32,7 @@ class NewContainer extends Component {
           "longitude": ${data.longitude}
         }
       `
-debugger
+
       const query = `
         mutation CreateBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){
           createBike(input: {color: $color, 

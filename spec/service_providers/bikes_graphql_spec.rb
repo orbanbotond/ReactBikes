@@ -205,7 +205,7 @@ describe BikeGraphqlClient, pact: true do
       let(:mocked_body_content) do
         {
           data: {
-            bikeModels:[{
+            bikeModels: [{
               id: Pact.like("1"),
               text: Pact.like("Mountain"),
             }]

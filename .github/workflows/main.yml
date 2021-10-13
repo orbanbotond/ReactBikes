@@ -21,9 +21,9 @@ jobs:
     # Service containers to run with `container-job`
     steps:
       - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
+      # - uses: ruby/setup-ruby@v1
+      #   with:
+      #     bundler-cache: true
       - name: Read .nvmrc
         run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
         id: nvm

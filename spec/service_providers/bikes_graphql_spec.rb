@@ -189,6 +189,40 @@ describe BikeGraphqlClient, pact: true do
   end
 
   describe "queries" do
+    describe "get bike models" do
+      let(:gql) do
+        <<~GQL
+        {
+          bikeModels{
+            id,
+            text
+          }
+        }
+        GQL
+      end
+      let(:provider_state) { "a bike model exists" }
+      let(:message_description) { "a request for bike models" }
+      let(:mocked_body_content) do
+        {
+          data: {
+            bikeModels:[{
+              id: Pact.like("1"),
+              text: Pact.like("Mountain"),
+            }]
+          }
+        }
+      end
+
+      it "returns bike models" do
+        expect(JSON.parse(subject.get_bike_models.body, { symbolize_names: true })[:data]).to include_json(
+          bikeModels: UnorderedArray({
+              id: /\d*/,
+              text: /.*/,
+          })
+        )
+      end
+    end
+
     describe "get users" do
       context "when querying the users with their reservations" do
         let(:gql) do

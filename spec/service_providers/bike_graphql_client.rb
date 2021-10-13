@@ -10,6 +10,19 @@ class BikeGraphqlClient
     @session_token = session_token
   end
 
+  def get_bike_models
+    gql = <<~GQL
+    {
+      bikeModels{
+        id,
+        text
+      }
+    }
+    GQL
+
+    call_graphql(gql)
+  end
+
   def get_users_with_reservations
     gql = <<~GQL
       {

@@ -16,5 +16,12 @@ module Types
       description: "A list of all users" do
       argument :id, ID, required: false
     end
+    field :bike_models, [::Types::BikeModelType],
+      null: false, 
+      description: "A list of all bike models"
+
+    def bike_models
+      BikeModel.all
+    end
   end
 end

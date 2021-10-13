@@ -21,7 +21,33 @@ class NewContainer extends Component {
   }
 
   handleSubmit = data => {
-    return Axios(this.props.user).post(this.apiUrl(), data).then((responseObj) => {
+      const currentUser = this.props.user;
+
+      const variables = `
+        {
+          "color": "${data.color}",
+          "weight": ${data.weight},
+          "bikeModelId": "QmlrZU1vZGVsLTE5",
+          "latitude": ${data.latitude},
+          "longitude": ${data.longitude}
+        }
+      `
+debugger
+      const query = `
+        mutation CreateBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){
+          createBike(input: {color: $color, 
+                             weight: $weight,
+                             latitude: $latitude,
+                             longitude: $longitude,
+                             bikeModelId: $bikeModelId}){
+            bike {
+              id
+            }
+          }
+        }
+      `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((responseObj) => {
       this.handleSuccess(responseObj);
       this.props.history.push(Routes.Browser.Restfull.collection_route('bike'));
     }).catch((error) => {

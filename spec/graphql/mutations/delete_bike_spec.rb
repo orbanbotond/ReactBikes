@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe "DeleteBike" do
-  let(:bike) { create :bike }
+  let!(:bike) { create :bike }
   let(:bike_id) { ToptalReactBikesSchema.id_from_object(bike, bike.class, {}) }
 
   subject(:scoped_reservations) do
@@ -42,8 +42,12 @@ RSpec.describe "DeleteBike" do
     context "when authenticated" do
       let(:current_user) { create :user, :admin }
 
-      it "returns bike" do
+      it "returns no error" do
         expect(subject["errors"]).not_to be_present
+      end
+
+      it "removed a bike" do
+        expect { subject }.to change{Bike.count}.by(-1)
       end
     end
   end

@@ -81,10 +81,20 @@ export function fetchTheModels() {
     dispatch(fetchModels());
 
     const currentUser = getState().session.user;
-    const url = Routes.Restfull.collection_route('bike_model');
 
-    return Axios(currentUser).get(url).then((_responseObj) => {
-      dispatch(fetchModelsSuccess(_responseObj.data));
+    const query = `
+      query BikeModels{
+        bikeModels{
+          id,
+          text
+        }
+      }
+    `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
+      const bikeModels = _responseObj.data.data.bikeModels;
+
+      dispatch(fetchModelsSuccess(bikeModels));
     }).catch((_error) => {
       dispatch(fetchModelsError(_error));
     });

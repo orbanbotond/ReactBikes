@@ -24,7 +24,7 @@ RSpec.describe "BikeReservationType" do
       GQL
     end
     let!(:bike) { create :bike }
-    let(:bike_id) {ToptalReactBikesSchema.id_from_object(bike, bike.class, {})}
+    let(:bike_id) { ToptalReactBikesSchema.id_from_object(bike, bike.class, {}) }
     let!(:reservation_for_bike) { create :reservation, bike: bike }
     let!(:reservation_for_bike_id) { ToptalReactBikesSchema.id_from_object(reservation_for_bike, reservation_for_bike.class, {}) }
     let!(:bike_2) { create :bike }

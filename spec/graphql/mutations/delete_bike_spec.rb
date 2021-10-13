@@ -47,7 +47,7 @@ RSpec.describe "DeleteBike" do
       end
 
       it "removed a bike" do
-        expect { subject }.to change{Bike.count}.by(-1)
+        expect { subject }.to change { Bike.count }.by(-1)
       end
     end
   end

@@ -2,42 +2,34 @@
 
 require "rails_helper"
 
-RSpec.describe "CreateBike" do
-  let(:bike_model) { create :bike_model }
-  let(:bike_model_id) { ToptalReactBikesSchema.id_from_object(bike_model, bike_model.class, {}) }
+RSpec.describe "UpdateBike" do
+  let(:bike) { create :bike }
+  let(:bike_id) { ToptalReactBikesSchema.id_from_object(bike, bike.class, {}) }
+
   subject(:scoped_reservations) do
     context = { current_user: current_user }
     result = ToptalReactBikesSchema.execute(query_string, context: context, variables: variables)
-    result.to_h["data"]["createBike"]
+    result.to_h["data"]["updateBike"]
   end
 
   let(:variables) do
     {
-      "color": "red",
-      "weight": 3.5,
-      "bikeModelId": bike_model_id,
-      "latitude": 23.15,
-      "longitude": 35.38
+      "bikeId": bike_id,
+      "weight": 11
     }
   end
 
   let(:query_string) do
     <<~GQL
-      mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){
-        createBike(input: {color: $color,
+      mutation UpdateBikes($color: BikeColorsEnum, $weight: Float, $latitude: Float, $longitude: Float, $bikeModelId: ID, $bikeId: ID!){
+        updateBike(input: {color: $color, 
                            weight: $weight,
+                           bikeModelId: $bikeModelId
                            latitude: $latitude,
                            longitude: $longitude,
-                           bikeModelId: $bikeModelId}){
+                           bikeId: $bikeId}){
           bike {
             id,
-            color,
-            weight,
-            model{
-              id
-            }
-            latitude,
-            longitude
           },
           errors,
         }

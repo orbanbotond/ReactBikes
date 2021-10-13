@@ -4,11 +4,12 @@ require "rails_helper"
 
 describe Crud::Bike::Update, type: :model do
   let(:params) { { id: bike.id, color: ::Bike::COLORS.last, longitude: 0, bike_model_id: bike_model.id } }
-  subject(:action) { described_class.as(:system).new(params) }
+  let(:current_user) { create :user, :admin }
+  subject(:action) { described_class.as(current_user).new(params) }
   let!(:bike_model) { create :bike_model }
   let!(:bike) { create :bike }
 
-  context "positive case" do
+  describe "positive case" do
     it "return the updated bike" do
       expect do
         bike = action.perform!
@@ -20,7 +21,15 @@ describe Crud::Bike::Update, type: :model do
     end
   end
 
-  context "validations" do
+  describe "authorization" do
+    context "when unauthorized" do
+      let(:current_user) { create :user}
+
+      it { is_expected.to_not be_allowed }
+    end
+  end
+
+  describe "validations" do
     context "attributes" do
       context "color" do
         it { is_expected.to validate_inclusion_of(:color).in_array(::Bike::COLORS) }

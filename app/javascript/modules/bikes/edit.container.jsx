@@ -21,10 +21,31 @@ class EditContainer extends Component {
   componentWillMount() {
     if(!this.state.bike){
       const currentUser = this.props.user
+      const id = this.props.match.params.id;
 
-      Axios(currentUser).get(this.apiUrl()).then((_responseObj) => {
+      const query = `
+      {
+        bikes(id: "${id}"){
+          nodes{
+            id,
+            color,
+            weight,
+            imageUrl,
+            averageRating,
+            latitude,
+            longitude,
+            model{
+              id,
+              text
+            }
+          }
+        }
+      }
+      `
+
+      Axios(this.props.user).post(Routes.Rails.graphql, {query: query}).then((_responseObj) => {
         this.setState({
-          bike: _responseObj.data,
+          bike: _responseObj.data.data.bikes.nodes[0],
         });
       }).catch((_error) => {
       });

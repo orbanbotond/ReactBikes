@@ -51,11 +51,23 @@ export function fetchTheUsers() {
 export function deleteTheUser(id) {
   return function (dispatch, getState) {
     const currentUser = getState().session.user;
-    const url = Routes.Restfull.member_route('user', id);
 
-    return Axios(currentUser).delete(url).then(() => {
+    const query = `
+      mutation DeleteUser($userId: ID!){
+        deleteUser(input: {userId: $userId}){
+          errors,
+        }
+      }
+    `
+    const variables = `
+      {
+        "userId": "${id}"
+      }
+    `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((_response) => {
       dispatch(fetchTheUsers());
-    }).catch(() => {
+    }).catch((_error) => {
     });
   };
 }

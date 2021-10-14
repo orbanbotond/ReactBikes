@@ -185,7 +185,7 @@ class BikeGraphqlClient
     GQL
 
     variables = {
-      "userId": GraphQL::Schema::UniqueWithinType.encode("User", 1),
+      "userId": GraphQL::Schema::UniqueWithinType.encode("User", -1),
     }
 
     call_graphql(gql, variables)

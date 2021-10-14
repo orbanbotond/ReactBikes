@@ -41,7 +41,7 @@ describe BikeGraphqlClient, pact: true do
       context "when deleting it" do
         let(:variables) do
           {
-            "userId": GraphQL::Schema::UniqueWithinType.encode("User", 1)
+            "userId": GraphQL::Schema::UniqueWithinType.encode("User", -1)
           }
         end
 

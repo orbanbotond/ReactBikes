@@ -19,7 +19,7 @@
         "body": {
           "query": "mutation DeleteUser($userId: ID!){\n  deleteUser(input: {userId: $userId}){\n    errors\n  }\n}\n",
           "variables": {
-            "userId": "VXNlci0x"
+            "userId": "VXNlci0tMQ=="
           }
         }
       },

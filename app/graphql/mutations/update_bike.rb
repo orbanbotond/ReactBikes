@@ -35,8 +35,10 @@ module Mutations
     end
 
     def back_end_operation(bike:, **args)
+      return @back_end_operation if @back_end_operation.present?
+
       params = args.merge(id: bike.first.id)
-      params = args.merge(bike_model_id: GraphQL::Schema::UniqueWithinType.decode(args[:bike_model_id])[1]) if args[:bike_model_id].present?
+      params = params.merge(bike_model_id: GraphQL::Schema::UniqueWithinType.decode(args[:bike_model_id])[1]) if args[:bike_model_id].present?
       @back_end_operation ||= Crud::Bike::Update.as(context[:current_user]).new(params)
     end
   end

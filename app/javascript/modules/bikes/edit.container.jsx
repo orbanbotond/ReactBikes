@@ -16,6 +16,8 @@ class EditContainer extends Component {
     this.state = {
       bike: null,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -76,7 +78,7 @@ class EditContainer extends Component {
     `
 
     const query = `
-      mutation UpdateBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!, $bikeId: ID!){
+      mutation UpdateBikes($color: BikeColorsEnum, $weight: Float, $latitude: Float, $longitude: Float, $bikeModelId: ID, $bikeId: ID!){
         updateBike(input: {color: $color, 
                            weight: $weight,
                            bikeModelId: $bikeModelId
@@ -107,6 +109,7 @@ class EditContainer extends Component {
 
   handleSuccess(_response) {
     console.debug('Saved Successfull');
+    this.props.history.push(Routes.Browser.Restfull.collection_route('bike'));
   }
 
   render(){

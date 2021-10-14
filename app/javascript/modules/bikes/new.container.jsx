@@ -9,6 +9,15 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { reduxForm, SubmissionError } from 'redux-form';
 
 class NewContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bike: null,
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   componentWillMount() {
     if(!this.props.models){
@@ -64,6 +73,7 @@ class NewContainer extends Component {
 
   handleSuccess(_response) {
     console.debug('Saved Successfull');
+    this.props.history.push(Routes.Browser.Restfull.collection_route('bike'));
   }
 
   render(){

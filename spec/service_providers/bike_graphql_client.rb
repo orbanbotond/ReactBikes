@@ -175,6 +175,30 @@ class BikeGraphqlClient
     call_graphql(gql, variables)
   end
 
+  def update_user
+    gql = <<~GQL
+      mutation UpdateUsers($password: String, $admin: Boolean, $email: String, $userId: ID!){
+        updateUser(input: {password: $password,
+                           admin: $admin,
+                           email: $email,
+                           userId: $userId}){
+          user {
+            id,
+          },
+          errors,
+        }
+      }
+    GQL
+
+    variables = {
+      "email": "another_email@gmail.com",
+      "userId": GraphQL::Schema::UniqueWithinType.encode("User", -1)
+    }
+
+    call_graphql(gql, variables)
+  end
+
+
   def delete_user
     gql = <<~GQL
       mutation DeleteUser($userId: ID!){

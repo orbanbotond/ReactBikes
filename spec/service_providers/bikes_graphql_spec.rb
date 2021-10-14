@@ -74,6 +74,56 @@ describe BikeGraphqlClient, pact: true do
           )
         end
       end
+
+      context "when updating them" do
+        let(:variables) do
+          {
+            "email": "another_email@gmail.com",
+            "userId": GraphQL::Schema::UniqueWithinType.encode("User", -1)
+          }
+        end
+
+        let(:gql) do
+          <<~GQL
+            mutation UpdateUsers($password: String, $admin: Boolean, $email: String, $userId: ID!){
+              updateUser(input: {password: $password,
+                                 admin: $admin,
+                                 email: $email,
+                                 userId: $userId}){
+                user {
+                  id,
+                },
+                errors,
+              }
+            }
+          GQL
+        end
+        let(:provider_state) { "a user exists" }
+        let(:message_description) { "a request for user update" }
+        let(:mocked_body_content) do
+          {
+            data: {
+              updateUser: {
+                user: {
+                  id: Pact.like("1")
+                },
+                errors: []
+              }
+            }
+          }
+        end
+
+        it "returns the updated user" do
+          expect(JSON.parse(subject.update_user.body, { symbolize_names: true })[:data]).to include_json(
+            updateUser: {
+              user: {
+                id: /\d/,
+              },
+              errors: []
+            }
+          )
+        end
+      end
     end
 
     describe "bikes" do

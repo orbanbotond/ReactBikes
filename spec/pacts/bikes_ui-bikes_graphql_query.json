@@ -40,6 +40,48 @@
       }
     },
     {
+      "description": "a request for user update",
+      "providerState": "a user exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation UpdateUsers($password: String, $admin: Boolean, $email: String, $userId: ID!){\n  updateUser(input: {password: $password,\n                     admin: $admin,\n                     email: $email,\n                     userId: $userId}){\n    user {\n      id,\n    },\n    errors,\n  }\n}\n",
+          "variables": {
+            "email": "another_email@gmail.com",
+            "userId": "VXNlci0tMQ=="
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "updateUser": {
+              "user": {
+                "id": "1"
+              },
+              "errors": [
+
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.updateUser.user.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
       "description": "a request for bike creation",
       "providerState": "a bike model exists",
       "request": {

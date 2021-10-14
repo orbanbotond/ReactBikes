@@ -3,10 +3,11 @@
 module Crud
   module User
     class Update < Granite::Action
-      allow_if { performer.present? }
+      allow_if { performer.present? && performer.admin? }
 
       attribute :id, Integer
       attribute :admin, Boolean
+      attribute :email, String
 
       validates :id,
                 presence: true

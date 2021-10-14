@@ -14,6 +14,8 @@ class EditContainer extends Component {
     this.state = {
       user: null,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -42,13 +44,33 @@ class EditContainer extends Component {
     }
   }
 
-  apiUrl(){
-    const id = this.props.match.params.id;
-    return Routes.Restfull.member_route('user', id);
-  }
-
   handleSubmit(data) {
-    return Axios(this.props.user).put(this.apiUrl(), data).then((responseObj) => {
+    const id = this.props.match.params.id;
+    const currentUser = this.props.user;
+
+    const query = `
+      mutation UpdateUsers($password: String, $admin: Boolean, $email: String, $userId: ID!){
+        updateUser(input: {password: $password,
+                           admin: $admin,
+                           email: $email,
+                           userId: $userId}){
+          user {
+            id,
+          },
+          errors,
+        }
+      }
+    `
+    const variables = `
+      {
+        "userId": "${id}",
+        "admin": ${data.admin},
+        "email": "${data.email}",
+        "password": "${data.password}"
+      }
+    `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((responseObj) => {
       this.handleSuccess(responseObj);
     }).catch((error) => {
       this.handleError(error);
@@ -64,6 +86,7 @@ class EditContainer extends Component {
 
   handleSuccess(_response) {
     console.debug('Saved Successfull');
+    this.props.history.push(Routes.Browser.Restfull.collection_route('user'));
   }
 
   render(){

@@ -3,7 +3,7 @@
 module Crud
   module User
     class Update < Granite::Action
-      allow_if { performer.present? }
+      allow_if { performer.present? && performer.admin? }
 
       attribute :id, Integer
       attribute :admin, Boolean

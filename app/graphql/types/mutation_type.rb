@@ -6,5 +6,6 @@ module Types
     field :update_bike, mutation: ::Mutations::UpdateBike
     field :delete_bike, mutation: ::Mutations::DeleteBike
     field :delete_user, mutation: ::Mutations::DeleteUser
+    field :update_user, mutation: ::Mutations::UpdateUser
   end
 end

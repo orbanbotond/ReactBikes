@@ -124,6 +124,56 @@ describe BikeGraphqlClient, pact: true do
           )
         end
       end
+
+      context "when creating them" do
+        let(:variables) do
+          {
+            "admin": false,
+            "email": "a_totally_new_email@gmail.com",
+            "password": "password"
+          }
+        end
+
+        let(:gql) do
+          <<~GQL
+            mutation createUser($email: String!, $admin: Boolean!, $password: String!){
+              createUser(input: {email: $email,
+                                 admin: $admin,
+                                 password: $password}){
+                user {
+                  id,
+                },
+                errors,
+              }
+            }
+          GQL
+        end
+        let(:provider_state) { "a user exists" }
+        let(:message_description) { "a request for user creation" }
+        let(:mocked_body_content) do
+          {
+            data: {
+              createUser: {
+                user: {
+                  id: Pact.like("1"),
+                },
+                errors: []
+              }
+            }
+          }
+        end
+
+        it "returns a user" do
+          expect(JSON.parse(subject.create_user.body, { symbolize_names: true })[:data]).to include_json(
+            createUser: {
+              user: {
+                id: /\d/,
+              },
+              errors: []
+            }
+          )
+        end
+      end
     end
 
     describe "bikes" do

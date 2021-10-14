@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe "CreateBike" do
   let(:bike_model) { create :bike_model }
   let(:bike_model_id) { ToptalReactBikesSchema.id_from_object(bike_model, bike_model.class, {}) }
-  subject(:scoped_reservations) do
+  subject do
     context = { current_user: current_user }
     result = ToptalReactBikesSchema.execute(query_string, context: context, variables: variables)
     result.to_h["data"]["createBike"]

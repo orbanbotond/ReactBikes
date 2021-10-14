@@ -13,7 +13,7 @@ class ListContainer extends Component {
   }
 
   handleDelete(id) {
-    this.props.deleteTheUser(id);
+    this.deleteTheUser(id);
   }
 
   render(){

@@ -7,6 +7,39 @@
   },
   "interactions": [
     {
+      "description": "a request for user delete",
+      "providerState": "a user exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation DeleteUser($userId: ID!){\n  deleteUser(input: {userId: $userId}){\n    errors\n  }\n}\n",
+          "variables": {
+            "userId": "VXNlci0tMQ=="
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "deleteUser": {
+              "errors": [
+
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
       "description": "a request for bike creation",
       "providerState": "a bike model exists",
       "request": {

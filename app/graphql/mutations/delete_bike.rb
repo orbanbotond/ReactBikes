@@ -7,7 +7,7 @@ module Mutations
     field :errors, [String], null: false
 
     def authorized?(**args)
-      return false, { errors: ["Can't create a bike with the current role"] } unless context[:current_user].admin?
+      return false, { errors: ["Can't delete a bike with the current role"] } unless context[:current_user].admin?
 
       true
     end

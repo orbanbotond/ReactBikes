@@ -4,7 +4,7 @@ require "pact"
 
 def create_admin_user
   session_token = "token-xxx123123"
-  User.create admin: true, hashed_session_token: User.pwd_hash(session_token)
+  User.create id: -1, admin: true, hashed_session_token: User.pwd_hash(session_token)
 end
 
 Pact.provider_states_for "Bikes UI" do

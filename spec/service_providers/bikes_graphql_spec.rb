@@ -37,6 +37,45 @@ describe BikeGraphqlClient, pact: true do
   end
 
   describe "mutations" do
+    describe "users" do
+      context "when deleting it" do
+        let(:variables) do
+          {
+            "userId": GraphQL::Schema::UniqueWithinType.encode("User", -1)
+          }
+        end
+
+        let(:gql) do
+          <<~GQL
+            mutation DeleteUser($userId: ID!){
+              deleteUser(input: {userId: $userId}){
+                errors
+              }
+            }
+          GQL
+        end
+        let(:provider_state) { "a user exists" }
+        let(:message_description) { "a request for user delete" }
+        let(:mocked_body_content) do
+          {
+            data: {
+              deleteUser: {
+                errors: []
+              }
+            }
+          }
+        end
+
+        it "returns the empty errors array" do
+          expect(JSON.parse(subject.delete_user.body, { symbolize_names: true })[:data]).to include_json(
+            deleteUser: {
+              errors: []
+            }
+          )
+        end
+      end
+    end
+
     describe "bikes" do
       context "when creating them" do
         let(:bike_model) { build_stubbed :bike_model }

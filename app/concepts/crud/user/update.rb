@@ -7,6 +7,7 @@ module Crud
 
       attribute :id, Integer
       attribute :admin, Boolean
+      attribute :email, String
 
       validates :id,
                 presence: true

@@ -4,7 +4,7 @@ require "rails_helper"
 
 describe "users API endpoints" do
   let(:session_token) { "token-xxx123123" }
-  let!(:user) { create :user, hashed_session_token: User.pwd_hash(session_token) }
+  let!(:user) { create :user, :admin, hashed_session_token: User.pwd_hash(session_token) }
   let(:developer_header) { { "X-Auth-Token" => session_token } }
 
   context "creates a user" do

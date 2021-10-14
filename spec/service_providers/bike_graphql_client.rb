@@ -198,6 +198,28 @@ class BikeGraphqlClient
     call_graphql(gql, variables)
   end
 
+  def create_user
+    gql = <<~GQL
+      mutation createUser($email: String!, $admin: Boolean!, $password: String!){
+        createUser(input: {email: $email,
+                           admin: $admin,
+                           password: $password}){
+          user {
+            id,
+          },
+          errors,
+        }
+      }
+    GQL
+
+    variables = {
+      "admin": false,
+      "email": "a_totally_new_email@gmail.com",
+      "password": "password"
+    }
+
+    call_graphql(gql, variables)
+  end
 
   def delete_user
     gql = <<~GQL

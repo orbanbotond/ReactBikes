@@ -2,26 +2,31 @@
 
 require "rails_helper"
 
-RSpec.describe "DeleteUser" do
-  let!(:user) { create :user }
-  let(:user_id) { ToptalReactBikesSchema.id_from_object(user, user.class, {}) }
-
+RSpec.describe "CreateUser" do
   subject do
     context = { current_user: current_user }
     result = ToptalReactBikesSchema.execute(query_string, context: context, variables: variables)
-    result.to_h["data"]["deleteUser"]
+    result.to_h["data"]["createUser"]
   end
 
   let(:variables) do
     {
-      "userId": user_id
+      "email": "a_totally_new_email@gmail.com",
+      "admin": false,
+      "password": "password"
     }
   end
 
   let(:query_string) do
     <<~GQL
-      mutation DeleteUser($userId: ID!){
-        deleteUser(input: {userId: $userId}){
+      mutation createUser($email: String!, $admin: Boolean!, $password: String!){
+        createUser(input: {email: $email,
+                           admin: $admin,
+                           password: $password}){
+          user {
+            id,
+            email
+          },
           errors,
         }
       }
@@ -30,28 +35,22 @@ RSpec.describe "DeleteUser" do
 
   context "negative cases" do
     context "when not authenticated" do
-      let!(:current_user) { create :user }
+      let(:current_user) { create :user }
 
       it "returns an error" do
         expect(subject["errors"]).to be_present
-      end
-
-      it "doesn't remove the user" do
-        expect { subject }.to change { User.count }.by(0)
+        expect(subject["user"]).not_to be_present
       end
     end
   end
 
   context "positive cases" do
     context "when authenticated" do
-      let!(:current_user) { create :user, :admin }
+      let(:current_user) { create :user, :admin }
 
-      it "returns no error" do
+      it "returns bike" do
         expect(subject["errors"]).not_to be_present
-      end
-
-      it "removes the user" do
-        expect { subject }.to change { User.count }.by(-1)
+        expect(subject["user"]).to be_present
       end
     end
   end

@@ -4,7 +4,8 @@ require "rails_helper"
 
 describe Crud::User::Create, type: :model do
   let(:params) { { email: "nonexisting@gmail.com", password: "new_pwd" } }
-  subject(:action) { described_class.as(:system).new(params) }
+  let!(:current_user) { create :user, :admin }
+  subject(:action) { described_class.as(current_user).new(params) }
 
   context "positive case" do
     it "return the logged in user" do
@@ -12,6 +13,14 @@ describe Crud::User::Create, type: :model do
         user = action.perform!
         expect(user.email).to eq(params[:email])
       end.to change { User.count }.by(1)
+    end
+  end
+
+  describe "authorization" do
+    context "when unauthorized" do
+      let(:current_user) { create :user }
+
+      it { is_expected.to_not be_allowed }
     end
   end
 

@@ -3,10 +3,11 @@
 module Crud
   module User
     class Create < Granite::Action
-      allow_if { performer.present? }
+      allow_if { performer.present? && performer.admin? }
 
       attribute :email, String
       attribute :password, String
+      attribute :admin, Boolean
 
       validates :email,
                 presence: true,

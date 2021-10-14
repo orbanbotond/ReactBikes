@@ -82,6 +82,49 @@
       }
     },
     {
+      "description": "a request for user creation",
+      "providerState": "a user exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation createUser($email: String!, $admin: Boolean!, $password: String!){\n  createUser(input: {email: $email,\n                     admin: $admin,\n                     password: $password}){\n    user {\n      id,\n    },\n    errors,\n  }\n}\n",
+          "variables": {
+            "admin": false,
+            "email": "a_totally_new_email@gmail.com",
+            "password": "password"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "createUser": {
+              "user": {
+                "id": "1"
+              },
+              "errors": [
+
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.createUser.user.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
       "description": "a request for bike creation",
       "providerState": "a bike model exists",
       "request": {

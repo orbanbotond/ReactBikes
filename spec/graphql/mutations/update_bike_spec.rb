@@ -6,7 +6,7 @@ RSpec.describe "UpdateBike" do
   let(:bike) { create :bike }
   let(:bike_id) { ToptalReactBikesSchema.id_from_object(bike, bike.class, {}) }
 
-  subject(:scoped_reservations) do
+  subject do
     context = { current_user: current_user }
     result = ToptalReactBikesSchema.execute(query_string, context: context, variables: variables)
     result.to_h["data"]["updateBike"]

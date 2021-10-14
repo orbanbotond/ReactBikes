@@ -8,13 +8,42 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { reduxForm, SubmissionError } from 'redux-form';
 
 class NewContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
   apiUrl() {
     return Routes.Restfull.collection_route('user');
   }
 
   handleSubmit(data) {
-    return Axios(this.props.user).post(this.apiUrl(), data).then((responseObj) => {
+    const currentUser = this.props.user;
+
+    const query = `
+      mutation createUser($email: String!, $admin: Boolean!, $password: String!){
+        createUser(input: {email: $email,
+                           admin: $admin,
+                           password: $password}){
+          user {
+            id,
+            email
+          },
+          errors,
+        }
+      }
+    `
+
+    const variables = `
+      {
+        "admin": ${data.admin},
+        "email": "${data.email}",
+        "password": "${data.password}"
+      }
+    `
+
+    return Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((responseObj) => {
       this.handleSuccess(responseObj);
       this.props.history.push(Routes.Browser.Restfull.collection_route('user'));
     }).catch((error) => {

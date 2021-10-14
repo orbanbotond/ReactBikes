@@ -175,6 +175,21 @@ class BikeGraphqlClient
     call_graphql(gql, variables)
   end
 
+  def delete_user
+    gql = <<~GQL
+      mutation DeleteUser($userId: ID!){
+        deleteUser(input: {userId: $userId}){
+          errors
+        }
+      }
+    GQL
+
+    variables = {
+      "userId": GraphQL::Schema::UniqueWithinType.encode("User", 1),
+    }
+
+    call_graphql(gql, variables)
+  end
 
 private
   def call_graphql(gql, variables = {})

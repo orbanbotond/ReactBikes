@@ -514,6 +514,68 @@
           }
         }
       }
+    },
+    {
+      "description": "a request for available bikes",
+      "providerState": "a bike exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "query AvailableBikes{\n  availableBikes(startDate: \"2021-10-22\", endDate:\"2021-10-25\"){\n    nodes{\n      id,\n      averageRating,\n      latitude,\n      longitude,\n      weight,\n      color,\n      model{\n        id\n      },\n      imageUrl\n    }\n  }\n}\n",
+          "variables": {
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "availableBikes": {
+              "nodes": [
+                {
+                  "id": "1",
+                  "averageRating": 1.2,
+                  "latitude": 1.2,
+                  "longitude": 1.2,
+                  "weight": 1.2,
+                  "model": {
+                    "id": "Mountain"
+                  },
+                  "imageUrl": null
+                }
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.availableBikes.nodes[0].id": {
+            "match": "type"
+          },
+          "$.body.data.availableBikes.nodes[0].averageRating": {
+            "match": "type"
+          },
+          "$.body.data.availableBikes.nodes[0].latitude": {
+            "match": "type"
+          },
+          "$.body.data.availableBikes.nodes[0].longitude": {
+            "match": "type"
+          },
+          "$.body.data.availableBikes.nodes[0].weight": {
+            "match": "type"
+          },
+          "$.body.data.availableBikes.nodes[0].model.id": {
+            "match": "type"
+          }
+        }
+      }
     }
   ],
   "metadata": {

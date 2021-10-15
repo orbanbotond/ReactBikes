@@ -11,6 +11,16 @@ import BikeResults from './search-results.container';
 import MapDisplay from './search-results-map.container';
 
 class SearchContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bike: null,
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentWillMount() {
     if(!this.props.models){
       this.props.fetchTheModels();

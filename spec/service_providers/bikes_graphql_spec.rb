@@ -640,7 +640,7 @@ describe BikeGraphqlClient, pact: true do
           }
         }
       end
-      
+
       it "returns bikes" do
         js = JSON.parse(subject.get_available_bikes.body, { symbolize_names: true })[:data]
         binding.pry

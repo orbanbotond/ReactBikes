@@ -597,5 +597,69 @@ describe BikeGraphqlClient, pact: true do
         end
       end
     end
+
+    describe "get available bikes" do
+      let(:gql) do
+        <<~GQL
+          query AvailableBikes{
+            availableBikes(startDate: "2021-10-22", endDate:"2021-10-25"){
+              nodes{
+                id,
+                averageRating,
+                latitude,
+                longitude,
+                weight,
+                color,
+                model{
+                  id
+                },
+                imageUrl
+              }
+            }
+          }
+        GQL
+      end
+      let(:provider_state) { "a bike exists" }
+      let(:message_description) { "a request for available bikes" }
+      let(:mocked_body_content) do
+        {
+          data: {
+            availableBikes: {
+              nodes: [{
+                  id: Pact.like("1"),
+                  averageRating: Pact.like(1.2),
+                  latitude: Pact.like(1.2),
+                  longitude: Pact.like(1.2),
+                  weight: Pact.like(1.2),
+                  model: {
+                    id: Pact.like("Mountain")
+                  },
+                  imageUrl: nil
+              }]
+            }
+          }
+        }
+      end
+
+      it "returns bikes" do
+        js = JSON.parse(subject.get_available_bikes.body, { symbolize_names: true })[:data]
+        binding.pry
+        expect(js).to include_json(
+          availableBikes: {
+            nodes: UnorderedArray({
+              id: /\d/,
+              averageRating: /\.*/,
+              latitude: /\.*/,
+              longitude: /\.*/,
+              weight: /\.*/,
+              imageUrl: /\.*/,
+              model: {
+                id: /\.*/
+              }
+            })
+          }
+        )
+      end
+    end
   end
 end

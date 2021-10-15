@@ -11,6 +11,16 @@ import BikeResults from './search-results.container';
 import MapDisplay from './search-results-map.container';
 
 class SearchContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bike: null,
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentWillMount() {
     if(!this.props.models){
       this.props.fetchTheModels();
@@ -18,7 +28,27 @@ class SearchContainer extends Component {
   }
 
   handleSubmit(data){
-    return Axios(this.props.user).get(Routes.Queries.available_bikes(), { params: data }).then((responseObj) => {
+    const currentUser = this.props.user;
+    const query = `
+      query AvailableBikes{
+        availableBikes(startDate: "${data.start_date}", endDate:"${data.end_date}", color: "${data.color}", weight: ${data.weight}, rating: ${data.rating}, bikeModelId: "${data.bike_model_id}"){
+          nodes{
+            id,
+            averageRating,
+            latitude,
+            longitude,
+            weight,
+            color,
+            model{
+              id
+            },
+            imageUrl
+          }
+        }
+      }    
+    `
+
+    Axios(currentUser).post(Routes.Rails.graphql, {query: query}).then((responseObj) => {
       this.handleSuccess(responseObj);
     }).catch((error) => {
       this.handleError(error);
@@ -33,7 +63,11 @@ class SearchContainer extends Component {
   }
 
   handleSuccess(response) {
-    this.props.fetchSearchResultsSuccess(response.data);
+    const bikes = response.data.data.availableBikes.nodes.map(bike => ({
+           ...bike,
+           bike_model_id: bike.model.id}))
+
+    this.props.fetchSearchResultsSuccess(bikes);
   }
 
   render(){

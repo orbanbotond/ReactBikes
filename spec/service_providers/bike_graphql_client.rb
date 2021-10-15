@@ -10,6 +10,29 @@ class BikeGraphqlClient
     @session_token = session_token
   end
 
+  def get_available_bikes
+    gql = <<~GQL
+      query AvailableBikes{
+        availableBikes(startDate: "2021-10-22", endDate:"2021-10-25"){
+          nodes{
+            id,
+            averageRating,
+            latitude,
+            longitude,
+            weight,
+            color,
+            model{
+              id
+            },
+            imageUrl
+          }
+        }
+      }
+    GQL
+
+    call_graphql(gql)
+  end
+
   def get_bike_models
     gql = <<~GQL
     {

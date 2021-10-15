@@ -8,6 +8,12 @@ import { login as dispatchLogin } from './action-creators';
 import LoginForm from './login.component';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleSubmit(data) {
     return Axios()
       .post(Routes.login(), data)

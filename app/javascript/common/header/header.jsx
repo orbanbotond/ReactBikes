@@ -7,6 +7,12 @@ import { selectUser, selectAuthenticated } from '@modules/selectors'
 import { logout as dispatchLogout } from '@modules/login/action-creators';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
   handleLogout(e) {
     e.preventDefault();
     this.props.dispatchLogout();

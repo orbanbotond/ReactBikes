@@ -12,6 +12,8 @@ class ReservationsContainer extends Component {
     this.state = {
       collection: null,
     };
+
+    this.componentWillMount = this.componentWillMount.bind(this);
   }
 
 	rateHandler(id, rating){

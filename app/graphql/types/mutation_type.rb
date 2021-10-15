@@ -8,5 +8,6 @@ module Types
     field :delete_user, mutation: ::Mutations::DeleteUser
     field :update_user, mutation: ::Mutations::UpdateUser
     field :create_user, mutation: ::Mutations::CreateUser
+    field :create_reservation, mutation: ::Mutations::ReserveBike
   end
 end

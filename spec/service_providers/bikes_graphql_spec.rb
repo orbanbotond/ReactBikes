@@ -37,6 +37,56 @@ describe BikeGraphqlClient, pact: true do
   end
 
   describe "mutations" do
+    describe "reservations" do
+      let(:variables) do
+        {
+          "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1),
+          "startDate": "2041-10-22",
+          "endDate": "2041-10-25"
+        }
+      end
+
+      let(:gql) do
+        <<~GQL
+          mutation CreateReservation($startDate: ISO8601Date!, $endDate: ISO8601Date!, $bikeId: ID!){
+            createReservation(input:{ startDate: $startDate,
+                                      endDate: $endDate,
+                                      bikeId: $bikeId} ){
+              reservation {
+                id,
+              },
+              errors,
+            }
+          }
+        GQL
+      end
+      let(:provider_state) { "a bike exists" }
+      let(:message_description) { "a request for reservation creation" }
+      let(:mocked_body_content) do
+        {
+          data: {
+            createReservation: {
+              reservation: {
+                id: Pact.like("1"),
+              },
+              errors: []
+            }
+          }
+        }
+      end
+
+      it "returns a user" do
+        expect(JSON.parse(subject.create_reservation.body, { symbolize_names: true })[:data]).to include_json(
+          createReservation: {
+            reservation: {
+              id: /\d/,
+            },
+            errors: []
+          }
+        )
+      end
+    end
+
     describe "users" do
       context "when deleting it" do
         let(:variables) do
@@ -642,9 +692,7 @@ describe BikeGraphqlClient, pact: true do
       end
 
       it "returns bikes" do
-        js = JSON.parse(subject.get_available_bikes.body, { symbolize_names: true })[:data]
-        binding.pry
-        expect(js).to include_json(
+        expect(JSON.parse(subject.get_available_bikes.body, { symbolize_names: true })[:data]).to include_json(
           availableBikes: {
             nodes: UnorderedArray({
               id: /\d/,

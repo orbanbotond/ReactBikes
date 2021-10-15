@@ -7,6 +7,49 @@
   },
   "interactions": [
     {
+      "description": "a request for reservation creation",
+      "providerState": "a bike exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation CreateReservation($startDate: ISO8601Date!, $endDate: ISO8601Date!, $bikeId: ID!){\n  createReservation(input:{ startDate: $startDate,\n                            endDate: $endDate,\n                            bikeId: $bikeId} ){\n    reservation {\n      id,\n    },\n    errors,\n  }\n}\n",
+          "variables": {
+            "bikeId": "QmlrZS0x",
+            "startDate": "2041-10-22",
+            "endDate": "2041-10-25"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "createReservation": {
+              "reservation": {
+                "id": "1"
+              },
+              "errors": [
+
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.createReservation.reservation.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
       "description": "a request for user delete",
       "providerState": "a user exists",
       "request": {

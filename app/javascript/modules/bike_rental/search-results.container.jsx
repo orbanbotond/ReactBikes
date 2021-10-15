@@ -36,7 +36,7 @@ class SearchResultsContainer extends Component {
       }
     `
 
-    Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((responseObj) => {
+    Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((_responseObj) => {
       this.props.history.push(Routes.Browser.Restfull.collection_route("reservation"));
     }).catch((_error) => {
     });

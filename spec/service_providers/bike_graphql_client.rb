@@ -130,6 +130,29 @@ class BikeGraphqlClient
     call_graphql(gql)
   end
 
+  def create_reservation
+    gql = <<~GQL
+      mutation CreateReservation($startDate: ISO8601Date!, $endDate: ISO8601Date!, $bikeId: ID!){
+        createReservation(input:{ startDate: $startDate,
+                                  endDate: $endDate,
+                                  bikeId: $bikeId} ){
+          reservation {
+            id,
+          },
+          errors,
+        }
+      }
+    GQL
+
+    variables = {
+      "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1),
+      "startDate": "2041-10-22",
+      "endDate": "2041-10-25"
+    }
+
+    call_graphql(gql, variables)
+  end
+
   def create_bike
     gql = <<~GQL
       mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){

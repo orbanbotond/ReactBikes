@@ -17,7 +17,7 @@ module Crud
 
       private
         def model
-          model = Crud::Common::Read.as(performer).new(id: id, ar_class: :reservation).perform
+          Crud::Common::Read.as(performer).new(id: id, ar_class: :reservation).perform
         end
 
         def only_rating_or_cancelled

@@ -106,5 +106,32 @@ RSpec.describe ReservationPolicy, type: :model do
         end
       end
     end
+
+    context "when creating" do
+      let(:reservation) { build :reservation }
+      subject(:policy) { ReservationPolicy.new(current_user, reservation) }
+
+      describe "negative cases" do
+        context "when user doesn't own the reservation" do
+          let(:current_user) { create :user }
+
+          it { is_expected.to_not permit_action(:create) }
+        end
+      end
+
+      describe "positive cases" do
+        context "when user owns the reservation" do
+          let(:current_user) { reservation.user }
+
+          it { is_expected.to permit_action(:create) }
+        end
+
+        context "when user is admin" do
+          let(:current_user) { create :user, :admin }
+
+          it { is_expected.to permit_action(:create) }
+        end
+      end
+    end
   end
 end

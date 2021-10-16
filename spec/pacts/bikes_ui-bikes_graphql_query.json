@@ -7,6 +7,48 @@
   },
   "interactions": [
     {
+      "description": "a request for reservation update",
+      "providerState": "a user with reservation exists",
+      "request": {
+        "method": "post",
+        "path": "/graphql",
+        "headers": {
+          "X-Auth-Token": "token-xxx123123",
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "query": "mutation UpdateReservation($cancelled: Boolean, $rating: Int, $reservationId: ID!){\n  updateReservation(input:{ cancelled: $cancelled,\n                            rating: $rating,\n                            reservationId: $reservationId} ){\n    reservation{\n      id,\n    },\n    errors,\n  }\n}\n",
+          "variables": {
+            "reservationId": "UmVzZXJ2YXRpb24tMQ==",
+            "rating": 2
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "data": {
+            "updateReservation": {
+              "reservation": {
+                "id": "1"
+              },
+              "errors": [
+
+              ]
+            }
+          }
+        },
+        "matchingRules": {
+          "$.body.data.updateReservation.reservation.id": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
       "description": "a request for reservation creation",
       "providerState": "a bike exists",
       "request": {

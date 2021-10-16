@@ -12,6 +12,8 @@ export default class Reservation extends Component {
     this.state = {
       cancelled: props.model.cancelled,
     };
+
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   handleCancel(_state, _node, _evt){

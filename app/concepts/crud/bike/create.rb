@@ -3,6 +3,7 @@
 module Crud
   module Bike
     class Create < Granite::Action
+      # allow_if { use BikePolicy... }
       allow_if { performer.present? && performer.admin? }
 
       attribute :color, String

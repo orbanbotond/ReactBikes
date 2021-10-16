@@ -3,27 +3,25 @@
 require "rails_helper"
 
 describe Crud::Reservation::Update, type: :model do
-  context "validations" do
-    subject(:action) { described_class.as(:system).new(params) }
+  let(:current_user) { create :user, :admin }
+
+  describe "validations" do
+    subject(:action) { described_class.as(current_user).new(params) }
 
     let(:reservation) { create :reservation }
     let(:params) { { id: reservation.id, cancelled: true } }
 
-    context "negative cases" do
-      context "params are empty" do
+    describe "negative cases" do
+      context "when params are empty" do
         let(:params) { {} }
 
         it { is_expected.to_not be_valid }
       end
 
-      context "both rating and cancelled are there" do
+      context "when both rating and cancelled are there" do
         let(:params) { { rating: 4, cancelled: true } }
 
         it { is_expected.to_not be_valid }
-      end
-
-      context "rating" do
-        it { is_expected.to validate_inclusion_of(:rating).in_range(1..5) }
       end
     end
 
@@ -32,19 +30,17 @@ describe Crud::Reservation::Update, type: :model do
         it { is_expected.to be_valid }
       end
 
-      context "rating is specified" do
-        let(:params) { { id: reservation.id, rating: 3 } }
-
-        it { is_expected.to be_valid }
+      context "when rating is its range" do
+        it { is_expected.to validate_inclusion_of(:rating).in_range(1..5) }
       end
     end
   end
 
-  context "functionality" do
-    context "reservation" do
-      subject(:action) { described_class.as(:system).new(params).perform }
+  describe "functionality" do
+    subject(:action) { described_class.as(current_user).new(params).perform }
+    let(:model) { create :reservation }
 
-      let(:model) { create :reservation }
+    context "when updating the rating" do
       let(:params) { { id: model.id, rating: 5 } }
 
       it "updates the old model" do
@@ -57,18 +53,42 @@ describe Crud::Reservation::Update, type: :model do
           end.to_not change { Reservation.count }
         end.to change { model.bike.reload.average_rating }
       end
+    end
 
-      context "cancells" do
-        let(:params) { { id: model.id, cancelled: true } }
+    context "when cancelling the reservation" do
+      let(:params) { { id: model.id, cancelled: true } }
 
-        it "cancells" do
-          params
-          expect do
-            expect(action).to be_a(Reservation)
-            expect(action.cancelled).to eq(params[:cancelled])
-          end.to_not change { Reservation.count }
-        end
+      it "cancells" do
+        params
+        expect do
+          expect(action).to be_a(Reservation)
+          expect(action.cancelled).to eq(params[:cancelled])
+        end.to_not change { Reservation.count }
       end
+    end
+  end
+
+  describe "security" do
+    subject(:action) { described_class.as(current_user).new(params).allowed? }
+    let(:params) { { id: reservation.id, cancelled: true } }
+    let(:reservation) { create :reservation }
+
+    context "current_user owns the reservation" do
+      let(:current_user) { reservation.user }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "current_user is admin" do
+      let(:current_user) { reservation.user }
+
+      it { is_expected.to be_truthy }
+    end
+
+    context "current_user doesn't own the reservation" do
+      let(:current_user) { create :user }
+
+      it { is_expected.to be_falsy }
     end
   end
 end

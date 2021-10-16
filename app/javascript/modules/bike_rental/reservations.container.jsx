@@ -14,16 +14,55 @@ class ReservationsContainer extends Component {
     };
 
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.rateHandler = this.rateHandler.bind(this);
+    this.cancelHandler = this.cancelHandler.bind(this);
+  }
+
+  updateGql(){
+    return `
+      mutation UpdateReservation($cancelled: Boolean, $rating: Int, $reservationId: ID!){
+        updateReservation(input:{ cancelled: $cancelled,
+                                  rating: $rating,
+                                  reservationId: $reservationId} ){
+          reservation{
+            id,
+          },
+          errors,
+        }
+      }
+    `
   }
 
 	rateHandler(id, rating){
-    Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { rating: rating }).then((_responseObj) => {
+    const currentUser = this.props.user;
+
+    const query = this.updateGql();
+
+    const variables = `
+      {
+        "reservationId": "${id}",
+        "rating": ${rating}
+      }
+    `
+
+    Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((_responseObj) => {
     }).catch((_error) => {
     });
   }
 
   cancelHandler(id){
-    Axios(this.props.user).put(Routes.Restfull.member_route('reservation', id), { cancelled: true }).then((_responseObj) => {
+    const currentUser = this.props.user;
+
+    const query = this.updateGql();
+
+    const variables = `
+      {
+        "reservationId": "${id}",
+        "cancelled": true
+      }
+    `
+
+    Axios(currentUser).post(Routes.Rails.graphql, {query: query, variables: variables}).then((_responseObj) => {
     }).catch((_error) => {
     });    
   }

@@ -153,6 +153,28 @@ class BikeGraphqlClient
     call_graphql(gql, variables)
   end
 
+  def update_reservation
+    gql = <<~GQL
+      mutation UpdateReservation($cancelled: Boolean, $rating: Int, $reservationId: ID!){
+        updateReservation(input:{ cancelled: $cancelled,
+                                  rating: $rating,
+                                  reservationId: $reservationId} ){
+          reservation{
+            id,
+          },
+          errors,
+        }
+      }
+    GQL
+
+    variables = {
+      "reservationId": GraphQL::Schema::UniqueWithinType.encode("Reservation", 1),
+      "rating": 2
+    }
+
+    call_graphql(gql, variables)
+  end
+
   def create_bike
     gql = <<~GQL
       mutation createBikes($color: BikeColorsEnum!, $weight: Float!, $latitude: Float!, $longitude: Float!, $bikeModelId: ID!){

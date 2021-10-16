@@ -19,4 +19,15 @@ class ReservationPolicy < ApplicationPolicy
     private
       attr_reader :user, :scope
   end
+
+  attr_reader :current_user, :model
+
+  def initialize(current_user, model)
+    @current_user = current_user
+    @model = model
+  end
+
+  def update?
+    current_user.admin? || model.user == current_user
+  end
 end

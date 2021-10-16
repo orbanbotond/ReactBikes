@@ -18,10 +18,8 @@ class ReservationsContainer extends Component {
     this.cancelHandler = this.cancelHandler.bind(this);
   }
 
-	rateHandler(id, rating){
-    const currentUser = this.props.user;
-
-    const query = `
+  updateGql(){
+    return `
       mutation UpdateReservation($cancelled: Boolean, $rating: Int, $reservationId: ID!){
         updateReservation(input:{ cancelled: $cancelled,
                                   rating: $rating,
@@ -33,6 +31,12 @@ class ReservationsContainer extends Component {
         }
       }
     `
+  }
+
+	rateHandler(id, rating){
+    const currentUser = this.props.user;
+
+    const query = this.updateGql();
 
     const variables = `
       {
@@ -49,18 +53,7 @@ class ReservationsContainer extends Component {
   cancelHandler(id){
     const currentUser = this.props.user;
 
-    const query = `
-      mutation UpdateReservation($cancelled: Boolean, $rating: Int, $reservationId: ID!){
-        updateReservation(input:{ cancelled: $cancelled,
-                                  rating: $rating,
-                                  reservationId: $reservationId} ){
-          reservation{
-            id,
-          },
-          errors,
-        }
-      }
-    `
+    const query = this.updateGql();
 
     const variables = `
       {

@@ -38,52 +38,103 @@ describe BikeGraphqlClient, pact: true do
 
   describe "mutations" do
     describe "reservations" do
-      let(:variables) do
-        {
-          "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1),
-          "startDate": "2041-10-22",
-          "endDate": "2041-10-25"
-        }
-      end
+      context "when updating it" do
+        let(:variables) do
+          {
+            "reservationId": GraphQL::Schema::UniqueWithinType.encode("Reservation", 1),
+            "rating": 2
+          }
+        end
 
-      let(:gql) do
-        <<~GQL
-          mutation CreateReservation($startDate: ISO8601Date!, $endDate: ISO8601Date!, $bikeId: ID!){
-            createReservation(input:{ startDate: $startDate,
-                                      endDate: $endDate,
-                                      bikeId: $bikeId} ){
-              reservation {
-                id,
-              },
-              errors,
+        let(:gql) do
+          <<~GQL
+            mutation UpdateReservation($cancelled: Boolean, $rating: Int, $reservationId: ID!){
+              updateReservation(input:{ cancelled: $cancelled,
+                                        rating: $rating,
+                                        reservationId: $reservationId} ){
+                reservation{
+                  id,
+                },
+                errors,
+              }
+            }
+          GQL
+        end
+        let(:provider_state) { "a user with reservation exists" }
+        let(:message_description) { "a request for reservation update" }
+        let(:mocked_body_content) do
+          {
+            data: {
+              updateReservation: {
+                reservation: {
+                  id: Pact.like("1"),
+                },
+                errors: []
+              }
             }
           }
-        GQL
-      end
-      let(:provider_state) { "a bike exists" }
-      let(:message_description) { "a request for reservation creation" }
-      let(:mocked_body_content) do
-        {
-          data: {
-            createReservation: {
+        end
+
+        it "returns a reservation" do
+          expect(JSON.parse(subject.update_reservation.body, { symbolize_names: true })[:data]).to include_json(
+            updateReservation: {
               reservation: {
-                id: Pact.like("1"),
+                id: /\d/,
               },
               errors: []
             }
-          }
-        }
+          )
+        end
       end
 
-      it "returns a user" do
-        expect(JSON.parse(subject.create_reservation.body, { symbolize_names: true })[:data]).to include_json(
-          createReservation: {
-            reservation: {
-              id: /\d/,
-            },
-            errors: []
+      context "when creating it" do
+        let(:variables) do
+          {
+            "bikeId": GraphQL::Schema::UniqueWithinType.encode("Bike", 1),
+            "startDate": "2041-10-22",
+            "endDate": "2041-10-25"
           }
-        )
+        end
+
+        let(:gql) do
+          <<~GQL
+            mutation CreateReservation($startDate: ISO8601Date!, $endDate: ISO8601Date!, $bikeId: ID!){
+              createReservation(input:{ startDate: $startDate,
+                                        endDate: $endDate,
+                                        bikeId: $bikeId} ){
+                reservation {
+                  id,
+                },
+                errors,
+              }
+            }
+          GQL
+        end
+        let(:provider_state) { "a bike exists" }
+        let(:message_description) { "a request for reservation creation" }
+        let(:mocked_body_content) do
+          {
+            data: {
+              createReservation: {
+                reservation: {
+                  id: Pact.like("1"),
+                },
+                errors: []
+              }
+            }
+          }
+        end
+
+        it "returns a reservation" do
+          expect(JSON.parse(subject.create_reservation.body, { symbolize_names: true })[:data]).to include_json(
+            createReservation: {
+              reservation: {
+                id: /\d/,
+              },
+              errors: []
+            }
+          )
+        end
       end
     end
 

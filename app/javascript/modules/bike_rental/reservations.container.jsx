@@ -14,6 +14,8 @@ class ReservationsContainer extends Component {
     };
 
     this.componentWillMount = this.componentWillMount.bind(this);
+    this.rateHandler = this.rateHandler.bind(this);
+    this.cancelHandler = this.cancelHandler.bind(this);
   }
 
 	rateHandler(id, rating){

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class ReserveBike < Mutations::BaseMutation
+  class CreateReservation < Mutations::BaseMutation
     argument :start_date, GraphQL::Types::ISO8601Date, required: true
     argument :end_date, GraphQL::Types::ISO8601Date, required: true
     argument :bike_id, ID, required: true, loads: ::Types::BikeType

@@ -23,7 +23,6 @@ describe Crud::Reservation::Update, type: :model do
 
         it { is_expected.to_not be_valid }
       end
-
     end
 
     context "positive case" do

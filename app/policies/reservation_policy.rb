@@ -30,4 +30,8 @@ class ReservationPolicy < ApplicationPolicy
   def update?
     current_user.admin? || model.user == current_user
   end
+
+  def create?
+    current_user.admin? || model.user == current_user
+  end
 end

@@ -3,9 +3,9 @@
 require "rails_helper"
 
 describe Crud::Reservation::Create, type: :model do
-  context "validations" do
-    context "negative cases" do
-      context "start_date is in the past" do
+  describe "validations" do
+    describe "negative cases" do
+      context "when start_date is in the past" do
         let(:params) { super().merge(start_date: 1.day.ago.to_datetime) }
 
         it { is_expected.not_to be_valid }
@@ -41,8 +41,8 @@ describe Crud::Reservation::Create, type: :model do
     end
   end
 
-  context "functionality" do
-    subject(:action) { described_class.as(:system).new(params).perform }
+  describe "functionality" do
+    subject(:action) { described_class.as(current_user).new(params).perform }
     let!(:bike) { create :bike }
     let(:current_user) { create :user, :admin }
 

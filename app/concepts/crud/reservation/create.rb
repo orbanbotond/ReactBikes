@@ -3,7 +3,9 @@
 module Crud
   module Reservation
     class Create < Granite::Action
-      allow_if { performer.present? }
+      allow_if do
+        ::ReservationPolicy.new(performer, model).create?
+      end
 
       attribute :start_date, Date
       attribute :end_date, Date
@@ -45,11 +47,15 @@ module Crud
           errors.add(:start_date, "Start date must be before the end date") unless start_date < end_date
         end
 
+        def model
+          return @reservation if @reservation.present?
+
+          @reservation = ::Reservation.new
+          @reservation.user = current_user
+        end
+
         def execute_perform!(*)
-          reservation = ::Reservation.new
-          reservation.user = current_user
-          actual_performer = performer
-          Crud::Common::Persist.as(actual_performer).new(model: reservation, model_attributes: attributes.except("current_user")).perform
+          Crud::Common::Persist.as(performer).new(model: model, model_attributes: attributes.except("current_user")).perform
         end
     end
   end

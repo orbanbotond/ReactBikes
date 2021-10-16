@@ -80,7 +80,7 @@ describe Crud::Reservation::Update, type: :model do
     end
 
     context "current_user is admin" do
-      let(:current_user) { reservation.user }
+      let(:current_user) { create :user, :admin }
 
       it { is_expected.to be_truthy }
     end

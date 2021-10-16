@@ -37,7 +37,7 @@ class ReservationsContainer extends Component {
     const variables = `
       {
         "reservationId": "${id}",
-        "rating": rating
+        "rating": ${rating}
       }
     `
 

@@ -27,7 +27,7 @@ Entity Relationship
 
 Architecture
 =============
-![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/Architecture.puml)
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/architecture.puml)
 
 
 

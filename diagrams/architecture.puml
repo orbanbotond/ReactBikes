@@ -1,0 +1,36 @@
+@startuml
+
+package "Back End" {
+  [Policies]
+
+  [GraphQL] ---> [Concepts]
+  [GraphQL] -----> [Policies] : (field level authorization)
+
+  package "Legacy API" {
+      [GrapeAPI] -> [Swagger]
+      [GrapeAPI] ---> [Concepts]
+  }
+
+    package "Concepts" {
+      [RailwayOrientedOperations]
+      [RailwayOrientedOperations] --> [Contracts (Form Objects)]
+      [GraniteOperations]
+    }
+
+    package "Models" {
+      AR - [ARModels]
+    }
+
+[GraniteOperations] ---> [Policies]
+[Policies] --> AR
+}
+
+database "RDBMS" {
+}
+
+[RailwayOrientedOperations] ---> AR
+[GraniteOperations] ---> AR
+
+AR --> RDBMS
+
+@enduml

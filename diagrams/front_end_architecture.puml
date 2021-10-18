@@ -1,0 +1,10 @@
+@startuml
+
+package "Front End" {
+}
+
+package "Back End" {
+    [GraphQL]
+}
+
+@enduml

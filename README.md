@@ -12,8 +12,12 @@ This project is a study project which shows a clear background architecture with
 
 The background is architected using the Granite architecture, where the actions encapsulate the business logic and the input validation.
 
-
 It uses Rails 5.2 and Granite.
+
+---
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/use_cases.puml)
+---
+
 
 The authorization is done via pundit, and the gateway toward the HTTP API is GRAPE with Swagger.
 

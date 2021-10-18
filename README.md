@@ -13,23 +13,23 @@ This project is a study project for a Hypotheticall Bike Rental Scenario.
  Use Cases
 ==========
 
-![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/use_cases.puml)
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/master/diagrams/use_cases.puml)
 
 User Activity
 =============
-![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/user_activity.puml)
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/master/diagrams/user_activity.puml)
 
 Entity Relationship
 =============
-![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/entity_relationship.puml)
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/master/diagrams/entity_relationship.puml)
 
 Backend Architecture
 =============
-![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/back_end_architecture.puml)
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/master/diagrams/back_end_architecture.puml)
 
 Frontend Architecture
 =============
-![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/front_end_architecture.puml)
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/master/diagrams/front_end_architecture.puml)
 
 There are 2 API's for serving the frontend:
 - [Legacy Grape](https://github.com/ruby-grape/grape) with [Swagger](https://github.com/ruby-grape/grape-swagger)

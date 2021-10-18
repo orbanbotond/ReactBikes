@@ -21,6 +21,10 @@ User Activity
 =============
 ![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/user_activity.puml)
 
+Entity Relationship
+=============
+![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/entity_relationship.puml)
+
 Architecture
 =============
 ![alt text](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/orbanbotond/ReactBikes/add-diagrams/diagrams/Architecture.puml)

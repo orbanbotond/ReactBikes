@@ -5,11 +5,11 @@ start
 :Filter by color/model/weight/rating;
 :Reserve the Bike;
 
-if (Cancelsll) then (yes)
+if (Cancels) then (yes)
   :The reservation is cancelled;
   :The bike is available for rent within the same dates;
 else (no)
-  :Rate thethe bike;
+  :Rate the bike;
 endif
 
 stop

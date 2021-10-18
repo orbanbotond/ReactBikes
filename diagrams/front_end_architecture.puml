@@ -1,0 +1,34 @@
+@startuml
+package "Front End" {
+  [Reducers] --> [ActionCreators]
+  [Reducers] ---> [Redux]
+  [Selectors] --> [Redux]
+  [React Containers] --> [Selectors]
+  [React Containers] --> [Routes]
+  [React Containers] ---> [HOC]
+  [React Containers] --> [ActionCreators]
+  [Routes] ---> [Guards]
+  [Guards] -> [HOC]
+  [HOC] --> [Dumb Components]
+
+  note left of HOC
+   - resource spinners
+   - route guards
+   - connect
+  end note
+
+  note left of [Dumb Components]
+   - controlled form inputs
+   - login
+   - users table
+   - bikes table
+   - reservations table
+  end note
+}
+
+package "Back End" {
+    [GraphQL]
+}
+
+[ActionCreators] ------> [GraphQL]
+@enduml

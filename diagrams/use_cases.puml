@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:Main Admin: as Admin
+
+left to right direction
+User --> (Lists Available Bikes)
+User --> (Cancells Reservation)
+User --> (Rates Reservation)
+User --> (Login/LogoutSignUp)
+
+Admin ---> (CRUD User)
+Admin ---> (CRUD Bike)
+Admin ---> (List Reservations)
+@enduml

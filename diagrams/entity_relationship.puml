@@ -1,8 +1,8 @@
 @startuml
 
 left to right direction
-User "1" *--- "many" Reservations : contains
-Model o-- Bike : aggregation
+User "1" *- "many" Reservations : contains
+Model o- Bike : aggregation
 
 Bike "1" *-- "many" Reservations : contains
 

@@ -1,0 +1,8 @@
+@startgantt
+[Initial Saving] lasts 5 days
+[Saving 12] lasts 10 days
+Project starts 2020-07-01
+[Initial Saving] starts on 2020-07-15
+[Saving 12] starts 2020-07-25
+[Finantial Year] lasts 55 days
+@endgantt

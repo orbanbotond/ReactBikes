@@ -13,6 +13,7 @@ module Bikes
       desc "Creates a reservation." do
         detail "Returns a reservation"
         success ::Entities::ReservationEntity
+        params  ::Crud::Reservation::Create.documentation
         failure [[401, "Unauthenticated"],
                  [400, "Bad Request"]]
         headers 'X-Auth-Token': {
@@ -34,6 +35,7 @@ module Bikes
         desc "Updates the reservation." do
           detail "Returns the reservation"
           success ::Entities::ReservationEntity
+          params  ::Crud::Reservation::Update.documentation
           failure [[401, "Unauthenticated"],
                    [404, "Not found"],
                    [400, "Bad Request"]]

@@ -19,6 +19,16 @@ module Crud
       validate :start_date_is_in_future
       validate :end_date_is_in_future
 
+      class << self
+        def documentation
+          {
+            start_date: { required: true, type: "Date", desc: "The start date" },
+            end_date: { required: true, type: "Date", desc: "The end date" },
+            bike_id: { required: true, type: "Integer", desc: "The FK reference to the Bike.id" }
+          }
+        end
+      end
+
       private
         def foreign_key_exists
           return unless bike_id.present?

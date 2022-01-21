@@ -15,6 +15,15 @@ module Crud
       validates :id, presence: true
       validate :only_rating_or_cancelled
 
+      class << self
+        def documentation
+          {
+            cancelled: { required: false, type: "Boolean", desc: "If we want to cancell" },
+            rating: { required: false, type: "Integer", desc: "1..5" }
+          }
+        end
+      end
+
       private
         def model
           Crud::Common::Read.as(performer).new(id: id, ar_class: :reservation).perform

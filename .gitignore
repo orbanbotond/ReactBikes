@@ -40,3 +40,4 @@ yarn-debug.log*
 .yarn-integrity
 .terraform*
 terraform.tfstate*
+public/assets/

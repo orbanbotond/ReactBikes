@@ -47,6 +47,7 @@ gem "trailblazer-loader", "~> 0.1.2"
 gem "webpacker"
 gem "reform", "~> 2.2"
 gem "reform-rails", "~> 0.1"
+gem "pact"
 
 gem "granite"
 # Use Redis adapter to run Action Cable in production
@@ -80,7 +81,6 @@ group :development, :test do
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "webmock"
-  gem "pact"
   gem "httparty"
   gem "rspec-json_expectations"
 end

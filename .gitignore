@@ -38,3 +38,5 @@ schema.json
 /public/packs-test
 yarn-debug.log*
 .yarn-integrity
+.terraform*
+terraform.tfstate*

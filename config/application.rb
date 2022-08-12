@@ -7,7 +7,6 @@ require "rails/all"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require 'batch_loaders/association_loader'
 
 module ToptalReactBikes
   class Application < Rails::Application
@@ -23,3 +22,5 @@ module ToptalReactBikes
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
+
+require 'batch_loaders/association_loader'

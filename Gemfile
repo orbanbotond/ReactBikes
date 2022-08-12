@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+ruby '2.7.1'
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -57,6 +59,7 @@ gem "granite"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem "dotenv-rails", "~> 2.2"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
@@ -65,7 +68,6 @@ group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", "~> 3.29"
-  gem "dotenv-rails", "~> 2.2"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"
   gem "guard", "~> 2.14"

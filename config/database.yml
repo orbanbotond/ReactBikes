@@ -19,6 +19,4 @@ test:
   database: test-<%= ENV.fetch("RDS_DB_NAME", "postgres") %>
 
 production:
-  <<: *default
-  database: <%= ENV.fetch("RDS_DB_NAME", "reacctbikes") %>
   url: <%= ENV['DATABASE_URL'] %>

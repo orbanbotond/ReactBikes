@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby '2.7.1'
+ruby '3.0.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -70,9 +70,9 @@ group :development, :test do
   gem "capybara", "~> 3.29"
   gem "factory_bot_rails", "~> 4.8"
   gem "ffaker", "~> 2.8"
-  gem "guard", "~> 2.14"
-  gem "guard-bundler", "~> 2.2", require: false
-  gem "guard-rspec", "~> 4.7", require: false
+  # gem "guard", "~> 2.14"
+  # gem "guard-bundler", "~> 2.2", require: false
+  # gem "guard-rspec", "~> 4.7", require: false
   # gem "guard-rubocop", "~> 1.3", require: false
   gem "pry-byebug", "~> 3.5"
   gem "pry-rails"

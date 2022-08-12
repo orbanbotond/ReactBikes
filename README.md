@@ -1,5 +1,5 @@
- README
---------
+  README
+----------
 
 [![Coverage Status](https://coveralls.io/repos/github/orbanbotond/ReactBikes/badge.svg?branch=master)](https://coveralls.io/github/orbanbotond/ReactBikes?branch=master)
 

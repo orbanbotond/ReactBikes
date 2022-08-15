@@ -2,12 +2,12 @@
 
 source "https://rubygems.org"
 
-# ruby '2.7.3'
-ruby '3.0.3'
+ruby '3.1.2'
+# ruby '3.0.4'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
+  "http://github.com/#{repo_name}.git"
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -40,7 +40,7 @@ gem "grape-entity", "~> 0.7.0"
 gem "grape-swagger", "~> 0.27.3"
 gem "grape-swagger-entity", "~> 0.2.5"
 gem "grape-swagger-ui", "~> 2.2"
-gem "grape_on_rails_routes", git: "https://github.com/orbanbotond/grape_on_rails_routes", branch: "fix_latest_grape_1_0_2"
+gem "grape_on_rails_routes", git: "http://github.com/orbanbotond/grape_on_rails_routes", branch: "fix_latest_grape_1_0_2"
 gem "jbuilder", "~> 2.5"
 # gem "paperclip", "~> 6.0"
 gem "pundit", "~> 1.1"
@@ -83,7 +83,7 @@ group :development, :test do
   gem "rspec-rails", "~> 3.6"
   gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"
-  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
+  gem "shoulda-matchers", git: "http://github.com/thoughtbot/shoulda-matchers"
   gem "webmock"
   gem "httparty"
   gem "rspec-json_expectations"

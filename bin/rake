@@ -2,8 +2,7 @@
 # frozen_string_literal: true
 
 begin
-  load File.expand_path("spring", __dir__)
-rescue LoadError => e
+  rescue LoadError => e
   raise unless e.message.include?("spring")
 end
 require_relative "../config/boot"

@@ -30,7 +30,7 @@ RSpec.describe "GraphqlController authentication", type: :request do
     it "returns 401" do
       call_request
       expect(response).to have_http_status(401)
-      expect(response.content_type).to eq("application/json")
+      expect(response.content_type).to eq("application/json; charset=utf-8")
     end
   end
 
@@ -38,7 +38,7 @@ RSpec.describe "GraphqlController authentication", type: :request do
     it "executes the query successfull" do
       call_request
       expect(response).to have_http_status(200)
-      expect(response.content_type).to eq("application/json")
+      expect(response.content_type).to eq("application/json; charset=utf-8")
     end
   end
 end

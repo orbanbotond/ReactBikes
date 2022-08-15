@@ -14,7 +14,7 @@ RSpec.describe Resolvers::Bikes, type: :query do
   end
 
   describe "bikes" do
-    subject { @bike_resolver.new().bikes(params) }
+    subject { @bike_resolver.new().bikes(**params) }
 
     context "when id is specified" do
       context "when bike is found" do

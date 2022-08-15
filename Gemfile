@@ -12,7 +12,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 7.0.0"
-gem "pg", "~> 0.21.0"
+gem "pg", "~> 1.1"
 gem "geo_coord"
 gem "graphql"
 gem "graphql-batch"
@@ -65,7 +65,7 @@ gem "sprockets-rails"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
-  gem "bullet", "~> 5.7"
+  # gem "bullet", "~> 5.7"
   gem "awesome_print"
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -80,7 +80,7 @@ group :development, :test do
   gem "pry-rails"
   gem "pundit-matchers", "~> 1.4.1"
   gem "reek", "~> 5.4"
-  gem "rspec-rails", "~> 3.6"
+  gem "rspec-rails", "~> 4"
   gem "rubocop-rails_config"
   gem "selenium-webdriver", "~> 3.8"
   gem "shoulda-matchers", git: "http://github.com/thoughtbot/shoulda-matchers"

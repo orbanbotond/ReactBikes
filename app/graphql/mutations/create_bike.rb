@@ -12,13 +12,13 @@ module Mutations
     field :errors, [String], null: false
 
     def authorized?(**args)
-      return false, { errors: ["Can't create a bike with the current role"] } unless back_end_operation(args).allowed?
+      return false, { errors: ["Can't create a bike with the current role"] } unless back_end_operation(**args).allowed?
 
       true
     end
 
     def resolve(**rest)
-      operation = back_end_operation(rest)
+      operation = back_end_operation(**rest)
 
       if operation.valid? && (bike = operation.perform)
         {

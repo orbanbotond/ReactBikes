@@ -10,7 +10,7 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(**args)
-      operation = back_end_operation(args)
+      operation = back_end_operation(**args)
 
       if operation.valid? && (model = operation.perform)
         {
@@ -26,7 +26,7 @@ module Mutations
     end
 
     def authorized?(**args)
-      return false, { errors: ["Can't create the user with the current role"] } unless back_end_operation(args).allowed?
+      return false, { errors: ["Can't create the user with the current role"] } unless back_end_operation(**args).allowed?
 
       true
     end

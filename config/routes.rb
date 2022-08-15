@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  mount Bikes::API => "/"
+  mount Bikes::Api => "/"
 
   BLACKLIST = ["/api/swagger", "/rails", "/graphql"]
   get "*path", to: "home#index", constraints: lambda {|req| BLACKLIST.none?{|x| req.env["REQUEST_PATH"].starts_with? x } }

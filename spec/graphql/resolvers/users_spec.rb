@@ -14,7 +14,7 @@ RSpec.describe Resolvers::Users, type: :query do
   end
 
   describe "users" do
-    subject { @user_resolver.new().users(params) }
+    subject { @user_resolver.new().users(**params) }
 
     context "when id is specified" do
       context "when user is found" do

@@ -2,7 +2,8 @@
 
 source "https://rubygems.org"
 
-ruby '2.7.3'
+# ruby '2.7.3'
+ruby '3.0.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -10,7 +11,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5"
+gem "rails", "~> 7.0.0"
 gem "pg", "~> 0.21.0"
 gem "geo_coord"
 gem "graphql"
@@ -60,6 +61,7 @@ gem "granite"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "dotenv-rails", "~> 2.2"
+gem "sprockets-rails"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

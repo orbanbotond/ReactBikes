@@ -1,6 +1,6 @@
 /* eslint-env browser */
-import { BikesAxios as Axios } from '@routes/routes';
-import { Routes } from '@routes/routes';
+import { BikesAxios as Axios } from '../../routes/routes';
+import { Routes } from '../../routes/routes';
 
 // TODO change this boylerplace code to something generic.
 export const FETCH_BIKES = 'FETCH_BIKES';

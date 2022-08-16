@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, SubmissionError } from 'redux-form';
 import SearchForm from './search-form.component';
-import { actionCreators } from '@modules/bikes';
+import { actionCreators } from '../bikes';
 import { fetchSearchResultsSuccess } from './action-creators';
-import { LoadSpinnerHOC } from '@modules/hocs'
-import { selectModels, selectUser } from '@modules/selectors'
-import { BikesAxios as Axios, Routes } from '@routes/routes';
+import { LoadSpinnerHOC } from '../hocs'
+import { selectModels, selectUser } from '../selectors'
+import { BikesAxios as Axios, Routes } from '../../routes/routes';
 import BikeResults from './search-results.container';
 import MapDisplay from './search-results-map.container';
 

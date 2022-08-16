@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'reactstrap';
-import { Input, validators } from '@common/forms';
+import { Input, validators } from '../../common/forms';
 
 const LoginForm = ({
   _model, 

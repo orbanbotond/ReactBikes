@@ -4,9 +4,11 @@ html
     title ToptalReactBikes
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_importmap_tags
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true
   body
     div id='content'
       = yield
-    = javascript_pack_tag 'application'
+      div
+        = "Home Layout"
     = Gon::Base.render_data

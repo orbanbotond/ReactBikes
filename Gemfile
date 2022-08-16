@@ -16,7 +16,7 @@ gem "pg", "~> 1.1"
 gem "geo_coord"
 gem "graphql"
 gem "graphql-batch"
-
+gem 'jsbundling-rails'
 # Use Puma as the app server
 gem "puma", "~> 3.7"
 gem "chronic"
@@ -47,7 +47,7 @@ gem "pundit", "~> 1.1"
 gem "slim", "~> 4.0"
 gem "trailblazer"
 gem "trailblazer-loader", "~> 0.1.2"
-gem "webpacker"
+# gem "webpacker"
 gem "reform", "~> 2.2"
 gem "reform-rails", "~> 0.1"
 gem "pact"
@@ -107,3 +107,5 @@ end
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "graphiql-rails", group: :development
+
+gem "importmap-rails", "~> 1.1"

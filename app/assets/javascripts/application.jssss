@@ -13,3 +13,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+console.info("loaded the app/assets/javascripts/packs.js")

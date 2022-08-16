@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { reduxForm, SubmissionError } from 'redux-form';
-import { Routes } from '@routes/routes';
-import { BikesAxios as Axios } from '@routes/routes';
+import { Routes } from '../../routes/routes';
+import { BikesAxios as Axios } from '../../routes/routes';
 import { login as dispatchLogin } from './action-creators';
 import LoginForm from './login.component';
 

@@ -3,7 +3,7 @@ import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Rater from 'react-rater'
-import { Routes } from '@routes/routes';
+import { Routes } from '../../routes/routes';
 import 'react-rater/lib/react-rater.css';
 
 export default class List extends Component {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'reactstrap';
-import { Routes } from '@routes/routes';
+import { Routes } from '../../routes/routes';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { selectUser, selectAuthenticated } from '@modules/selectors'
-import { logout as dispatchLogout } from '@modules/login/action-creators';
+import { selectUser, selectAuthenticated } from '../../modules/selectors'
+import { logout as dispatchLogout } from '../../modules/login/action-creators';
 
 class Header extends React.Component {
   constructor(props) {

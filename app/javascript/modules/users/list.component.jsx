@@ -3,7 +3,7 @@ import { Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Toggle from 'react-toggle';
 import { NavLink } from 'react-router-dom';
-import { Routes } from '@routes/routes';
+import { Routes } from '../../routes/routes';
 
 import "react-toggle/style.css" 
 

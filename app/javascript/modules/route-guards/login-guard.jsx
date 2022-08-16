@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { selectUser, selectAuthenticated } from '@modules/selectors'
+import { selectUser, selectAuthenticated } from '../selectors'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Routes } from '@routes/routes';
+import { Routes } from '../../routes/routes';
 
 const GuardHOC = (WrappedComponent) => {
   class Guard extends Component {

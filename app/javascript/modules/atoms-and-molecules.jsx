@@ -6,10 +6,10 @@ import ReservationList from './reservations/list.component';
 import SearchForm from './bike_rental/search-form.component';
 import { PastReservations, 
          FutureReservations,
-         SearchResults } from '@modules/bike_rental';
+         SearchResults } from './bike_rental';
 import { ControlledFormInput, 
          ControlledFormSelect,
-         ControlledFormDateSelect} from '@common/forms';
+         ControlledFormDateSelect} from '../common/forms';
 import SearchResultsMap from './bike_rental/search-results-map.component.jsx'
 
 const reservationProps = {

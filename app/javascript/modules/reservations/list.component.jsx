@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { Routes } from '@routes/routes';
+import { Routes } from '../../routes/routes';
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css';
 import Toggle from 'react-toggle';

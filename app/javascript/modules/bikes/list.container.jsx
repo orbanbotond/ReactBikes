@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import List from './list.component';
-import { selectBikes } from '@modules/selectors'
-import { LoadSpinnerHOC } from '@modules/hocs'
+import { selectBikes } from '../selectors'
+import { LoadSpinnerHOC } from '../hocs'
 import { fetchTheBikes, deleteTheBike } from './action-creators';
-import { Routes } from '@routes/routes';
+import { Routes } from '../../routes/routes';
 
 class ListContainer extends Component {
   componentWillMount() {

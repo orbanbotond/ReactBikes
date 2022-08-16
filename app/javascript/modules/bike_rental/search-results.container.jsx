@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { selectForm, selectSearchResults, selectModels, selectUser } from '@modules/selectors'
+import { selectForm, selectSearchResults, selectModels, selectUser } from '../selectors'
 import SearchResult from './search-results.component.jsx'
-import { BikesAxios as Axios, Routes } from '@routes/routes';
+import { BikesAxios as Axios, Routes } from '../../routes/routes';
 
 class SearchResultsContainer extends Component {
   constructor(props) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectUser, selectModels } from '@modules/selectors'
-import { LoadSpinnerHOC } from '@modules/hocs'
+import { selectUser, selectModels } from '../selectors'
+import { LoadSpinnerHOC } from '../hocs'
 import { fetchTheModels } from './action-creators';
-import { BikesAxios as Axios, Routes } from '@routes/routes';
+import { BikesAxios as Axios, Routes } from '../../routes/routes';
 import Edit from './edit.component';
 import { NavLink, withRouter } from 'react-router-dom';
 import { reduxForm, SubmissionError } from 'redux-form';

@@ -7,15 +7,15 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import { StandardUserGuard, AdminGuard, LoginGuard } from '@modules/route-guards'
+import { StandardUserGuard, AdminGuard, LoginGuard } from '../modules/route-guards'
 
-import AtomsAndMolecules from '@modules/atoms-and-molecules';
-import {BikeReservations, BikeEdit, BikeList, BikeNew} from '@modules/bikes';
-import {UserReservations, UserEdit, UserList, UserNew} from '@modules/users';
-import {Reservations, Search} from '@modules/bike_rental';
-import Login from '@modules/login';
-import SignUp from '@modules/sign-up';
-import Header from '@common/header';
+import AtomsAndMolecules from '../modules/atoms-and-molecules';
+import {BikeReservations, BikeEdit, BikeList, BikeNew} from '../modules/bikes';
+import {UserReservations, UserEdit, UserList, UserNew} from '../modules/users';
+import {Reservations, Search} from '../modules/bike_rental';
+import Login from '../modules/login';
+import SignUp from '../modules/sign-up';
+import Header from '../common/header';
 
 import { Routes } from './routes';
 

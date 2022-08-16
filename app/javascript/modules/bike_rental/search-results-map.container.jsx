@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectSearchResults } from '@modules/selectors'
+import { selectSearchResults } from '../selectors'
 import SearchResultsMap from './search-results-map.component.jsx'
-import { LoadBlockerHOC } from '@modules/hocs'
+import { LoadBlockerHOC } from '../hocs'
 
 class SearchResultsMapContainer extends Component {
   render(){

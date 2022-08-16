@@ -42,3 +42,5 @@ yarn-debug.log*
 .terraform*
 terraform.tfstate*
 public/assets/
+/app/assets/builds/*
+!/app/assets/builds/.keep

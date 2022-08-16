@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BikesAxios as Axios, Routes } from '@routes/routes';
+import { BikesAxios as Axios, Routes } from '../../routes/routes';
 import { Button } from 'reactstrap';
 
 class PictureUpload extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectUser } from '@modules/selectors'
-import { BikesAxios as Axios, Routes } from '@routes/routes';
-import { LoadSpinnerHOC } from '@modules/hocs'
+import { selectUser } from '../selectors'
+import { BikesAxios as Axios, Routes } from '../../routes/routes';
+import { LoadSpinnerHOC } from '../hocs'
 import List from './reservations.component.jsx'
 
 class ReservationsContainer extends Component {

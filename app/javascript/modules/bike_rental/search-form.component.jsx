@@ -4,7 +4,7 @@ import { Form, Button } from 'reactstrap';
 import { Select, 
           DateSelect, 
           Input, 
-          validators } from '@common/forms';
+          validators } from '../../common/forms';
 
 const SearchForm = ({
   models, 

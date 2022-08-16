@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'reactstrap';
-import { Select, Input, validators } from '@common/forms';
+import { Select, Input, validators } from '../../common/forms';
 
 const EditForm = ({
   _model, 

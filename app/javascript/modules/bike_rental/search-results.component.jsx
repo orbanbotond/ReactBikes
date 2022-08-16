@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Badge, Table, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Rater from 'react-rater'
-import 'react-rater/lib/react-rater.css';
-import "react-toggle/style.css" 
+// import 'react-rater/lib/react-rater.css';
+// import "react-toggle/style.css" 
 
 export default class SearchResult extends Component {
   modelName(model_id){

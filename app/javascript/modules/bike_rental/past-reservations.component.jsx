@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 import PropTypes from 'prop-types';
-import 'react-rater/lib/react-rater.css';
+// import 'react-rater/lib/react-rater.css';
 import PastReservation from './past-reservation.component'
 
 export default class List extends Component {

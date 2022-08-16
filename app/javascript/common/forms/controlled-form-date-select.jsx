@@ -1,7 +1,7 @@
 /*eslint no-unused-vars: "warn"*/
 import React from 'react';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+import { DayPicker } from 'react-day-picker';
+// import 'react-day-picker/lib/style.css';
 import {
   FormGroup,
   Label,
@@ -52,7 +52,7 @@ class ControlledFormDateSelect extends React.Component {
       <FormGroup row className={className}>
         {label ? <Label for={name} sm={labelSize} >{label}</Label> : ''}
         <Col sm={inputSize} className={[touched && invalid ? 'is-invalid' : '', touched && valid ? 'is-valid' : ''].join(' ')}>
-          <DayPickerInput onDayChange={(day) => this.handleDayChange(day)}
+          <DayPicker onDayChange={(day) => this.handleDayChange(day)}
                           inputProps={{onBlur: onBlur,
                                       onChange: onChange,
                                       value: inputValue, 

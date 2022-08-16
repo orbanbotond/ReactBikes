@@ -1,6 +1,5 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "application", preload: true
 pin "axios", to: "https://ga.jspm.io/npm:axios@0.27.2/index.js"
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.2.0/dist/js/bootstrap.esm.js"
 pin "prop-types", to: "https://ga.jspm.io/npm:prop-types@15.8.1/index.js"
@@ -50,7 +49,7 @@ pin "hoist-non-react-statics", to: "https://ga.jspm.io/npm:hoist-non-react-stati
 pin "react-is", to: "https://ga.jspm.io/npm:react-is@16.13.1/index.js"
 pin "use-sync-external-store/shim", to: "https://ga.jspm.io/npm:use-sync-external-store@1.2.0/shim/index.js"
 pin "use-sync-external-store/shim/with-selector", to: "https://ga.jspm.io/npm:use-sync-external-store@1.2.0/shim/with-selector.js"
-pin "react-router-dom", to: "https://ga.jspm.io/npm:react-router-dom@6.3.0/index.js"
+pin "react-router-dom", to: "https://ga.jspm.io/npm:react-router-dom@5.3.0/index.js"
 pin "history", to: "https://ga.jspm.io/npm:history@5.3.0/index.js"
 pin "react-router", to: "https://ga.jspm.io/npm:react-router@6.3.0/index.js"
 pin "react-select2-wrapper", to: "https://ga.jspm.io/npm:react-select2-wrapper@1.0.4-beta6/lib/components/Select2.js"
@@ -92,3 +91,4 @@ pin "js-cookie", to: "https://ga.jspm.io/npm:js-cookie@2.2.0/src/js.cookie.js"
 pin "localforage", to: "https://ga.jspm.io/npm:localforage@1.7.3/dist/localforage.js"
 pin "redux-thunk", to: "https://ga.jspm.io/npm:redux-thunk@2.4.1/es/index.js"
 pin "title-case", to: "https://ga.jspm.io/npm:title-case@3.0.3/dist/index.js"
+pin "application", to:"/assets/application.js", preload: true

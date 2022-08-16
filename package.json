@@ -2,7 +2,7 @@
   "name": "toptal-react-bikes",
   "private": true,
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+    "build": "esbuild app/javascript/*.* --bundle --splitting --format=esm --sourcemap --outdir=app/assets/builds"
   },
   "dependencies": {
     "@babel/preset-react": "^7.14.5",

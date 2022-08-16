@@ -4,7 +4,6 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
 } from 'react-router-dom';
 
 import { StandardUserGuard, AdminGuard, LoginGuard } from '../modules/route-guards'
@@ -31,31 +30,27 @@ const App = (_props) => {
         <Route path={Routes.Browser.Restfull.collection_route("bike")}
                component={AdminGuard(BikeList)}
                exact />
-        <Switch>
-          <Route path={Routes.Browser.Restfull.new_route('bike')}
-                 component={AdminGuard(BikeNew)}
-                 exact />
-          <Route path={`${Routes.Browser.Restfull.member_route('bike', ':id')}`}
-                 component={AdminGuard(BikeEdit)}
-                 exact />
-          <Route path={`${Routes.Browser.Restfull.member_subroute('bike', ':id', 'reservations')}`}
-                 component={AdminGuard(BikeReservations)}
-                 exact />
-        </Switch>
+        <Route path={`${Routes.Browser.Restfull.member_subroute('bike', ':id', 'reservations')}`}
+               component={AdminGuard(BikeReservations)}
+               exact />
+        <Route path={`${Routes.Browser.Restfull.member_route('bike', ':id')}`}
+               component={AdminGuard(BikeEdit)}
+               exact />
+        <Route path={Routes.Browser.Restfull.new_route('bike')}
+               component={AdminGuard(BikeNew)}
+               exact />
         <Route path={Routes.Browser.Restfull.collection_route("user")}
                component={AdminGuard(UserList)}
                exact />
-        <Switch>
-          <Route path={Routes.Browser.Restfull.new_route('user')}
-                 component={AdminGuard(UserNew)}
-                 exact />
-          <Route path={`${Routes.Browser.Restfull.member_route('user', ':id')}`}
-                 component={AdminGuard(UserEdit)}
-                 exact />
-          <Route path={`${Routes.Browser.Restfull.member_subroute('user', ':id', 'reservations')}`}
-                 component={AdminGuard(UserReservations)}
-                 exact />
-        </Switch>
+        <Route path={`${Routes.Browser.Restfull.member_subroute('user', ':id', 'reservations')}`}
+               component={AdminGuard(UserReservations)}
+               exact />
+        <Route path={`${Routes.Browser.Restfull.member_route('user', ':id')}`}
+               component={AdminGuard(UserEdit)}
+               exact />
+        <Route path={Routes.Browser.Restfull.new_route('user')}
+               component={AdminGuard(UserNew)}
+               exact />
         <Route path={Routes.Browser.search()}
                component={StandardUserGuard(Search)}
                exact />

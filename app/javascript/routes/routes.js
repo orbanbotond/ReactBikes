@@ -1,9 +1,9 @@
 /* eslint-env browser */
 
 import axios from 'axios';
-import createHistory from 'history/createBrowserHistory'; // eslint-disable-line
+import {createBrowserHistory} from 'history'; // eslint-disable-line
 
-createHistory();
+createBrowserHistory();
 
 export const Routes = {};
 

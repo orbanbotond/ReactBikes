@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import Rater from 'react-rater'
 import Toggle from 'react-toggle';
 
-import 'react-rater/lib/react-rater.css';
-import "react-toggle/style.css" 
+// import 'react-rater/lib/react-rater.css';
+// import "react-toggle/style.css" 
 
 export default class Reservation extends Component {
   constructor(props) {

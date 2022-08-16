@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Routes } from '../../routes/routes';
 import Rater from 'react-rater'
-import 'react-rater/lib/react-rater.css';
+// import 'react-rater/lib/react-rater.css';
 import Toggle from 'react-toggle';
 
-import "react-toggle/style.css" 
+// import "react-toggle/style.css" 
 
 export default class List extends Component {
   render(){

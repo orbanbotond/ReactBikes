@@ -1,14 +1,10 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "axios", to: "https://ga.jspm.io/npm:axios@0.22.0/index.js"
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.1.2/dist/js/bootstrap.esm.js"
 pin "prop-types", to: "https://ga.jspm.io/npm:prop-types@15.8.1/index.js"
 pin "react", to: "https://ga.jspm.io/npm:react@16.14.0/index.js"
 pin "react-toggle", to: "https://ga.jspm.io/npm:react-toggle@4.1.3/dist/component/index.js"
-pin "#lib/adapters/http.js", to: "https://ga.jspm.io/npm:axios@0.27.2/lib/adapters/xhr.js"
-pin "#lib/defaults/env/FormData.js", to: "https://ga.jspm.io/npm:axios@0.27.2/lib/helpers/null.js"
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/index.js"
-pin "buffer", to: "https://ga.jspm.io/npm:@jspm/core@2.0.0-beta.24/nodelibs/browser/buffer.js"
 pin "react-day-picker", to: "https://ga.jspm.io/npm:react-day-picker@8.1.0/dist/index.esm.js"
 pin "date-fns/addDays", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/addDays/index.js"
 pin "date-fns/addMonths", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/addMonths/index.js"
@@ -125,3 +121,5 @@ pin "symbol-observable", to: "https://ga.jspm.io/npm:symbol-observable@1.2.0/lib
 pin "warning", to: "https://ga.jspm.io/npm:warning@4.0.3/warning.js"
 pin "tiny-warning", to: "https://ga.jspm.io/npm:tiny-warning@1.0.3/dist/tiny-warning.esm.js"
 pin "tiny-invariant", to: "https://ga.jspm.io/npm:tiny-invariant@1.2.0/dist/tiny-invariant.esm.js"
+pin "axios", to: "https://ga.jspm.io/npm:axios@0.22.0/index.js"
+pin "#lib/adapters/http.js", to: "https://ga.jspm.io/npm:axios@0.22.0/lib/adapters/xhr.js"

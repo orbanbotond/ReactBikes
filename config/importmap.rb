@@ -1,184 +1,64 @@
 # Pin npm packages by running ./bin/importmap
 
-pin "react-toggle", to: "https://ga.jspm.io/npm:react-toggle@4.1.3/dist/component/index.js"
-pin "date-fns/addDays", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/addDays/index.js"
-pin "date-fns/addMonths", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/addMonths/index.js"
-pin "date-fns/addWeeks", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/addWeeks/index.js"
-pin "date-fns/addYears", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/addYears/index.js"
-pin "date-fns/differenceInCalendarDays", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/differenceInCalendarDays/index.js"
-pin "date-fns/differenceInCalendarMonths", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/differenceInCalendarMonths/index.js"
-pin "date-fns/endOfMonth", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/endOfMonth/index.js"
-pin "date-fns/endOfWeek", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/endOfWeek/index.js"
-pin "date-fns/format", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/format/index.js"
-pin "date-fns/getUnixTime", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/getUnixTime/index.js"
-pin "date-fns/getWeek", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/getWeek/index.js"
-pin "date-fns/getWeeksInMonth", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/getWeeksInMonth/index.js"
-pin "date-fns/isAfter", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/isAfter/index.js"
-pin "date-fns/isBefore", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/isBefore/index.js"
-pin "date-fns/isDate", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/isDate/index.js"
-pin "date-fns/isSameDay", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/isSameDay/index.js"
-pin "date-fns/isSameMonth", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/isSameMonth/index.js"
-pin "date-fns/isSameYear", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/isSameYear/index.js"
-pin "date-fns/locale/en-US", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/locale/en-US/index.js"
-pin "date-fns/parse", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/parse/index.js"
-pin "date-fns/setMonth", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/setMonth/index.js"
-pin "date-fns/setYear", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/setYear/index.js"
-pin "date-fns/startOfDay", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/startOfDay/index.js"
-pin "date-fns/startOfMonth", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/startOfMonth/index.js"
-pin "date-fns/startOfWeek", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/startOfWeek/index.js"
-pin "date-fns/startOfYear", to: "https://ga.jspm.io/npm:date-fns@2.29.1/esm/startOfYear/index.js"
-pin "react-dom", to: "https://ga.jspm.io/npm:react-dom@17.0.2/index.js"
-pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.0.0-beta.24/nodelibs/browser/process-production.js"
-pin "scheduler", to: "https://ga.jspm.io/npm:scheduler@0.20.2/index.js"
-pin "react-hot-loader", to: "https://ga.jspm.io/npm:react-hot-loader@4.13.0/index.js"
-pin "react-rater", to: "https://ga.jspm.io/npm:react-rater@5.1.1/lib/index.js"
-pin "react-redux", to: "https://ga.jspm.io/npm:react-redux@7.2.5/es/index.js"
-pin "@babel/runtime/helpers/esm/extends", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/extends.js"
-pin "@babel/runtime/helpers/esm/objectWithoutPropertiesLoose", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/objectWithoutPropertiesLoose.js"
-pin "hoist-non-react-statics", to: "https://ga.jspm.io/npm:hoist-non-react-statics@3.3.2/dist/hoist-non-react-statics.cjs.js"
-pin "react-is", to: "https://ga.jspm.io/npm:react-is@16.13.1/index.js"
-pin "use-sync-external-store/shim", to: "https://ga.jspm.io/npm:use-sync-external-store@1.2.0/shim/index.js"
-pin "use-sync-external-store/shim/with-selector", to: "https://ga.jspm.io/npm:use-sync-external-store@1.2.0/shim/with-selector.js"
-pin "react-router-dom", to: "https://ga.jspm.io/npm:react-router-dom@5.3.0/esm/react-router-dom.js"
-pin "history", to: "https://ga.jspm.io/npm:history@4.10.1/index.js"
-pin "react-router", to: "https://ga.jspm.io/npm:react-router@5.2.1/esm/react-router.js"
-pin "react-select2-wrapper", to: "https://ga.jspm.io/npm:react-select2-wrapper@1.0.4-beta6/lib/components/Select2.js"
-pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.0/dist/jquery.js"
-pin "select2", to: "https://ga.jspm.io/npm:select2@4.0.13/dist/js/select2.js"
-pin "shallow-equal-fuzzy", to: "https://ga.jspm.io/npm:shallow-equal-fuzzy@0.0.2/index.js"
-pin "react-spinners", to: "https://ga.jspm.io/npm:react-spinners@0.11.0/index.js"
-pin "reactstrap", to: "https://ga.jspm.io/npm:reactstrap@8.10.0/es/index.js"
-pin "@babel/runtime/helpers/esm/assertThisInitialized", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/assertThisInitialized.js"
-pin "@babel/runtime/helpers/esm/inheritsLoose", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/inheritsLoose.js"
-pin "classnames", to: "https://ga.jspm.io/npm:classnames@2.3.1/index.js"
-pin "dom-helpers/addClass", to: "https://ga.jspm.io/npm:dom-helpers@5.2.0/esm/addClass.js"
-pin "dom-helpers/removeClass", to: "https://ga.jspm.io/npm:dom-helpers@5.2.0/esm/removeClass.js"
-pin "react-fast-compare", to: "https://ga.jspm.io/npm:react-fast-compare@3.2.0/index.js"
-pin "react-popper", to: "https://ga.jspm.io/npm:react-popper@1.3.11/lib/esm/index.js"
-pin "react-transition-group", to: "https://ga.jspm.io/npm:react-transition-group@2.9.0/index.js"
-pin "redux", to: "https://ga.jspm.io/npm:redux@4.1.1/es/redux.js"
-pin "@babel/runtime/helpers/esm/objectSpread2", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/objectSpread2.js"
-pin "redux-form", to: "https://ga.jspm.io/npm:redux-form@8.3.7/lib/index.js"
-pin "@babel/runtime/helpers/createClass", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/createClass.js"
-pin "@babel/runtime/helpers/extends", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/extends.js"
-pin "@babel/runtime/helpers/inheritsLoose", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/inheritsLoose.js"
-pin "@babel/runtime/helpers/objectWithoutPropertiesLoose", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/objectWithoutPropertiesLoose.js"
-pin "es6-error", to: "https://ga.jspm.io/npm:es6-error@4.1.1/lib/index.js"
-pin "invariant", to: "https://ga.jspm.io/npm:invariant@2.2.4/browser.js"
-pin "is-promise", to: "https://ga.jspm.io/npm:is-promise@2.2.2/index.js"
-pin "lodash/get", to: "https://ga.jspm.io/npm:lodash@4.17.21/get.js"
-pin "lodash/isEmpty", to: "https://ga.jspm.io/npm:lodash@4.17.21/isEmpty.js"
-pin "lodash/isEqual", to: "https://ga.jspm.io/npm:lodash@4.17.21/isEqual.js"
-pin "lodash/isEqualWith", to: "https://ga.jspm.io/npm:lodash@4.17.21/isEqualWith.js"
-pin "lodash/isFunction", to: "https://ga.jspm.io/npm:lodash@4.17.21/isFunction.js"
-pin "lodash/isNil", to: "https://ga.jspm.io/npm:lodash@4.17.21/isNil.js"
-pin "lodash/mapValues", to: "https://ga.jspm.io/npm:lodash@4.17.21/mapValues.js"
-pin "lodash/merge", to: "https://ga.jspm.io/npm:lodash@4.17.21/merge.js"
-pin "lodash/toPath", to: "https://ga.jspm.io/npm:lodash@4.17.21/toPath.js"
-pin "redux-react-session", to: "https://ga.jspm.io/npm:redux-react-session@2.6.1/dist/index.js"
-pin "js-cookie", to: "https://ga.jspm.io/npm:js-cookie@2.2.0/src/js.cookie.js"
-pin "localforage", to: "https://ga.jspm.io/npm:localforage@1.7.3/dist/localforage.js"
-pin "redux-thunk", to: "https://ga.jspm.io/npm:redux-thunk@2.3.0/lib/index.js"
-pin "title-case", to: "https://ga.jspm.io/npm:title-case@3.0.3/dist/index.js"
 pin "application", to:"/assets/application.js", preload: true
-pin "react-google-maps", to: "https://ga.jspm.io/npm:react-google-maps@9.4.5/lib/index.js"
-pin "babel-runtime/core-js/object/get-prototype-of", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/core-js/object/get-prototype-of.js"
-pin "babel-runtime/helpers/classCallCheck", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/classCallCheck.js"
-pin "babel-runtime/helpers/createClass", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/createClass.js"
-pin "babel-runtime/helpers/defineProperty", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/defineProperty.js"
-pin "babel-runtime/helpers/extends", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/extends.js"
-pin "babel-runtime/helpers/inherits", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/inherits.js"
-pin "babel-runtime/helpers/objectWithoutProperties", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/objectWithoutProperties.js"
-pin "babel-runtime/helpers/possibleConstructorReturn", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/possibleConstructorReturn.js"
-pin "babel-runtime/helpers/toConsumableArray", to: "https://ga.jspm.io/npm:babel-runtime@6.26.0/helpers/toConsumableArray.js"
-pin "can-use-dom", to: "https://ga.jspm.io/npm:can-use-dom@0.1.0/index.js"
-pin "change-emitter", to: "https://ga.jspm.io/npm:change-emitter@0.1.6/lib/index.js"
-pin "core-js/library/fn/array/from", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/array/from.js"
-pin "core-js/library/fn/object/assign", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/object/assign.js"
-pin "core-js/library/fn/object/create", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/object/create.js"
-pin "core-js/library/fn/object/define-property", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/object/define-property.js"
-pin "core-js/library/fn/object/get-prototype-of", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/object/get-prototype-of.js"
-pin "core-js/library/fn/object/set-prototype-of", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/object/set-prototype-of.js"
-pin "core-js/library/fn/symbol", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/symbol/index.js"
-pin "core-js/library/fn/symbol/iterator", to: "https://ga.jspm.io/npm:core-js@2.6.12/library/fn/symbol/iterator.js"
-pin "fbjs/lib/shallowEqual", to: "https://ga.jspm.io/npm:fbjs@0.8.18/lib/shallowEqual.js"
-pin "lodash/assign", to: "https://ga.jspm.io/npm:lodash@4.17.21/assign.js"
-pin "lodash/bind", to: "https://ga.jspm.io/npm:lodash@4.17.21/bind.js"
-pin "lodash/delay", to: "https://ga.jspm.io/npm:lodash@4.17.21/delay.js"
-pin "lodash/forEach", to: "https://ga.jspm.io/npm:lodash@4.17.21/forEach.js"
-pin "lodash/has", to: "https://ga.jspm.io/npm:lodash@4.17.21/has.js"
-pin "lodash/lowerFirst", to: "https://ga.jspm.io/npm:lodash@4.17.21/lowerFirst.js"
-pin "lodash/reduce", to: "https://ga.jspm.io/npm:lodash@4.17.21/reduce.js"
-pin "recompose", to: "https://ga.jspm.io/npm:recompose@0.26.0/cjs/Recompose.js"
-pin "scriptjs", to: "https://ga.jspm.io/npm:scriptjs@2.5.9/dist/script.js"
-pin "symbol-observable", to: "https://ga.jspm.io/npm:symbol-observable@1.2.0/lib/index.js"
-pin "warning", to: "https://ga.jspm.io/npm:warning@4.0.3/warning.js"
-pin "tiny-warning", to: "https://ga.jspm.io/npm:tiny-warning@1.0.3/dist/tiny-warning.esm.js"
-pin "tiny-invariant", to: "https://ga.jspm.io/npm:tiny-invariant@1.2.0/dist/tiny-invariant.esm.js"
-pin "axios", to: "https://ga.jspm.io/npm:axios@0.22.0/index.js"
-pin "#lib/adapters/http.js", to: "https://ga.jspm.io/npm:axios@0.22.0/lib/adapters/xhr.js"
-pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.1.2/dist/js/bootstrap.esm.js"
-pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/index.js"
-pin "prop-types", to: "https://ga.jspm.io/npm:prop-types@15.8.1/index.js"
-pin "react-day-picker", to: "https://ga.jspm.io/npm:react-day-picker@7.4.10/lib/react-day-picker.min.js"
-pin "object-assign", to: "https://ga.jspm.io/npm:object-assign@4.1.1/index.js"
-pin "react", to: "https://ga.jspm.io/npm:react@17.0.2/index.js"
-pin "isarray", to: "https://ga.jspm.io/npm:isarray@0.0.1/index.js"
-pin "mini-create-react-context", to: "https://ga.jspm.io/npm:mini-create-react-context@0.4.1/dist/cjs/index.js"
-pin "path-to-regexp", to: "https://ga.jspm.io/npm:path-to-regexp@1.8.0/index.js"
-pin "resolve-pathname", to: "https://ga.jspm.io/npm:resolve-pathname@3.0.0/index.js"
-pin "value-equal", to: "https://ga.jspm.io/npm:value-equal@1.0.1/index.js"
-pin "react-select", to: "https://ga.jspm.io/npm:react-select@5.1.0/dist/react-select.esm.js"
-pin "@babel/runtime/helpers/defineProperty", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/defineProperty.js"
-pin "@babel/runtime/helpers/esm/classCallCheck", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/classCallCheck.js"
-pin "@babel/runtime/helpers/esm/createClass", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/createClass.js"
-pin "@babel/runtime/helpers/esm/defineProperty", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/defineProperty.js"
-pin "@babel/runtime/helpers/esm/inherits", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/inherits.js"
-pin "@babel/runtime/helpers/esm/objectWithoutProperties", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/objectWithoutProperties.js"
-pin "@babel/runtime/helpers/esm/slicedToArray", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/slicedToArray.js"
-pin "@babel/runtime/helpers/esm/taggedTemplateLiteral", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/taggedTemplateLiteral.js"
-pin "@babel/runtime/helpers/esm/toConsumableArray", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/toConsumableArray.js"
-pin "@babel/runtime/helpers/esm/typeof", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/typeof.js"
-pin "@babel/runtime/helpers/objectWithoutProperties", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/objectWithoutProperties.js"
-pin "@babel/runtime/helpers/slicedToArray", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/slicedToArray.js"
-pin "@babel/runtime/helpers/taggedTemplateLiteral", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/taggedTemplateLiteral.js"
-pin "@babel/runtime/helpers/toConsumableArray", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/toConsumableArray.js"
-pin "@babel/runtime/helpers/typeof", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/typeof.js"
-pin "@emotion/cache", to: "https://ga.jspm.io/npm:@emotion/cache@11.10.1/dist/emotion-cache.browser.esm.js"
-pin "@emotion/hash", to: "https://ga.jspm.io/npm:@emotion/hash@0.9.0/dist/emotion-hash.esm.js"
-pin "@emotion/memoize", to: "https://ga.jspm.io/npm:@emotion/memoize@0.8.0/dist/emotion-memoize.esm.js"
-pin "@emotion/react", to: "https://ga.jspm.io/npm:@emotion/react@11.10.0/dist/emotion-react.browser.esm.js"
-pin "@emotion/serialize", to: "https://ga.jspm.io/npm:@emotion/serialize@1.1.0/dist/emotion-serialize.browser.esm.js"
-pin "@emotion/sheet", to: "https://ga.jspm.io/npm:@emotion/sheet@1.2.0/dist/emotion-sheet.browser.esm.js"
-pin "@emotion/unitless", to: "https://ga.jspm.io/npm:@emotion/unitless@0.8.0/dist/emotion-unitless.esm.js"
-pin "@emotion/utils", to: "https://ga.jspm.io/npm:@emotion/utils@1.2.0/dist/emotion-utils.browser.esm.js"
-pin "@emotion/weak-memoize", to: "https://ga.jspm.io/npm:@emotion/weak-memoize@0.3.0/dist/emotion-weak-memoize.esm.js"
-pin "memoize-one", to: "https://ga.jspm.io/npm:memoize-one@5.2.1/dist/memoize-one.cjs.js"
-pin "stylis", to: "https://ga.jspm.io/npm:stylis@4.0.13/index.js"
-pin "@babel/runtime/helpers/assertThisInitialized", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/esm/assertThisInitialized.js"
-pin "@babel/runtime/helpers/interopRequireDefault", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/interopRequireDefault.js"
-pin "@hypnosphi/create-react-context", to: "https://ga.jspm.io/npm:@hypnosphi/create-react-context@0.3.1/lib/index.js"
-pin "call-bind", to: "https://ga.jspm.io/npm:call-bind@1.0.2/index.js"
-pin "call-bind/callBound", to: "https://ga.jspm.io/npm:call-bind@1.0.2/callBound.js"
-pin "deep-equal", to: "https://ga.jspm.io/npm:deep-equal@1.1.1/index.js"
-pin "define-properties", to: "https://ga.jspm.io/npm:define-properties@1.1.4/index.js"
-pin "dom-helpers/class/addClass", to: "https://ga.jspm.io/npm:dom-helpers@3.4.0/class/addClass.js"
-pin "dom-helpers/class/removeClass", to: "https://ga.jspm.io/npm:dom-helpers@3.4.0/class/removeClass.js"
-pin "function-bind", to: "https://ga.jspm.io/npm:function-bind@1.1.1/index.js"
-pin "functions-have-names", to: "https://ga.jspm.io/npm:functions-have-names@1.2.3/index.js"
-pin "get-intrinsic", to: "https://ga.jspm.io/npm:get-intrinsic@1.1.2/index.js"
-pin "gud", to: "https://ga.jspm.io/npm:gud@1.0.0/index.js"
-pin "has", to: "https://ga.jspm.io/npm:has@1.0.3/src/index.js"
-pin "has-property-descriptors", to: "https://ga.jspm.io/npm:has-property-descriptors@1.0.0/index.js"
-pin "has-symbols", to: "https://ga.jspm.io/npm:has-symbols@1.0.3/index.js"
-pin "has-symbols/shams", to: "https://ga.jspm.io/npm:has-symbols@1.0.3/shams.js"
-pin "has-tostringtag/shams", to: "https://ga.jspm.io/npm:has-tostringtag@1.0.0/shams.js"
-pin "is-arguments", to: "https://ga.jspm.io/npm:is-arguments@1.1.1/index.js"
-pin "is-date-object", to: "https://ga.jspm.io/npm:is-date-object@1.0.5/index.js"
-pin "is-regex", to: "https://ga.jspm.io/npm:is-regex@1.1.3/index.js"
-pin "object-is", to: "https://ga.jspm.io/npm:object-is@1.1.5/index.js"
-pin "object-keys", to: "https://ga.jspm.io/npm:object-keys@1.1.1/index.js"
-pin "popper.js", to: "https://ga.jspm.io/npm:popper.js@1.16.1/dist/umd/popper.js"
-pin "react-lifecycles-compat", to: "https://ga.jspm.io/npm:react-lifecycles-compat@3.0.4/react-lifecycles-compat.cjs.js"
-pin "regexp.prototype.flags", to: "https://ga.jspm.io/npm:regexp.prototype.flags@1.4.3/index.js"
-pin "@babel/runtime/helpers/interopRequireWildcard", to: "https://ga.jspm.io/npm:@babel/runtime@7.18.9/helpers/interopRequireWildcard.js"
+pin "axios" # @0.22.0
+pin "bootstrap" # @5.1.2
+pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.6
+pin "prop-types" # @15.8.1
+pin "react" # @17.0.2
+pin "react-day-picker" # @7.4.10
+pin "react-dom" # @17.0.2
+pin "react-google-maps" # @9.4.5
+pin "react-hot-loader" # @4.13.0
+pin "react-rater" # @5.1.1
+pin "react-router-dom" # @5.3.0
+pin "@babel/runtime/helpers/esm/extends", to: "@babel--runtime--helpers--esm--extends.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/inheritsLoose", to: "@babel--runtime--helpers--esm--inheritsLoose.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/objectWithoutPropertiesLoose", to: "@babel--runtime--helpers--esm--objectWithoutPropertiesLoose.js" # @7.18.9
+pin "history" # @4.10.1
+pin "hoist-non-react-statics" # @3.3.2
+pin "mini-create-react-context" # @0.4.1
+pin "path-to-regexp" # @1.8.0
+pin "react-is" # @16.13.1
+pin "react-router" # @5.2.1
+pin "resolve-pathname" # @3.0.0
+pin "tiny-invariant" # @1.2.0
+pin "tiny-warning" # @1.0.3
+pin "value-equal" # @1.0.1
+pin "react-select" # @5.1.0
+pin "@babel/runtime/helpers/defineProperty", to: "@babel--runtime--helpers--defineProperty.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/classCallCheck", to: "@babel--runtime--helpers--esm--classCallCheck.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/createClass", to: "@babel--runtime--helpers--esm--createClass.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/defineProperty", to: "@babel--runtime--helpers--esm--defineProperty.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/inherits", to: "@babel--runtime--helpers--esm--inherits.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/objectWithoutProperties", to: "@babel--runtime--helpers--esm--objectWithoutProperties.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/slicedToArray", to: "@babel--runtime--helpers--esm--slicedToArray.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/taggedTemplateLiteral", to: "@babel--runtime--helpers--esm--taggedTemplateLiteral.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/toConsumableArray", to: "@babel--runtime--helpers--esm--toConsumableArray.js" # @7.18.9
+pin "@babel/runtime/helpers/esm/typeof", to: "@babel--runtime--helpers--esm--typeof.js" # @7.18.9
+pin "@babel/runtime/helpers/extends", to: "@babel--runtime--helpers--extends.js" # @7.18.9
+pin "@babel/runtime/helpers/objectWithoutProperties", to: "@babel--runtime--helpers--objectWithoutProperties.js" # @7.18.9
+pin "@babel/runtime/helpers/slicedToArray", to: "@babel--runtime--helpers--slicedToArray.js" # @7.18.9
+pin "@babel/runtime/helpers/taggedTemplateLiteral", to: "@babel--runtime--helpers--taggedTemplateLiteral.js" # @7.18.9
+pin "@babel/runtime/helpers/toConsumableArray", to: "@babel--runtime--helpers--toConsumableArray.js" # @7.18.9
+pin "@babel/runtime/helpers/typeof", to: "@babel--runtime--helpers--typeof.js" # @7.18.9
+pin "@emotion/cache", to: "@emotion--cache.js" # @11.10.1
+pin "@emotion/hash", to: "@emotion--hash.js" # @0.9.0
+pin "@emotion/memoize", to: "@emotion--memoize.js" # @0.8.0
+pin "@emotion/react", to: "@emotion--react.js" # @11.10.0
+pin "@emotion/serialize", to: "@emotion--serialize.js" # @1.1.0
+pin "@emotion/sheet", to: "@emotion--sheet.js" # @1.2.0
+pin "@emotion/unitless", to: "@emotion--unitless.js" # @0.8.0
+pin "@emotion/utils", to: "@emotion--utils.js" # @1.2.0
+pin "@emotion/weak-memoize", to: "@emotion--weak-memoize.js" # @0.3.0
+pin "memoize-one" # @5.2.1
+pin "stylis" # @4.0.13
+pin "react-select2-wrapper" # @1.0.4
+pin "react-spinners" # @0.11.0
+pin "-" # @0.0.1
+pin "react-toggle" # @4.1.2
+pin "redux" # @4.1.1
+pin "@babel/runtime/helpers/esm/objectSpread2", to: "@babel--runtime--helpers--esm--objectSpread2.js" # @7.18.9
+pin "redux-react-session" # @2.6.1
+pin "redux-thunk" # @2.3.0
+pin "title-case" # @3.0.3

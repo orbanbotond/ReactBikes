@@ -1,6 +1,10 @@
-= form_with(model: @bike, local: true) do |form|
-  div class="field"
-    = form.label :picture
-    = form.file_field :picture
-  div class="actions"
-    = form.submit
+div class="container-fluid"
+  = simple_form_for @bike, html: { class: 'form-horizontal col-lg-6 offset-lg-3' }, wrapper: :horizontal_form do |form|
+    = form.input :weight
+    = form.input :color, collection: Bike::COLORS
+    = form.association :bike_model, label_method: :text
+    = form.input :latitude
+    = form.input :longitude
+    = form.button :submit, "Submit", class: "col-lg-12 btn btn-outline-success btn-sm"
+
+= link_to 'Back To List', bikes_path, class: 'active'

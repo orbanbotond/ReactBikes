@@ -1,0 +1,8 @@
+div class="container-fluid"
+  = simple_form_for @user, html: { class: 'form-horizontal col-lg-6 offset-lg-3' }, wrapper: :horizontal_form do |form|
+    = form.input :email
+    = form.input :password
+    = form.input :admin, wrapper: :horizontal_boolean, html: { class: 'form-horizontal'}
+    = form.button :submit, "Submit", class: "col-lg-12 btn btn-outline-success btn-sm"
+
+= link_to 'Back To List', users_path, class: 'active'

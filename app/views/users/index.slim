@@ -12,8 +12,9 @@ div class="container"
           th scope="row"
             = user.id
           td= user.email
-          td= user.admin?
+          td= toggle_tag(user.admin?)
           td 
             = link_to "Reservations", user_reservations_path(user), class: 'btn btn-outline-success btn-sm'
             = link_to "Edit", edit_user_path(user), class: 'btn btn-outline-success btn-sm'
-            button type='button' class='btn btn-outline-danger btn-sm' 'Delete'
+            = link_to 'Delete', user_path(user), method: :delete, class: 'btn btn-outline-danger btn-sm'
+  =link_to "Create New User", new_user_path, class: "btn btn-outline-success btn-sm col-lg-12"

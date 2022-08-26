@@ -472,6 +472,9 @@ GEM
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
     shellany (0.0.1)
+    simple_form (5.1.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 2.0.6, < 2.1)
@@ -605,6 +608,7 @@ DEPENDENCIES
   sass-rails (~> 6.0)
   selenium-webdriver (~> 3.8)
   shoulda-matchers!
+  simple_form
   slim (~> 4.0)
   spring (~> 4.0)
   sprockets-rails

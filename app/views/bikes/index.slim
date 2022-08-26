@@ -19,11 +19,11 @@ div class="container"
           td= bike.color
           td= bike.weight
           td= image(bike)
-          td= bike.average_rating
+          td= rater_tag(bike.average_rating.to_i)
           td= bike.latitude
           td= bike.longitude
           td= bike.model.text
           td 
             = link_to "Reservations", bike_reservations_path(bike), class: 'btn btn-outline-success btn-sm'
             = link_to "Edit", edit_bike_path(bike), class: 'btn btn-outline-success btn-sm'
-            button type='button' class='btn btn-outline-danger btn-sm' 'Delete'
+            = link_to 'Delete', bike_path(bike), method: :delete, class: 'btn btn-outline-danger btn-sm'

@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+	def nav_link_class(resource)
+		classs = ["nav-link"]
+		classs << "active" if request.path.include?(resource)
+		classs.join(" ")
+	end
+
 	def rater_tag(rate, max=5)
 		rate = rate || 0
 		content_tag(:div, class: 'react-rater') do

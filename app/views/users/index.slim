@@ -1,0 +1,21 @@
+= render 'navbar'
+
+div class="container"
+  table class="table table-sm table-striped table-hover" size="sm"
+    thead
+      tr
+        th #
+        th Email
+        th Admin
+        th Actions
+    tbody
+      - @users.each do |user|
+        tr
+          th scope="row"
+            = user.id
+          td= user.email
+          td= user.admin?
+          td 
+            = link_to "Reservations", user_reservations_path(user), class: 'btn btn-outline-success btn-sm'
+            = link_to "Edit", edit_user_path(user), class: 'btn btn-outline-success btn-sm'
+            button type='button' class='btn btn-outline-danger btn-sm' 'Delete'

@@ -40,5 +40,6 @@ schema.json
 yarn-debug.log*
 .yarn-integrity
 .terraform*
+.foreman
 terraform.tfstate*
 public/assets/

@@ -8,5 +8,5 @@ html
   body
     div id='content'
       = yield
-    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'application' if use_react?
     = Gon::Base.render_data

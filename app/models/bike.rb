@@ -3,6 +3,7 @@
 class Bike < ApplicationRecord
   has_many :reservations, dependent: :destroy
   belongs_to :bike_model
+  alias_attribute :model, :bike_model
   has_one_attached :picture
 
   scope :by_color, ->(color) { where(color: color) }

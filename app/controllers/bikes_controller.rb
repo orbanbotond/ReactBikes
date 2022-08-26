@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class BikesController < ApplicationController
+  layout 'server-side-rendered-ui'
+
   protect_from_forgery except: :update
+
+  def index
+    @bikes = Bike.all.includes(:bike_model)
+  end
 
   def update
     picture = params[:bike][:picture]

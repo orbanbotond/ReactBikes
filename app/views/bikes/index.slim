@@ -1,0 +1,29 @@
+div class="container"
+  table class="table table-sm table-striped table-hover" size="sm"
+    thead
+      tr
+        th #
+        th Color
+        th Weight
+        th Picture
+        th Average Rating
+        th Latitude
+        th Longitude
+        th Model
+        th Actions
+    tbody
+      - @bikes.each do |bike|
+        tr
+          th scope="row"
+            = bike.id
+          td= bike.color
+          td= bike.weight
+          td= image(bike)
+          td= bike.average_rating
+          td= bike.latitude
+          td= bike.longitude
+          td= bike.model.text
+          td 
+            = link_to "Reservations", bike_reservations_path(bike), class: 'btn btn-outline-success btn-sm'
+            = link_to "Edit", edit_bike_path(bike), class: 'btn btn-outline-success btn-sm'
+            button type='button' class='btn btn-outline-danger btn-sm' 'Delete'

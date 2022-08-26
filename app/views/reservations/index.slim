@@ -1,0 +1,22 @@
+div class="container"
+  table class="table table-sm table-striped table-hover" size="sm"
+    thead
+      tr
+        th #
+        th Start At
+        th End At
+        th Cancelled
+        th Rating
+        th User
+        th Bike
+    tbody
+      - @reservations.each do |reservation|
+        tr
+          th scope="row"
+            = reservation.id
+          td= reservation.start_date
+          td= reservation.end_date
+          td= reservation.cancelled
+          td= raw rater_tag(reservation.rating)
+          td= link_to reservation.user.id, user_reservations_path(reservation.user), class: 'btn btn-outline-success btn-sm'
+          td= link_to reservation.bike.id, bike_reservations_path(reservation.bike), class: 'btn btn-outline-success btn-sm'

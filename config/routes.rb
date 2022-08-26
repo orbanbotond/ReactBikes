@@ -14,6 +14,17 @@ Rails.application.routes.draw do
 
   mount Bikes::Api => "/"
 
+  scope 'classic-server-side-rendering' do
+    resources :bikes do
+      resources :reservations, only: :index
+    end
+    resources :users do
+      resources :reservations, only: :index
+    end
+
+    resources :reservations
+  end
+
   BLACKLIST = ["/api/swagger", "/rails", "/graphql"]
   get "*path", to: "home#index", constraints: lambda {|req| BLACKLIST.none?{|x| req.env["REQUEST_PATH"].starts_with? x } }
 end

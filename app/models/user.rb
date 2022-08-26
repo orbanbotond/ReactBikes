@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  idy
-
   has_many :reservations, dependent: :destroy
 
   def password=(pwd_candidate)

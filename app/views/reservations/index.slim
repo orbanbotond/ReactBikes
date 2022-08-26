@@ -13,7 +13,7 @@ div class="container"
       - @reservations.each do |reservation|
         tr
           th scope="row"
-            = reservation.idy
+            = reservation.id
           td= reservation.start_date
           td= reservation.end_date
           td= reservation.cancelled

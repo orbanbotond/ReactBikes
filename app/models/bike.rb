@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Bike < ApplicationRecord
-  idy
-
   has_many :reservations, dependent: :destroy
   belongs_to :bike_model
   alias_attribute :model, :bike_model

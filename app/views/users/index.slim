@@ -10,7 +10,7 @@ div class="container"
       - @users.each do |user|
         tr
           th scope="row"
-            = user.idy
+            = user.id
           td= user.email
           td= toggle_tag(user.admin?)
           td 

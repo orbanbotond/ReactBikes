@@ -15,7 +15,7 @@ div class="container"
       - @bikes.each do |bike|
         tr
           th scope="row"
-            = bike.idy
+            = bike.id
           td= bike.color
           td= bike.weight
           td= image(bike)

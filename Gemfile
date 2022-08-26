@@ -15,6 +15,7 @@ gem "pg", "~> 1.1"
 gem "geo_coord"
 gem "graphql"
 gem "graphql-batch"
+gem 'idy'
 
 # Use Puma as the app server
 gem "puma", "~> 3.7"

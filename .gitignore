@@ -29,9 +29,6 @@ storage
 .generators
 .idea/*
 .rakeTasks
-.env
-.env.development.local
-.env.test.local
 schema.graphql
 schema.json
 
@@ -43,3 +40,5 @@ yarn-debug.log*
 .foreman
 terraform.tfstate*
 public/assets/
+k8s-1-23-9-do-0-ams3-1661782567903-kubeconfig.yaml
+.env*

@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  the-app:
+    container_name: "the-application"
+    image: 'orbanbotond/rails-bikes:latest'
+
+    depends_on:
+      - relational-db
+    volumes:
+      - .:/the-application
+    command: bundle exec rails s -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    environment:
+      - RDS_USERNAME=${RDS_USERNAME}
+      - RDS_PASSWORD=${RDS_PASSWORD}
+      - RDS_DB_NAME=${RDS_DB_NAME}
+      - RDS_HOSTNAME=${RDS_HOSTNAME}
+
+  # redis:
+  #   container_name: "key-value-store"
+  #   image: "redis"
+  #   ports:
+  #     - "6379:6379"
+
+  relational-db:
+    container_name: "relational-db"
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${RDS_USERNAME}
+      - POSTGRES_PASSWORD=${RDS_PASSWORD}
+      - POSTGRES_DB=${RDS_DB_NAME}
+    restart: always
+    volumes:
+      - relational-db-data:/var/lib/postgresql/data/
+volumes:
+  relational-db-data:

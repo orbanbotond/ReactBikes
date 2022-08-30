@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-rails-example-load-balancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: rails-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      name: http

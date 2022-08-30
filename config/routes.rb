@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'classic-server-side-rendering', to: 'home#classic'
   get 'react-spa-ui', to: 'home#index'
+  get 'hello-world', to: 'home#hello'
 
   mount Bikes::Api => "/"
 
